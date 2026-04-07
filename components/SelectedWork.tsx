@@ -1,13 +1,37 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const workImages = [
-  'https://www.figma.com/api/mcp/asset/037f5b45-018d-445b-a857-e924af1de751',
-  'https://www.figma.com/api/mcp/asset/02223ef0-f9e5-4ffa-8df8-672768ac433b',
-  'https://www.figma.com/api/mcp/asset/28deab52-7461-4f52-8654-7f8f0d77bf87',
-  'https://www.figma.com/api/mcp/asset/a5c6d5c2-87d5-42ed-bc0d-a1dd6c71edd0',
-  'https://www.figma.com/api/mcp/asset/f37df2d1-2f0e-47c4-ad0c-1772479dd6a8',
-  'https://www.figma.com/api/mcp/asset/4ff9f032-d852-40aa-89cb-d3066c886377',
+const works = [
+  {
+    src: 'https://www.figma.com/api/mcp/asset/037f5b45-018d-445b-a857-e924af1de751',
+    title: 'Aureum Spirits',
+    tag: 'Brand Identity',
+  },
+  {
+    src: 'https://www.figma.com/api/mcp/asset/02223ef0-f9e5-4ffa-8df8-672768ac433b',
+    title: 'Meridian Health',
+    tag: 'Campaign Strategy',
+  },
+  {
+    src: 'https://www.figma.com/api/mcp/asset/28deab52-7461-4f52-8654-7f8f0d77bf87',
+    title: 'Nova Commerce',
+    tag: 'Website & Digital',
+  },
+  {
+    src: 'https://www.figma.com/api/mcp/asset/a5c6d5c2-87d5-42ed-bc0d-a1dd6c71edd0',
+    title: 'Solstice Labs',
+    tag: 'Brand Strategy',
+  },
+  {
+    src: 'https://www.figma.com/api/mcp/asset/f37df2d1-2f0e-47c4-ad0c-1772479dd6a8',
+    title: 'Vantage Capital',
+    tag: 'AI Creative',
+  },
+  {
+    src: 'https://www.figma.com/api/mcp/asset/4ff9f032-d852-40aa-89cb-d3066c886377',
+    title: 'Helio Studios',
+    tag: 'Brand Identity',
+  },
 ]
 
 export default function SelectedWork() {
@@ -22,12 +46,31 @@ export default function SelectedWork() {
         </p>
       </div>
 
-      {/* Grid: 1 col mobile, 2 col tablet, 3 col desktop */}
+      {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-10">
-        {workImages.map((src, i) => (
-          <div key={i} className="relative h-[260px] sm:h-[320px] md:h-[420px] rounded-sm overflow-hidden">
-            <Image src={src} alt={`Work ${i + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
+        {works.map((work, i) => (
+          <Link
+            key={i}
+            href="/work"
+            className="group relative h-[260px] sm:h-[320px] md:h-[420px] rounded-sm overflow-hidden block"
+          >
+            <Image
+              src={work.src}
+              alt={work.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+            <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400">
+              <p className="text-white/70 text-[12px] md:text-[13px] uppercase tracking-widest mb-1">{work.tag}</p>
+              <h3 className="text-white font-bold text-[20px] md:text-[26px] leading-tight mb-4">{work.title}</h3>
+              <div className="flex items-center gap-2 border border-white rounded-full px-4 py-2 w-fit text-white text-[12px] md:text-[13px] font-medium uppercase">
+                View Case Study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
 
@@ -41,7 +84,7 @@ export default function SelectedWork() {
           </p>
         </div>
         <Link href="/work" className="flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-5 py-2 text-[14px] md:text-[16px] font-medium uppercase hover:bg-[#1e1e20] hover:text-white transition-colors">
-          View Case Study
+          View All Work
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </Link>
       </div>

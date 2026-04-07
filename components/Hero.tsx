@@ -1,12 +1,36 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Hero() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 80)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <section className="relative w-full h-[500px] md:h-[584px] overflow-hidden">
-      <Image src="https://www.figma.com/api/mcp/asset/52ef2489-cfdd-41bc-99e7-2b06c7daca14" alt="Hero background" fill className="object-cover object-top" priority />
-      <div className="absolute inset-0 bg-black/30" />
-      <div className="absolute bottom-10 md:bottom-[120px] left-5 md:left-[139px] flex flex-col gap-5 md:gap-[30px] max-w-[95vw] md:max-w-[698px] pr-5 md:pr-0">
+    <section
+      className={`relative w-full overflow-hidden transition-all duration-700 ease-in-out ${
+        scrolled ? 'h-[500px] md:h-[584px]' : 'h-screen'
+      }`}
+    >
+      <Image
+        src="https://www.figma.com/api/mcp/asset/36e093c6-d8c9-4fc6-a20a-1301ef1d77d9"
+        alt="Hero background"
+        fill
+        className="object-cover object-center"
+        priority
+      />
+      <div className="absolute inset-0 bg-black/35" />
+
+      {/* Main content */}
+      <div className={`absolute left-5 md:left-[90px] flex flex-col gap-5 md:gap-[30px] max-w-[95vw] md:max-w-[698px] pr-5 md:pr-0 transition-all duration-700 ${
+        scrolled ? 'bottom-10 md:bottom-[80px]' : 'bottom-[20vh] md:bottom-[30vh]'
+      }`}>
         <div className="flex flex-col gap-1 text-white">
           <h1 className="font-black text-[36px] md:text-[64px] leading-[0.87] tracking-[-1px] md:tracking-[-1.28px] uppercase">
             Creative Commerce
@@ -24,6 +48,18 @@ export default function Hero() {
             Book a Call
           </Link>
         </div>
+      </div>
+
+      {/* Scroll indicator — only visible when not scrolled */}
+      <div className={`absolute right-8 md:right-[90px] bottom-8 md:bottom-10 flex flex-col items-center gap-2 transition-opacity duration-500 ${
+        scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      }`}>
+        <div className="border border-white rounded-full w-[44px] h-[44px] md:w-[55px] md:h-[55px] flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </div>
+        <p className="text-white text-[12px] md:text-[14px] uppercase tracking-widest font-light">Scroll</p>
       </div>
     </section>
   )
