@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
         {/* Logo + work preview */}
         <div className="flex flex-col gap-4 w-full md:w-[242px]">
-          <Image src="/logo-white.png" alt="Schoolhouse Lane" width={180} height={70} className="object-contain" />
+          <Image src="/logo.png" alt="Schoolhouse Lane" width={180} height={70} className="object-contain brightness-0 invert" />
           <div className="relative w-full md:w-[242px] h-[200px] md:h-[296px] rounded-sm overflow-hidden">
             <Image src="https://www.figma.com/api/mcp/asset/932c8f14-84ef-47e0-8826-4ae0d2c34f88" alt="Work preview" fill className="object-cover" />
           </div>
