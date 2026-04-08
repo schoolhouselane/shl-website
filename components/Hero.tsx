@@ -74,7 +74,7 @@ export default function Hero() {
             src={slide.image}
             alt={slide.heading}
             fill
-            className="object-cover object-center"
+            className="object-cover object-top"
             priority={i === 0}
           />
         </div>
