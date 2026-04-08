@@ -24,11 +24,11 @@ export default function Header() {
       <div className="flex items-center justify-between px-5 md:px-[90px] h-[64px] md:h-[82px]">
         <Link href="/">
           <Image
-            src="/logo.png"
+            src={scrolled ? '/logo.svg' : '/logo-white.svg'}
             alt="Schoolhouse Lane"
             width={122}
             height={48}
-            className={`object-contain transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
+            className="object-contain transition-all duration-300"
           />
         </Link>
 
@@ -40,7 +40,7 @@ export default function Header() {
           <Link href="/work" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Work</Link>
           <Link href="/blog" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Blog</Link>
           <Link href="/jobs" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Jobs</Link>
-          <Link href="/contact" className={`flex items-center gap-2 border rounded-full px-6 py-2 text-[16px] font-medium uppercase transition-all duration-300 ${borderColor} ${textColor} hover:bg-[#1e1e20] hover:text-white hover:border-[#1e1e20]`}>
+          <Link href="/contact" className={`btn-cta flex items-center gap-2 border rounded-full px-6 py-2 text-[16px] font-medium uppercase transition-all duration-300 ${borderColor} ${textColor}`}>
             Let&apos;s Talk
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>

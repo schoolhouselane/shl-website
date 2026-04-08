@@ -45,11 +45,11 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-[280px]">
           <div className="shrink-0 w-[160px] md:w-[242px]">
             <Image
-              src="/logo.png"
+              src="/logo-white.svg"
               alt="Schoolhouse Lane"
               width={242}
               height={96}
-              className="object-contain brightness-0 invert w-full h-auto"
+              className="object-contain w-full h-auto"
             />
           </div>
           <p className="font-bold text-[28px] md:text-[48px] leading-tight uppercase text-white md:text-right">
@@ -68,7 +68,7 @@ export default function Footer() {
             {/* Image column */}
             <div className="flex flex-col gap-[17px] w-full sm:w-[242px]">
               <div className="relative w-full sm:w-[242px] h-[220px] sm:h-[296px] rounded-sm overflow-hidden">
-                <Image src="/images/work-1.png" alt="Work preview" fill className="object-cover" />
+                <Image src="/images/footer-preview.png" alt="Work preview" fill className="object-cover" />
               </div>
               <div className="flex items-end gap-[20px]">
                 <p className="font-semibold text-[18px] md:text-[20px] uppercase text-white leading-tight max-w-[162px]">
@@ -126,7 +126,7 @@ export default function Footer() {
               </p>
               <Link
                 href="/contact"
-                className="flex items-center gap-3 border border-white rounded-full px-6 py-4 md:px-[24px] md:py-[20px] text-[18px] md:text-[24px] font-medium uppercase text-white hover:bg-white hover:text-[#1e1e20] transition-colors w-fit"
+                className="btn-cta flex items-center gap-3 border border-white rounded-full px-6 py-4 md:px-[24px] md:py-[20px] text-[16px] font-medium uppercase text-white transition-colors w-fit"
               >
                 Book a Call
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

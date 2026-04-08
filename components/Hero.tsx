@@ -99,14 +99,14 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
           <Link
             href="/contact"
-            className="flex items-center gap-2 border border-white rounded-full px-4 md:px-6 py-3 text-white text-[13px] md:text-[16px] font-medium uppercase hover:bg-white hover:text-[#1e1e20] transition-all duration-300"
+            className="btn-cta flex items-center gap-2 border border-white rounded-full px-4 md:px-6 py-3 text-white text-[16px] font-medium uppercase transition-all duration-300"
           >
             Let&apos;s Build Something Exceptional
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>
           <Link
             href="/work"
-            className="flex items-center justify-center bg-white rounded-full px-6 py-3 text-[#1e1e20] text-[13px] md:text-[16px] font-medium uppercase hover:bg-[#f5f3ef] hover:scale-105 transition-all duration-300"
+            className="btn-cta flex items-center justify-center bg-white rounded-full px-6 py-3 text-[#1e1e20] text-[16px] font-medium uppercase transition-all duration-300"
           >
             See Our Work
           </Link>

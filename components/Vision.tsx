@@ -14,7 +14,7 @@ export default function Vision() {
           <p className="text-[16px] md:text-[20px] leading-[1.37] text-white md:text-right">
             We transform the role of brand from a marketing tool into a strategic asset.
           </p>
-          <Link href="/about" className="inline-flex items-center gap-3 w-fit border border-white rounded-full px-5 py-2 text-[14px] md:text-[16px] font-medium uppercase text-white hover:bg-white hover:text-[#1e1e20] transition-colors">
+          <Link href="/about" className="btn-cta inline-flex items-center gap-3 w-fit border border-white rounded-full px-5 py-2 text-[16px] font-medium uppercase text-white transition-colors">
             About Us
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>

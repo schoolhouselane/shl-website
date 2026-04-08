@@ -28,7 +28,7 @@ export default function Stats() {
           <p className="mt-4 text-[14px] leading-[1.6] text-[#1e1e20]">
             15-minute strategy call. Let&apos;s discuss real ideas for your brand and what growth actually looks like for you.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-3 mt-6 border border-[#1e1e20] bg-white rounded-full px-6 py-3 text-[18px] md:text-[24px] font-medium uppercase hover:bg-[#1e1e20] hover:text-white transition-colors">
+          <Link href="/contact" className="btn-cta inline-flex items-center gap-3 mt-6 border border-[#1e1e20] bg-white rounded-full px-6 py-3 text-[16px] font-medium uppercase transition-colors">
             Let&apos;s talk
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>

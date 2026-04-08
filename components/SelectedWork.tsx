@@ -39,7 +39,7 @@ export default function SelectedWork() {
             <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400">
               <p className="text-white/70 text-[12px] md:text-[13px] uppercase tracking-widest mb-1">{work.tag}</p>
               <h3 className="text-white font-bold text-[20px] md:text-[26px] leading-tight mb-4">{work.title}</h3>
-              <div className="flex items-center gap-2 border border-white rounded-full px-4 py-2 w-fit text-white text-[12px] md:text-[13px] font-medium uppercase">
+              <div className="btn-cta flex items-center gap-2 border border-white rounded-full px-4 py-2 w-fit text-white text-[16px] font-medium uppercase">
                 View Case Study
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </div>
