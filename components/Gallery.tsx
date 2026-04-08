@@ -25,38 +25,14 @@ export default function Gallery() {
         </p>
       </div>
 
-      {/* Gallery images — grid on mobile, absolute layout on large screens */}
-      <div className="mt-6 md:mt-8 px-5 md:px-[90px]">
-        {/* Mobile / tablet: simple 2-column grid */}
-        <div className="grid grid-cols-2 gap-2 lg:hidden">
-          <div className="relative col-span-2 h-[240px] sm:h-[320px]">
-            <Image src="/images/gallery-1.png" alt="Gallery 1" fill className="object-cover rounded-sm" />
-          </div>
-          <div className="relative h-[160px] sm:h-[200px]">
-            <Image src="/images/gallery-2.png" alt="Gallery 2" fill className="object-cover rounded-sm" />
-          </div>
-          <div className="relative h-[160px] sm:h-[200px]">
-            <Image src="/images/gallery-3.png" alt="Gallery 3" fill className="object-cover rounded-sm" />
-          </div>
-          <div className="relative col-span-2 h-[200px] sm:h-[260px]">
-            <Image src="/images/gallery-4.png" alt="Gallery 4" fill className="object-cover rounded-sm" />
-          </div>
-        </div>
-
-        {/* Desktop: original absolute layout */}
-        <div className="relative h-[520px] hidden lg:block">
-          <div className="absolute left-0 top-0 w-[604px] h-[475px]">
-            <Image src="/images/gallery-1.png" alt="Gallery 1" fill className="object-cover rounded-sm" />
-          </div>
-          <div className="absolute left-[553px] top-[142px] w-[553px] h-[149px]">
-            <Image src="/images/gallery-2.png" alt="Gallery 2" fill className="object-cover rounded-sm" />
-          </div>
-          <div className="absolute right-[221px] top-[291px] w-[308px] h-[306px]">
-            <Image src="/images/gallery-3.png" alt="Gallery 3" fill className="object-cover rounded-sm" />
-          </div>
-          <div className="absolute right-0 top-[-242px] w-[221px] h-[680px]">
-            <Image src="/images/gallery-4.png" alt="Gallery 4" fill className="object-cover rounded-sm" />
-          </div>
+      <div className="mt-6 md:mt-10 px-5 md:px-[90px]">
+        <div className="relative w-full h-[300px] sm:h-[420px] md:h-[600px] lg:h-[720px] rounded-sm overflow-hidden">
+          <Image
+            src="/images/gallery-hero.png"
+            alt="Gallery & Videos"
+            fill
+            className="object-cover"
+          />
         </div>
       </div>
     </section>
