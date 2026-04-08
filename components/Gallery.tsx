@@ -30,32 +30,32 @@ export default function Gallery() {
         {/* Mobile / tablet: simple 2-column grid */}
         <div className="grid grid-cols-2 gap-2 lg:hidden">
           <div className="relative col-span-2 h-[240px] sm:h-[320px]">
-            <Image src="https://www.figma.com/api/mcp/asset/7501dd6c-ad49-4198-ac66-fb97072fff07" alt="Gallery 1" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-1.png" alt="Gallery 1" fill className="object-cover rounded-sm" />
           </div>
           <div className="relative h-[160px] sm:h-[200px]">
-            <Image src="https://www.figma.com/api/mcp/asset/f170589f-e437-44da-8de3-b6499728cc2e" alt="Gallery 2" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-2.png" alt="Gallery 2" fill className="object-cover rounded-sm" />
           </div>
           <div className="relative h-[160px] sm:h-[200px]">
-            <Image src="https://www.figma.com/api/mcp/asset/d8e6ba02-b591-4f8b-a75e-c5800a32d48c" alt="Gallery 3" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-3.png" alt="Gallery 3" fill className="object-cover rounded-sm" />
           </div>
           <div className="relative col-span-2 h-[200px] sm:h-[260px]">
-            <Image src="https://www.figma.com/api/mcp/asset/4ea14228-0675-4029-8f01-ed48ac11712e" alt="Gallery 4" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-4.png" alt="Gallery 4" fill className="object-cover rounded-sm" />
           </div>
         </div>
 
         {/* Desktop: original absolute layout */}
         <div className="relative h-[520px] hidden lg:block">
           <div className="absolute left-0 top-0 w-[604px] h-[475px]">
-            <Image src="https://www.figma.com/api/mcp/asset/7501dd6c-ad49-4198-ac66-fb97072fff07" alt="Gallery 1" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-1.png" alt="Gallery 1" fill className="object-cover rounded-sm" />
           </div>
           <div className="absolute left-[553px] top-[142px] w-[553px] h-[149px]">
-            <Image src="https://www.figma.com/api/mcp/asset/f170589f-e437-44da-8de3-b6499728cc2e" alt="Gallery 2" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-2.png" alt="Gallery 2" fill className="object-cover rounded-sm" />
           </div>
           <div className="absolute right-[221px] top-[291px] w-[308px] h-[306px]">
-            <Image src="https://www.figma.com/api/mcp/asset/d8e6ba02-b591-4f8b-a75e-c5800a32d48c" alt="Gallery 3" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-3.png" alt="Gallery 3" fill className="object-cover rounded-sm" />
           </div>
           <div className="absolute right-0 top-[-242px] w-[221px] h-[680px]">
-            <Image src="https://www.figma.com/api/mcp/asset/4ea14228-0675-4029-8f01-ed48ac11712e" alt="Gallery 4" fill className="object-cover rounded-sm" />
+            <Image src="/images/gallery-4.png" alt="Gallery 4" fill className="object-cover rounded-sm" />
           </div>
         </div>
       </div>

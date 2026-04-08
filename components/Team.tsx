@@ -2,15 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const teamImages = [
-  'https://www.figma.com/api/mcp/asset/39e7e9f7-b437-4914-9da6-f9767bb52654',
-  'https://www.figma.com/api/mcp/asset/f046fb36-4222-42b4-8e3b-a50e7dd3b9a8',
-  'https://www.figma.com/api/mcp/asset/342086e5-fbf9-4744-b675-cd6f20f3e485',
-  'https://www.figma.com/api/mcp/asset/3044d102-79c0-4e56-a4df-2cbac3f36320',
-  'https://www.figma.com/api/mcp/asset/5f25efd4-6ebd-41be-a082-f6a26a5a2f99',
-  'https://www.figma.com/api/mcp/asset/0b0b6e9f-3c83-4d8b-8833-a325c104df0c',
-  'https://www.figma.com/api/mcp/asset/99e53d75-59b2-4e33-ac1b-1b3a184926e8',
-  'https://www.figma.com/api/mcp/asset/c071f11e-2294-4eea-a9a7-710ba450b174',
-  'https://www.figma.com/api/mcp/asset/0a90100b-ed1a-40d2-965b-bdd66d925f73',
+  '/images/people-1.png',
+  '/images/people-2.png',
+  '/images/people-3.png',
+  '/images/people-4.png',
+  '/images/people-5.png',
+  '/images/people-6.png',
+  '/images/people-7.png',
+  '/images/people-8.png',
+  '/images/people-9.png',
 ]
 
 export default function Team() {

@@ -33,7 +33,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-9 font-[var(--font-manrope)]">
           <Link href="/" className={`font-bold text-[20px] border-b pb-1 ${textColor} ${borderColor} transition-colors duration-300`}>Home</Link>
           <Link href="/services" className={`text-[20px] transition-colors duration-300 ${textColor}`}>Services</Link>
           <Link href="/about" className={`text-[20px] transition-colors duration-300 ${textColor}`}>About</Link>

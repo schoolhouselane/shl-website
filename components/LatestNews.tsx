@@ -3,12 +3,12 @@ import Link from 'next/link'
 
 const articles = [
   {
-    img: 'https://www.figma.com/api/mcp/asset/ccdfba71-be0a-4eff-92da-5c959dc64e4a',
+    img: '/images/blog-1.png',
     title: 'Why Brand Is Your Most Measurable Asset',
     excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.",
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/c7725f7b-4f49-4145-a45f-d752703e5e50',
+    img: '/images/blog-2.png',
     title: 'Creative Commerce: Where Imagination Meets Revenue',
     excerpt: "We don't just build identities. We build ecosystems where every touchpoint accelerates business growth.",
   },

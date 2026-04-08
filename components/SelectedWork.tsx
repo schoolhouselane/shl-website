@@ -3,32 +3,32 @@ import Link from 'next/link'
 
 const works = [
   {
-    src: 'https://www.figma.com/api/mcp/asset/037f5b45-018d-445b-a857-e924af1de751',
+    src: '/images/work-1.png',
     title: 'Aureum Spirits',
     tag: 'Brand Identity',
   },
   {
-    src: 'https://www.figma.com/api/mcp/asset/02223ef0-f9e5-4ffa-8df8-672768ac433b',
+    src: '/images/work-2.png',
     title: 'Meridian Health',
     tag: 'Campaign Strategy',
   },
   {
-    src: 'https://www.figma.com/api/mcp/asset/28deab52-7461-4f52-8654-7f8f0d77bf87',
+    src: '/images/work-3.png',
     title: 'Nova Commerce',
     tag: 'Website & Digital',
   },
   {
-    src: 'https://www.figma.com/api/mcp/asset/a5c6d5c2-87d5-42ed-bc0d-a1dd6c71edd0',
+    src: '/images/work-4.png',
     title: 'Solstice Labs',
     tag: 'Brand Strategy',
   },
   {
-    src: 'https://www.figma.com/api/mcp/asset/f37df2d1-2f0e-47c4-ad0c-1772479dd6a8',
+    src: '/images/work-5.png',
     title: 'Vantage Capital',
     tag: 'AI Creative',
   },
   {
-    src: 'https://www.figma.com/api/mcp/asset/4ff9f032-d852-40aa-89cb-d3066c886377',
+    src: '/images/work-6.png',
     title: 'Helio Studios',
     tag: 'Brand Identity',
   },
