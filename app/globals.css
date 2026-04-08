@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --font-manrope: var(--next-manrope), 'Manrope', sans-serif;
+}
+
 :root {
   --bg: #f5f3ef;
   --dark: #1e1e20;

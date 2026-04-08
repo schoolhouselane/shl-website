@@ -11,7 +11,7 @@ const inter = Inter({
 const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
+  variable: "--next-manrope",
 });
 
 export const metadata: Metadata = {

@@ -11,7 +11,7 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1e1e20] px-5 md:px-[90px] py-[90px] md:py-[180px] font-[var(--font-manrope)]">
+    <footer className="bg-[#1e1e20] px-5 md:px-[90px] py-[90px] md:py-[180px] font-manrope">
       <div className="border-b border-white/20 pb-8 md:pb-12 mb-8 md:mb-12">
         <p className="font-bold text-[28px] md:text-[48px] leading-normal uppercase text-white md:text-right">
           We exist at the intersection of creativity and revenue growth
