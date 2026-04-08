@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-const tabs = ['BRAND IDENTITY', 'GALLERY & VIDEOS', 'WEBSITES', 'CAMPAIGNS', 'AI CREATIVE']
+const tabs = ['STRATEGY', 'BRAND IDENTITY', 'CAMPAIGNS', 'WEBSITES', 'AI CREATIVE', 'GALLERY & VIDEOS']
 
 const logos = [
   'https://www.figma.com/api/mcp/asset/1dda5351-2782-4e43-b33f-7ae0dec42b80',
@@ -21,14 +21,14 @@ export default function ServicesTabs() {
   const [active, setActive] = useState(0)
 
   return (
-    <section className="w-full">
-      {/* Tabs — scrollable on mobile */}
+    <section className="w-full mt-[90px] md:mt-[180px]">
+      {/* Tabs */}
       <div className="flex overflow-x-auto border-b border-[#1e1e20] scrollbar-hide">
         {tabs.map((tab, i) => (
           <button
             key={tab}
             onClick={() => setActive(i)}
-            className={`flex items-center gap-2 px-6 md:px-[60px] py-4 md:py-[30px] text-[14px] md:text-[24px] whitespace-nowrap border-r border-[#1e1e20] shrink-0 transition-colors font-['SansSerifBookFLF',serif] ${
+            className={`flex items-center gap-2 px-5 md:px-[50px] py-4 md:py-[28px] text-[13px] md:text-[20px] whitespace-nowrap border-r border-[#1e1e20] shrink-0 transition-colors font-[var(--font-manrope)] ${
               i === active ? 'bg-[#1e1e20] text-white' : 'bg-transparent text-[#1e1e20] hover:bg-[#1e1e20]/5'
             }`}
           >
@@ -42,8 +42,8 @@ export default function ServicesTabs() {
         ))}
       </div>
 
-      {/* Logos strip — scrollable on mobile */}
-      <div className="flex overflow-x-auto gap-px scrollbar-hide">
+      {/* Logos strip */}
+      <div className="flex overflow-x-auto gap-px scrollbar-hide mt-[60px] md:mt-[90px] mb-[90px] md:mb-[180px]">
         {logos.map((src, i) => (
           <div key={i} className="relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] shrink-0">
             <Image src={src} alt={`Client ${i + 1}`} fill className="object-cover" />

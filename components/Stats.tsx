@@ -8,8 +8,8 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="bg-white px-5 md:px-[90px] py-12 md:py-20">
-      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
+    <section className="bg-white px-5 md:px-[90px] py-[90px] md:py-[180px]">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
         {/* Stats */}
         <div className="flex flex-wrap gap-8 md:gap-16">
           {stats.map((s) => (
@@ -21,7 +21,7 @@ export default function Stats() {
         </div>
 
         {/* CTA */}
-        <div className="max-w-full lg:max-w-[446px]">
+        <div className="max-w-full md:max-w-[446px]">
           <h3 className="font-black text-[40px] md:text-[60px] leading-[0.92] tracking-[-1.5px] uppercase text-[#1e1e20]">
             LET&apos;S BUILD<br />SOMETHING<br />remarkable.
           </h3>

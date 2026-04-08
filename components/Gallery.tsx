@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Gallery() {
   return (
-    <section className="bg-[#f5f3ef] overflow-hidden">
+    <section className="bg-[#f5f3ef] overflow-hidden pt-0 pb-[90px] md:pb-[180px]">
       <div className="px-5 md:px-[90px]">
         <p className="text-[16px] md:text-[20px] leading-[1.37] text-[#1e1e20] text-right mb-2 md:mb-4">
           Loved what you saw? Let&apos;s create something like this for you.

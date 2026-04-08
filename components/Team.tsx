@@ -15,7 +15,7 @@ const teamImages = [
 
 export default function Team() {
   return (
-    <section className="bg-[#f5f3ef] py-12 md:py-20">
+    <section className="bg-[#f5f3ef] py-[90px] md:py-[180px]">
       <h2 className="font-black text-[36px] md:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20] text-right px-5 md:px-[90px] mb-8">
         People behind everything
       </h2>

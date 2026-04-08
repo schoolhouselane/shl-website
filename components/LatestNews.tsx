@@ -16,10 +16,10 @@ const articles = [
 
 export default function LatestNews() {
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-12 md:py-20">
+    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[90px] md:py-[180px]">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Left text */}
-        <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-5">
+        <div className="w-full lg:w-[380px] shrink-0 flex flex-col gap-5">
           <h2 className="font-black text-[36px] md:text-[64px] leading-tight tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20]">
             Latest News from Our Work
           </h2>
@@ -32,21 +32,21 @@ export default function LatestNews() {
           </Link>
         </div>
 
-        {/* Cards — stack on mobile, row on desktop */}
+        {/* Cards */}
         <div className="flex flex-col sm:flex-row gap-5 flex-1">
           {articles.map((a, i) => (
-            <div key={i} className="flex flex-col flex-1">
-              <div className="relative h-[240px] sm:h-[320px] md:h-[380px] overflow-hidden">
+            <div key={i} className="flex flex-col w-full sm:w-[260px] md:w-[300px] shrink-0">
+              <div className="relative h-[200px] sm:h-[260px] md:h-[300px] overflow-hidden">
                 <Image src={a.img} alt={a.title} fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="bg-[#1e1e20] p-5 md:p-6 flex-1">
                 <div className="flex gap-4 items-start justify-between">
-                  <h3 className="font-semibold text-[18px] md:text-[24px] leading-normal text-white flex-1">{a.title}</h3>
-                  <div className="flex items-center justify-center bg-white rounded-full w-[44px] h-[44px] md:w-[55px] md:h-[55px] shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                  <h3 className="font-semibold text-[16px] md:text-[20px] leading-normal text-white flex-1">{a.title}</h3>
+                  <div className="flex items-center justify-center bg-white rounded-full w-[40px] h-[40px] md:w-[48px] md:h-[48px] shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                   </div>
                 </div>
-                <p className="mt-3 text-[14px] md:text-[16px] leading-normal text-white">{a.excerpt}</p>
+                <p className="mt-3 text-[13px] md:text-[14px] leading-normal text-white/80">{a.excerpt}</p>
               </div>
             </div>
           ))}
