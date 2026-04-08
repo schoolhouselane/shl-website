@@ -68,28 +68,20 @@ export default function Team() {
         >
           {team.map((member, i) =>
             member.featured ? (
-              /* Featured card */
-              <div key={i} className="flex gap-px shrink-0">
-                {/* Photo */}
-                <div className="group relative w-[140px] md:w-[200px] h-[460px] md:h-[759px] shrink-0 overflow-hidden">
-                  <Image src={member.src} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <p className="text-white font-bold text-[15px] leading-tight">{member.name}</p>
-                    <p className="text-white/80 text-[13px] italic">{member.role}</p>
-                  </div>
-                </div>
-                {/* White info card */}
-                <div className="bg-white flex flex-col justify-between px-[24px] md:px-[40px] py-[40px] md:py-[60px] w-[220px] md:w-[347px] h-[460px] md:h-[762px] shrink-0">
+              /* Featured — hover shows full white card overlay */
+              <div key={i} className="group relative w-[140px] md:w-[200px] h-[460px] md:h-[759px] shrink-0 overflow-hidden">
+                <Image src={member.src} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between px-5 py-8">
                   <div className="flex flex-col gap-[6px]">
-                    <p className="font-black text-[18px] md:text-[24px] text-[#111] leading-normal"
+                    <p className="font-black text-[15px] md:text-[18px] text-[#111] leading-tight"
                        style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
                       {member.name}
                     </p>
-                    <p className="text-[13px] md:text-[16px] text-[#111] italic font-light">{member.role}</p>
+                    <p className="text-[12px] md:text-[14px] text-[#111] italic font-light">{member.role}</p>
                   </div>
-                  <div className="flex flex-col gap-[14px] md:gap-[18px]">
-                    <p className="text-[13px] md:text-[16px] text-[#111] font-semibold italic leading-snug">{member.quote}</p>
-                    <p className="text-[13px] md:text-[16px] text-[#111] italic">{member.email}</p>
+                  <div className="flex flex-col gap-3">
+                    <p className="text-[12px] md:text-[13px] text-[#111] font-semibold italic leading-snug">{member.quote}</p>
+                    <p className="text-[12px] md:text-[13px] text-[#111] italic">{member.email}</p>
                   </div>
                 </div>
               </div>
