@@ -14,8 +14,8 @@ export default function Stats() {
         <div className="flex flex-wrap gap-8 md:gap-16">
           {stats.map((s) => (
             <div key={s.label} className="border-b border-[#1e1e20] pb-2">
-              <p className="font-semibold text-[60px] md:text-[83px] leading-none uppercase text-[#1e1e20]">{s.value}</p>
-              <p className="font-light text-[13px] md:text-[15.5px] uppercase text-[#1e1e20] mt-1">{s.label}</p>
+              <p className="font-semibold text-[60px] md:text-[80px] leading-none uppercase text-[#1e1e20]">{s.value}</p>
+              <p className="font-light text-[13px] md:text-[16px] uppercase text-[#1e1e20] mt-1">{s.label}</p>
             </div>
           ))}
         </div>

@@ -22,7 +22,7 @@ export default function Footer() {
         {/* Services */}
         <div className="flex flex-col gap-5">
           {services.map((s) => (
-            <Link key={s} href="/services" className="text-[16px] md:text-[20px] text-white capitalize hover:opacity-70 transition-opacity">{s}</Link>
+            <Link key={s} href="/services" className="text-[16px] md:text-[18px] text-white capitalize hover:opacity-70 transition-opacity">{s}</Link>
           ))}
         </div>
 
@@ -32,7 +32,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             {social.map((s) => (
               <Link key={s.name} href={s.href} className="flex items-center gap-2 group">
-                <p className="text-[16px] md:text-[20px] text-white group-hover:opacity-70 transition-opacity">{s.name}</p>
+                <p className="text-[16px] md:text-[18px] text-white group-hover:opacity-70 transition-opacity">{s.name}</p>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
               </Link>
             ))}
@@ -51,7 +51,7 @@ export default function Footer() {
             <Image src="/images/work-1.png" alt="Work preview" fill className="object-cover" />
           </div>
           <Link href="/work" className="flex items-center gap-4">
-            <p className="font-semibold text-[16px] md:text-[20px] uppercase text-white">See All of Our Work</p>
+            <p className="font-semibold text-[16px] md:text-[18px] uppercase text-white">See All of Our Work</p>
             <div className="flex items-center justify-center bg-white rounded-full w-[44px] h-[44px] md:w-[55px] md:h-[55px] shrink-0">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>

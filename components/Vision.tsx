@@ -24,14 +24,14 @@ export default function Vision() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20">
         <div className="flex flex-col gap-6 md:gap-[50px]">
           {valuesLeft.map((v) => (
-            <div key={v} className="border-b border-white py-3">
+            <div key={v} className="border-b border-white py-4 md:py-5">
               <p className="font-semibold text-[22px] md:text-[32px] leading-[1.37] uppercase text-white">{v}</p>
             </div>
           ))}
         </div>
         <div className="flex flex-col gap-6 md:gap-[50px]">
           {valuesRight.map((v) => (
-            <div key={v} className="border-b border-white py-3">
+            <div key={v} className="border-b border-white py-4 md:py-5">
               <p className="font-semibold text-[22px] md:text-[32px] leading-[1.37] uppercase text-white md:text-right">{v}</p>
             </div>
           ))}

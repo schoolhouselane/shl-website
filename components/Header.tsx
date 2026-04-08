@@ -19,30 +19,30 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-[#f5f3ef] border-b border-[rgba(54,31,6,0.16)]' : 'bg-transparent border-b border-white/16'
+      scrolled ? 'bg-[#f5f3ef] border-b border-[rgba(54,31,6,0.16)]' : 'bg-transparent border-b border-white/20'
     }`}>
-      <div className="flex items-center justify-between px-5 md:px-[90px] h-[72px] md:h-[91px]">
+      <div className="flex items-center justify-between px-5 md:px-[90px] h-[64px] md:h-[82px]">
         <Link href="/">
           <Image
             src="/logo.png"
             alt="Schoolhouse Lane"
-            width={100}
-            height={40}
+            width={122}
+            height={48}
             className={`object-contain transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-9 font-manrope">
-          <Link href="/" className={`font-bold text-[20px] border-b pb-1 ${textColor} ${borderColor} transition-colors duration-300`}>Home</Link>
-          <Link href="/services" className={`text-[20px] transition-colors duration-300 ${textColor}`}>Services</Link>
-          <Link href="/about" className={`text-[20px] transition-colors duration-300 ${textColor}`}>About</Link>
-          <Link href="/work" className={`text-[20px] transition-colors duration-300 ${textColor}`}>Work</Link>
-          <Link href="/blog" className={`text-[20px] transition-colors duration-300 ${textColor}`}>Blog</Link>
-          <Link href="/jobs" className={`text-[20px] transition-colors duration-300 ${textColor}`}>Jobs</Link>
-          <Link href="/contact" className={`flex items-center gap-2 border rounded-full px-5 py-2 text-[15px] font-medium uppercase transition-colors duration-300 ${borderColor} ${textColor} hover:bg-[#1e1e20] hover:text-white hover:border-[#1e1e20]`}>
+        <nav className="hidden md:flex items-center gap-[36px] font-manrope">
+          <Link href="/" className={`font-bold text-[18px] border-b pb-0.5 ${textColor} ${borderColor} transition-colors duration-300`}>Home</Link>
+          <Link href="/services" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Services</Link>
+          <Link href="/about" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>About</Link>
+          <Link href="/work" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Work</Link>
+          <Link href="/blog" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Blog</Link>
+          <Link href="/jobs" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Jobs</Link>
+          <Link href="/contact" className={`flex items-center gap-2 border rounded-full px-6 py-2 text-[16px] font-medium uppercase transition-all duration-300 ${borderColor} ${textColor} hover:bg-[#1e1e20] hover:text-white hover:border-[#1e1e20]`}>
             Let&apos;s Talk
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>
         </nav>
 

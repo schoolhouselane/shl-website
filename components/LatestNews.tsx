@@ -46,7 +46,7 @@ export default function LatestNews() {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                   </div>
                 </div>
-                <p className="mt-3 text-[13px] md:text-[14px] leading-normal text-white/80">{a.excerpt}</p>
+                <p className="mt-3 text-[13px] md:text-[14px] leading-relaxed text-white/80">{a.excerpt}</p>
               </div>
             </div>
           ))}

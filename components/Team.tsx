@@ -23,8 +23,8 @@ export default function Team() {
       {/* Scrollable strip on mobile, full width on desktop */}
       <div className="flex overflow-x-auto gap-px scrollbar-hide">
         {teamImages.map((src, i) => (
-          <div key={i} className="relative w-[140px] h-[400px] md:w-[200px] md:h-[759px] shrink-0">
-            <Image src={src} alt={`Team member ${i + 1}`} fill className="object-cover" />
+          <div key={i} className="relative w-[140px] h-[420px] md:w-[calc((100vw)/9)] md:h-[680px] shrink-0">
+            <Image src={src} alt={`Team member ${i + 1}`} fill className="object-cover object-top" />
           </div>
         ))}
       </div>

@@ -28,7 +28,7 @@ export default function ServicesTabs() {
           <button
             key={tab}
             onClick={() => setActive(i)}
-            className={`flex items-center gap-2 px-5 md:px-[50px] py-4 md:py-[28px] text-[13px] md:text-[20px] whitespace-nowrap border-r border-[#1e1e20] shrink-0 transition-colors font-manrope ${
+            className={`flex items-center gap-2 px-5 md:px-[40px] py-4 md:py-[24px] text-[13px] md:text-[18px] whitespace-nowrap border-r border-[#1e1e20] shrink-0 transition-colors font-manrope ${
               i === active ? 'bg-[#1e1e20] text-white' : 'bg-transparent text-[#1e1e20] hover:bg-[#1e1e20]/5'
             }`}
           >
