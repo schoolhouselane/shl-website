@@ -42,32 +42,20 @@ body {
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Universal CTA hover — slide fill from left */
+/* Universal CTA hover — background-size slide from left (no z-index issues) */
 .btn-cta {
-  position: relative;
-  overflow: hidden;
-  transition: color 0.4s ease, border-color 0.4s ease;
-}
-.btn-cta::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(117.9deg, #787575 31.09%, #1e1e20 78.76%);
-  border-radius: inherit;
-  transform: translateX(-101%);
-  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
-  z-index: 0;
-}
-.btn-cta:hover::after {
-  transform: translateX(0);
+  background-image: linear-gradient(117.9deg, #787575 31.09%, #1e1e20 78.76%);
+  background-size: 0% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s cubic-bezier(0.76, 0, 0.24, 1),
+              color 0.4s ease,
+              border-color 0.4s ease;
 }
 .btn-cta:hover {
+  background-size: 100% 100%;
   color: white !important;
   border-color: white;
-}
-.btn-cta > * {
-  position: relative;
-  z-index: 1;
 }
 .btn-cta svg {
   transition: transform 0.3s ease;
