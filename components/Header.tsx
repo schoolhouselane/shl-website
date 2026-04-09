@@ -1,36 +1,27 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const textColor = scrolled ? 'text-[#1e1e20]' : 'text-white'
-  const borderColor = scrolled ? 'border-[#1e1e20]' : 'border-white'
-  const hamburgerColor = scrolled ? 'bg-[#1e1e20]' : 'bg-white'
+  const textColor = 'text-[#1e1e20]'
+  const borderColor = 'border-[#1e1e20]'
+  const hamburgerColor = 'bg-[#1e1e20]'
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-[#f5f3ef] border-b border-[rgba(54,31,6,0.16)]' : 'bg-transparent border-b border-white/20'
-    }`}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#f5f3ef] border-b border-[rgba(54,31,6,0.16)]">
       <div className="flex items-center justify-between px-5 md:px-[90px] h-[64px] md:h-[82px]">
         <Link href="/">
           <Image
-            src={scrolled ? '/logo.svg' : '/logo-white.svg'}
+            src="/logo.svg"
             alt="Schoolhouse Lane"
             width={122}
             height={48}
-            className="object-contain transition-all duration-300"
+            className="object-contain"
           />
         </Link>
 
