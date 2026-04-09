@@ -52,7 +52,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: #1e1e20;
+  background: linear-gradient(117.9deg, #787575 31.09%, #1e1e20 78.76%);
   border-radius: inherit;
   transform: translateX(-101%);
   transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
