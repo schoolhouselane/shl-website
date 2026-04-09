@@ -39,33 +39,54 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-[#1e1e20] px-5 md:px-[90px] py-[40px] md:py-[60px] flex flex-col gap-[40px] md:gap-[60px]">
+      <footer className="bg-[#1e1e20] py-[40px] flex flex-col gap-[60px]">
 
-        {/* TOP ROW: Logo + Tagline */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-[280px]">
-          <div className="shrink-0 w-[160px] md:w-[242px]">
-            <Image
-              src="/logo-white.svg"
-              alt="Schoolhouse Lane"
-              width={242}
-              height={96}
-              className="object-contain w-full h-auto"
-            />
+        {/* TOP ROW: Logos + Tagline */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 px-5 md:px-[90px]">
+
+          {/* Left: two logos + divider */}
+          <div className="flex items-center gap-6 md:gap-[40px]">
+            {/* Everlough Holdings logo */}
+            <div className="relative w-[180px] md:w-[256px] h-[44px] md:h-[62px] shrink-0">
+              <Image
+                src="https://www.figma.com/api/mcp/asset/51345b51-e774-4c48-bd21-1719008f6c6f"
+                alt="Everlough Holdings"
+                fill
+                className="object-contain object-left"
+                unoptimized
+              />
+            </div>
+
+            {/* Vertical divider */}
+            <div className="w-px h-[62px] md:h-[93px] bg-white/30 shrink-0" />
+
+            {/* SHL logo */}
+            <div className="relative w-[110px] md:w-[152px] h-[44px] md:h-[60px] shrink-0">
+              <Image
+                src="/logo-white.svg"
+                alt="Schoolhouse Lane"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
           </div>
-          <p className="font-bold text-[28px] md:text-[48px] leading-tight uppercase text-white md:text-right">
+
+          {/* Right: tagline */}
+          <p className="font-bold text-[18px] md:text-[24px] uppercase text-white lg:text-right leading-tight max-w-full lg:max-w-[490px]">
             We exist at the intersection of creativity and revenue growth
           </p>
         </div>
 
         {/* DIVIDER */}
-        <div className="border-t border-white/20" />
+        <div className="border-t border-white/20 mx-5 md:mx-[90px]" />
 
-        {/* BOTTOM SECTION */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-[161px]">
+        {/* BODY */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-[161px] px-5 md:px-[90px]">
 
-          {/* LEFT GROUP: image col + CTA col */}
+          {/* COL 1: Newsletter + Contact */}
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-[24px] shrink-0">
-            {/* Image column */}
+
+            {/* Newsletter card */}
             <div className="flex flex-col gap-[17px] w-full sm:w-[242px]">
               <div className="relative w-full sm:w-[242px] h-[220px] sm:h-[296px] rounded-sm overflow-hidden">
                 <Image src="/images/footer-preview.png" alt="Work preview" fill className="object-cover" />
@@ -83,7 +104,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* CTA column */}
+            {/* Contact */}
             <div className="flex flex-col gap-[8px] sm:w-[235px]">
               <p className="font-semibold text-[18px] md:text-[20px] uppercase text-white leading-tight">
                 Ready to Build Something Remarkable?
@@ -96,9 +117,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* MIDDLE: Services + Social */}
+          {/* COL 2: Nav + Social */}
           <div className="flex gap-[60px] lg:pt-[120px] shrink-0">
-            {/* Services */}
+
+            {/* Nav links */}
             <div className="flex flex-col gap-[20px] md:gap-[30px]">
               {services.map((s) => (
                 <Link key={s.label} href={s.href} className="text-[18px] md:text-[24px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap">
@@ -107,7 +129,7 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* Social */}
+            {/* Social links */}
             <div className="flex flex-col gap-[20px] md:gap-[30px]">
               {social.map((s) => (
                 <Link key={s.name} href={s.href} className="flex items-center gap-1 text-[18px] md:text-[24px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
@@ -118,26 +140,30 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* RIGHT: Tagline + BOOK A CALL + bottom links */}
+          {/* COL 3: Quote + CTA + Legal */}
           <div className="flex flex-col lg:items-end lg:justify-between lg:flex-1 gap-10 lg:pt-[40px] lg:min-h-[500px]">
+
+            {/* Quote + Book a Call */}
             <div className="flex flex-col gap-[19px] lg:items-end max-w-[340px] lg:ml-auto">
               <p className="font-bold text-[24px] md:text-[32px] uppercase text-white lg:text-right leading-tight">
                 There is no cure for curiousity
               </p>
               <Link
                 href="/contact"
-                className="btn-cta flex items-center gap-3 border border-white rounded-full px-6 py-4 md:px-[24px] md:py-[20px] text-[16px] font-medium uppercase text-white transition-colors w-fit"
+                className="btn-cta flex items-center gap-3 border border-white rounded-full px-[24px] py-[20px] text-[18px] md:text-[24px] font-medium uppercase text-white transition-colors w-fit"
               >
                 Book a Call
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </Link>
             </div>
 
+            {/* Legal */}
             <div className="flex gap-[10px] items-center lg:justify-end">
               <p className="font-bold text-[15px] md:text-[18px] text-white whitespace-nowrap">LLC. SchoolhouseLane</p>
               <Link href="/privacy" className="font-bold text-[15px] md:text-[18px] text-white whitespace-nowrap hover:opacity-70 transition-opacity">Privacy Policy</Link>
             </div>
           </div>
+
         </div>
       </footer>
 
