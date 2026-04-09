@@ -45,9 +45,9 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 px-5 md:px-[90px]">
 
           {/* Left: two logos + divider */}
-          <div className="flex items-center gap-6 md:gap-[40px]">
-            {/* Everlough Holdings logo */}
-            <div className="relative w-[180px] md:w-[256px] h-[44px] md:h-[62px] shrink-0">
+          <div className="flex items-center gap-5 md:gap-[40px]">
+            {/* Everlough Holdings logo — 256×62 per Figma */}
+            <div className="relative w-[160px] md:w-[256px] h-[40px] md:h-[62px] shrink-0">
               <Image
                 src="/everlough-logo.png"
                 alt="Everlough Holdings"
@@ -57,10 +57,10 @@ export default function Footer() {
             </div>
 
             {/* Vertical divider */}
-            <div className="w-px h-[62px] md:h-[93px] bg-white/30 shrink-0" />
+            <div className="w-px h-[50px] md:h-[93px] bg-white/30 shrink-0" />
 
-            {/* SHL logo */}
-            <div className="relative w-[110px] md:w-[152px] h-[44px] md:h-[60px] shrink-0">
+            {/* SHL logo — 152×60 per Figma (narrower than Everlough) */}
+            <div className="relative w-[95px] md:w-[152px] h-[40px] md:h-[60px] shrink-0">
               <Image
                 src="/logo-white.svg"
                 alt="Schoolhouse Lane"
@@ -169,16 +169,16 @@ export default function Footer() {
       {/* Get Growth Modal */}
       {open && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer" onClick={() => setOpen(false)} />
           <div className="relative bg-[#f5f3ef] rounded-sm p-8 md:p-12 w-full max-w-[520px] z-10">
-            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#1e1e20] hover:opacity-60">
+            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#1e1e20] cursor-pointer rounded-full hover:bg-[#1e1e20]/8 hover:rotate-90 transition-all duration-200">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <h2 className="font-black text-[32px] md:text-[40px] leading-tight uppercase text-[#1e1e20] mb-2">
               Get Growth Ideas
             </h2>
             <p className="text-[15px] text-[#1e1e20]/70 mb-8">
-              Drop your email and a note — we&apos;ll get back within 24 hours.
+              Tell us what you&apos;re working on. We read every message.
             </p>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input

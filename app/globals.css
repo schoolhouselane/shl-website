@@ -44,6 +44,7 @@ body {
 
 /* Universal CTA hover — background-size slide from left (no z-index issues) */
 .btn-cta {
+  cursor: pointer;
   background-image: linear-gradient(117.9deg, #787575 31.09%, #1e1e20 78.76%);
   background-size: 0% 100%;
   background-position: left;

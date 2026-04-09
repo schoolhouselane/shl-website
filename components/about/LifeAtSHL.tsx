@@ -24,27 +24,61 @@ export default function LifeAtSHL() {
         </div>
       </div>
 
-      {/* Photo collage — 4 columns, 2 rows */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-        {/* Row 1 */}
-        <div className="relative h-[220px] md:h-[460px] col-span-1 overflow-hidden rounded-sm">
+      {/* Photo collage — matches Figma 636-688 exactly */}
+      {/* Desktop: 4 proportional columns (239:553:407:299), ~16px gaps */}
+      {/* Col 2 splits 220/222, Col 4 splits 288/144 */}
+      <div className="hidden md:flex gap-4 h-[460px]">
+
+        {/* Col 1: man — full height */}
+        <div className="relative overflow-hidden rounded-sm" style={{ flex: '239' }}>
           <Image src="/images/life-1.png" alt="Life at SHL" fill className="object-cover" />
         </div>
-        <div className="relative h-[220px] md:h-[460px] col-span-1 md:col-span-2 overflow-hidden rounded-sm">
-          <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" />
+
+        {/* Col 2: girl top + car bottom */}
+        <div className="flex flex-col gap-[18px]" style={{ flex: '553' }}>
+          <div className="relative overflow-hidden rounded-sm" style={{ flex: '220' }}>
+            <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" />
+          </div>
+          <div className="relative overflow-hidden rounded-sm bg-[#181818]" style={{ flex: '222' }}>
+            <Image src="/images/life-4.png" alt="Life at SHL" fill className="object-cover" />
+          </div>
         </div>
-        <div className="relative h-[220px] md:h-[460px] col-span-1 overflow-hidden rounded-sm">
+
+        {/* Col 3: woman — full height */}
+        <div className="relative overflow-hidden rounded-sm bg-[#1c1c1c]" style={{ flex: '407' }}>
           <Image src="/images/life-2.png" alt="Life at SHL" fill className="object-cover object-top" />
         </div>
 
-        {/* Row 2 */}
-        <div className="relative h-[180px] md:h-[240px] col-span-1 overflow-hidden rounded-sm bg-[#181818]">
+        {/* Col 4: sofa top + phone bottom */}
+        <div className="flex flex-col gap-[22px]" style={{ flex: '299' }}>
+          <div className="relative overflow-hidden rounded-sm" style={{ flex: '288' }}>
+            <Image src="/images/life-5.png" alt="Life at SHL" fill className="object-cover" />
+          </div>
+          <div className="relative overflow-hidden rounded-sm bg-[#1a1a1a]" style={{ flex: '144' }}>
+            <Image src="/images/life-6.png" alt="Life at SHL" fill className="object-cover" />
+          </div>
+        </div>
+
+      </div>
+
+      {/* Mobile: 2-column simplified grid */}
+      <div className="grid md:hidden grid-cols-2 gap-3">
+        <div className="relative h-[200px] overflow-hidden rounded-sm">
+          <Image src="/images/life-1.png" alt="Life at SHL" fill className="object-cover" />
+        </div>
+        <div className="relative h-[200px] overflow-hidden rounded-sm">
+          <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" />
+        </div>
+        <div className="relative h-[200px] overflow-hidden rounded-sm">
+          <Image src="/images/life-2.png" alt="Life at SHL" fill className="object-cover object-top" />
+        </div>
+        <div className="relative h-[200px] overflow-hidden rounded-sm">
           <Image src="/images/life-4.png" alt="Life at SHL" fill className="object-cover" />
         </div>
-        <div className="relative h-[180px] md:h-[240px] col-span-1 md:col-span-2 overflow-hidden rounded-sm">
+        <div className="relative h-[200px] overflow-hidden rounded-sm">
           <Image src="/images/life-5.png" alt="Life at SHL" fill className="object-cover" />
         </div>
-        <div className="relative h-[180px] md:h-[240px] col-span-1 overflow-hidden rounded-sm bg-[#1a1a1a]">
+        <div className="relative h-[200px] overflow-hidden rounded-sm">
           <Image src="/images/life-6.png" alt="Life at SHL" fill className="object-cover" />
         </div>
       </div>
