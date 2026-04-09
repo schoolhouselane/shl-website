@@ -16,10 +16,10 @@ export default function AboutStats() {
             <p className="text-white/50 text-[14px] md:text-[16px] uppercase tracking-wide">Want results like these?</p>
             <Link
               href="/contact"
-              className="btn-cta flex items-center justify-between gap-3 w-full bg-white border border-white rounded-full px-[24px] py-[18px] md:py-[20px] text-[18px] md:text-[24px] font-medium uppercase text-[#1e1e20]"
+              className="btn-cta inline-flex items-center gap-3 w-fit border border-white rounded-full px-6 py-3 text-[16px] font-medium uppercase text-white"
             >
-              <span>Let&apos;s talk</span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Let&apos;s talk
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
           </div>
         </div>
