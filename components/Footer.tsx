@@ -52,7 +52,8 @@ export default function Footer() {
                 src="/everlough-logo.png"
                 alt="Everlough Holdings"
                 fill
-                className="object-cover object-center scale-[1.3]"
+                className="object-cover scale-[1.3]"
+                style={{ objectPosition: '48% 50%' }}
               />
             </div>
 
@@ -96,7 +97,7 @@ export default function Footer() {
                 </p>
                 <button
                   onClick={() => setOpen(true)}
-                  className="flex items-center justify-center bg-white rounded-full w-[55px] h-[55px] shrink-0 hover:scale-105 transition-transform"
+                  className="flex items-center justify-center bg-white rounded-full w-[55px] h-[55px] shrink-0 hover:scale-105 transition-transform cursor-pointer"
                 >
                   <ArrowUpRight size={20} />
                 </button>

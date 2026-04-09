@@ -1,12 +1,24 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 export default function LifeAtSHL() {
+  const [headerRef, headerInView] = useInView(0.2)
+  const [collageRef, collageInView] = useInView(0.1)
+
   return (
     <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[80px] md:py-[120px] flex flex-col gap-[40px] md:gap-[60px]">
 
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div
+        ref={headerRef as React.RefObject<HTMLDivElement>}
+        className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 transition-all duration-700"
+        style={{
+          opacity: headerInView ? 1 : 0,
+          transform: headerInView ? 'translateY(0)' : 'translateY(24px)',
+        }}
+      >
         <h2 className="font-black text-[36px] md:text-[56px] uppercase text-[#1e1e20] leading-tight max-w-[606px]">
           Life at<br />Schoolhouse Lane
         </h2>
@@ -27,34 +39,82 @@ export default function LifeAtSHL() {
       {/* Photo collage — matches Figma 636-688 exactly */}
       {/* Desktop: 4 proportional columns (239:553:407:299), ~16px gaps */}
       {/* Col 2 splits 220/222, Col 4 splits 288/144 */}
-      <div className="hidden md:flex gap-4 h-[460px]">
+      <div ref={collageRef as React.RefObject<HTMLDivElement>} className="hidden md:flex gap-4 h-[460px]">
 
         {/* Col 1: man — full height */}
-        <div className="relative overflow-hidden rounded-sm" style={{ flex: '239' }}>
+        <div
+          className="relative overflow-hidden rounded-sm transition-all duration-700"
+          style={{
+            flex: '239',
+            opacity: collageInView ? 1 : 0,
+            transform: collageInView ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
+            transitionDelay: '0ms',
+          }}
+        >
           <Image src="/images/life-1.png" alt="Life at SHL" fill className="object-cover" />
         </div>
 
         {/* Col 2: girl top + car bottom */}
         <div className="flex flex-col gap-[18px]" style={{ flex: '553' }}>
-          <div className="relative overflow-hidden rounded-sm" style={{ flex: '220' }}>
+          <div
+            className="relative overflow-hidden rounded-sm transition-all duration-700"
+            style={{
+              flex: '220',
+              opacity: collageInView ? 1 : 0,
+              transform: collageInView ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
+              transitionDelay: '80ms',
+            }}
+          >
             <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" />
           </div>
-          <div className="relative overflow-hidden rounded-sm bg-[#181818]" style={{ flex: '222' }}>
+          <div
+            className="relative overflow-hidden rounded-sm bg-[#181818] transition-all duration-700"
+            style={{
+              flex: '222',
+              opacity: collageInView ? 1 : 0,
+              transform: collageInView ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
+              transitionDelay: '160ms',
+            }}
+          >
             <Image src="/images/life-4.png" alt="Life at SHL" fill className="object-cover" />
           </div>
         </div>
 
         {/* Col 3: woman — full height */}
-        <div className="relative overflow-hidden rounded-sm bg-[#1c1c1c]" style={{ flex: '407' }}>
+        <div
+          className="relative overflow-hidden rounded-sm bg-[#1c1c1c] transition-all duration-700"
+          style={{
+            flex: '407',
+            opacity: collageInView ? 1 : 0,
+            transform: collageInView ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
+            transitionDelay: '120ms',
+          }}
+        >
           <Image src="/images/life-2.png" alt="Life at SHL" fill className="object-cover object-top" />
         </div>
 
         {/* Col 4: sofa top + phone bottom */}
         <div className="flex flex-col gap-[22px]" style={{ flex: '299' }}>
-          <div className="relative overflow-hidden rounded-sm" style={{ flex: '288' }}>
+          <div
+            className="relative overflow-hidden rounded-sm transition-all duration-700"
+            style={{
+              flex: '288',
+              opacity: collageInView ? 1 : 0,
+              transform: collageInView ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
+              transitionDelay: '200ms',
+            }}
+          >
             <Image src="/images/life-5.png" alt="Life at SHL" fill className="object-cover" />
           </div>
-          <div className="relative overflow-hidden rounded-sm bg-[#1a1a1a]" style={{ flex: '144' }}>
+          <div
+            className="relative overflow-hidden rounded-sm bg-[#1a1a1a] transition-all duration-700"
+            style={{
+              flex: '144',
+              opacity: collageInView ? 1 : 0,
+              transform: collageInView ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
+              transitionDelay: '280ms',
+            }}
+          >
             <Image src="/images/life-6.png" alt="Life at SHL" fill className="object-cover" />
           </div>
         </div>
@@ -63,24 +123,26 @@ export default function LifeAtSHL() {
 
       {/* Mobile: 2-column simplified grid */}
       <div className="grid md:hidden grid-cols-2 gap-3">
-        <div className="relative h-[200px] overflow-hidden rounded-sm">
-          <Image src="/images/life-1.png" alt="Life at SHL" fill className="object-cover" />
-        </div>
-        <div className="relative h-[200px] overflow-hidden rounded-sm">
-          <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" />
-        </div>
-        <div className="relative h-[200px] overflow-hidden rounded-sm">
-          <Image src="/images/life-2.png" alt="Life at SHL" fill className="object-cover object-top" />
-        </div>
-        <div className="relative h-[200px] overflow-hidden rounded-sm">
-          <Image src="/images/life-4.png" alt="Life at SHL" fill className="object-cover" />
-        </div>
-        <div className="relative h-[200px] overflow-hidden rounded-sm">
-          <Image src="/images/life-5.png" alt="Life at SHL" fill className="object-cover" />
-        </div>
-        <div className="relative h-[200px] overflow-hidden rounded-sm">
-          <Image src="/images/life-6.png" alt="Life at SHL" fill className="object-cover" />
-        </div>
+        {[
+          { src: '/images/life-1.png', delay: 0 },
+          { src: '/images/life-3.png', delay: 80 },
+          { src: '/images/life-2.png', delay: 160 },
+          { src: '/images/life-4.png', delay: 240 },
+          { src: '/images/life-5.png', delay: 320 },
+          { src: '/images/life-6.png', delay: 400 },
+        ].map(({ src, delay }, i) => (
+          <div
+            key={src}
+            className="relative h-[200px] overflow-hidden rounded-sm transition-all duration-700"
+            style={{
+              opacity: collageInView ? 1 : 0,
+              transform: collageInView ? 'translateY(0)' : 'translateY(20px)',
+              transitionDelay: `${delay}ms`,
+            }}
+          >
+            <Image src={src} alt="Life at SHL" fill className={`object-cover${i === 2 ? ' object-top' : ''}`} />
+          </div>
+        ))}
       </div>
 
     </section>

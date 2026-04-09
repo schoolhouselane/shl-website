@@ -1,15 +1,40 @@
+'use client'
 import Link from 'next/link'
+import { useInView, useCountUp } from '@/hooks/useInView'
+
+function BigStat({ prefix = '', target, suffix = '', label }: { prefix?: string; target: number; suffix?: string; label?: string }) {
+  const [ref, inView] = useInView(0.3)
+  const count = useCountUp(target, inView, 1800)
+  return (
+    <span ref={ref as React.RefObject<HTMLSpanElement>}>
+      {prefix}{inView ? count : 0}{suffix}
+    </span>
+  )
+}
 
 export default function AboutStats() {
+  const [sectionRef, inView] = useInView(0.15)
+
   return (
-    <section className="bg-[#1e1e20] px-5 md:px-[90px] py-[60px] md:py-[90px]">
+    <section
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="bg-[#1e1e20] px-5 md:px-[90px] py-[60px] md:py-[90px]"
+    >
       <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-[60px]">
 
         {/* Left: 99% + CTA */}
-        <div className="flex flex-col gap-[20px] md:gap-[40px] lg:w-[559px] shrink-0">
+        <div
+          className="flex flex-col gap-[20px] md:gap-[40px] lg:w-[559px] shrink-0 transition-all duration-700"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateX(0)' : 'translateX(-40px)',
+          }}
+        >
           <div>
             <p className="font-black text-[18px] md:text-[24px] text-white uppercase">Client Retention</p>
-            <p className="font-black text-[80px] md:text-[128px] text-white tracking-[-5.12px] leading-[0.9]">99%</p>
+            <p className="font-black text-[80px] md:text-[128px] text-white tracking-[-5.12px] leading-[0.9]">
+              <BigStat target={99} suffix="%" />
+            </p>
             <p className="font-medium text-[14px] md:text-[16px] text-white mt-2">Of clients stay. Every year.</p>
           </div>
           <div className="flex flex-col gap-[10px]">
@@ -25,15 +50,26 @@ export default function AboutStats() {
         </div>
 
         {/* Right: 4 stats grid */}
-        <div className="flex flex-col gap-[20px] flex-1">
+        <div
+          className="flex flex-col gap-[20px] flex-1 transition-all duration-700"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateX(0)' : 'translateX(40px)',
+            transitionDelay: '200ms',
+          }}
+        >
           {/* Top row */}
           <div className="flex justify-between gap-4">
             <div>
-              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">79+</p>
+              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
+                <BigStat target={79} suffix="+" />
+              </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">Brands Transformed</p>
             </div>
             <div className="text-right">
-              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">5★</p>
+              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
+                <BigStat target={5} suffix="★" />
+              </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">Average Client Review</p>
             </div>
           </div>
@@ -44,12 +80,14 @@ export default function AboutStats() {
           {/* Bottom row */}
           <div className="flex justify-between gap-4">
             <div>
-              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">£2M+</p>
+              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
+                £<BigStat target={2} suffix="M+" />
+              </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">Revenue Generated</p>
             </div>
             <div className="text-right">
               <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
-                6<span className="text-[36px] md:text-[47px]">yr</span>
+                <BigStat target={6} /><span className="text-[36px] md:text-[47px]">yr</span>
               </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">In Market</p>
             </div>

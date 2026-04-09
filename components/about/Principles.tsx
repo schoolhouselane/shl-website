@@ -1,3 +1,6 @@
+'use client'
+import { useInView } from '@/hooks/useInView'
+
 const principles = [
   {
     num: '01',
@@ -32,11 +35,21 @@ const principles = [
 ]
 
 export default function Principles() {
+  const [headerRef, headerInView] = useInView(0.2)
+  const [gridRef, gridInView] = useInView(0.1)
+
   return (
     <section className="bg-[#1e1e20] py-[80px] md:py-[120px] flex flex-col gap-[60px] md:gap-[120px]">
 
       {/* Header */}
-      <div className="px-5 md:px-[90px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div
+        ref={headerRef as React.RefObject<HTMLDivElement>}
+        className="px-5 md:px-[90px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 transition-all duration-700"
+        style={{
+          opacity: headerInView ? 1 : 0,
+          transform: headerInView ? 'translateY(0)' : 'translateY(30px)',
+        }}
+      >
         <h2 className="font-bold text-[36px] md:text-[64px] text-white uppercase max-w-[526px] leading-tight">
           Our Operating Principles:
         </h2>
@@ -46,11 +59,16 @@ export default function Principles() {
       </div>
 
       {/* Principles grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div ref={gridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2">
         {principles.map((p, i) => (
           <div
             key={p.num}
-            className="relative flex items-center justify-between px-5 md:px-[90px] py-[28px] md:py-[38px] border-t border-white/10"
+            className="relative flex items-center justify-between px-5 md:px-[90px] py-[28px] md:py-[38px] border-t border-white/10 overflow-hidden transition-all duration-700"
+            style={{
+              opacity: gridInView ? 1 : 0,
+              transform: gridInView ? 'translateY(0)' : 'translateY(40px)',
+              transitionDelay: `${i * 80}ms`,
+            }}
           >
             {/* Left: title + desc */}
             <div className="flex flex-col gap-[6px] max-w-[65%]">
@@ -62,8 +80,16 @@ export default function Principles() {
               </p>
             </div>
 
-            {/* Right: ghost number */}
-            <span className="font-black text-[60px] md:text-[100px] text-white/[0.08] tracking-[-4px] leading-none select-none shrink-0">
+            {/* Right: ghost number — slides in from right */}
+            <span
+              className="font-black text-[60px] md:text-[100px] tracking-[-4px] leading-none select-none shrink-0 transition-all duration-1000"
+              style={{
+                color: 'white',
+                opacity: gridInView ? 0.08 : 0,
+                transform: gridInView ? 'translateX(0)' : 'translateX(30px)',
+                transitionDelay: `${i * 80 + 300}ms`,
+              }}
+            >
               {p.num}
             </span>
           </div>

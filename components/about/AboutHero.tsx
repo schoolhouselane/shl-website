@@ -1,12 +1,29 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function AboutHero() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80)
+    return () => clearTimeout(t)
+  }, [])
+
   return (
     <section className="bg-[#f5f3ef] px-5 md:px-[90px] pb-[60px] pt-[40px] md:pt-0 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 lg:gap-[60px]">
 
       {/* Left */}
-      <div className="flex flex-col gap-[30px] max-w-full lg:max-w-[607px] shrink-0">
+      <div
+        className="flex flex-col gap-[30px] max-w-full lg:max-w-[607px] shrink-0 transition-all duration-900"
+        style={{
+          opacity: mounted ? 1 : 0,
+          transform: mounted ? 'translateX(0)' : 'translateX(-30px)',
+          transitionDuration: '900ms',
+          transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+        }}
+      >
         <div className="flex flex-col gap-[18px]">
           <h1 className="font-black text-[40px] md:text-[64px] leading-tight tracking-[-1.28px] uppercase text-[#1e1e20]">
             The ideas engine behind Creative Commerce.
@@ -16,7 +33,15 @@ export default function AboutHero() {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-[12px] md:gap-[20px]">
+        <div
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-[12px] md:gap-[20px] transition-all duration-700"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'translateY(0)' : 'translateY(20px)',
+            transitionDelay: '300ms',
+            transitionDuration: '700ms',
+          }}
+        >
           <Link
             href="/contact"
             className="btn-cta inline-flex items-center gap-3 border border-[#1e1e20] rounded-full px-[24px] py-[12px] text-[16px] font-medium uppercase text-[#1e1e20]"
@@ -34,7 +59,16 @@ export default function AboutHero() {
       </div>
 
       {/* Right: hero image */}
-      <div className="relative w-full lg:w-[701px] h-[380px] md:h-[560px] lg:h-[739px] shrink-0 overflow-hidden">
+      <div
+        className="relative w-full lg:w-[701px] h-[380px] md:h-[560px] lg:h-[739px] shrink-0 overflow-hidden transition-all"
+        style={{
+          opacity: mounted ? 1 : 0,
+          transform: mounted ? 'translateX(0) scale(1)' : 'translateX(30px) scale(1.02)',
+          transitionDuration: '1000ms',
+          transitionDelay: '100ms',
+          transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+        }}
+      >
         <Image
           src="/images/about-hero.png"
           alt="Schoolhouse Lane team"
