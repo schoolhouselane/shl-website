@@ -2,8 +2,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -34,12 +36,14 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-[36px] font-manrope">
-          <Link href="/" className={`font-bold text-[18px] border-b pb-0.5 ${textColor} ${borderColor} transition-colors duration-300`}>Home</Link>
-          <Link href="/services" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Services</Link>
-          <Link href="/about" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>About</Link>
-          <Link href="/work" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Work</Link>
-          <Link href="/blog" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Blog</Link>
-          <Link href="/jobs" className={`text-[16px] transition-colors duration-300 ${textColor} hover:opacity-70`}>Jobs</Link>
+          {[['/', 'Home'], ['/services', 'Services'], ['/about', 'About'], ['/work', 'Work'], ['/blog', 'Blog'], ['/jobs', 'Jobs']].map(([href, label]) => {
+            const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href)
+            return (
+              <Link key={href} href={href} className={`transition-colors duration-300 ${isActive ? `font-bold text-[18px] border-b pb-0.5 ${textColor} ${borderColor}` : `text-[16px] ${textColor} hover:opacity-70`}`}>
+                {label}
+              </Link>
+            )
+          })}
           <Link href="/contact" className={`btn-cta flex items-center gap-2 border rounded-full px-6 py-2 text-[16px] font-medium uppercase transition-all duration-300 ${borderColor} ${textColor}`}>
             Let&apos;s Talk
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
