@@ -49,11 +49,10 @@ export default function Footer() {
             {/* Everlough Holdings logo */}
             <div className="relative w-[180px] md:w-[256px] h-[44px] md:h-[62px] shrink-0">
               <Image
-                src="https://www.figma.com/api/mcp/asset/51345b51-e774-4c48-bd21-1719008f6c6f"
+                src="/everlough-logo.png"
                 alt="Everlough Holdings"
                 fill
                 className="object-contain object-left"
-                unoptimized
               />
             </div>
 

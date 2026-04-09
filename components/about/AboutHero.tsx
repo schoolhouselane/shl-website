@@ -36,11 +36,10 @@ export default function AboutHero() {
       {/* Right: hero image */}
       <div className="relative w-full lg:w-[701px] h-[380px] md:h-[560px] lg:h-[739px] shrink-0 overflow-hidden">
         <Image
-          src="https://www.figma.com/api/mcp/asset/0ff18467-374b-47e1-9fcd-0e43dd6a3a79"
+          src="/images/about-hero.png"
           alt="Schoolhouse Lane team"
           fill
           className="object-cover object-top"
-          unoptimized
         />
       </div>
 

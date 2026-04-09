@@ -24,60 +24,28 @@ export default function LifeAtSHL() {
         </div>
       </div>
 
-      {/* Photo collage */}
+      {/* Photo collage — 4 columns, 2 rows */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         {/* Row 1 */}
         <div className="relative h-[220px] md:h-[460px] col-span-1 overflow-hidden rounded-sm">
-          <Image
-            src="https://www.figma.com/api/mcp/asset/b6fcdc27-e0d0-4b50-a1b2-d01ba0e8e3bc"
-            alt="Life at SHL"
-            fill
-            className="object-cover"
-            unoptimized
-          />
+          <Image src="/images/life-1.png" alt="Life at SHL" fill className="object-cover" />
         </div>
         <div className="relative h-[220px] md:h-[460px] col-span-1 md:col-span-2 overflow-hidden rounded-sm">
-          <Image
-            src="https://www.figma.com/api/mcp/asset/d4fcd78a-0e31-4e10-b80b-3fdb0b4e0b3b"
-            alt="Life at SHL"
-            fill
-            className="object-cover"
-            unoptimized
-          />
+          <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" />
         </div>
         <div className="relative h-[220px] md:h-[460px] col-span-1 overflow-hidden rounded-sm">
-          <Image
-            src="/images/people-2.png"
-            alt="Life at SHL"
-            fill
-            className="object-cover object-top"
-          />
+          <Image src="/images/life-2.png" alt="Life at SHL" fill className="object-cover object-top" />
         </div>
 
         {/* Row 2 */}
         <div className="relative h-[180px] md:h-[240px] col-span-1 overflow-hidden rounded-sm bg-[#181818]">
-          <Image
-            src="/images/work-3.png"
-            alt="Life at SHL"
-            fill
-            className="object-cover"
-          />
+          <Image src="/images/life-4.png" alt="Life at SHL" fill className="object-cover" />
         </div>
         <div className="relative h-[180px] md:h-[240px] col-span-1 md:col-span-2 overflow-hidden rounded-sm">
-          <Image
-            src="/images/gallery-1.png"
-            alt="Life at SHL"
-            fill
-            className="object-cover"
-          />
+          <Image src="/images/life-5.png" alt="Life at SHL" fill className="object-cover" />
         </div>
         <div className="relative h-[180px] md:h-[240px] col-span-1 overflow-hidden rounded-sm bg-[#1a1a1a]">
-          <Image
-            src="/images/gallery-2.png"
-            alt="Life at SHL"
-            fill
-            className="object-cover"
-          />
+          <Image src="/images/life-6.png" alt="Life at SHL" fill className="object-cover" />
         </div>
       </div>
 

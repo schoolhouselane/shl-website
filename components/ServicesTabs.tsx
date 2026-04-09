@@ -5,16 +5,16 @@ import Image from 'next/image'
 const tabs = ['BRAND IDENTITY', 'GALLERY & VIDEOS', 'WEBSITES', 'CAMPAIGNS', 'AI CREATIVE']
 
 const images = [
-  'https://www.figma.com/api/mcp/asset/5b14f6a1-ec93-44f5-9b68-8ab966cc8225',
-  'https://www.figma.com/api/mcp/asset/cbc09abd-1905-4eea-9e9e-cf0168f2a3dd',
-  'https://www.figma.com/api/mcp/asset/4bdd19d3-aeb5-41a4-bf0a-c217b2dcb2cf',
-  'https://www.figma.com/api/mcp/asset/53381509-50ac-441d-9443-c4d6825a7d02',
-  'https://www.figma.com/api/mcp/asset/ed5750c7-08fc-4b35-ae22-828fa1797070',
-  'https://www.figma.com/api/mcp/asset/4afe7016-93ee-469c-9a33-d523056db5d3',
-  'https://www.figma.com/api/mcp/asset/5787bb68-37ce-4e4b-8921-ba8d55abe695',
-  'https://www.figma.com/api/mcp/asset/e1741fee-235f-4557-a2d8-6ff6ff514db5',
-  'https://www.figma.com/api/mcp/asset/3bacd7bf-e65a-444e-bb23-b775893675b5',
-  'https://www.figma.com/api/mcp/asset/1d77ef24-800b-436e-88e5-921a0e40118d',
+  '/images/services-1.png',
+  '/images/services-2.png',
+  '/images/services-3.png',
+  '/images/services-4.png',
+  '/images/services-5.png',
+  '/images/services-6.png',
+  '/images/services-7.png',
+  '/images/services-8.png',
+  '/images/services-9.png',
+  '/images/services-10.png',
 ]
 
 export default function ServicesTabs() {
@@ -51,7 +51,7 @@ export default function ServicesTabs() {
         <div className="flex overflow-x-auto gap-px scrollbar-hide">
           {images.map((src, i) => (
             <div key={i} className="relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] shrink-0 bg-[#d9d9d9]">
-              <Image src={src} alt={`Service image ${i + 1}`} fill className="object-cover" unoptimized />
+              <Image src={src} alt={`Service image ${i + 1}`} fill className="object-cover" />
             </div>
           ))}
         </div>
