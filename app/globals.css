@@ -63,7 +63,7 @@ body {
 }
 .btn-cta:hover {
   color: white !important;
-  border-color: #1e1e20;
+  border-color: white;
 }
 .btn-cta > * {
   position: relative;
