@@ -44,10 +44,10 @@ export default function Footer() {
         {/* TOP ROW: Logos + Tagline */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 px-5 md:px-[90px]">
 
-          {/* Left: two logos + divider */}
-          <div className="flex items-center gap-5 md:gap-[40px]">
-            {/* Everlough Holdings logo — 256×62 per Figma */}
-            <div className="relative w-[160px] md:w-[256px] h-[40px] md:h-[62px] shrink-0">
+          {/* Left: two logos + divider — 575px justify-between per Figma */}
+          <div className="flex items-center justify-between w-full md:w-[575px] shrink-0">
+            {/* Everlough Holdings logo — 256×62 */}
+            <div className="relative w-[160px] md:w-[256px] h-[38px] md:h-[62px]">
               <Image
                 src="/everlough-logo.png"
                 alt="Everlough Holdings"
@@ -56,11 +56,11 @@ export default function Footer() {
               />
             </div>
 
-            {/* Vertical divider */}
-            <div className="w-px h-[50px] md:h-[93px] bg-white/30 shrink-0" />
+            {/* Vertical divider — 1px × 93px */}
+            <div className="w-px h-[50px] md:h-[93px] bg-white/30" />
 
-            {/* SHL logo — 152×60 per Figma (narrower than Everlough) */}
-            <div className="relative w-[95px] md:w-[152px] h-[40px] md:h-[60px] shrink-0">
+            {/* SHL logo — 152×60 */}
+            <div className="relative w-[95px] md:w-[152px] h-[38px] md:h-[60px]">
               <Image
                 src="/logo-white.svg"
                 alt="Schoolhouse Lane"
@@ -70,8 +70,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right: tagline */}
-          <p className="font-bold text-[18px] md:text-[24px] uppercase text-white lg:text-right leading-tight max-w-full lg:max-w-[490px]">
+          {/* Right: tagline — 24px Bold, uppercase, right-aligned, max 490px */}
+          <p className="font-bold text-[18px] md:text-[24px] uppercase text-white lg:text-right leading-normal max-w-full lg:max-w-[490px]">
             We exist at the intersection of creativity and revenue growth
           </p>
         </div>
