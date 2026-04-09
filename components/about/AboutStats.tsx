@@ -32,7 +32,7 @@ export default function AboutStats() {
         >
           <div>
             <p className="font-black text-[18px] md:text-[24px] text-white uppercase">Client Retention</p>
-            <p className="font-black text-[80px] md:text-[128px] text-white tracking-[-5.12px] leading-[0.9]">
+            <p className="font-black text-[60px] sm:text-[80px] md:text-[128px] text-white tracking-[-3px] md:tracking-[-5.12px] leading-[0.9]">
               <BigStat target={99} suffix="%" />
             </p>
             <p className="font-medium text-[14px] md:text-[16px] text-white mt-2">Of clients stay. Every year.</p>
@@ -61,13 +61,13 @@ export default function AboutStats() {
           {/* Top row */}
           <div className="flex justify-between gap-4">
             <div>
-              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
+              <p className="font-black text-[36px] sm:text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
                 <BigStat target={79} suffix="+" />
               </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">Brands Transformed</p>
             </div>
             <div className="text-right">
-              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
+              <p className="font-black text-[36px] sm:text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
                 <BigStat target={5} suffix="★" />
               </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">Average Client Review</p>
@@ -80,13 +80,13 @@ export default function AboutStats() {
           {/* Bottom row */}
           <div className="flex justify-between gap-4">
             <div>
-              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
+              <p className="font-black text-[36px] sm:text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
                 £<BigStat target={2} suffix="M+" />
               </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">Revenue Generated</p>
             </div>
             <div className="text-right">
-              <p className="font-black text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
+              <p className="font-black text-[36px] sm:text-[48px] md:text-[63px] text-white tracking-[-1.89px] leading-none">
                 <BigStat target={6} /><span className="text-[36px] md:text-[47px]">yr</span>
               </p>
               <p className="text-[12px] md:text-[16px] uppercase text-white/60 mt-1">In Market</p>

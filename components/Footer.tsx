@@ -123,7 +123,7 @@ export default function Footer() {
             {/* Nav links */}
             <div className="flex flex-col gap-[20px] md:gap-[30px]">
               {services.map((s) => (
-                <Link key={s.label} href={s.href} className="text-[18px] md:text-[24px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap">
+                <Link key={s.label} href={s.href} className="text-[15px] sm:text-[18px] md:text-[24px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap">
                   {s.label}
                 </Link>
               ))}
@@ -132,7 +132,7 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex flex-col gap-[20px] md:gap-[30px]">
               {social.map((s) => (
-                <Link key={s.name} href={s.href} className="flex items-center gap-1 text-[18px] md:text-[24px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
+                <Link key={s.name} href={s.href} className="flex items-center gap-1 text-[15px] sm:text-[18px] md:text-[24px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
                   {s.name}
                   <ArrowUpRight size={20} />
                 </Link>
@@ -171,7 +171,7 @@ export default function Footer() {
       {open && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer" onClick={() => setOpen(false)} />
-          <div className="relative bg-[#f5f3ef] rounded-sm p-8 md:p-12 w-full max-w-[520px] z-10">
+          <div className="relative bg-[#f5f3ef] rounded-sm p-5 sm:p-8 md:p-12 w-full max-w-[520px] z-10">
             <button onClick={() => setOpen(false)} className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#1e1e20] cursor-pointer rounded-full hover:bg-[#1e1e20]/8 hover:rotate-90 transition-all duration-200">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>

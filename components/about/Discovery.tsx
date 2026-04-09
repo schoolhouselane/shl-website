@@ -15,14 +15,14 @@ function StatItem({ value, label, delay }: { value: string; label: string; delay
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className="flex flex-col items-center text-center w-[140px] md:w-[210px] transition-all duration-700"
+      className="flex flex-col items-center text-center w-[120px] sm:w-[140px] md:w-[210px] transition-all duration-700"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? 'translateY(0)' : 'translateY(24px)',
         transitionDelay: `${delay}ms`,
       }}
     >
-      <p className="font-black text-[48px] md:text-[62px] tracking-[-1.87px] text-[#3a3a3a] leading-none">
+      <p className="font-black text-[36px] sm:text-[48px] md:text-[62px] tracking-[-1.87px] text-[#3a3a3a] leading-none">
         {prefix}{inView ? count : 0}{suffix}
       </p>
       <p className="text-[10px] md:text-[12px] uppercase tracking-[1.4px] text-[#1e1e20] mt-1">

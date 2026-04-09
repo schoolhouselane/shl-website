@@ -60,7 +60,7 @@ export default function AboutHero() {
 
       {/* Right: hero image */}
       <div
-        className="relative w-full lg:w-[701px] h-[380px] md:h-[560px] lg:h-[739px] shrink-0 overflow-hidden transition-all"
+        className="relative w-full lg:w-[701px] h-[300px] sm:h-[400px] md:h-[560px] lg:h-[739px] shrink-0 overflow-hidden transition-all"
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateX(0) scale(1)' : 'translateX(30px) scale(1.02)',

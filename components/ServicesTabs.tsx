@@ -31,7 +31,7 @@ export default function ServicesTabs() {
             <button
               key={tab}
               onClick={() => setActive(i)}
-              className={`flex items-center gap-2 px-5 md:px-[60px] whitespace-nowrap border-r border-[#1e1e20] shrink-0 transition-colors font-medium text-[14px] md:text-[20px] ${
+              className={`flex items-center gap-2 px-3 sm:px-5 md:px-[60px] whitespace-nowrap border-r border-[#1e1e20] shrink-0 transition-colors font-medium text-[13px] md:text-[20px] ${
                 i === active
                   ? 'bg-[#1e1e20] text-white py-4 md:py-[30px]'
                   : 'bg-transparent text-[#1e1e20] py-2 md:py-[10px] hover:bg-[#1e1e20]/5'
@@ -50,7 +50,7 @@ export default function ServicesTabs() {
         {/* Image strip */}
         <div className="flex overflow-x-auto gap-px scrollbar-hide">
           {images.map((src, i) => (
-            <div key={i} className="relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] shrink-0 bg-[#d9d9d9]">
+            <div key={i} className="relative w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] md:w-[200px] md:h-[200px] shrink-0 bg-[#d9d9d9]">
               <Image src={src} alt={`Service image ${i + 1}`} fill className="object-cover" />
             </div>
           ))}

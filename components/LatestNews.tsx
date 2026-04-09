@@ -33,10 +33,10 @@ export default function LatestNews() {
         </div>
 
         {/* Cards */}
-        <div className="flex flex-col sm:flex-row gap-5 flex-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 flex-1">
           {articles.map((a, i) => (
-            <div key={i} className="flex flex-col w-full sm:w-[260px] md:w-[300px] shrink-0">
-              <div className="relative h-[200px] sm:h-[260px] md:h-[300px] overflow-hidden">
+            <div key={i} className="flex flex-col">
+              <div className="relative h-[200px] sm:h-[240px] md:h-[300px] overflow-hidden">
                 <Image src={a.img} alt={a.title} fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="bg-[#1e1e20] p-5 md:p-6 flex-1">

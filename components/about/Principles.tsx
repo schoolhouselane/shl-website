@@ -82,7 +82,7 @@ export default function Principles() {
 
             {/* Right: ghost number — slides in from right */}
             <span
-              className="font-black text-[60px] md:text-[100px] tracking-[-4px] leading-none select-none shrink-0 transition-all duration-1000"
+              className="font-black text-[40px] sm:text-[60px] md:text-[100px] tracking-[-4px] leading-none select-none shrink-0 transition-all duration-1000"
               style={{
                 color: 'white',
                 opacity: gridInView ? 0.08 : 0,

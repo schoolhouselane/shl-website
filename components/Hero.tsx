@@ -135,7 +135,7 @@ export default function Hero() {
         </div>
 
         {/* Scroll indicator — only on full screen */}
-        <div className={`absolute right-8 md:right-[90px] bottom-8 md:bottom-10 z-20 flex flex-col items-center gap-2 transition-opacity duration-500 ${
+        <div className={`absolute right-4 md:right-[90px] bottom-8 md:bottom-10 z-20 flex flex-col items-center gap-2 transition-opacity duration-500 ${
           scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}>
           <div className="border border-white rounded-full w-[55px] h-[55px] flex items-center justify-center">

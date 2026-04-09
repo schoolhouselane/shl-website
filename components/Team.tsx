@@ -113,7 +113,7 @@ export default function Team() {
             <div key={i} className="group flex shrink-0">
 
               {/* Photo */}
-              <div className="relative w-[140px] md:w-[200px] h-[460px] md:h-[759px] overflow-hidden">
+              <div className="relative w-[140px] md:w-[200px] h-[300px] md:h-[759px] overflow-hidden">
                 <Image
                   src={member.src}
                   alt={member.name}
@@ -123,8 +123,8 @@ export default function Team() {
               </div>
 
               {/* White info card — expands on hover */}
-              <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[240px] md:group-hover:w-[347px] h-[460px] md:h-[759px] bg-white">
-                <div className="w-[240px] md:w-[347px] h-full flex flex-col justify-between px-[24px] md:px-[40px] py-[40px] md:py-[60px]">
+              <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[200px] md:group-hover:w-[347px] h-[300px] md:h-[759px] bg-white">
+                <div className="w-[200px] md:w-[347px] h-full flex flex-col justify-between px-[20px] md:px-[40px] py-[24px] md:py-[60px]">
                   <div className="flex flex-col gap-[6px]">
                     <p className="font-black text-[18px] md:text-[24px] text-[#111] leading-tight">
                       {member.name}

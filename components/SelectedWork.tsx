@@ -15,7 +15,7 @@ export default function SelectedWork() {
     <section className="px-5 md:px-[90px] pt-[45px] md:pt-[90px] pb-[90px] md:pb-[180px] bg-[#f5f3ef]">
       <div className="mb-8 md:mb-10">
         <h2 className="font-black text-[36px] md:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20]">
-          Selected Work<br />That Delivered Growth
+          Selected Work<br className="hidden sm:block" />That Delivered Growth
         </h2>
         <p className="mt-4 text-[16px] md:text-[20px] leading-[1.37] text-[#1e1e20] max-w-[565px]">
           Our work spans brand strategy, identity, campaigns, and digital. Each project is chosen because it pushed something forward.
@@ -27,7 +27,7 @@ export default function SelectedWork() {
           <Link
             key={i}
             href="/work"
-            className="group relative h-[260px] sm:h-[320px] md:h-[420px] rounded-sm overflow-hidden block"
+            className="group relative h-[220px] sm:h-[300px] md:h-[420px] rounded-sm overflow-hidden block"
           >
             <Image
               src={work.src}
