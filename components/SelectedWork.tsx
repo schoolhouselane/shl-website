@@ -12,7 +12,7 @@ const works = [
 
 export default function SelectedWork() {
   return (
-    <section className="px-5 md:px-[90px] py-[90px] md:py-[180px] bg-[#f5f3ef]">
+    <section className="px-5 md:px-[90px] pt-[45px] md:pt-[90px] pb-[90px] md:pb-[180px] bg-[#f5f3ef]">
       <div className="mb-8 md:mb-10">
         <h2 className="font-black text-[36px] md:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20]">
           Selected Work<br />That Delivered Growth
