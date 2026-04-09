@@ -46,13 +46,13 @@ export default function Footer() {
 
           {/* Left: two logos + divider — 575px justify-between per Figma */}
           <div className="flex items-center justify-between w-full md:w-[575px] shrink-0">
-            {/* Everlough Holdings logo — 256×62 */}
-            <div className="relative w-[160px] md:w-[256px] h-[38px] md:h-[62px]">
+            {/* Everlough Holdings logo — cropped sides to zoom */}
+            <div className="relative w-[160px] md:w-[256px] h-[38px] md:h-[62px] overflow-hidden">
               <Image
                 src="/everlough-logo.png"
                 alt="Everlough Holdings"
                 fill
-                className="object-contain object-left"
+                className="object-cover object-center scale-[1.3]"
               />
             </div>
 
