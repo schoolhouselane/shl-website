@@ -59,7 +59,7 @@ export default function HeroFullBleed() {
   return (
     /* Full-bleed: no side padding, but vertical spacing when scrolled */
     <section className={`bg-[#f5f3ef] w-full transition-all duration-700 ease-in-out ${
-      scrolled ? 'pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px]' : ''
+      scrolled ? 'pt-[104px] md:pt-[142px] pb-[40px] md:pb-[60px]' : ''
     }`}>
 
       {/* Image container */}
