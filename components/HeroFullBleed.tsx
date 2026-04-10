@@ -57,8 +57,10 @@ export default function HeroFullBleed() {
   }, [])
 
   return (
-    /* No outer padding — hero stays full-bleed even when scrolled */
-    <section className="bg-[#f5f3ef] w-full transition-all duration-700 ease-in-out">
+    /* Full-bleed: no side padding, but vertical spacing when scrolled */
+    <section className={`bg-[#f5f3ef] w-full transition-all duration-700 ease-in-out ${
+      scrolled ? 'pt-[60px] md:pt-[90px] pb-[40px] md:pb-[60px]' : ''
+    }`}>
 
       {/* Image container */}
       <div className={`relative overflow-hidden transition-[height] duration-700 ease-in-out flex flex-col ${
