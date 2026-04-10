@@ -23,7 +23,7 @@ const slides = [
 
 const SLIDE_DURATION = 5000
 
-export default function Hero() {
+export default function HeroFullBleed() {
   const [current, setCurrent] = useState(0)
   const [scrolled, setScrolled] = useState(false)
   const [animating, setAnimating] = useState(false)
@@ -57,9 +57,8 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className={`bg-[#f5f3ef] w-full transition-all duration-700 ease-in-out ${
-      scrolled ? 'px-5 md:px-[90px] pt-[60px] md:pt-[90px] pb-[40px] md:pb-[60px]' : ''
-    }`}>
+    /* No outer padding — hero stays full-bleed even when scrolled */
+    <section className="bg-[#f5f3ef] w-full transition-all duration-700 ease-in-out">
 
       {/* Image container */}
       <div className={`relative overflow-hidden transition-[height] duration-700 ease-in-out flex flex-col ${
@@ -87,9 +86,7 @@ export default function Hero() {
         ))}
 
         {/* Content */}
-        <div className={`relative z-20 flex flex-col gap-5 md:gap-[30px] max-w-[95vw] md:max-w-[714px] transition-all duration-700 pr-5 md:pr-0 ${
-          scrolled ? 'pl-4 md:pl-[49px]' : 'pl-5 md:pl-[90px]'
-        }`}>
+        <div className="relative z-20 flex flex-col gap-5 md:gap-[30px] max-w-[95vw] md:max-w-[714px] transition-all duration-700 pr-5 md:pr-0 pl-5 md:pl-[90px]">
           <div key={current} className="flex flex-col gap-1 text-white animate-fadeIn">
             <h1 className="font-black text-[36px] md:text-[64px] leading-[0.87] tracking-[-1px] md:tracking-[-1.28px] uppercase">
               {slides[current].heading}
@@ -117,14 +114,12 @@ export default function Hero() {
         </div>
 
         {/* Slide indicators */}
-        <div className={`absolute bottom-6 z-20 flex items-center gap-3 transition-all duration-700 ${
-          scrolled ? 'left-4 md:left-[49px]' : 'left-5 md:left-[90px]'
-        }`}>
+        <div className="absolute bottom-6 left-5 md:left-[90px] z-20 flex items-center gap-3">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
-              className={`transition-all duration-300 rounded-full ${
+              className={`transition-all duration-300 rounded-full cursor-pointer ${
                 i === current ? 'w-8 h-2 bg-white' : 'w-2 h-2 bg-white/50 hover:bg-white/80'
               }`}
             />
