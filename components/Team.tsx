@@ -6,66 +6,87 @@ import { useRef, useState, useEffect } from 'react'
 const team = [
   {
     src: '/images/people-1.png',
-    name: 'Sarah Mitchell',
-    role: 'Creative Director.',
-    quote: 'A pioneer in aligning profit with purpose to capture hearts, minds, and market share.',
-    email: 'sarah@schoolhouselane.co',
+    name: 'Andy Hoskins',
+    role: 'Advisor to the Board',
+    bio: 'Andy brings 15 years of CFO, M&A, and investment expertise to the intersection of finance and imagination. In the pursuit of Conscious Capitalism, he ensures that altruistic brand visions are anchored in fiscal reality. Andy views diversity of thought as a competitive advantage, helping clients navigate capital raises and exits by treating brand as a high-leverage strategic asset.',
   },
   {
     src: '/images/people-2.png',
-    name: 'James Okafor',
-    role: 'Brand Strategist.',
-    quote: 'Building brands that outlast trends and earn genuine loyalty from the right audiences.',
-    email: 'james@schoolhouselane.co',
+    name: 'Drinela Shala',
+    role: 'Designer',
+    bio: 'Drinela combines an inspiring creative vision with the rigour of brand-led value creation. She designs with the conviction that businesses should be a force for good, crafting identities that align people, purpose, and profit to capture long-term loyalty.',
   },
   {
     src: '/images/people-3.png',
-    name: 'Elena Vasquez',
-    role: 'Art Director.',
-    quote: 'Visual storytelling that cuts through noise and speaks directly to what people value.',
-    email: 'elena@schoolhouselane.co',
+    name: 'Ermir Kryeziu',
+    role: 'Designer',
+    bio: 'Ermir views design as a tool for fulfillment through discovery. He focuses on building the touchpoints that connect a brand\'s strategy to its checkout, ensuring that the most intangible assets become a measurable advantage for Founders and Investors alike.',
   },
   {
     src: '/images/people-4.png',
-    name: 'Tom Brennan',
-    role: 'Campaign Lead.',
-    quote: 'Every campaign is a conversation — we make sure it is one worth having.',
-    email: 'tom@schoolhouselane.co',
+    name: 'Marigona Culaj',
+    role: 'Designer',
+    bio: 'Marigona believes there is no cure for curiosity. She doesn\'t just "decorate" decisions; she uses design to unearth the latent potential within an organization. By prioritizing the emotional and the real, Marigona creates visual systems that allow brands to live their stories.',
   },
   {
     src: '/images/people-5.png',
-    name: 'Darren McGrath',
-    role: 'Founder & Strategy Director.',
-    quote: 'A pioneer in aligning profit with purpose to capture hearts, minds, and market share.',
-    email: 'dmg@schoolhouselane.co',
+    name: 'Saqib Sami',
+    role: 'Finance Manager',
+    bio: 'Saqib ensures that the conviction of Conscious Capitalism is backed by rigorous financial integrity. In an agency where brand is a high-leverage strategic asset, he manages the fiscal engine that aligns profit with purpose, providing the stability and transparency necessary for our partners to drive outsized returns.',
   },
   {
     src: '/images/people-6.png',
-    name: 'Priya Nair',
-    role: 'Digital Designer.',
-    quote: 'Design is not decoration — it is the first argument your brand makes.',
-    email: 'priya@schoolhouselane.co',
+    name: 'Tea Sebenick',
+    role: 'Client Services Manager',
+    bio: 'Tea is the bridge between imagination and business success. With a loyal and supportive approach, she provides the alignment necessary to navigate complex shifts, ensuring our clients feel the clarity of our upstream strategic nature at every stage of the journey.',
   },
   {
     src: '/images/people-7.png',
-    name: 'Lucas Ferreira',
-    role: 'Motion Designer.',
-    quote: 'Movement gives ideas a heartbeat. That is what we design for.',
-    email: 'lucas@schoolhouselane.co',
+    name: 'Darren McGrath',
+    role: 'Partner',
+    bio: 'A Cannes Lion-winning creative strategist with 25 years of experience, Darren operates where relentless inquiry meets rigorous strategy. He specialises in transforming brand from a downstream cost into an upstream engine for enterprise value creation. By aligning profit with purpose, he ensures Schoolhouse Lane architects the infrastructure for ambitious companies to capture both market share and hearts.',
   },
   {
     src: '/images/people-8.png',
-    name: 'Anna Kowalski',
-    role: 'Content Strategist.',
-    quote: 'Words are the architecture of trust. We build every sentence with intention.',
-    email: 'anna@schoolhouselane.co',
+    name: 'Erbeline Shala',
+    role: 'Creative Specialist',
+    bio: 'Erbeline champions the "human" in our human agency. Her role is to ensure that diversity of thought remains our competitive advantage, infusing every project with the emotional intelligence and generous spirit required to create genuine connections with customers.',
   },
   {
     src: '/images/people-9.png',
-    name: 'Marcus Chen',
-    role: 'UX Designer.',
-    quote: 'Good experience design is invisible — great experience design is unforgettable.',
-    email: 'marcus@schoolhouselane.co',
+    name: "Keith O'Loughlin",
+    role: 'Advisor to the Board',
+    bio: 'With 25 years of innovation and investment experience, Keith embodies the pioneering spirit of Schoolhouse Lane. As Chairman of Everlough Holdings, he understands that in a world of "good enough," the exceptional is found through relentless inquiry. Keith guides the agency in building ecosystems that accelerate business goals and navigate complex category shifts with agility.',
+  },
+  {
+    src: '/images/people-1.png',
+    name: 'Leona Bobi',
+    role: 'Designer',
+    bio: 'Leona operates at the heart of Creative Commerce, making brand strategy tangible through innovative design. Her work is fueled by an adventurous spirit, ensuring every aesthetic choice accelerates the business goals of our clients while maintaining a human, altruistic touch.',
+  },
+  {
+    src: '/images/people-2.png',
+    name: 'Hassan Butt',
+    role: 'Software Engineer',
+    bio: 'Hassan builds the digital infrastructure that allows our brands to thrive in an era of algorithmic noise. By focusing on the intersection of technology and human-centric insight, he ensures that the checkout is as strategically potent as the brand strategy itself.',
+  },
+  {
+    src: '/images/people-3.png',
+    name: 'Shalale Mammadli',
+    role: 'Project Manager',
+    bio: 'Shalale manages the ecosystem where strategy meets execution. Driven by an ambitious and pioneering spirit, she ensures that the engine for growth remains on track, transforming high-level enterprise value into tactile, real-world results through disciplined project leadership.',
+  },
+  {
+    src: '/images/people-4.png',
+    name: 'Johnny Ingle',
+    role: 'Advisor to the Board',
+    bio: 'Johnny leverages 25 years of international DTC experience to bridge the gap between global scale and human-centric insight. A seasoned Global CMO, he helps clients unify internal cultures under a single organising principle, ensuring brand remains a primary lever for growth across every international touchpoint.',
+  },
+  {
+    src: '/images/people-5.png',
+    name: 'Dea Gjoshi',
+    role: 'Content & Video Creator',
+    bio: 'Dea translates the No Cure for Curiosity philosophy into the era of algorithmic noise by prioritizing the emotional, the ethical, and the real. Through cinematic discovery and creative innovation, she builds the Creative Commerce touchpoints that capture hearts and minds, transforming abstract strategy into pioneering media.',
   },
 ]
 
@@ -123,7 +144,7 @@ export default function Team() {
               </div>
 
               {/* White info card — expands on hover */}
-              <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[200px] md:group-hover:w-[347px] h-[300px] md:h-[759px] bg-white">
+              <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[200px] md:group-hover:w-[347px] h-[300px] md:h-[762px] bg-white">
                 <div className="w-[200px] md:w-[347px] h-full flex flex-col justify-between px-[20px] md:px-[40px] py-[24px] md:py-[60px]">
                   <div className="flex flex-col gap-[6px]">
                     <p className="font-black text-[18px] md:text-[24px] text-[#111] leading-tight">
@@ -133,14 +154,9 @@ export default function Team() {
                       {member.role}
                     </p>
                   </div>
-                  <div className="flex flex-col gap-[14px] md:gap-[18px]">
-                    <p className="text-[13px] md:text-[16px] text-[#111] font-semibold italic leading-snug">
-                      {member.quote}
-                    </p>
-                    <p className="text-[13px] md:text-[16px] text-[#111] italic">
-                      {member.email}
-                    </p>
-                  </div>
+                  <p className="text-[13px] md:text-[16px] text-[#111] font-semibold italic leading-snug">
+                    {member.bio}
+                  </p>
                 </div>
               </div>
 
