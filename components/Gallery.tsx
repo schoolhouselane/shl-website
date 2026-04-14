@@ -28,6 +28,7 @@ export default function Gallery() {
         width={1729}
         height={1092}
         className="w-full h-auto"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) calc(100vw - 180px), 1549px"
       />
     </section>
   )

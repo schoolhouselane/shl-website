@@ -205,7 +205,7 @@ export default function ServicesAccordion() {
                     <div className="flex gap-[5px] overflow-x-auto scrollbar-hide">
                       {detailImages.map((src, j) => (
                         <div key={j} className="relative shrink-0 w-[150px] h-[150px] md:w-[200px] md:h-[200px] bg-[#d9d9d9] overflow-hidden">
-                          <Image src={src} alt="Case study" fill className="object-cover" />
+                          <Image src={src} alt="Case study" fill className="object-cover" sizes="200px" />
                         </div>
                       ))}
                     </div>

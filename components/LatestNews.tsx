@@ -37,7 +37,7 @@ export default function LatestNews() {
           {articles.map((a, i) => (
             <div key={i} className="flex flex-col">
               <div className="relative h-[200px] sm:h-[240px] md:h-[300px] overflow-hidden">
-                <Image src={a.img} alt={a.title} fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={a.img} alt={a.title} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 50vw" />
               </div>
               <div className="bg-[#1e1e20] p-5 md:p-6 flex-1">
                 <div className="flex gap-4 items-start justify-between">

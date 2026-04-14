@@ -61,6 +61,7 @@ export default function Footer() {
                 fill
                 className="object-cover scale-[1.3]"
                 style={{ objectPosition: '48% 50%' }}
+                sizes="(max-width: 768px) 160px, 256px"
               />
             </div>
 
@@ -74,6 +75,7 @@ export default function Footer() {
                 alt="Schoolhouse Lane"
                 fill
                 className="object-contain object-left"
+                sizes="(max-width: 768px) 95px, 152px"
               />
             </div>
           </div>
@@ -96,7 +98,7 @@ export default function Footer() {
             {/* Newsletter card */}
             <div className="flex flex-col gap-[17px] w-full sm:w-[242px]">
               <div className="relative w-full sm:w-[242px] h-[220px] sm:h-[296px] rounded-sm overflow-hidden">
-                <Image src="/images/footer-preview.png" alt="Work preview" fill className="object-cover" />
+                <Image src="/images/footer-preview.png" alt="Work preview" fill className="object-cover" sizes="(max-width: 640px) 100vw, 242px" />
               </div>
               <div className="flex items-end gap-[20px]">
                 <p className="font-semibold text-[18px] md:text-[20px] uppercase text-white leading-tight max-w-[162px]">

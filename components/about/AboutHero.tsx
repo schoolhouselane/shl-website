@@ -74,6 +74,8 @@ export default function AboutHero() {
           alt="Schoolhouse Lane team"
           fill
           className="object-cover object-top"
+          priority
+          sizes="(max-width: 1024px) 100vw, 701px"
         />
       </div>
 

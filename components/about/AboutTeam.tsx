@@ -74,7 +74,7 @@ export default function AboutTeam() {
           {team.map((member, i) => (
             <div key={i} className="group flex shrink-0">
               <div className="relative w-[140px] md:w-[200px] h-[300px] md:h-[762px] overflow-hidden">
-                <Image src={member.src} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <Image src={member.src} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" sizes="200px" />
               </div>
               <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[180px] md:group-hover:w-[347px] h-[300px] md:h-[762px] bg-white">
                 <div className="w-[180px] md:w-[347px] h-full flex flex-col justify-between px-[16px] md:px-[40px] py-[20px] md:py-[60px]">
@@ -94,7 +94,7 @@ export default function AboutTeam() {
           {/* Featured card: Darren McGrath */}
           <div className="flex shrink-0 h-[300px] md:h-[762px]">
             <div className="relative w-[140px] md:w-[200px] h-full overflow-hidden bg-[#313131]">
-              <Image src="/images/people-5.png" alt="Darren McGrath" fill className="object-cover object-top" />
+              <Image src="/images/people-5.png" alt="Darren McGrath" fill className="object-cover object-top" sizes="200px" />
             </div>
             <div className="w-[160px] md:w-[347px] h-full bg-white flex flex-col justify-between px-[16px] md:px-[40px] py-[20px] md:py-[60px]">
               <div className="flex flex-col gap-[6px]">
@@ -117,7 +117,7 @@ export default function AboutTeam() {
           {teamRight.map((member, i) => (
             <div key={i} className="group flex shrink-0">
               <div className="relative w-[140px] md:w-[200px] h-[300px] md:h-[762px] overflow-hidden">
-                <Image src={member.src} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <Image src={member.src} alt={member.name} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" sizes="200px" />
               </div>
               <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[180px] md:group-hover:w-[347px] h-[300px] md:h-[762px] bg-white">
                 <div className="w-[180px] md:w-[347px] h-full flex flex-col justify-between px-[24px] md:px-[40px] py-[40px] md:py-[60px]">

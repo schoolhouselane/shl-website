@@ -51,7 +51,7 @@ export default function LifeAtSHL() {
             transitionDelay: '0ms',
           }}
         >
-          <Image src="/images/life-1.png" alt="Life at SHL" fill className="object-cover" />
+          <Image src="/images/life-1.png" alt="Life at SHL" fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
         </div>
 
         {/* Col 2: girl top + car bottom */}
@@ -65,7 +65,7 @@ export default function LifeAtSHL() {
               transitionDelay: '80ms',
             }}
           >
-            <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" />
+            <Image src="/images/life-3.png" alt="Life at SHL" fill className="object-cover" sizes="(max-width: 768px) 50vw, 30vw" />
           </div>
           <div
             className="relative overflow-hidden rounded-sm bg-[#181818] transition-all duration-700"
@@ -76,7 +76,7 @@ export default function LifeAtSHL() {
               transitionDelay: '160ms',
             }}
           >
-            <Image src="/images/life-4.png" alt="Life at SHL" fill className="object-cover" />
+            <Image src="/images/life-4.png" alt="Life at SHL" fill className="object-cover" sizes="(max-width: 768px) 50vw, 30vw" />
           </div>
         </div>
 
@@ -90,7 +90,7 @@ export default function LifeAtSHL() {
             transitionDelay: '120ms',
           }}
         >
-          <Image src="/images/life-2.png" alt="Life at SHL" fill className="object-cover object-top" />
+          <Image src="/images/life-2.png" alt="Life at SHL" fill className="object-cover object-top" sizes="(max-width: 768px) 50vw, 22vw" />
         </div>
 
         {/* Col 4: sofa top + phone bottom */}
@@ -104,7 +104,7 @@ export default function LifeAtSHL() {
               transitionDelay: '200ms',
             }}
           >
-            <Image src="/images/life-5.png" alt="Life at SHL" fill className="object-cover" />
+            <Image src="/images/life-5.png" alt="Life at SHL" fill className="object-cover" sizes="(max-width: 768px) 50vw, 16vw" />
           </div>
           <div
             className="relative overflow-hidden rounded-sm bg-[#1a1a1a] transition-all duration-700"
@@ -115,7 +115,7 @@ export default function LifeAtSHL() {
               transitionDelay: '280ms',
             }}
           >
-            <Image src="/images/life-6.png" alt="Life at SHL" fill className="object-cover" />
+            <Image src="/images/life-6.png" alt="Life at SHL" fill className="object-cover" sizes="(max-width: 768px) 50vw, 16vw" />
           </div>
         </div>
 
@@ -140,7 +140,7 @@ export default function LifeAtSHL() {
               transitionDelay: `${delay}ms`,
             }}
           >
-            <Image src={src} alt="Life at SHL" fill className={`object-cover${i === 2 ? ' object-top' : ''}`} />
+            <Image src={src} alt="Life at SHL" fill className={`object-cover${i === 2 ? ' object-top' : ''}`} sizes="50vw" />
           </div>
         ))}
       </div>
