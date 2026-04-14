@@ -4,6 +4,7 @@ import WorkHero from '@/components/work/WorkHero'
 import WorkGrid from '@/components/work/WorkGrid'
 import WorkGallery from '@/components/work/WorkGallery'
 import WorkCTA from '@/components/work/WorkCTA'
+import LifeAtSHL from '@/components/LifeAtSHL'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function WorkPage() {
       <Header forceDark />
       <WorkHero />
       <WorkGrid />
+      <LifeAtSHL />
       <WorkGallery />
       <WorkCTA />
       <Footer />

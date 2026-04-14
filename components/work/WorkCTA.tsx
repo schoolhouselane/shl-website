@@ -8,15 +8,18 @@ export default function WorkCTA() {
         <h2 className="font-black text-[40px] sm:text-[52px] md:text-[60px] uppercase text-white leading-[0.95] tracking-[-1.2px]">
           Ready for Your<br />Own Growth<br />Story?
         </h2>
-        <Link
-          href="/contact"
-          className="btn-cta flex items-center gap-[12px] bg-white text-[#1e1e20] px-[24px] py-[20px] rounded-[50px] text-[16px] md:text-[20px] lg:text-[24px] font-medium uppercase whitespace-nowrap hover:opacity-90 transition-opacity w-fit"
-        >
-          Want results like these? Let&apos;s talk
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </Link>
+        <div className="flex flex-col gap-[8px] items-center shrink-0">
+          <Link
+            href="/contact"
+            className="btn-cta flex items-center gap-[12px] bg-white text-[#1e1e20] px-[24px] py-[20px] rounded-[50px] text-[16px] md:text-[20px] lg:text-[24px] font-medium uppercase whitespace-nowrap hover:opacity-90 transition-opacity w-fit"
+          >
+            Let&apos;s talk
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+          <p className="text-[14px] text-white/60 tracking-wide">For results like these!</p>
+        </div>
       </section>
 
       {/* Grey industry section */}
@@ -31,7 +34,7 @@ export default function WorkCTA() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-[12px] items-start md:items-end shrink-0">
+        <div className="flex flex-col gap-[12px] items-center shrink-0">
           <Link
             href="/contact"
             className="btn-cta flex items-center gap-[12px] bg-white text-black px-[24px] py-[20px] rounded-[50px] text-[18px] md:text-[24px] font-medium uppercase whitespace-nowrap hover:opacity-90 transition-opacity"
