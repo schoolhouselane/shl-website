@@ -1,3 +1,5 @@
+export const metadata = { robots: { index: false, follow: false } }
+
 import Header from '@/components/Header'
 import HeroFullBleed from '@/components/HeroFullBleed'
 import ServicesTabs from '@/components/ServicesTabs'

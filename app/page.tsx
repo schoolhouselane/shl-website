@@ -1,4 +1,11 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
+
+export const metadata: Metadata = {
+  title: 'Schoolhouse Lane — Creative Commerce Agency',
+  description: 'We exist at the intersection of creativity and revenue growth. A senior team of brand strategists and creatives transforming brand into a high-leverage strategic asset.',
+  alternates: { canonical: 'https://schoolhouselane.co' },
+}
 import Hero from '@/components/Hero'
 import ServicesTabs from '@/components/ServicesTabs'
 import SelectedWork from '@/components/SelectedWork'
@@ -11,7 +18,7 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="bg-[#f5f3ef] overflow-hidden">
+    <main className="bg-[#f5f3ef] overflow-x-hidden">
       <Header />
       <Hero />
       <ServicesTabs />

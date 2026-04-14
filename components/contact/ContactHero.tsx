@@ -2,18 +2,9 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-const serviceOptions = [
-  'Brand Identity & Positioning',
-  'Gallery & Videos',
-  'Websites & Digital Experiences',
-  'Campaigns & Creative Direction',
-  'AI Creative & Innovation',
-  'Strategy & Growth Consulting',
-]
-
 function ArrowUpRight() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M7 17L17 7M17 7H7M17 7v10" />
     </svg>
   )
@@ -30,66 +21,65 @@ export default function ContactHero() {
   })
   const [phoneError, setPhoneError] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const set = (field: string, value: string | boolean) =>
     setForm((prev) => ({ ...prev, [field]: value }))
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (form.phone && !/^[\d\s\+\-\(\)]{7,}$/.test(form.phone)) {
       setPhoneError(true)
       return
     }
     setPhoneError(false)
-    const body = [
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
-      `Email: ${form.email}`,
-      `Service: ${form.service}`,
-      ``,
-      form.interest,
-    ].join('\n')
-    window.location.href = `mailto:hello@schoolhouselane.co?subject=New enquiry from ${form.name}&body=${encodeURIComponent(body)}`
+    setLoading(true)
+    await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    })
+    setLoading(false)
     setSubmitted(true)
   }
 
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[80px] md:py-[120px]">
-      <div className="flex flex-col lg:flex-row gap-[30px] lg:items-end">
+    <section className="bg-[#f5f3ef] px-5 md:px-[90px] pt-[100px] pb-[60px] md:py-[120px]">
+      <div className="flex flex-col lg:flex-row gap-[40px] lg:gap-[30px] lg:items-end">
 
         {/* ── Left column ── */}
-        <div className="flex flex-col justify-between gap-[60px] lg:gap-0 flex-1 lg:min-h-[820px]">
+        <div className="flex flex-col flex-1 lg:justify-between lg:min-h-[939px]">
 
           {/* Headline + description */}
-          <div className="flex flex-col gap-[16px]">
-            <h1 className="font-black text-[40px] md:text-[56px] lg:text-[64px] uppercase text-[#1e1e20] leading-[0.93] tracking-[-1.5px] max-w-[720px]">
+          <div className="flex flex-col gap-[14px]">
+            <h1 className="font-black text-[36px] sm:text-[44px] md:text-[56px] lg:text-[64px] uppercase text-[#1e1e20] leading-[0.93] tracking-[-1.5px]">
               Let&apos;s Build Your Next Revenue Chapter
             </h1>
-            <p className="text-[16px] md:text-[20px] text-[#111] leading-[1.7] max-w-[600px]">
+            <p className="text-[15px] md:text-[20px] text-[#111] leading-[1.7] max-w-[670px]">
               15 minutes. No sales pitch. No deck. Just specific, actionable growth ideas tailored to your brand — from someone who&apos;s done it 80 times.
             </p>
           </div>
 
-          {/* Emails + socials */}
-          <div className="flex flex-col gap-[40px]">
+          {/* Emails + socials — desktop only here */}
+          <div className="hidden lg:flex flex-col gap-[40px]">
             <div className="flex flex-col gap-[30px]">
-              <div className="flex flex-col gap-[8px]">
+              <div className="flex flex-col gap-[6px]">
                 <div className="border-b border-[#1e1e20] py-[10px]">
-                  <Link href="mailto:hello@schoolhouselane.co" className="font-extrabold text-[20px] md:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                  <Link href="mailto:hello@schoolhouselane.co" className="font-extrabold text-[20px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
                     hello@schoolhouselane.co
                   </Link>
                 </div>
-                <p className="text-[14px] md:text-[16px] text-[#111] leading-[1.75]">
+                <p className="text-[16px] text-[#111] leading-[1.75]">
                   For new business, project briefs, and general questions
                 </p>
               </div>
-              <div className="flex flex-col gap-[8px]">
+              <div className="flex flex-col gap-[6px]">
                 <div className="border-b border-[#1e1e20] py-[10px]">
-                  <Link href="mailto:careers@schoolhouselane.co" className="font-black text-[20px] md:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                  <Link href="mailto:careers@schoolhouselane.co" className="font-black text-[20px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
                     careers@schoolhouselane.co
                   </Link>
                 </div>
-                <p className="text-[14px] md:text-[16px] text-[#111] leading-[1.75]">
+                <p className="text-[16px] text-[#111] leading-[1.75]">
                   Attach your portfolio and a one-paragraph cover note. No generic applications.
                 </p>
               </div>
@@ -100,7 +90,7 @@ export default function ContactHero() {
                 { name: 'Behance', href: 'https://behance.net/schoolhouselane' },
                 { name: 'Instagram', href: 'https://instagram.com/schoolhouselane' },
               ].map((s) => (
-                <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[2px] text-[20px] md:text-[24px] text-[#1e1e20] hover:opacity-60 transition-opacity">
+                <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[2px] text-[20px] lg:text-[24px] text-[#1e1e20] hover:opacity-60 transition-opacity">
                   {s.name}
                   <ArrowUpRight />
                 </Link>
@@ -109,132 +99,168 @@ export default function ContactHero() {
           </div>
         </div>
 
-        {/* ── Right column: Form card — exact Figma 701-914 ── */}
-        <div className="bg-[#1e1e20] rounded-[30px] p-[40px] md:p-[90px] w-full lg:w-[620px] xl:w-[722px] shrink-0 flex flex-col gap-[63px]">
+        {/* ── Right column: Form card ── */}
+        <div className="bg-[#1e1e20] rounded-[20px] md:rounded-[30px] p-[28px] sm:p-[40px] md:p-[60px] lg:p-[90px] w-full lg:w-[620px] xl:w-[722px] shrink-0 flex flex-col gap-[40px] md:gap-[63px]">
 
           {/* Card header */}
           <div>
-            <p className="font-black text-[28px] uppercase text-white leading-normal">
-              LET&apos;S Make You Better
+            <p className="font-black text-[22px] md:text-[28px] uppercase text-white leading-normal">
+              Let&apos;s Get In Touch
             </p>
-            <p className="font-normal text-[16px] text-white leading-[24px]">
+            <p className="font-normal text-[14px] md:text-[16px] text-white leading-[24px]">
               Break the ice! Let us help you out
             </p>
           </div>
 
           {submitted ? (
             <div className="flex flex-col gap-4 py-8">
-              <p className="font-black text-[32px] text-white uppercase leading-tight">Message sent.</p>
-              <p className="text-white/60 text-[16px]">We&apos;ll be in touch within 24 hours.</p>
+              <p className="font-black text-[28px] md:text-[32px] text-white uppercase leading-tight">Message sent.</p>
+              <p className="text-white/60 text-[15px] md:text-[16px]">We&apos;ll be in touch within 24 hours.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-[39px]">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[30px] md:gap-[39px]">
 
               {/* Fields wrapper */}
-              <div className="flex flex-col gap-[40px]">
+              <div className="flex flex-col gap-[30px] md:gap-[40px]">
 
                 {/* Name */}
-                <div className="flex flex-col gap-[10px]">
-                  <p className="font-normal text-[16px] text-white">What&apos;s your name?*</p>
-                  <input
-                    required
-                    type="text"
-                    value={form.name}
-                    onChange={(e) => set('name', e.target.value)}
-                    className="w-full bg-transparent border-b border-white/40 focus:border-white outline-none pb-[8px] text-[16px] text-white placeholder:text-white/20 transition-colors"
-                  />
-                </div>
+                <input
+                  required
+                  type="text"
+                  placeholder="What's your name?*"
+                  value={form.name}
+                  onChange={(e) => set('name', e.target.value)}
+                  className="w-full bg-transparent border-b border-white outline-none appearance-none p-0 pb-[6px] font-['Inter',sans-serif] font-normal leading-none text-[15px] md:text-[16px] text-white placeholder:text-white transition-colors"
+                />
 
                 {/* Phone */}
                 <div className="flex flex-col gap-[4px]">
-                  <div className="flex flex-col gap-[10px]">
-                    <p className="font-normal text-[16px] text-white">What&apos;s your phone number?*</p>
-                    <input
-                      required
-                      type="tel"
-                      value={form.phone}
-                      onChange={(e) => { set('phone', e.target.value); setPhoneError(false) }}
-                      className="w-full bg-transparent border-b border-white/40 focus:border-white outline-none pb-[8px] text-[16px] text-white placeholder:text-white/20 transition-colors"
-                    />
-                  </div>
+                  <input
+                    required
+                    type="tel"
+                    placeholder="What's your phone number?*"
+                    value={form.phone}
+                    onChange={(e) => { set('phone', e.target.value); setPhoneError(false) }}
+                    className="w-full bg-transparent border-b border-white outline-none appearance-none p-0 pb-[6px] font-['Inter',sans-serif] font-normal leading-none text-[15px] md:text-[16px] text-white placeholder:text-white transition-colors"
+                  />
                   {phoneError && (
-                    <p className="font-normal text-[10px] text-white">Please enter a valid phone number.</p>
+                    <p className="font-normal text-[10px] text-red-500">Please enter a valid phone number.</p>
                   )}
                 </div>
 
                 {/* Email */}
-                <div className="flex flex-col gap-[10px]">
-                  <p className="font-normal text-[16px] text-white">Whats your email?</p>
-                  <input
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => set('email', e.target.value)}
-                    className="w-full bg-transparent border-b border-white/40 focus:border-white outline-none pb-[8px] text-[16px] text-white placeholder:text-white/20 transition-colors"
-                  />
-                </div>
+                <input
+                  type="email"
+                  placeholder="What's your email?"
+                  value={form.email}
+                  onChange={(e) => set('email', e.target.value)}
+                  className="w-full bg-transparent border-b border-white outline-none appearance-none p-0 pb-[6px] font-['Inter',sans-serif] font-normal leading-none text-[15px] md:text-[16px] text-white placeholder:text-white transition-colors"
+                />
 
                 {/* Service dropdown */}
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex items-center justify-between">
-                    <p className="font-normal text-[16px] text-white">What Service Are You Most Interested In?</p>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="shrink-0 pointer-events-none">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </div>
-                  <div className="border-b border-white/40 focus-within:border-white transition-colors pb-[8px]">
-                    <select
-                      value={form.service}
-                      onChange={(e) => set('service', e.target.value)}
-                      className="w-full bg-transparent outline-none text-[16px] text-white/60 focus:text-white transition-colors appearance-none cursor-pointer"
-                    >
-                      <option value="" disabled className="bg-[#1e1e20]">Select a service…</option>
-                      {serviceOptions.map((s) => (
-                        <option key={s} value={s} className="bg-[#1e1e20] text-white">{s}</option>
-                      ))}
-                    </select>
-                  </div>
+                <div className="flex items-center gap-[8px] border-b border-white transition-colors">
+                  <select
+                    value={form.service}
+                    onChange={(e) => set('service', e.target.value)}
+                    className="flex-1 bg-transparent outline-none appearance-none p-0 pb-[6px] font-['Inter',sans-serif] font-normal leading-none text-[15px] md:text-[16px] text-white transition-colors cursor-pointer"
+                  >
+                    <option value="" disabled className="bg-[#1e1e20]">What Are You Most Interested In?</option>
+                    <option value="Brand Identity & Positioning" className="bg-[#1e1e20]">Brand Identity &amp; Positioning</option>
+                    <option value="Gallery & Videos" className="bg-[#1e1e20]">Gallery &amp; Videos</option>
+                    <option value="Websites & Digital Experiences" className="bg-[#1e1e20]">Websites &amp; Digital Experiences</option>
+                    <option value="Campaigns & Creative Direction" className="bg-[#1e1e20]">Campaigns &amp; Creative Direction</option>
+                    <option value="AI Creative & Innovation" className="bg-[#1e1e20]">AI Creative &amp; Innovation</option>
+                    <option value="Strategy & Growth Consulting" className="bg-[#1e1e20]">Strategy &amp; Growth Consulting</option>
+                    <option value="I have a project idea" className="bg-[#1e1e20]">I have a project idea</option>
+                    <option value="I want to work with you" className="bg-[#1e1e20]">I want to work with you</option>
+                  </select>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="shrink-0 pointer-events-none mb-[6px]">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
                 </div>
 
-                {/* Describe your interest — 40px gap between label and line (Figma spec) */}
-                <div className="flex flex-col gap-[40px]">
-                  <p className="font-normal text-[16px] text-white">Describe your interest</p>
-                  <input
-                    type="text"
-                    value={form.interest}
-                    onChange={(e) => set('interest', e.target.value)}
-                    className="w-full bg-transparent border-b border-white/40 focus:border-white outline-none pb-[8px] text-[16px] text-white placeholder:text-white/20 transition-colors"
-                  />
-                </div>
+                {/* Describe your interest */}
+                <input
+                  type="text"
+                  placeholder="Describe your interest"
+                  value={form.interest}
+                  onChange={(e) => set('interest', e.target.value)}
+                  className="w-full bg-transparent border-b border-white outline-none appearance-none p-0 pb-[6px] font-['Inter',sans-serif] font-normal leading-none text-[15px] md:text-[16px] text-white placeholder:text-white transition-colors"
+                />
               </div>
 
               {/* Newsletter checkbox */}
-              <label className="flex items-center gap-[8px] cursor-pointer">
-                <div
-                  className={`shrink-0 w-[18px] h-[18px] border border-white rounded-[3px] flex items-center justify-center transition-colors ${form.newsletter ? 'bg-white' : ''}`}
-                  onClick={() => set('newsletter', !form.newsletter)}
-                >
+              <label className="flex items-center gap-[8px] cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  className="sr-only"
+                  checked={form.newsletter}
+                  onChange={(e) => set('newsletter', e.target.checked)}
+                />
+                <div className={`shrink-0 w-[18px] h-[18px] border border-white rounded-[3px] flex items-center justify-center transition-colors ${form.newsletter ? 'bg-white' : ''}`}>
                   {form.newsletter && (
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <path d="M2 6l3 3 5-5" stroke="#1e1e20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </div>
-                <input type="checkbox" className="sr-only" checked={form.newsletter} onChange={(e) => set('newsletter', e.target.checked)} />
-                <p className="font-normal text-[14px] text-white leading-[1.75] lowercase">
-                  subscribe our news letter, dont miss out anything from us.
+                <p className="font-normal text-[13px] md:text-[14px] text-white leading-[1.75]">
+                  Subscribe to our newsletter, don't miss out on anything from us.
                 </p>
               </label>
 
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full bg-white text-[#1e1e20] font-bold text-[20px] rounded-[50px] h-[47px] flex items-center justify-center hover:bg-white/90 transition-colors cursor-pointer"
+                disabled={loading}
+                className="btn-cta w-full bg-white text-[#1e1e20] font-bold text-[18px] md:text-[20px] rounded-[50px] h-[47px] flex items-center justify-center gap-2 border border-white disabled:opacity-60"
               >
-                Submit
+                {loading ? 'Sending…' : 'Submit'}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
               </button>
 
             </form>
           )}
+        </div>
+
+        {/* Emails + socials — mobile only, after form */}
+        <div className="flex lg:hidden flex-col gap-[30px]">
+          <div className="flex flex-col gap-[24px]">
+            <div className="flex flex-col gap-[6px]">
+              <div className="border-b border-[#1e1e20] py-[10px]">
+                <Link href="mailto:hello@schoolhouselane.co" className="font-extrabold text-[16px] md:text-[20px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                  hello@schoolhouselane.co
+                </Link>
+              </div>
+              <p className="text-[13px] md:text-[16px] text-[#111] leading-[1.75]">
+                For new business, project briefs, and general questions
+              </p>
+            </div>
+            <div className="flex flex-col gap-[6px]">
+              <div className="border-b border-[#1e1e20] py-[10px]">
+                <Link href="mailto:careers@schoolhouselane.co" className="font-black text-[16px] md:text-[20px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                  careers@schoolhouselane.co
+                </Link>
+              </div>
+              <p className="text-[13px] md:text-[16px] text-[#111] leading-[1.75]">
+                Attach your portfolio and a one-paragraph cover note. No generic applications.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-[20px] items-center flex-wrap">
+            {[
+              { name: 'LinkedIn', href: 'https://linkedin.com/company/schoolhouselane' },
+              { name: 'Behance', href: 'https://behance.net/schoolhouselane' },
+              { name: 'Instagram', href: 'https://instagram.com/schoolhouselane' },
+            ].map((s) => (
+              <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[2px] text-[16px] md:text-[20px] text-[#1e1e20] hover:opacity-60 transition-opacity">
+                {s.name}
+                <ArrowUpRight />
+              </Link>
+            ))}
+          </div>
         </div>
 
       </div>

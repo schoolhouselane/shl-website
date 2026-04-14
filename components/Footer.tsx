@@ -29,11 +29,18 @@ function ArrowUpRight({ size = 24 }: { size?: number }) {
 export default function Footer() {
   const [open, setOpen] = useState(false)
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    window.location.href = `mailto:hello@schoolhouselane.co?subject=Get Growth&body=${encodeURIComponent(`From: ${email}\n\n${message}`)}`
+    const body = [
+      `From: ${email}`,
+      phone ? `Phone: ${phone}` : '',
+      '',
+      message,
+    ].filter(Boolean).join('\n')
+    window.location.href = `mailto:hello@schoolhouselane.co?subject=Get Growth&body=${encodeURIComponent(body)}`
     setOpen(false)
   }
 
@@ -188,6 +195,13 @@ export default function Footer() {
                 placeholder="Your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="w-full border border-[#1e1e20]/30 rounded-sm px-4 py-3 text-[15px] bg-white outline-none focus:border-[#1e1e20] transition-colors"
+              />
+              <input
+                type="tel"
+                placeholder="Phone number (optional)"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 className="w-full border border-[#1e1e20]/30 rounded-sm px-4 py-3 text-[15px] bg-white outline-none focus:border-[#1e1e20] transition-colors"
               />
               <textarea

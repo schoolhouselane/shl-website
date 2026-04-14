@@ -2,61 +2,66 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-const tabs = ['BRAND IDENTITY', 'GALLERY & VIDEOS', 'WEBSITES', 'CAMPAIGNS', 'AI CREATIVE']
+const tabs = [
+  'Brand Identity',
+  'Gallery & Videos',
+  'Websites',
+  'Campaigns',
+  'AI Creative',
+  'Strategy',
+]
 
-const images = [
-  '/images/services-1.png',
-  '/images/services-2.png',
-  '/images/services-3.png',
-  '/images/services-4.png',
-  '/images/services-5.png',
-  '/images/services-6.png',
-  '/images/services-7.png',
-  '/images/services-8.png',
-  '/images/services-9.png',
-  '/images/services-10.png',
+const marqueeImages = [
+  '/images/strategy-1.jpg',
+  '/images/strategy-2.jpg',
+  '/images/strategy-3.jpg',
+  '/images/strategy-4.jpg',
+  '/images/strategy-5.jpg',
+  '/images/strategy-6.jpg',
+  '/images/strategy-7.jpg',
+  '/images/strategy-8.jpg',
+  '/images/strategy-9.jpg',
 ]
 
 export default function ServicesTabs() {
   const [active, setActive] = useState(0)
 
   return (
-    <section className="w-full pb-[60px]">
-      {/* Tabs + Image strip wrapper */}
-      <div className="flex flex-col gap-[40px]">
+    <section className="w-full pb-[60px] flex flex-col gap-[40px]">
 
-        {/* Tab bar — no bottom border, only right borders between tabs */}
-        <div className="flex overflow-x-auto scrollbar-hide px-5 md:px-[90px]">
-          {tabs.map((tab, i) => (
-            <button
-              key={tab}
-              onClick={() => setActive(i)}
-              className={`flex items-center gap-2 px-3 sm:px-5 md:px-[60px] whitespace-nowrap border-r border-[#1e1e20] shrink-0 transition-colors font-medium text-[13px] md:text-[20px] ${
-                i === active
-                  ? 'bg-[#1e1e20] text-white py-4 md:py-[30px]'
-                  : 'bg-transparent text-[#1e1e20] py-2 md:py-[10px] hover:bg-[#1e1e20]/5'
-              }`}
-            >
-              {tab}
-              {i === active && (
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
-                </svg>
-              )}
-            </button>
-          ))}
-        </div>
+      {/* Tab bar — border top + bottom, border-r between tabs */}
+      <div className="flex overflow-x-auto scrollbar-hide">
+        {tabs.map((tab, i) => (
+          <button
+            key={tab}
+            onClick={() => setActive(i)}
+            className={`flex items-center gap-[10px] px-[28px] md:px-[60px] shrink-0 border-r border-[#1e1e20] font-medium text-[13px] md:text-[20px] uppercase whitespace-nowrap transition-colors ${
+              i === active
+                ? 'bg-[#1e1e20] text-white py-[18px] md:py-[30px]'
+                : 'bg-transparent text-[#1e1e20] py-[10px] md:py-[18px] hover:bg-[#1e1e20]/5'
+            }`}
+          >
+            {tab}
+            {i === active && (
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M4 4L12 12M12 12H4M12 12V4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
+          </button>
+        ))}
+      </div>
 
-        {/* Image strip */}
-        <div className="flex overflow-x-auto gap-px scrollbar-hide">
-          {images.map((src, i) => (
-            <div key={i} className="relative w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] md:w-[200px] md:h-[200px] shrink-0 bg-[#d9d9d9]">
-              <Image src={src} alt={`Service image ${i + 1}`} fill className="object-cover" />
+      {/* Auto-scrolling image strip */}
+      <div className="flex overflow-hidden">
+        <div className="flex gap-px animate-marquee">
+          {[...marqueeImages, ...marqueeImages].map((src, i) => (
+            <div key={i} className="relative shrink-0 w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#d9d9d9] overflow-hidden">
+              <Image src={src} alt="" fill className="object-cover" sizes="200px" />
             </div>
           ))}
         </div>
-
       </div>
+
     </section>
   )
 }

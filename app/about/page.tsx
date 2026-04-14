@@ -1,4 +1,11 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
+
+export const metadata: Metadata = {
+  title: 'About — Schoolhouse Lane',
+  description: 'A small, senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.',
+  alternates: { canonical: 'https://schoolhouselane.co/about' },
+}
 import Footer from '@/components/Footer'
 import AboutHero from '@/components/about/AboutHero'
 import Discovery from '@/components/about/Discovery'

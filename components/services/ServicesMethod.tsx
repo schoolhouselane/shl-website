@@ -36,9 +36,9 @@ export default function ServicesMethod() {
       </div>
 
       {/* Steps — horizontal scroll on mobile, 5-col grid on desktop */}
-      <div className="flex overflow-x-auto scrollbar-hide md:overflow-visible md:grid md:grid-cols-5 border border-black/20 divide-x divide-black/20">
+      <div className="flex overflow-x-auto scrollbar-hide md:overflow-visible md:grid md:grid-cols-5">
         {steps.map((step, i) => (
-          <div key={step.title} className="flex-shrink-0 w-[220px] md:w-auto flex flex-col gap-[16px] items-start justify-center px-[24px] md:px-[40px] py-[40px] md:py-[60px]">
+          <div key={step.title} className={`flex-shrink-0 w-[220px] md:w-auto flex flex-col gap-[16px] items-start justify-center px-[24px] md:px-[40px] py-[40px] md:py-[60px] ${i < steps.length - 1 ? 'border-r border-black' : ''}`}>
             <p className="font-medium text-[18px] md:text-[22px] text-[#111] leading-tight">{step.title}</p>
             <p className="text-[14px] md:text-[16px] text-[#1e1e20] leading-[1.5]">{step.desc}</p>
           </div>

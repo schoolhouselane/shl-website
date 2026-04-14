@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-manrope: var(--next-manrope), 'Manrope', sans-serif;
+  --font-manrope: var(--font-manrope), 'Manrope', sans-serif;
 }
 
 :root {
@@ -58,6 +58,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Prevent browser autofill from overriding background/text color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 9999px #1e1e20 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: white;
+}
 
 /* Universal CTA hover — background-size slide from left (no z-index issues) */
 .btn-cta {

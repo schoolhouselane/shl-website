@@ -37,7 +37,7 @@ export default function Discovery() {
   const [statsRef, statsInView] = useInView(0.1)
 
   const stats = [
-    { value: '79+', label: 'Brands Transformed' },
+    { value: '80+', label: 'Brands Transformed' },
     { value: '99%', label: 'Client Retention' },
     { value: '6yr', label: 'In Market' },
     { value: '5★', label: 'Average Client Review' },
