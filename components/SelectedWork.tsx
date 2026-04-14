@@ -1,38 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { projects } from '@/lib/work-data'
 
-const works = [
-  {
-    src: '/images/work-1.jpg',
-    title: 'Brand Strategy & Positioning',
-    desc: 'Transforming brand from a marketing cost into a high-leverage strategic asset for growth.',
-  },
-  {
-    src: '/images/work-2.jpg',
-    title: 'Mindful — App Identity',
-    desc: 'Complete brand identity system for a wellness platform reaching 2M+ users.',
-  },
-  {
-    src: '/images/work-3.jpg',
-    title: 'DataDirect — Website',
-    desc: 'Conversion-engineered digital experience driving enterprise pipeline growth.',
-  },
-  {
-    src: '/images/work-4.jpg',
-    title: 'Shelby — Campaign',
-    desc: 'Integrated campaign strategy and creative direction for a premium cycling brand.',
-  },
-  {
-    src: '/images/work-5.jpg',
-    title: 'RealDie — Packaging',
-    desc: 'Brand identity and packaging system built to command shelf presence.',
-  },
-  {
-    src: '/images/work-6.jpg',
-    title: 'Vivo Hotels — Identity',
-    desc: 'Visual identity and brand architecture for a boutique hospitality group.',
-  },
-]
+// Show first 6 projects on the homepage
+const works = projects.slice(0, 6)
 
 export default function SelectedWork() {
   return (
@@ -47,18 +18,18 @@ export default function SelectedWork() {
         </p>
       </div>
 
-      {/* 2 rows × 3 cols — 502×598px per card on desktop */}
+      {/* 2 rows × 3 cols */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[12px] md:gap-[22px]">
         {works.map((work) => (
           <Link
-            key={work.title}
-            href="/work"
+            key={work.slug}
+            href={`/work/${work.slug}`}
             className="group bg-[#f5f3ef] overflow-hidden border border-[#1e1e20] md:h-[598px]"
           >
             {/* Image — full height by default, shrinks on hover */}
             <div className="relative overflow-hidden h-[280px] sm:h-[360px] md:h-[598px] md:group-hover:h-[390px] transition-all duration-500 ease-in-out">
               <Image
-                src={work.src}
+                src={work.image}
                 alt={work.title}
                 fill
                 className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -79,7 +50,7 @@ export default function SelectedWork() {
                 </div>
               </div>
               <p className="text-[16px] text-[#1e1e20] leading-[1.7] line-clamp-2">
-                {work.desc}
+                {work.description}
               </p>
             </div>
           </Link>
