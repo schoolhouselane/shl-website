@@ -8,7 +8,7 @@ export default function WorkCTA() {
         <h2 className="font-black text-[40px] sm:text-[52px] md:text-[60px] uppercase text-white leading-[0.95] tracking-[-1.2px]">
           Ready for Your<br />Own Growth<br />Story?
         </h2>
-        <div className="flex flex-col gap-[8px] items-center shrink-0">
+        <div className="flex flex-col gap-[8px] items-start md:items-center shrink-0">
           <Link
             href="/contact"
             className="btn-cta flex items-center gap-[12px] bg-white text-[#1e1e20] px-[24px] py-[20px] rounded-[50px] text-[16px] md:text-[20px] lg:text-[24px] font-medium uppercase whitespace-nowrap hover:opacity-90 transition-opacity w-fit"

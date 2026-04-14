@@ -129,27 +129,27 @@ export default function Footer() {
           </div>
 
           {/* COL 2 — Services + Social */}
-          <div className="flex gap-[60px] shrink-0">
+          <div className="flex flex-wrap gap-x-[40px] gap-y-[30px] shrink-0 md:gap-x-[60px]">
             {servicesCols.map((col, ci) => (
-              <div key={ci} className="flex flex-col gap-[30px]">
+              <div key={ci} className="flex flex-col gap-[20px] md:gap-[30px]">
                 {col.map((s) => (
                   <Link
                     key={s}
                     href="/services"
-                    className="text-[24px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap"
+                    className="text-[18px] md:text-[24px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap"
                   >
                     {s}
                   </Link>
                 ))}
               </div>
             ))}
-            <div className="flex flex-col gap-[30px]">
+            <div className="flex flex-col gap-[20px] md:gap-[30px]">
               {social.map((s) => (
                 <Link
                   key={s.name}
                   href={s.href}
                   target="_blank"
-                  className="flex items-center gap-[4px] text-[24px] text-white hover:opacity-70 transition-opacity whitespace-nowrap"
+                  className="flex items-center gap-[4px] text-[18px] md:text-[24px] text-white hover:opacity-70 transition-opacity whitespace-nowrap"
                 >
                   {s.name}
                   <ArrowUpRight size={24} />
@@ -183,24 +183,24 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-0 px-5 md:px-[90px]">
 
           {/* Cities */}
-          <div className="flex gap-[40px] md:gap-[60px]">
+          <div className="flex flex-wrap gap-x-[30px] gap-y-[16px] md:gap-x-[60px]">
             {offices.map((o) => (
               <div key={o.city} className="flex flex-col gap-[4px]">
                 <div className="flex items-center gap-[6px]">
                   <MapPin />
-                  <span className="font-bold text-[18px] uppercase text-white leading-normal whitespace-nowrap">{o.city}</span>
+                  <span className="font-bold text-[16px] md:text-[18px] uppercase text-white leading-normal whitespace-nowrap">{o.city}</span>
                 </div>
-                <p className="text-[12px] font-light text-white leading-normal">{o.address}</p>
+                <p className="text-[11px] md:text-[12px] font-light text-white leading-normal">{o.address}</p>
               </div>
             ))}
           </div>
 
           {/* Legal */}
-          <div className="flex flex-wrap items-center gap-x-[40px] gap-y-2">
-            <p className="font-bold text-[18px] text-white whitespace-nowrap">© 2025 Schoolhouse Lane</p>
-            <Link href="/code-of-conduct" className="font-bold text-[18px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Code of Conduct</Link>
-            <Link href="/terms" className="font-bold text-[18px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Terms &amp; Conditions</Link>
-            <Link href="/privacy" className="font-bold text-[18px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Privacy Policy</Link>
+          <div className="flex flex-wrap items-center gap-x-[20px] gap-y-2 md:gap-x-[40px]">
+            <p className="font-bold text-[14px] md:text-[18px] text-white whitespace-nowrap">© 2025 Schoolhouse Lane</p>
+            <Link href="/code-of-conduct" className="font-bold text-[14px] md:text-[18px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Code of Conduct</Link>
+            <Link href="/terms" className="font-bold text-[14px] md:text-[18px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Terms &amp; Conditions</Link>
+            <Link href="/privacy" className="font-bold text-[14px] md:text-[18px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Privacy Policy</Link>
           </div>
 
         </div>
