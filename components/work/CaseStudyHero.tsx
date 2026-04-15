@@ -20,59 +20,58 @@ export default function CaseStudyHero({
       className="bg-[#f5f3ef] pt-[82px] transition-all duration-700"
       style={{ opacity: inView ? 1 : 0 }}
     >
-      {/* ── Hero image box ────────────────────────────────────────────────── */}
-      <div className="px-5 md:px-[90px]">
-        <div
-          className="relative w-full overflow-hidden"
-          style={{
-            height: 'clamp(260px, 40vw, 627px)',
-            backgroundColor: caseStudy?.heroColor ?? '#1e1e20',
-          }}
-        >
-          <Image
-            src={caseStudy?.heroImage ?? project.heroImage}
-            alt={project.title}
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="(max-width: 768px) 100vw, calc(100vw - 180px)"
+      {/* ── Hero image — full-bleed (no side padding) ─────────────────────── */}
+      <div
+        className="relative w-full overflow-hidden"
+        style={{
+          height: 'clamp(280px, 38vw, 430px)',
+          backgroundColor: caseStudy?.heroColor ?? '#1e1e20',
+        }}
+      >
+        <Image
+          src={caseStudy?.heroImage ?? project.heroImage}
+          alt={project.title}
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+
+        {/* Right-side dark gradient — only when heroLines exist */}
+        {caseStudy?.heroLines && caseStudy.heroLines.length > 0 && (
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(to left, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 35%, transparent 60%)',
+            }}
           />
+        )}
 
-          {/* Right-side dark gradient — only when heroLines exist */}
-          {caseStudy?.heroLines && caseStudy.heroLines.length > 0 && (
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 30%, transparent 55%)',
-              }}
-            />
-          )}
-
-          {/* Brand text overlay */}
-          {caseStudy?.heroLines && caseStudy.heroLines.length > 0 && (
-            <div className="absolute right-[5%] top-1/2 -translate-y-1/2 text-center md:text-right pr-[2%]">
-              {caseStudy.heroLines.map((line, i) => (
-                <p
-                  key={i}
-                  className="font-black uppercase leading-[1.15] text-[clamp(22px,4vw,72px)] whitespace-nowrap"
-                  style={{
-                    color: i === caseStudy.heroAccentLine ? caseStudy.heroAccentColor : '#ffffff',
-                    fontStyle: 'italic',
-                  }}
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
-          )}
-        </div>
+        {/* Brand text overlay */}
+        {caseStudy?.heroLines && caseStudy.heroLines.length > 0 && (
+          <div className="absolute right-[5%] md:right-[7%] top-1/2 -translate-y-1/2 text-right">
+            {caseStudy.heroLines.map((line, i) => (
+              <p
+                key={i}
+                className="font-black uppercase leading-[1.1] whitespace-nowrap"
+                style={{
+                  fontSize: 'clamp(28px, 4.5vw, 72px)',
+                  color: i === caseStudy.heroAccentLine ? caseStudy.heroAccentColor : '#ffffff',
+                  fontStyle: 'italic',
+                }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* ── Title block ──────────────────────────────────────────────────── */}
-      <div className="px-5 md:px-[90px] pt-[40px] md:pt-[60px] pb-[10px] flex flex-col gap-[8px]">
+      {/* ── Title block ──────────────────────────────────────────────────────── */}
+      <div className="px-5 md:px-[52px] pt-[36px] md:pt-[52px] pb-[10px] flex flex-col gap-[8px]">
         {/* Breadcrumb */}
-        <div className="flex flex-wrap items-center gap-[10px] mb-[16px]">
+        <div className="flex flex-wrap items-center gap-[10px] mb-[14px]">
           <Link
             href="/work"
             className="text-[12px] uppercase tracking-[0.1em] text-[#777] font-normal hover:text-[#1e1e20] transition-colors"
@@ -92,7 +91,7 @@ export default function CaseStudyHero({
 
         {/* Subtitle */}
         {caseStudy?.subtitle && (
-          <p className="font-bold text-[18px] md:text-[36px] uppercase text-[#1e1e20] leading-tight tracking-[-0.5px]">
+          <p className="font-bold text-[16px] md:text-[20px] text-[#1e1e20] leading-snug mt-[8px]">
             {caseStudy.subtitle}
           </p>
         )}

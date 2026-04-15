@@ -42,7 +42,7 @@ export interface CaseStudyData {
   humanAdvantage: CaseStudySection         // section 3: alongside related work sidebar
 
   // ── Images ────────────────────────────────────────────────────────────────
-  sectionImage: string           // single image shown at the bottom of section 2 (16:9, full-width)
+  fullWidthImage: string         // edge-to-edge image between content sections and human advantage
 
   // ── Metadata row ─────────────────────────────────────────────────────────
   metaClient: string

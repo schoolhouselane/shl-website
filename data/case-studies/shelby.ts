@@ -7,12 +7,11 @@ import type { CaseStudyData } from '@/lib/case-study-types'
 
 export const shelbyData: CaseStudyData = {
   // ── Hero ──────────────────────────────────────────────────────────────────
-  // case-shelby-1.png already has "THE ORIGINAL AMERICAN RIDE. REIMAGINED."
-  // baked in — heroLines is empty so we don't double up the text overlay.
+  // cs-shelby-hero.png is a clean image (no baked text) — overlay is applied programmatically.
   heroColor: '#1e1208',
-  heroImage: '/images/case-shelby-1.png',
-  heroLines: [],
-  heroAccentLine: 0,
+  heroImage: '/images/cs-shelby-hero.png',
+  heroLines: ['THE ORIGINAL AMERICAN RIDE.', 'REIMAGINED.'],
+  heroAccentLine: 1,
   heroAccentColor: '#d8c09c',
   accentColor: '#d8c09c',
 
@@ -63,10 +62,10 @@ export const shelbyData: CaseStudyData = {
       "At Schoolhouse Lane, we believe there is \"no cure for curiosity\". For Shelby, this meant a human-centric design approach that prioritises rider protection and community. This work ensures that Shelby's most intangible asset — its 100-year soul — becomes its most measurable competitive advantage in the global bicycle arena.",
   },
 
-  // ── Image ─────────────────────────────────────────────────────────────────
-  // Full-width 16:9 image shown at the bottom of the Engineering Ecosystem section.
-  // case-shelby-4.png = brand identity split (dark/orange logo) — ideal showcase.
-  sectionImage: '/images/case-shelby-4.png',
+  // ── Full-width image ──────────────────────────────────────────────────────
+  // Edge-to-edge image displayed between content sections and human advantage.
+  // case-shelby-1.png = campaign creative banner.
+  fullWidthImage: '/images/case-shelby-1.png',
 
   // ── Metadata ──────────────────────────────────────────────────────────────
   metaClient: 'Shelby Cycles',

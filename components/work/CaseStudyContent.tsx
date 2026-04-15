@@ -51,49 +51,47 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
   return (
     <section className="bg-[#f5f3ef]">
 
-      {/* ── Section 1: Challenger Strategy — right-aligned block ─────────── */}
-      <div className="px-5 md:px-[90px] py-[30px] md:py-[20px] flex justify-end">
-        <div className="w-full md:w-[63%] flex flex-col md:flex-row gap-[24px] md:gap-[40px]">
-          {/* Title — left within the block */}
-          <div className="md:w-[37%] shrink-0">
-            <SectionTitle text={caseStudy.challengerStrategy.title} />
-          </div>
-          {/* Body — right side */}
-          <div className="flex-1">
-            <SectionBody section={caseStudy.challengerStrategy} />
-          </div>
+      {/* ── Section 1: Challenger Strategy — two-column ──────────────────── */}
+      <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] flex flex-col md:flex-row gap-[32px] md:gap-[80px]">
+        <div className="md:w-[38%] shrink-0">
+          <SectionTitle text={caseStudy.challengerStrategy.title} />
+        </div>
+        <div className="flex-1">
+          <SectionBody section={caseStudy.challengerStrategy} />
         </div>
       </div>
 
-      {/* ── Section 2: Engineering Ecosystem — right-aligned (same as section 1) + image ── */}
-      <div className="px-5 md:px-[90px] py-[40px] md:py-[60px] flex flex-col gap-[40px]">
-        {/* Text block — right-aligned, same structure as section 1 */}
-        <div className="flex justify-end">
-          <div className="w-full md:w-[63%] flex flex-col md:flex-row gap-[24px] md:gap-[40px]">
-            <div className="md:w-[37%] shrink-0">
-              <SectionTitle text={caseStudy.engineeringEcosystem.title} />
-            </div>
-            <div className="flex-1">
-              <SectionBody section={caseStudy.engineeringEcosystem} />
-            </div>
-          </div>
+      {/* Divider */}
+      <div className="mx-5 md:mx-[90px] border-t border-[#1e1e20]/10" />
+
+      {/* ── Section 2: Engineering Ecosystem — two-column ────────────────── */}
+      <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] flex flex-col md:flex-row gap-[32px] md:gap-[80px]">
+        <div className="md:w-[38%] shrink-0">
+          <SectionTitle text={caseStudy.engineeringEcosystem.title} />
         </div>
-        {/* Single image below the text — full section width, 16:9 */}
-        <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
-          <Image
-            src={caseStudy.sectionImage}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) calc(100vw - 40px), calc(100vw - 180px)"
-          />
+        <div className="flex-1">
+          <SectionBody section={caseStudy.engineeringEcosystem} />
         </div>
+      </div>
+
+      {/* ── Full-width image — edge-to-edge, no side padding ─────────────── */}
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ height: 'clamp(240px, 40vw, 600px)' }}
+      >
+        <Image
+          src={caseStudy.fullWidthImage}
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
       </div>
 
       {/* ── Optional: Communication Strategy ─────────────────────────────── */}
       {caseStudy.communicationStrategy && (
-        <div className="px-5 md:px-[90px] py-[40px] md:py-[60px] border-t border-[#1e1e20]/10 flex flex-col md:flex-row gap-[24px] md:gap-[40px]">
-          <div className="md:w-[37%] shrink-0">
+        <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] border-t border-[#1e1e20]/10 flex flex-col md:flex-row gap-[32px] md:gap-[80px]">
+          <div className="md:w-[38%] shrink-0">
             <SectionTitle text={caseStudy.communicationStrategy.title} />
           </div>
           <div className="flex-1">
@@ -103,7 +101,7 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
       )}
 
       {/* ── Section 3: Related Work sidebar + Human Advantage + metadata ─── */}
-      <div className="px-5 md:px-[90px] py-[40px] md:py-[60px] flex flex-col md:flex-row gap-[40px] md:gap-[60px] border-t border-[#1e1e20]/10">
+      <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] flex flex-col md:flex-row gap-[40px] md:gap-[60px] border-t border-[#1e1e20]/10">
 
         {/* Left: related work list */}
         <div className="flex flex-col gap-[24px] md:w-[30%] shrink-0">
@@ -113,14 +111,14 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
           {related.map((r, i) => (
             <div key={r.slug}>
               <Link href={`/work/${r.slug}`} className="flex gap-[12px] items-start group">
-                <div className="relative w-[114px] h-[114px] shrink-0 overflow-hidden bg-[#ddd]">
-                  <Image src={r.image} alt={r.title} fill className="object-cover" sizes="114px" />
+                <div className="relative w-[80px] h-[80px] shrink-0 overflow-hidden bg-[#ddd]">
+                  <Image src={r.image} alt={r.title} fill className="object-cover" sizes="80px" />
                 </div>
-                <div className="flex flex-col gap-[8px]">
-                  <p className="font-black text-[16px] md:text-[18px] uppercase text-[#111] leading-tight tracking-[-0.3px] group-hover:underline">
+                <div className="flex flex-col gap-[6px]">
+                  <p className="font-black text-[14px] md:text-[16px] uppercase text-[#111] leading-tight tracking-[-0.3px] group-hover:underline">
                     {r.title}
                   </p>
-                  <p className="text-[13px] md:text-[15px] text-[#595959] leading-normal font-normal line-clamp-3">
+                  <p className="text-[12px] md:text-[13px] text-[#595959] leading-normal font-normal line-clamp-3">
                     {r.description}
                   </p>
                 </div>
