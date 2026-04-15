@@ -150,10 +150,10 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
         <div className="border-t border-[#1e1e20]/10" />
 
         {/* ── Human Advantage + Related Work sidebar ────────────────────── */}
-        <div className="flex flex-col md:flex-row items-start gap-[20px]">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">
 
-          {/* Left: related work sidebar — 476px / ~31% */}
-          <div className="flex flex-col gap-[18px] w-full md:w-[31%] shrink-0">
+          {/* Left: related work sidebar — same 32% as other left columns */}
+          <div className="flex flex-col gap-[18px] w-full md:w-[32%] shrink-0">
             <p className="text-[9px] uppercase tracking-[1.44px] text-[#ababab] font-extrabold">
               Related work
             </p>
@@ -177,8 +177,8 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
             ))}
           </div>
 
-          {/* Right: Human Advantage + metadata — flex-1 */}
-          <div className="flex flex-col items-end gap-[12px] flex-1">
+          {/* Right: Human Advantage + metadata — same 63% as other right columns */}
+          <div className="flex flex-col items-end gap-[12px] w-full md:w-[63%]">
             <div className="w-full md:w-[78%]">
               <SectionTitle text={caseStudy.humanAdvantage.title} />
             </div>
