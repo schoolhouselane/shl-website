@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from 'react'
 
 const team = [
   {
-    src: '/images/Andy Hoskins.png', 
+    src: '/images/Andy Hoskins.png',
     name: 'Andy Hoskins',
     role: 'Advisor to the Board',
     bio: 'Andy brings 15 years of CFO, M&A, and investment expertise to the intersection of finance and imagination. In the pursuit of Conscious Capitalism, he ensures that altruistic brand visions are anchored in fiscal reality. Andy views diversity of thought as a competitive advantage, helping clients navigate capital raises and exits by treating brand as a high-leverage strategic asset. He is the architect of the "measurable advantage," ensuring our creative commerce methodology delivers the outsized returns modern investors demand.',
@@ -29,7 +29,7 @@ const team = [
     bio: 'Marigona believes there is no cure for curiosity. She doesn\'t just "decorate" decisions; she uses design to unearth the latent potential within an organization. By prioritizing the emotional and the real, Marigona creates visual systems that allow brands to live their stories.',
   },
   {
-    src: '/images/Saqib Sami.png', 
+    src: '/images/Saqib Sami.png',
     name: 'Saqib Sami',
     role: 'Finance Manager',
     bio: 'Saqib ensures that the conviction of Conscious Capitalism is backed by rigorous financial integrity. In an agency where brand is a high-leverage strategic asset, he manages the fiscal engine that aligns profit with purpose. Saqib views Creative Commerce as a competitive advantage, providing the stability and transparency necessary for our partners to drive outsised returns. By treating finance as a partner to curiosity, he ensures the infrastructure supporting our most ambitious companies remains as measurable as it is creative.',
@@ -127,10 +127,24 @@ export default function Team() {
     <section className="bg-[#f5f3ef] py-[60px] flex flex-col gap-[40px]">
 
       {/* Title */}
-      <div className="px-5 md:px-[90px] flex justify-end">
-        <h2 className="font-black text-[36px] md:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20] text-right">
+      <div className="px-5 md:px-[90px]">
+        <h2 className="font-black text-[36px] md:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20]">
           People behind everything
         </h2>
+      </div>
+
+      {/* Subtitle + CTA */}
+      <div className="px-5 md:px-[90px] flex items-center justify-between">
+        <p className="text-[16px] md:text-[20px] leading-[1.37] text-[#1e1e20] max-w-[532px]">
+          Our work spans brand strategy, identity, campaigns, and digital.
+        </p>
+        <Link
+          href="/jobs"
+          className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-6 py-3 text-[16px] font-medium uppercase transition-colors shrink-0"
+        >
+          See Open Roles
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </Link>
       </div>
 
       {/* Scrollable strip */}
@@ -176,13 +190,13 @@ export default function Team() {
           onClick={() => scroll('left')}
           className={`absolute left-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center bg-white rounded-full w-[44px] h-[44px] shadow-md transition-opacity duration-200 ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
         </button>
         <button
           onClick={() => scroll('right')}
           className={`absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center bg-white rounded-full w-[44px] h-[44px] shadow-md transition-opacity duration-200 ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </button>
       </div>
 
@@ -194,20 +208,6 @@ export default function Team() {
             style={{ width: `${Math.max(6, progress * 100)}%` }}
           />
         </div>
-      </div>
-
-      {/* Footer text + CTA */}
-      <div className="px-5 md:px-[90px] flex flex-col gap-[25px]">
-        <p className="text-[16px] md:text-[20px] leading-[1.37] text-[#1e1e20] max-w-[532px]">
-          A small, senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.
-        </p>
-        <Link
-          href="/jobs"
-          className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-6 py-3 text-[16px] font-medium uppercase transition-colors"
-        >
-          See Open Roles
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </Link>
       </div>
     </section>
   )
