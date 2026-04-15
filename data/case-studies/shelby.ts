@@ -77,5 +77,10 @@ export const shelbyData: CaseStudyData = {
   metaProject: 'Brand Identity',
 
   // ── Related work ──────────────────────────────────────────────────────────
-  relatedSlugs: ['vivo-hotels', 'datadirect', 'real-map-wipes'],
+  relatedSlugs: ['real-map-wipes', 'vivo-hotels', 'sealac'],
+  relatedThumbnails: [
+    '/images/related-real-man-wipes.png',
+    '/images/related-vivo-hotels.png',
+    '/images/related-sealac.png',
+  ],
 }

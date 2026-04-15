@@ -55,5 +55,6 @@ export interface CaseStudyData {
   metaProject: string
 
   // ── Related work ─────────────────────────────────────────────────────────
-  relatedSlugs: [string, string, string]   // slugs from work-data.ts
+  relatedSlugs: [string, string, string]         // slugs from work-data.ts
+  relatedThumbnails?: [string, string, string]   // optional thumbnail overrides (same order as relatedSlugs)
 }

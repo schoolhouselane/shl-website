@@ -161,7 +161,13 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
               <div key={r.slug}>
                 <Link href={`/work/${r.slug}`} className="flex gap-[12px] items-start group">
                   <div className="relative w-[114px] h-[114px] shrink-0 overflow-hidden bg-[#ddd]">
-                    <Image src={r.image} alt={r.title} fill className="object-cover" sizes="114px" />
+                    <Image
+                      src={caseStudy.relatedThumbnails?.[i] ?? r.image}
+                      alt={r.title}
+                      fill
+                      className="object-cover"
+                      sizes="114px"
+                    />
                   </div>
                   <div className="flex flex-col gap-[12px]">
                     <p className="font-black text-[18px] uppercase text-[#111] leading-[1.1] tracking-[-0.36px] group-hover:underline">
