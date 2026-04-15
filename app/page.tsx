@@ -22,8 +22,8 @@ export default function Home() {
     <main className="bg-[#f5f3ef] overflow-x-hidden">
       <Header />
       <Hero />
-      <WorkStrip />
       <ServicesTabs />
+      <WorkStrip />
       <SelectedWork />
       <Vision />
       <Stats />
