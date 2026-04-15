@@ -53,9 +53,24 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
   return (
     <section className="bg-[#f5f3ef]">
 
-      {/* ── Section 1: Challenger Strategy — right-aligned ~63% block ─────── */}
-      <div className="px-5 md:px-[90px] py-[20px] md:py-[30px] flex justify-end">
-        <div className="w-full md:w-[63%] flex flex-col items-end gap-[12px]">
+      {/* ── Section 1: Challenger Strategy — left image (optional) + right text ── */}
+      <div className="px-5 md:px-[90px] py-[20px] md:py-[30px] flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">
+        {/* Left column: single image */}
+        {caseStudy.challengerSideImage && (
+          <div className="w-full md:w-[32%] shrink-0">
+            <div className="relative w-full overflow-hidden" style={{ aspectRatio: '503/283' }}>
+              <Image
+                src={caseStudy.challengerSideImage}
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 32vw"
+              />
+            </div>
+          </div>
+        )}
+        {/* Right column: title + body */}
+        <div className={`flex flex-col items-end gap-[12px] w-full ${caseStudy.challengerSideImage ? 'md:w-[63%]' : ''}`}>
           <div className="w-full md:w-[78%]">
             <SectionTitle text={caseStudy.challengerStrategy.title} />
           </div>

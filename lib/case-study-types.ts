@@ -41,6 +41,9 @@ export interface CaseStudyData {
   communicationStrategy?: CaseStudySection // section 2b: optional extra section
   humanAdvantage: CaseStudySection         // section 3: alongside related work sidebar
 
+  // ── Images (Challenger Strategy section) ─────────────────────────────────
+  challengerSideImage?: string   // single image in the left column of Challenger Strategy
+
   // ── Images (Engineering Ecosystem section) ───────────────────────────────
   ecosystemSideImages?: string[] // 1-2 images stacked in the left column of Engineering Ecosystem
   ecosystemMoodBoard?: string    // mood-board / collage image below the text on the right side

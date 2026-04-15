@@ -61,6 +61,9 @@ export const shelbyData: CaseStudyData = {
       "At Schoolhouse Lane, we believe there is \"no cure for curiosity\". For Shelby, this meant a human-centric design approach that prioritises rider protection and community. This work ensures that Shelby's most intangible asset — its 100-year soul — becomes its most measurable competitive advantage in the global bicycle arena.",
   },
 
+  // ── Challenger Strategy image ─────────────────────────────────────────────
+  challengerSideImage: '/images/case-shelby-2.png',
+
   // ── Engineering Ecosystem images ──────────────────────────────────────────
   // Two images stacked in the LEFT column, alongside the text on the right.
   ecosystemSideImages: ['/images/cs-shelby-hero.png', '/images/case-shelby-4.png'],
