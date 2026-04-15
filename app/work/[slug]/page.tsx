@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import WorkCTA from '@/components/work/WorkCTA'
 import CaseStudyHero from '@/components/work/CaseStudyHero'
 import CaseStudyContent from '@/components/work/CaseStudyContent'
 import CaseStudyCTA from '@/components/work/CaseStudyCTA'
@@ -54,10 +53,9 @@ export default async function CaseStudyPage({
       <Header forceDark />
       <CaseStudyHero project={project} caseStudy={caseStudy} />
       <CaseStudyContent project={project} caseStudy={caseStudy} />
-      {caseStudy && <CaseStudyCTA accentColor={caseStudy.accentColor} />}
-      {caseStudy && <CaseStudyRelated caseStudy={caseStudy} />}
+      <CaseStudyCTA />
+      <CaseStudyRelated currentSlug={slug} />
       <CaseStudyNav prev={prev} next={next} />
-      <WorkCTA />
       <Footer />
     </main>
   )

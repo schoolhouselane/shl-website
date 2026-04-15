@@ -1,77 +1,89 @@
+'use client'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { WorkProject } from '@/lib/work-data'
-import { projects } from '@/lib/work-data'
-import type { CaseStudyData } from '@/lib/case-study-types'
+import { projects, type WorkProject } from '@/lib/work-data'
 
 function ArrowUpRight() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M7 17L17 7M17 7H7M17 7v10" />
     </svg>
   )
 }
 
-export default function CaseStudyRelated({ caseStudy }: { caseStudy: CaseStudyData }) {
-  const related = caseStudy.relatedSlugs
-    .map(s => projects.find(p => p.slug === s))
-    .filter(Boolean) as WorkProject[]
+export default function CaseStudyRelated({ currentSlug }: { currentSlug: string }) {
+  const [picks, setPicks] = useState<WorkProject[]>([])
 
-  if (related.length === 0) return null
+  useEffect(() => {
+    const pool = projects.filter(p => p.slug !== currentSlug)
+    const shuffled = [...pool].sort(() => Math.random() - 0.5)
+    setPicks(shuffled.slice(0, 2))
+  }, [currentSlug])
+
+  if (picks.length < 2) return null
 
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[60px] md:py-[80px]">
+    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[80px] md:py-[120px] flex flex-col gap-[60px] md:gap-[80px]">
 
-      <div className="flex items-end justify-between mb-[32px] md:mb-[40px]">
-        <p className="text-[10px] uppercase tracking-[0.14em] text-[#ababab] font-bold">
-          Some more work like this one
-        </p>
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-[20px]">
+        <h2 className="font-black text-[36px] md:text-[64px] uppercase text-[#1e1e20] leading-normal">
+          some more work<br className="hidden md:block" /> like this one
+        </h2>
         <Link
           href="/work"
-          className="inline-flex items-center gap-[8px] border border-[#1e1e20] rounded-full px-[16px] py-[8px] text-[11px] uppercase tracking-[0.06em] font-normal hover:bg-[#1e1e20] hover:text-white transition-colors"
+          className="inline-flex items-center gap-[12px] border border-[#1e1e20] px-[24px] py-[8px] rounded-[50px] shrink-0 self-start hover:bg-[#1e1e20] hover:text-white transition-colors group"
         >
-          All Work
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <span className="font-medium text-[16px] uppercase whitespace-nowrap leading-[27.42px] group-hover:text-white transition-colors">
+            ALL WORKS
+          </span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
-        {related.map((r) => (
-          <article key={r.slug} className="border border-black flex flex-col group">
-            <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4/3' }}>
+      {/* Two cards — exact same markup as WorkGrid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
+        {picks.map(p => (
+          <article key={p.slug} className="border border-black flex flex-col group">
+            {/* Image */}
+            <div className="relative w-full h-[240px] sm:h-[300px] md:h-[371px] overflow-hidden">
               <Image
-                src={r.image}
-                alt={r.title}
+                src={p.image}
+                alt={p.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
-            <div className="flex flex-col gap-[10px] px-[20px] md:px-[28px] py-[18px] md:py-[22px]">
+
+            {/* Card body */}
+            <div className="flex flex-col gap-[12px] px-[24px] md:px-[40px] py-[20px] md:py-[25px]">
               <div className="flex items-center justify-between gap-[12px]">
-                <p className="text-[11px] text-[#777] uppercase tracking-wide font-normal">
-                  {r.tags.join(' — ')}
+                <p className="text-[11px] md:text-[12px] text-[#777] uppercase tracking-wide leading-normal">
+                  {p.tags.join(' — ')}
                 </p>
                 <Link
-                  href={`/work/${r.slug}`}
-                  className="flex items-center justify-center bg-black rounded-full w-[40px] h-[40px] p-[10px] shrink-0 text-white hover:bg-[#333] transition-colors"
-                  aria-label={`View ${r.title}`}
+                  href={`/work/${p.slug}`}
+                  className="flex items-center justify-center bg-black rounded-full w-[44px] h-[44px] md:w-[55px] md:h-[55px] p-[14px] md:p-[16px] shrink-0 text-white hover:bg-[#333] transition-colors duration-200"
+                  aria-label={`View ${p.title}`}
                 >
                   <ArrowUpRight />
                 </Link>
               </div>
-              <h3 className="font-black text-[16px] md:text-[20px] uppercase text-[#1e1e20] leading-tight tracking-[-0.3px]">
-                {r.title}
+              <h3 className="font-black text-[18px] md:text-[24px] uppercase text-[#1e1e20] leading-tight">
+                {p.title}
               </h3>
-              <p className="text-[13px] md:text-[14px] text-[#1e1e20] leading-[1.6] font-normal line-clamp-3">
-                {r.description}
+              <p className="text-[14px] md:text-[16px] text-[#1e1e20] leading-[1.714]">
+                {p.description}
               </p>
             </div>
           </article>
         ))}
       </div>
+
     </section>
   )
 }

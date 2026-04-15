@@ -201,8 +201,8 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
                 { label: 'PROJECT', value: caseStudy.metaProject },
               ].map(({ label, value }) => (
                 <div key={label} className="flex flex-col gap-[21px]">
-                  <p className="text-[12px] uppercase tracking-[1.92px] text-[#8f8f8f] font-extrabold whitespace-nowrap">{label}</p>
-                  <p className="text-[14px] font-bold text-[#111] leading-[1.75] whitespace-nowrap">{value}</p>
+                  <p className="text-[12px] uppercase tracking-[1.92px] text-[#8f8f8f] font-extrabold">{label}</p>
+                  <p className="text-[14px] font-bold text-[#111] leading-[1.75]">{value}</p>
                 </div>
               ))}
             </div>
@@ -210,37 +210,6 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
         </div>
       </div>
 
-      {/* ── Deliverables ─────────────────────────────────────────────────── */}
-      <div className="px-5 md:px-[90px] pb-[40px] md:pb-[60px] flex flex-col gap-[16px]">
-        <p className="text-[11px] uppercase tracking-[0.14em] text-[#777] font-normal">Deliverables</p>
-        <div className="flex flex-wrap gap-[10px]">
-          {project.deliverables.map(d => (
-            <span key={d} className="border border-[#1e1e20] text-[#1e1e20] text-[12px] uppercase tracking-[0.06em] px-[16px] py-[9px] rounded-full font-normal">
-              {d}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Results ──────────────────────────────────────────────────────── */}
-      <div className="px-5 md:px-[90px] pb-[80px] md:pb-[120px] flex flex-col gap-[16px]">
-        <p className="text-[11px] uppercase tracking-[0.14em] text-[#777] font-normal">Results</p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 border border-[#1e1e20]/20">
-          {project.results.map((r, i) => (
-            <div
-              key={r.label}
-              className={`flex flex-col gap-[10px] py-[36px] px-[32px] md:px-[40px] ${
-                i < project.results.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-[#1e1e20]/20' : ''
-              }`}
-            >
-              <span className="font-black text-[52px] md:text-[64px] text-[#1e1e20] leading-[1] tracking-[-1.5px]">
-                {r.value}
-              </span>
-              <span className="text-[13px] text-[#777] uppercase tracking-[0.08em] font-normal">{r.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
 
     </section>
   )

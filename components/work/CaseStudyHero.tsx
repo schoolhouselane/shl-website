@@ -21,11 +21,11 @@ export default function CaseStudyHero({
       style={{ opacity: inView ? 1 : 0 }}
     >
       {/* ── Hero image — padded to match content columns ─────────────────── */}
-      <div className="px-5 md:px-[90px]" style={{ marginTop: '82px' }}>
+      <div className="px-5 md:px-[90px] mt-[64px] md:mt-[82px]">
       <div
         className="relative w-full overflow-hidden"
         style={{
-          height: 'clamp(380px, 50vw, 580px)',
+          height: 'clamp(220px, 50vw, 580px)',
           backgroundColor: caseStudy?.heroColor ?? '#1e1e20',
         }}
       >

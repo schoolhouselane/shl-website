@@ -32,52 +32,11 @@ export const projects: WorkProject[] = [
       'Shelby carried decades of motorsport heritage — iconic, respected, but ageing. The brief was clear: honour the legacy without being imprisoned by it. A new generation of performance enthusiasts needed to be captured without alienating existing loyal fans.',
     approach:
       'We started with deep positioning work — finding the space where heritage authenticity meets modern performance lifestyle. The visual system draws on the rawness of motorsport culture, reframed in a contemporary design language: bold typography, high-contrast compositions, and campaign direction that puts the rider at the centre of the story.',
-    deliverables: [
-      'Brand Strategy',
-      'Visual Identity System',
-      'Campaign Direction',
-      'Digital Activation',
-      'Photography Direction',
-      'Brand Guidelines',
-    ],
-    results: [
-      { value: '3×', label: 'Increase in brand engagement' },
-      { value: '2.1M+', label: 'Campaign impressions' },
-      { value: '4', label: 'Markets launched' },
-    ],
+    deliverables: [],
+    results: [],
   },
   {
     id: 2,
-    slug: 'sealac',
-    title: 'SEALAC',
-    category: 'BRAND IDENTITY',
-    tags: ['BRAND IDENTITY', 'CAMPAIGNS'],
-    description:
-      'Complete brand transformation for an international aquaculture company. From market positioning to visual identity, built to command a premium category.',
-    image: '/images/work-2.png',
-    heroImage: '/images/work-2.jpg',
-    year: '2024',
-    client: 'SEALAC',
-    challenge:
-      'Operating in a commoditised sector, SEALAC needed to break out of category conventions and establish a premium position in international markets. Their existing identity undersold the quality and innovation behind their operations.',
-    approach:
-      'We conducted category analysis and stakeholder interviews to identify whitespace in the premium aquaculture segment. The resulting brand system uses refined typography, a restrained colour palette, and imagery that elevates the natural quality of the product — positioning SEALAC as the benchmark in the sector.',
-    deliverables: [
-      'Market Positioning',
-      'Brand Identity',
-      'Campaign Strategy',
-      'Packaging Direction',
-      'Digital Presence',
-      'Investor Presentation',
-    ],
-    results: [
-      { value: '↑ 60%', label: 'Premium category perception' },
-      { value: '3', label: 'International markets entered' },
-      { value: '18mo', label: 'Brief to market launch' },
-    ],
-  },
-  {
-    id: 3,
     slug: 'vivo-hotels',
     title: 'Vivo Hotels',
     category: 'WEBSITES',
@@ -107,7 +66,7 @@ export const projects: WorkProject[] = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     slug: 'datadirect',
     title: 'DataDirect',
     category: 'WEBSITES',
@@ -137,37 +96,7 @@ export const projects: WorkProject[] = [
     ],
   },
   {
-    id: 5,
-    slug: 'minful',
-    title: 'Minful — Health Come First',
-    category: 'CAMPAIGNS',
-    tags: ['CAMPAIGNS', 'BRAND IDENTITY'],
-    description:
-      'Integrated campaign strategy and creative direction for a wellness platform. Positioned at the intersection of clinical credibility and consumer desirability.',
-    image: '/images/work-4.png',
-    heroImage: '/images/work-4.jpg',
-    year: '2024',
-    client: 'Minful',
-    challenge:
-      'The wellness category is overcrowded and under-differentiated. Minful needed to earn trust from a health-aware audience without losing the warmth and accessibility that drive consumer adoption. Clinical and approachable are not natural bedfellows.',
-    approach:
-      "We built the campaign strategy on a single insight: people don't want to be lectured about health — they want to feel empowered. Creative direction used real stories, honest language, and visual choices that balanced aspiration with accessibility. The result was a brand that felt both credible and human.",
-    deliverables: [
-      'Campaign Strategy',
-      'Creative Direction',
-      'Brand Identity',
-      'Social Content System',
-      'Influencer Framework',
-      'Launch Activation',
-    ],
-    results: [
-      { value: '2M+', label: 'Platform users reached' },
-      { value: '4.2×', label: 'App download growth' },
-      { value: '67%', label: 'Audience retention rate' },
-    ],
-  },
-  {
-    id: 6,
+    id: 4,
     slug: 'real-map-wipes',
     title: 'Real Map Wipes',
     category: 'BRAND IDENTITY',
@@ -194,66 +123,6 @@ export const projects: WorkProject[] = [
       { value: '↑ 3×', label: 'Shelf standout score' },
       { value: '+55%', label: 'DTC conversion rate' },
       { value: '12', label: 'Retail doors launched' },
-    ],
-  },
-  {
-    id: 7,
-    slug: 'gallery-series',
-    title: 'Gallery Campaign Series',
-    category: 'GALLERY & VIDEOS',
-    tags: ['GALLERY & VIDEOS', 'CAMPAIGNS'],
-    description:
-      'Cinematic product and lifestyle photography and video series that elevated perceived value and drove conversion across DTC channels.',
-    image: '/images/work-5.png',
-    heroImage: '/images/work-5.jpg',
-    year: '2024',
-    client: 'Gallery',
-    challenge:
-      "The client's products were premium in quality but their visual assets told a different story. Generic photography was suppressing conversion rates and undermining the brand's premium positioning across paid and organic channels.",
-    approach:
-      "We directed and produced a series of cinematic campaign shoots — stills and video — with art direction built around the product's core values. Location, talent, and post-production were managed to a clear visual brief that prioritised elevated, conversion-led imagery.",
-    deliverables: [
-      'Art Direction',
-      'Photography Direction',
-      'Video Production',
-      'Post Production',
-      'Campaign Rollout',
-      'Asset Library',
-    ],
-    results: [
-      { value: '+89%', label: 'DTC conversion uplift' },
-      { value: '120+', label: 'Campaign assets delivered' },
-      { value: '3×', label: 'Paid social ROAS' },
-    ],
-  },
-  {
-    id: 8,
-    slug: 'ai-creative',
-    title: 'AI Creative System',
-    category: 'AI CREATIVE',
-    tags: ['AI CREATIVE', 'STRATEGY'],
-    description:
-      'An LLM-powered brand voice engine and generative visual system built for a fast-scaling consumer brand. Speed without sacrificing strategic intent.',
-    image: '/images/work-6.png',
-    heroImage: '/images/work-6.jpg',
-    year: '2024',
-    client: 'Confidential',
-    challenge:
-      'A fast-growing DTC brand needed to produce high-quality brand content at a pace traditional creative processes could not support. The challenge was not just speed — it was maintaining brand coherence and strategic intent across a high-volume output.',
-    approach:
-      "We designed and built a custom LLM-powered brand voice engine, trained on the brand's strategic positioning, tone guidelines, and top-performing content. Paired with a generative visual system, the result was always-on creative infrastructure that produced on-brand output at scale — with human oversight at every strategic touchpoint.",
-    deliverables: [
-      'AI Strategy',
-      'Brand Voice Engine',
-      'Generative Visual System',
-      'Content Framework',
-      'Quality Governance',
-      'Team Training',
-    ],
-    results: [
-      { value: '10×', label: 'Content output increase' },
-      { value: '-65%', label: 'Cost per creative asset' },
-      { value: '100%', label: 'Brand consistency score' },
     ],
   },
 ]

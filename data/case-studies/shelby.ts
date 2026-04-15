@@ -8,8 +8,8 @@ import type { CaseStudyData } from '@/lib/case-study-types'
 export const shelbyData: CaseStudyData = {
   // ── Hero ──────────────────────────────────────────────────────────────────
   heroColor: '#1e1208',
-  heroImage: '/images/cs-shelby-hero.png',
-  heroLines: ['THE ORIGINAL AMERICAN RIDE.', 'REIMAGINED.'],
+  heroImage: '/images/case-shelby-1.png',
+  heroLines: [],
   heroAccentLine: 1,
   heroAccentColor: '#d8c09c',
   accentColor: '#d8c09c',
@@ -66,7 +66,7 @@ export const shelbyData: CaseStudyData = {
 
   // ── Engineering Ecosystem images ──────────────────────────────────────────
   // Two images stacked in the LEFT column, alongside the text on the right.
-  ecosystemSideImages: ['/images/cs-shelby-hero.png', '/images/case-shelby-4.png'],
+  ecosystemSideImages: ['/images/case-shelby-3.png', '/images/case-shelby-4.png'],
   // Mood-board / collage image shown below the text on the right side.
   ecosystemMoodBoard: '/images/case-shelby-5.png',
 
@@ -77,10 +77,10 @@ export const shelbyData: CaseStudyData = {
   metaProject: 'Brand Identity',
 
   // ── Related work ──────────────────────────────────────────────────────────
-  relatedSlugs: ['real-map-wipes', 'vivo-hotels', 'sealac'],
+  relatedSlugs: ['real-map-wipes', 'vivo-hotels', 'datadirect'],
   relatedThumbnails: [
     '/images/related-real-man-wipes.png',
     '/images/related-vivo-hotels.png',
-    '/images/related-sealac.png',
+    '/images/work-datadirect.png',
   ],
 }
