@@ -17,14 +17,15 @@ export default function CaseStudyHero({
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="bg-[#f5f3ef] pt-[82px] transition-all duration-700"
+      className="bg-[#f5f3ef] transition-all duration-700"
       style={{ opacity: inView ? 1 : 0 }}
     >
-      {/* ── Hero image — full-bleed (no side padding) ─────────────────────── */}
+      {/* ── Hero image — padded to match content columns ─────────────────── */}
+      <div className="px-5 md:px-[90px]" style={{ marginTop: '82px' }}>
       <div
         className="relative w-full overflow-hidden"
         style={{
-          height: 'clamp(280px, 38vw, 430px)',
+          height: 'clamp(380px, 50vw, 580px)',
           backgroundColor: caseStudy?.heroColor ?? '#1e1e20',
         }}
       >
@@ -34,7 +35,7 @@ export default function CaseStudyHero({
           fill
           className="object-cover object-center"
           priority
-          sizes="100vw"
+          sizes="(max-width: 768px) calc(100vw - 40px), calc(100vw - 180px)"
         />
 
         {/* Right-side dark gradient — only when heroLines exist */}
@@ -67,9 +68,10 @@ export default function CaseStudyHero({
           </div>
         )}
       </div>
+      </div>
 
       {/* ── Title block ──────────────────────────────────────────────────────── */}
-      <div className="px-5 md:px-[52px] pt-[36px] md:pt-[52px] pb-[10px] flex flex-col gap-[8px]">
+      <div className="px-5 md:px-[90px] pt-[36px] md:pt-[52px] pb-[10px] flex flex-col gap-[8px]">
         {/* Breadcrumb */}
         <div className="flex flex-wrap items-center gap-[10px] mb-[14px]">
           <Link
