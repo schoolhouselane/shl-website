@@ -1,42 +1,101 @@
-import Link from 'next/link'
+'use client'
+import { useInView } from '@/hooks/useInView'
 
-export default function Vision() {
-  const valuesLeft = ['Be Curious', 'HUMAN', 'Think Inside the BOX']
-  const valuesRight = ['Communication', 'BE INDUSTRIOUS', 'Discipline']
+const principles = [
+  {
+    num: '01',
+    title: 'Be Curious',
+    desc: 'Mediocrity is a choice. Relentless inquiry is how we live.',
+  },
+  {
+    num: '02',
+    title: 'Communication',
+    desc: 'No black boxes. Ever. Just togetherness.',
+  },
+  {
+    num: '03',
+    title: 'Human',
+    desc: 'We work with people, not "clients." Emotional intelligence is our secret weapon.',
+  },
+  {
+    num: '04',
+    title: 'Be Bright. Be Industrious',
+    desc: 'High-level enterprise value meets relentless output.',
+  },
+  {
+    num: '05',
+    title: 'Think Inside the BOX',
+    desc: 'We balance wild imagination with commercial discipline.',
+  },
+  {
+    num: '06',
+    title: 'Discipline',
+    desc: "Standards don't slip. We architect the infrastructure for ambition.",
+  },
+]
+
+export default function Principles() {
+  const [headerRef, headerInView] = useInView(0.2)
+  const [gridRef, gridInView] = useInView(0.1)
 
   return (
-    <section className="bg-[#1e1e20] px-5 md:px-[90px] py-[90px] md:py-[180px]">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 md:gap-20 mb-16 md:mb-24">
-        <h2 className="font-black text-[36px] md:text-[64px] leading-normal uppercase text-white max-w-[569px]">
-          Vision led value creation
+    <section className="bg-[#1e1e20] py-[80px] md:py-[120px] flex flex-col gap-[60px] md:gap-[120px]">
+
+      {/* Header */}
+      <div
+        ref={headerRef as React.RefObject<HTMLDivElement>}
+        className="px-5 md:px-[90px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 transition-all duration-700"
+        style={{
+          opacity: headerInView ? 1 : 0,
+          transform: headerInView ? 'translateY(0)' : 'translateY(30px)',
+        }}
+      >
+        <h2 className="font-bold text-[36px] md:text-[64px] text-white uppercase max-w-[526px] leading-tight">
+          Our Operating Principles
         </h2>
-        <div className="flex flex-col gap-6 md:items-end md:max-w-[389px]">
-          <p className="text-[16px] md:text-[20px] leading-[1.37] text-white md:text-right">
-            We transform the role of brand from a marketing tool into a strategic asset.
-          </p>
-          <Link href="/about" className="btn-cta inline-flex items-center gap-3 w-fit border border-white rounded-full px-5 py-2 text-[16px] font-medium uppercase text-white transition-colors">
-            About Us
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </Link>
-        </div>
+        <p className="text-[16px] md:text-[20px] text-white/50 leading-[1.8] lg:text-right max-w-[582px]">
+          These aren&apos;t values on a wall. They are the operating system we run on. Every brief, every decision, every conversation — these are the principles we return to.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20">
-        <div className="flex flex-col gap-6 md:gap-[50px]">
-          {valuesLeft.map((v) => (
-            <div key={v} className="border-b border-white py-4 md:py-5">
-              <p className="font-semibold text-[22px] md:text-[32px] leading-[1.37] uppercase text-white">{v}</p>
+      {/* Principles grid */}
+      <div ref={gridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2">
+        {principles.map((p, i) => (
+          <div
+            key={p.num}
+            className="relative flex items-center justify-between px-5 md:px-[90px] py-[28px] md:py-[38px] border-t border-white/10 overflow-hidden transition-all duration-700"
+            style={{
+              opacity: gridInView ? 1 : 0,
+              transform: gridInView ? 'translateY(0)' : 'translateY(40px)',
+              transitionDelay: `${i * 80}ms`,
+            }}
+          >
+            {/* Left: title + desc */}
+            <div className="flex flex-col gap-[6px] max-w-[65%]">
+              <h3 className={`font-black uppercase text-white leading-tight ${i === 0 ? 'text-[20px] md:text-[24px]' : 'text-[18px] md:text-[22px]'}`}>
+                {p.title}
+              </h3>
+              <p className="text-[14px] md:text-[16px] text-white/40 leading-[1.7]">
+                {p.desc}
+              </p>
             </div>
-          ))}
-        </div>
-        <div className="flex flex-col gap-6 md:gap-[50px]">
-          {valuesRight.map((v) => (
-            <div key={v} className="border-b border-white py-4 md:py-5">
-              <p className="font-semibold text-[22px] md:text-[32px] leading-[1.37] uppercase text-white md:text-right">{v}</p>
-            </div>
-          ))}
-        </div>
+
+            {/* Right: ghost number — slides in from right */}
+            <span
+              className="font-black text-[40px] sm:text-[60px] md:text-[100px] tracking-[-4px] leading-none select-none shrink-0 transition-all duration-1000"
+              style={{
+                color: 'white',
+                opacity: gridInView ? 0.08 : 0,
+                transform: gridInView ? 'translateX(0)' : 'translateX(30px)',
+                transitionDelay: `${i * 80 + 300}ms`,
+              }}
+            >
+              {p.num}
+            </span>
+          </div>
+        ))}
       </div>
+
     </section>
   )
 }
