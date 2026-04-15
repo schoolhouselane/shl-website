@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://schoolhouselane.co' },
 }
 import Hero from '@/components/Hero'
-import WorkStrip from '@/components/WorkStrip'
 import ServicesTabs from '@/components/ServicesTabs'
 import SelectedWork from '@/components/SelectedWork'
 import Vision from '@/components/Vision'
@@ -23,7 +22,6 @@ export default function Home() {
       <Header />
       <Hero />
       <ServicesTabs />
-      <WorkStrip />
       <SelectedWork />
       <Vision />
       <Stats />
