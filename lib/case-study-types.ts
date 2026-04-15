@@ -37,13 +37,12 @@ export interface CaseStudyData {
   // ── Content sections ──────────────────────────────────────────────────────
   // Rendered in this order — communicationStrategy is optional
   challengerStrategy: CaseStudySection     // section 1: right-aligned (title left, list right)
-  engineeringEcosystem: CaseStudySection   // section 2: side images left, text right
+  engineeringEcosystem: CaseStudySection   // section 2: same right-aligned layout + image below
   communicationStrategy?: CaseStudySection // section 2b: optional extra section
   humanAdvantage: CaseStudySection         // section 3: alongside related work sidebar
 
   // ── Images ────────────────────────────────────────────────────────────────
-  sideImages: [string, string]   // 2 stacked images shown left of section 2
-  galleryImages?: string[]       // small grid (4–6 images) inside section 2
+  sectionImage: string           // single image shown at the bottom of section 2 (16:9, full-width)
 
   // ── Metadata row ─────────────────────────────────────────────────────────
   metaClient: string

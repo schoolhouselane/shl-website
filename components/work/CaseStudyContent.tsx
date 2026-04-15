@@ -65,29 +65,28 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
         </div>
       </div>
 
-      {/* ── Section 2: Engineering Ecosystem — side images left, text right ── */}
-      <div className="px-5 md:px-[90px] py-[40px] md:py-[60px] flex flex-col md:flex-row gap-[40px] md:gap-[60px]">
-        {/* Left: 2 stacked images */}
-        <div className="flex flex-col gap-[16px] md:w-[32%] shrink-0">
-          {caseStudy.sideImages.map((src, i) => (
-            <div key={i} className="relative w-full overflow-hidden" style={{ aspectRatio: '4/3' }}>
-              <Image src={src} alt="" fill className="object-cover" sizes="33vw" />
+      {/* ── Section 2: Engineering Ecosystem — right-aligned (same as section 1) + image ── */}
+      <div className="px-5 md:px-[90px] py-[40px] md:py-[60px] flex flex-col gap-[40px]">
+        {/* Text block — right-aligned, same structure as section 1 */}
+        <div className="flex justify-end">
+          <div className="w-full md:w-[63%] flex flex-col md:flex-row gap-[24px] md:gap-[40px]">
+            <div className="md:w-[37%] shrink-0">
+              <SectionTitle text={caseStudy.engineeringEcosystem.title} />
             </div>
-          ))}
+            <div className="flex-1">
+              <SectionBody section={caseStudy.engineeringEcosystem} />
+            </div>
+          </div>
         </div>
-        {/* Right: text + gallery grid */}
-        <div className="flex flex-col gap-[20px] flex-1">
-          <SectionTitle text={caseStudy.engineeringEcosystem.title} />
-          <SectionBody section={caseStudy.engineeringEcosystem} />
-          {caseStudy.galleryImages && caseStudy.galleryImages.length > 0 && (
-            <div className="grid grid-cols-2 gap-[8px] mt-[8px] md:max-w-[360px]">
-              {caseStudy.galleryImages.map((src, i) => (
-                <div key={i} className="relative overflow-hidden" style={{ aspectRatio: '1' }}>
-                  <Image src={src} alt="" fill className="object-cover" sizes="20vw" />
-                </div>
-              ))}
-            </div>
-          )}
+        {/* Single image below the text — full section width, 16:9 */}
+        <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <Image
+            src={caseStudy.sectionImage}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) calc(100vw - 40px), calc(100vw - 180px)"
+          />
         </div>
       </div>
 

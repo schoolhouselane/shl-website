@@ -61,15 +61,10 @@ export const shelbyData: CaseStudyData = {
       "At Schoolhouse Lane, we believe there is \"no cure for curiosity\". For Shelby, this meant a human-centric design approach that prioritises rider protection and community. This work ensures that Shelby's most intangible asset — its 100-year soul — becomes its most measurable competitive advantage in the global bicycle arena.",
   },
 
-  // ── Images ────────────────────────────────────────────────────────────────
-  // Replace placeholders with real case study photos
-  sideImages: ['/images/work-shelby.png', '/images/work-shelby.png'],
-  galleryImages: [
-    '/images/work-shelby.png',
-    '/images/work-shelby.png',
-    '/images/work-shelby.png',
-    '/images/work-shelby.png',
-  ],
+  // ── Image ─────────────────────────────────────────────────────────────────
+  // Full-width 16:9 image shown at the bottom of the Engineering Ecosystem section
+  // Replace with a real case study photo
+  sectionImage: '/images/work-shelby.png',
 
   // ── Metadata ──────────────────────────────────────────────────────────────
   metaClient: 'Shelby Cycles',
