@@ -21,7 +21,7 @@ function ItemList({ items }: { items: NonNullable<CaseStudySection['items']> }) 
   return (
     <ol className="flex flex-col gap-[12px] list-decimal list-outside pl-[20px]">
       {items.map((item, i) => (
-        <li key={i} className="text-[16px] md:text-[20px] text-[#1e1e20] leading-normal font-normal">
+        <li key={i} className="text-[18px] text-[#595959] leading-normal font-normal">
           <span className="font-bold uppercase">{item.label} </span>
           {item.text}
         </li>
@@ -34,7 +34,7 @@ function ItemList({ items }: { items: NonNullable<CaseStudySection['items']> }) 
 function SectionBody({ section }: { section: CaseStudySection }) {
   return (
     <div className="flex flex-col gap-[12px]">
-      <p className="text-[16px] md:text-[20px] text-[#1e1e20] leading-normal font-normal">
+      <p className="text-[18px] text-[#595959] leading-normal font-normal">
         {section.intro}
       </p>
       {section.items && section.items.length > 0 && <ItemList items={section.items} />}
