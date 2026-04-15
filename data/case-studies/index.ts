@@ -7,11 +7,10 @@
 
 import type { CaseStudyData } from '@/lib/case-study-types'
 import { shelbyData } from './shelby'
-import { vivoHotelsData } from './vivo-hotels'
 
 const registry: Record<string, CaseStudyData> = {
   shelby: shelbyData,
-   'vivo-hotels': vivoHotelsData,
+  // 'vivo-hotels': vivoHotelsData,
   // 'datadirect': datadirectData,
   // 'real-map-wipes': realMapWipesData,
 }
