@@ -7,6 +7,8 @@ import type { WorkProject } from '@/lib/work-data'
 export default function CaseStudyHero({ project }: { project: WorkProject }) {
   const [ref, inView] = useInView(0.1)
 
+  const heroColor = project.caseStudy?.heroColor
+
   return (
     <section className="bg-[#f5f3ef]">
       {/* Text block */}
@@ -66,6 +68,7 @@ export default function CaseStudyHero({ project }: { project: WorkProject }) {
           opacity: inView ? 1 : 0,
           transitionDelay: '250ms',
           aspectRatio: '16 / 7',
+          backgroundColor: heroColor ?? 'transparent',
         }}
       >
         <Image

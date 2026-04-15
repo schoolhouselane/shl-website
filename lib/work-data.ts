@@ -1,3 +1,43 @@
+// ─── Case Study rich content ────────────────────────────────────────────────
+// Each project can have an optional `caseStudy` block.
+// To create a NEW case study page:
+//   1. Add a new object to the `projects` array below (copy an existing one)
+//   2. Fill in all the fields — especially the `caseStudy` block
+//   3. Add images to /public/images/  and reference them in `sideImages` / `galleryImages`
+//   4. The page will be live at /work/<slug> automatically
+// ─────────────────────────────────────────────────────────────────────────────
+export interface CaseStudyData {
+  heroColor: string           // background colour behind the hero image, e.g. '#04f9f4'
+  category: string            // tag line, e.g. 'BRAND IDENTITY — Campaigns'
+  subtitle: string            // one-line subtitle below the big title
+
+  // Three content sections (title + body text)
+  section1Title: string       // e.g. 'The Challenger Strategy'
+  section1Body: string        // body copy — use \n\n for paragraph breaks
+
+  section2Title: string       // e.g. 'Engineering the Ecosystem'
+  section2Body: string
+
+  section3Title: string       // e.g. 'The Human Advantage'
+  section3Body: string
+
+  // Left-column images (shown beside sections 1 & 2)
+  sideImage1: string          // /images/...
+  sideImage2: string          // /images/...
+
+  // Small photo grid shown inside section 2
+  galleryImages: string[]     // 3–6 images, e.g. ['/images/cs-shelby-g1.png', ...]
+
+  // Project metadata row at the bottom
+  metaClient: string
+  metaYear: string
+  metaArea: string
+  metaProject: string
+
+  // Slugs of 3 other projects to show in "Related Work"
+  relatedSlugs: [string, string, string]
+}
+
 export interface WorkProject {
   id: number
   slug: string
@@ -13,6 +53,7 @@ export interface WorkProject {
   approach: string
   deliverables: string[]
   results: Array<{ value: string; label: string }>
+  caseStudy?: CaseStudyData   // optional — if present, uses the rich Figma template
 }
 
 export const projects: WorkProject[] = [
@@ -45,6 +86,52 @@ export const projects: WorkProject[] = [
       { value: '2.1M+', label: 'Campaign impressions' },
       { value: '4', label: 'Markets launched' },
     ],
+
+    // ── CASE STUDY RICH CONTENT ──────────────────────────────────────────────
+    // To create a new case study: copy this entire `caseStudy` block,
+    // paste it into another project entry, and change the text + images.
+    // ─────────────────────────────────────────────────────────────────────────
+    caseStudy: {
+      heroColor: '#04f9f4',
+      category: 'BRAND IDENTITY — Campaigns',
+      subtitle: 'Reimagining Legacy through Creative Commerce',
+
+      section1Title: 'The Challenger Strategy',
+      section1Body:
+        'Following our proven challenger brand principles — seen in our work for Real Man Wipes — we identified a market gap where competitors focused solely on marginal aerodynamic gains. Shelby instead weaponises a dual-engine strategy:\n\n' +
+        '1. Unassailable Financials: A high-margin D2C model targeting a $41M SOM by Year 3, underpinned by a modular hardware architecture that creates a defensible "switching cost" moat.\n\n' +
+        '2. Unapologetic Intelligence: Moving beyond "hardware-only" sales to a software-defined ownership model, integrating a safety-first OS that drives recurring revenue and ecosystem LTV.',
+
+      section2Title: 'Engineering the Ecosystem',
+      section2Body:
+        'We architected the infrastructure for an exceptional brand experience, bridging the gap between heritage and the future of mobility intelligence.\n\n' +
+        'The "Explorer" Archetype: We grounded the brand in the Explorer archetype — pioneering and ambitious — to create an emotional connection with urban riders seeking fulfilment through discovery.\n\n' +
+        'Data Economics: Each bike acts as a "sensor node," transforming a static product into a living system where value compounds as the network grows.\n\n' +
+        'Strategic Pricing: We locked a flagship anchor at €9,490, utilising premium "Founders Edition" positioning to build brand equity and protect the floor against industry-standard discounting.',
+
+      section3Title: 'The Human Advantage',
+      section3Body:
+        'At Schoolhouse Lane, we believe there is "no cure for curiosity". For Shelby, this meant a human-centric design approach that prioritises rider protection and community. This work ensures that Shelby\'s most intangible asset — its 100-year soul — becomes its most measurable competitive advantage in the global bicycle arena.',
+
+      // Left-column images (add your own images here)
+      sideImage1: '/images/work-shelby.png',
+      sideImage2: '/images/work-shelby.png',
+
+      // Small photo grid inside section 2 (3–6 images)
+      galleryImages: [
+        '/images/work-shelby.png',
+        '/images/work-shelby.png',
+        '/images/work-shelby.png',
+        '/images/work-shelby.png',
+      ],
+
+      metaClient: 'Shelby Cycles',
+      metaYear: '2026',
+      metaArea: 'Creative + AI',
+      metaProject: 'Brand Identity',
+
+      relatedSlugs: ['vivo-hotels', 'datadirect', 'real-map-wipes'],
+    },
   },
   {
     id: 2,
