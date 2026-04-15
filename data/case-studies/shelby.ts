@@ -7,10 +7,12 @@ import type { CaseStudyData } from '@/lib/case-study-types'
 
 export const shelbyData: CaseStudyData = {
   // ── Hero ──────────────────────────────────────────────────────────────────
-  heroColor: '#04f9f4',
-  heroImage: '/images/cs-shelby-hero.png',
-  heroLines: ['The original', 'American ride.', 'Reimagined.'],
-  heroAccentLine: 2,
+  // case-shelby-1.png already has "THE ORIGINAL AMERICAN RIDE. REIMAGINED."
+  // baked in — heroLines is empty so we don't double up the text overlay.
+  heroColor: '#1e1208',
+  heroImage: '/images/case-shelby-1.png',
+  heroLines: [],
+  heroAccentLine: 0,
   heroAccentColor: '#d8c09c',
   accentColor: '#d8c09c',
 
@@ -62,9 +64,9 @@ export const shelbyData: CaseStudyData = {
   },
 
   // ── Image ─────────────────────────────────────────────────────────────────
-  // Full-width 16:9 image shown at the bottom of the Engineering Ecosystem section
-  // Replace with a real case study photo
-  sectionImage: '/images/work-shelby.png',
+  // Full-width 16:9 image shown at the bottom of the Engineering Ecosystem section.
+  // case-shelby-4.png = brand identity split (dark/orange logo) — ideal showcase.
+  sectionImage: '/images/case-shelby-4.png',
 
   // ── Metadata ──────────────────────────────────────────────────────────────
   metaClient: 'Shelby Cycles',

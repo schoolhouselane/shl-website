@@ -38,14 +38,16 @@ export default function CaseStudyHero({
             sizes="(max-width: 768px) 100vw, calc(100vw - 180px)"
           />
 
-          {/* Right-side dark gradient */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 30%, transparent 55%)',
-            }}
-          />
+          {/* Right-side dark gradient — only when heroLines exist */}
+          {caseStudy?.heroLines && caseStudy.heroLines.length > 0 && (
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 30%, transparent 55%)',
+              }}
+            />
+          )}
 
           {/* Brand text overlay */}
           {caseStudy?.heroLines && caseStudy.heroLines.length > 0 && (
