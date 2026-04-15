@@ -41,8 +41,9 @@ export interface CaseStudyData {
   communicationStrategy?: CaseStudySection // section 2b: optional extra section
   humanAdvantage: CaseStudySection         // section 3: alongside related work sidebar
 
-  // ── Images ────────────────────────────────────────────────────────────────
-  fullWidthImage: string         // edge-to-edge image between content sections and human advantage
+  // ── Images (Engineering Ecosystem section) ───────────────────────────────
+  ecosystemSideImages?: string[] // 1-2 images stacked in the left column of Engineering Ecosystem
+  ecosystemMoodBoard?: string    // mood-board / collage image below the text on the right side
 
   // ── Metadata row ─────────────────────────────────────────────────────────
   metaClient: string

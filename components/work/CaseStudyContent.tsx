@@ -8,7 +8,7 @@ import type { CaseStudyData, CaseStudySection } from '@/lib/case-study-types'
 function SectionTitle({ text }: { text: string }) {
   const lines = text.split('\n')
   return (
-    <h2 className="font-black text-[18px] md:text-[20px] uppercase text-[#1e1e20] leading-tight tracking-[-0.3px]">
+    <h2 className="font-black text-[20px] uppercase text-[#1e1e20] leading-tight tracking-[-0.3px]">
       {lines.map((line, i) => (
         <span key={i}>{line}{i < lines.length - 1 && <br />}</span>
       ))}
@@ -19,10 +19,10 @@ function SectionTitle({ text }: { text: string }) {
 // ─── Numbered list — Inter Bold labels, Inter Regular body ────────────────────
 function ItemList({ items }: { items: NonNullable<CaseStudySection['items']> }) {
   return (
-    <ol className="flex flex-col gap-[14px] list-decimal list-outside pl-[20px]">
+    <ol className="flex flex-col gap-[12px] list-decimal list-outside pl-[20px]">
       {items.map((item, i) => (
-        <li key={i} className="text-[16px] md:text-[18px] text-[#1e1e20] leading-[1.75] font-normal">
-          <span className="font-bold">{item.label} </span>
+        <li key={i} className="text-[16px] md:text-[20px] text-[#1e1e20] leading-normal font-normal">
+          <span className="font-bold uppercase">{item.label} </span>
           {item.text}
         </li>
       ))}
@@ -33,8 +33,8 @@ function ItemList({ items }: { items: NonNullable<CaseStudySection['items']> }) 
 // ─── Section body — intro paragraph + optional numbered list ──────────────────
 function SectionBody({ section }: { section: CaseStudySection }) {
   return (
-    <div className="flex flex-col gap-[16px]">
-      <p className="text-[16px] md:text-[18px] text-[#1e1e20] leading-[1.75] font-normal">
+    <div className="flex flex-col gap-[12px]">
+      <p className="text-[16px] md:text-[20px] text-[#1e1e20] leading-normal font-normal">
         {section.intro}
       </p>
       {section.items && section.items.length > 0 && <ItemList items={section.items} />}
@@ -48,106 +48,143 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
     .map(s => projects.find(p => p.slug === s))
     .filter(Boolean) as WorkProject[]
 
+  const hasLeftImages = caseStudy.ecosystemSideImages && caseStudy.ecosystemSideImages.length > 0
+
   return (
     <section className="bg-[#f5f3ef]">
 
-      {/* ── Section 1: Challenger Strategy — two-column ──────────────────── */}
-      <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] flex flex-col md:flex-row gap-[32px] md:gap-[80px]">
-        <div className="md:w-[38%] shrink-0">
-          <SectionTitle text={caseStudy.challengerStrategy.title} />
-        </div>
-        <div className="flex-1">
-          <SectionBody section={caseStudy.challengerStrategy} />
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div className="mx-5 md:mx-[90px] border-t border-[#1e1e20]/10" />
-
-      {/* ── Section 2: Engineering Ecosystem — two-column ────────────────── */}
-      <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] flex flex-col md:flex-row gap-[32px] md:gap-[80px]">
-        <div className="md:w-[38%] shrink-0">
-          <SectionTitle text={caseStudy.engineeringEcosystem.title} />
-        </div>
-        <div className="flex-1">
-          <SectionBody section={caseStudy.engineeringEcosystem} />
-        </div>
-      </div>
-
-      {/* ── Full-width image — edge-to-edge, no side padding ─────────────── */}
-      <div
-        className="relative w-full overflow-hidden"
-        style={{ height: 'clamp(240px, 40vw, 600px)' }}
-      >
-        <Image
-          src={caseStudy.fullWidthImage}
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-      </div>
-
-      {/* ── Optional: Communication Strategy ─────────────────────────────── */}
-      {caseStudy.communicationStrategy && (
-        <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] border-t border-[#1e1e20]/10 flex flex-col md:flex-row gap-[32px] md:gap-[80px]">
-          <div className="md:w-[38%] shrink-0">
-            <SectionTitle text={caseStudy.communicationStrategy.title} />
+      {/* ── Section 1: Challenger Strategy — right-aligned ~63% block ─────── */}
+      <div className="px-5 md:px-[90px] py-[20px] md:py-[30px] flex justify-end">
+        <div className="w-full md:w-[63%] flex flex-col items-end gap-[12px]">
+          <div className="w-full md:w-[78%]">
+            <SectionTitle text={caseStudy.challengerStrategy.title} />
           </div>
-          <div className="flex-1">
-            <SectionBody section={caseStudy.communicationStrategy} />
+          <div className="w-full md:w-[52%]">
+            <SectionBody section={caseStudy.challengerStrategy} />
           </div>
         </div>
-      )}
+      </div>
 
-      {/* ── Section 3: Related Work sidebar + Human Advantage + metadata ─── */}
-      <div className="px-5 md:px-[90px] py-[50px] md:py-[70px] flex flex-col md:flex-row gap-[40px] md:gap-[60px] border-t border-[#1e1e20]/10">
+      {/* ── Section 2+3: Engineering Ecosystem + Human Advantage ─────────── */}
+      <div className="px-5 md:px-[90px] pt-[60px] pb-[80px] md:pb-[120px] flex flex-col gap-[60px]">
 
-        {/* Left: related work list */}
-        <div className="flex flex-col gap-[24px] md:w-[30%] shrink-0">
-          <p className="text-[10px] uppercase tracking-[0.14em] text-[#ababab] font-bold">
-            Related Work
-          </p>
-          {related.map((r, i) => (
-            <div key={r.slug}>
-              <Link href={`/work/${r.slug}`} className="flex gap-[12px] items-start group">
-                <div className="relative w-[80px] h-[80px] shrink-0 overflow-hidden bg-[#ddd]">
-                  <Image src={r.image} alt={r.title} fill className="object-cover" sizes="80px" />
+        {/* Engineering Ecosystem: left images + right content */}
+        <div className="flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">
+
+          {/* Left column: stacked images */}
+          {hasLeftImages && (
+            <div className="flex flex-col gap-[24px] w-full md:w-[32%] shrink-0">
+              {caseStudy.ecosystemSideImages!.map((img, i) => (
+                <div
+                  key={i}
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: '503/283' }}
+                >
+                  <Image
+                    src={img}
+                    alt=""
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 32vw"
+                  />
                 </div>
-                <div className="flex flex-col gap-[6px]">
-                  <p className="font-black text-[14px] md:text-[16px] uppercase text-[#111] leading-tight tracking-[-0.3px] group-hover:underline">
-                    {r.title}
-                  </p>
-                  <p className="text-[12px] md:text-[13px] text-[#595959] leading-normal font-normal line-clamp-3">
-                    {r.description}
-                  </p>
-                </div>
-              </Link>
-              {i < related.length - 1 && <div className="border-t border-[#1e1e20]/15 mt-[20px]" />}
+              ))}
             </div>
-          ))}
+          )}
+
+          {/* Right column: title + body + mood-board */}
+          <div className={`flex flex-col items-end gap-[12px] w-full ${hasLeftImages ? 'md:w-[63%]' : ''}`}>
+            <div className="w-full md:w-[78%]">
+              <SectionTitle text={caseStudy.engineeringEcosystem.title} />
+            </div>
+            <div className="w-full md:w-[52%]">
+              <SectionBody section={caseStudy.engineeringEcosystem} />
+            </div>
+            {caseStudy.ecosystemMoodBoard && (
+              <div
+                className="relative w-full md:w-[49%] overflow-hidden bg-[#f5f3ef]"
+                style={{ aspectRatio: '472/289' }}
+              >
+                <Image
+                  src={caseStudy.ecosystemMoodBoard}
+                  alt=""
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 31vw"
+                />
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Right: human advantage text + metadata table */}
-        <div className="flex flex-col gap-[24px] flex-1">
-          <SectionTitle text={caseStudy.humanAdvantage.title} />
-          <p className="text-[16px] md:text-[18px] text-[#1e1e20] leading-[1.75] font-normal max-w-[500px]">
-            {caseStudy.humanAdvantage.intro}
-          </p>
+        {/* ── Optional: Communication Strategy ─────────────────────────── */}
+        {caseStudy.communicationStrategy && (
+          <div className="flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0 border-t border-[#1e1e20]/10 pt-[60px]">
+            <div className="flex flex-col items-end gap-[12px] w-full">
+              <div className="w-full md:w-[78%]">
+                <SectionTitle text={caseStudy.communicationStrategy.title} />
+              </div>
+              <div className="w-full md:w-[52%]">
+                <SectionBody section={caseStudy.communicationStrategy} />
+              </div>
+            </div>
+          </div>
+        )}
 
-          {/* Metadata grid */}
-          <div className="border-t border-[#1e1e20]/15 pt-[24px] grid grid-cols-2 md:grid-cols-4 gap-[20px]">
-            {[
-              { label: 'CLIENT',  value: caseStudy.metaClient },
-              { label: 'YEAR',    value: caseStudy.metaYear },
-              { label: 'AREA',    value: caseStudy.metaArea },
-              { label: 'PROJECT', value: caseStudy.metaProject },
-            ].map(({ label, value }) => (
-              <div key={label} className="flex flex-col gap-[6px]">
-                <p className="text-[10px] uppercase tracking-[0.14em] text-[#8f8f8f] font-bold">{label}</p>
-                <p className="text-[13px] md:text-[14px] font-bold text-[#111] leading-snug">{value}</p>
+        {/* ── Divider ──────────────────────────────────────────────────── */}
+        <div className="border-t border-[#1e1e20]/10" />
+
+        {/* ── Human Advantage + Related Work sidebar ────────────────────── */}
+        <div className="flex flex-col md:flex-row items-start gap-[20px]">
+
+          {/* Left: related work sidebar — 476px / ~31% */}
+          <div className="flex flex-col gap-[18px] w-full md:w-[31%] shrink-0">
+            <p className="text-[9px] uppercase tracking-[1.44px] text-[#ababab] font-extrabold">
+              Related work
+            </p>
+            {related.map((r, i) => (
+              <div key={r.slug}>
+                <Link href={`/work/${r.slug}`} className="flex gap-[12px] items-start group">
+                  <div className="relative w-[114px] h-[114px] shrink-0 overflow-hidden bg-[#ddd]">
+                    <Image src={r.image} alt={r.title} fill className="object-cover" sizes="114px" />
+                  </div>
+                  <div className="flex flex-col gap-[12px]">
+                    <p className="font-black text-[18px] uppercase text-[#111] leading-[1.1] tracking-[-0.36px] group-hover:underline">
+                      {r.title}
+                    </p>
+                    <p className="text-[15px] text-[#595959] leading-normal font-normal line-clamp-3">
+                      {r.description}
+                    </p>
+                  </div>
+                </Link>
+                {i < related.length - 1 && <div className="border-t border-[#1e1e20]/15 mt-[24px]" />}
               </div>
             ))}
+          </div>
+
+          {/* Right: Human Advantage + metadata — flex-1 */}
+          <div className="flex flex-col items-end gap-[12px] flex-1">
+            <div className="w-full md:w-[78%]">
+              <SectionTitle text={caseStudy.humanAdvantage.title} />
+            </div>
+            <p className="font-bold text-[16px] md:text-[20px] text-[#1e1e20] leading-normal w-full md:w-[49%]">
+              {caseStudy.humanAdvantage.intro}
+            </p>
+
+            {/* Metadata row */}
+            <div className="border-t border-[#1e1e20]/15 pt-[21px] w-full md:w-[49%] flex flex-wrap md:flex-nowrap items-start justify-between gap-[16px]">
+              {[
+                { label: 'CLIENT',  value: caseStudy.metaClient },
+                { label: 'YEAR',    value: caseStudy.metaYear },
+                { label: 'AREA',    value: caseStudy.metaArea },
+                { label: 'PROJECT', value: caseStudy.metaProject },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex flex-col gap-[21px]">
+                  <p className="text-[12px] uppercase tracking-[1.92px] text-[#8f8f8f] font-extrabold whitespace-nowrap">{label}</p>
+                  <p className="text-[14px] font-bold text-[#111] leading-[1.75] whitespace-nowrap">{value}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

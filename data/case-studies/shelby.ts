@@ -7,7 +7,6 @@ import type { CaseStudyData } from '@/lib/case-study-types'
 
 export const shelbyData: CaseStudyData = {
   // ── Hero ──────────────────────────────────────────────────────────────────
-  // cs-shelby-hero.png is a clean image (no baked text) — overlay is applied programmatically.
   heroColor: '#1e1208',
   heroImage: '/images/cs-shelby-hero.png',
   heroLines: ['THE ORIGINAL AMERICAN RIDE.', 'REIMAGINED.'],
@@ -62,10 +61,11 @@ export const shelbyData: CaseStudyData = {
       "At Schoolhouse Lane, we believe there is \"no cure for curiosity\". For Shelby, this meant a human-centric design approach that prioritises rider protection and community. This work ensures that Shelby's most intangible asset — its 100-year soul — becomes its most measurable competitive advantage in the global bicycle arena.",
   },
 
-  // ── Full-width image ──────────────────────────────────────────────────────
-  // Edge-to-edge image displayed between content sections and human advantage.
-  // case-shelby-1.png = campaign creative banner.
-  fullWidthImage: '/images/case-shelby-1.png',
+  // ── Engineering Ecosystem images ──────────────────────────────────────────
+  // Two images stacked in the LEFT column, alongside the text on the right.
+  ecosystemSideImages: ['/images/cs-shelby-hero.png', '/images/case-shelby-4.png'],
+  // Mood-board / collage image shown below the text on the right side.
+  ecosystemMoodBoard: '/images/case-shelby-5.png',
 
   // ── Metadata ──────────────────────────────────────────────────────────────
   metaClient: 'Shelby Cycles',
