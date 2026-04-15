@@ -5,6 +5,8 @@ import Footer from '@/components/Footer'
 import WorkCTA from '@/components/work/WorkCTA'
 import CaseStudyHero from '@/components/work/CaseStudyHero'
 import CaseStudyContent from '@/components/work/CaseStudyContent'
+import CaseStudyCTA from '@/components/work/CaseStudyCTA'
+import CaseStudyRelated from '@/components/work/CaseStudyRelated'
 import CaseStudyNav from '@/components/work/CaseStudyNav'
 import { getProjectBySlug, getAdjacentProjects, projects } from '@/lib/work-data'
 
@@ -49,6 +51,8 @@ export default async function CaseStudyPage({
       <Header forceDark />
       <CaseStudyHero project={project} />
       <CaseStudyContent project={project} />
+      {project.caseStudy && <CaseStudyCTA />}
+      {project.caseStudy && <CaseStudyRelated project={project} />}
       <CaseStudyNav prev={prev} next={next} />
       <WorkCTA />
       <Footer />
