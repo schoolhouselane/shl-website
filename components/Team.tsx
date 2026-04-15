@@ -86,7 +86,7 @@ const team = [
     src: '/images/Dea Gjoshi.png',
     name: 'Dea Gjoshi',
     role: 'Content & Video Creator',
-    bio: 'Dea translates the No Cure for Curiosity philosophy into the era of algorithmic noise by prioritizing the emotional, the ethical, and the real. Through cinematic discovery and creative innovation, she builds the Creative Commerce touchpoints that capture hearts and minds, transforming abstract strategy into pioneering media.',
+    bio: 'Dea translates the "No Cure for Curiosity" philosophy into the era of algorithmic noise by prioritizing the emotional, the ethical, and the real. She doesn\'t just tell stories; she architects the human-centric content that allows brands to live their organising principles. Through cinematic discovery and creative innovation, Dea builds the "Creative Commerce" touchpoints that capture hearts and minds. Her work transforms abstract strategy into tactile, pioneering media that accelerates the business goals of every client.',
   },
   {
     src: '/images/Kamran Hussain.png',
@@ -161,7 +161,7 @@ export default function Team() {
                       {member.role}
                     </p>
                   </div>
-                  <p className="text-[13px] md:text-[16px] text-[#111] font-semibold italic leading-snug">
+                  <p className="text-[13px] md:text-[16px] text-[#111] font-normal leading-snug">
                     {member.bio}
                   </p>
                 </div>
