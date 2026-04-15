@@ -9,6 +9,7 @@ import CaseStudyCTA from '@/components/work/CaseStudyCTA'
 import CaseStudyRelated from '@/components/work/CaseStudyRelated'
 import CaseStudyNav from '@/components/work/CaseStudyNav'
 import { getProjectBySlug, getAdjacentProjects, projects } from '@/lib/work-data'
+import { getCaseStudyData } from '@/data/case-studies'
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -22,15 +23,16 @@ export async function generateMetadata({
   const { slug } = await params
   const project = getProjectBySlug(slug)
   if (!project) return {}
+  const cs = getCaseStudyData(slug)
   return {
-    title: `${project.title} — Schoolhouse Lane`,
-    description: project.description,
+    title: cs?.seoTitle ?? `${project.title} — Schoolhouse Lane`,
+    description: cs?.seoDescription ?? project.description,
     alternates: { canonical: `https://schoolhouselane.co/work/${slug}` },
     openGraph: {
-      title: `${project.title} — Schoolhouse Lane`,
-      description: project.description,
+      title: cs?.seoTitle ?? `${project.title} — Schoolhouse Lane`,
+      description: cs?.seoDescription ?? project.description,
       url: `https://schoolhouselane.co/work/${slug}`,
-      images: [{ url: project.heroImage }],
+      images: [{ url: cs?.heroImage ?? project.heroImage }],
     },
   }
 }
@@ -44,15 +46,16 @@ export default async function CaseStudyPage({
   const project = getProjectBySlug(slug)
   if (!project) notFound()
 
+  const caseStudy = getCaseStudyData(slug)
   const { prev, next } = getAdjacentProjects(slug)
 
   return (
     <main className="bg-[#f5f3ef] overflow-hidden">
       <Header forceDark />
-      <CaseStudyHero project={project} />
-      <CaseStudyContent project={project} />
-      {project.caseStudy && <CaseStudyCTA />}
-      {project.caseStudy && <CaseStudyRelated project={project} />}
+      <CaseStudyHero project={project} caseStudy={caseStudy} />
+      <CaseStudyContent project={project} caseStudy={caseStudy} />
+      {caseStudy && <CaseStudyCTA accentColor={caseStudy.accentColor} />}
+      {caseStudy && <CaseStudyRelated caseStudy={caseStudy} />}
       <CaseStudyNav prev={prev} next={next} />
       <WorkCTA />
       <Footer />
