@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 
 const tabs = [
@@ -46,7 +46,7 @@ const marqueeImages: StripItem[] = [
   { src: '/images/strip-30.png', w: 116, bg: '#ffffff', contain: true },
   { src: '/images/strip-31.png', w: 116, bg: '#ffffff', contain: true },
   { src: '/images/strip-32.png', w: 116, bg: '#ffffff', contain: true },
-    { src: '/images/strategy-1.jpg', w: 200 },
+  { src: '/images/strategy-1.jpg', w: 200 },
   { src: '/images/strategy-2.jpg', w: 200 },
   { src: '/images/strategy-3.jpg', w: 200 },
   { src: '/images/strategy-4.jpg', w: 200 },
@@ -57,13 +57,55 @@ const marqueeImages: StripItem[] = [
   { src: '/images/strategy-9.jpg', w: 200 },
 ]
 
+const doubled = [...marqueeImages, ...marqueeImages]
+
 export default function ServicesTabs() {
   const [active, setActive] = useState(0)
+  const stripRef = useRef<HTMLDivElement>(null)
+  const isDragging = useRef(false)
+  const startX = useRef(0)
+  const scrollStart = useRef(0)
+  const rafRef = useRef<number | null>(null)
+
+  // JS auto-scroll — pauses while dragging, seamless loop at halfway
+  useEffect(() => {
+    const el = stripRef.current
+    if (!el) return
+    const tick = () => {
+      if (!isDragging.current) {
+        el.scrollLeft += 1.5
+        if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft = 0
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    }
+    rafRef.current = requestAnimationFrame(tick)
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
+  }, [])
+
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    isDragging.current = true
+    startX.current = e.pageX
+    scrollStart.current = stripRef.current?.scrollLeft ?? 0
+    if (stripRef.current) stripRef.current.style.cursor = 'grabbing'
+  }
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging.current) return
+    e.preventDefault()
+    if (stripRef.current) {
+      stripRef.current.scrollLeft = scrollStart.current - (e.pageX - startX.current)
+    }
+  }
+
+  const stopDrag = () => {
+    isDragging.current = false
+    if (stripRef.current) stripRef.current.style.cursor = 'grab'
+  }
 
   return (
     <section className="w-full pb-[60px] flex flex-col gap-[40px]">
 
-      {/* Tab bar — border top + bottom, border-r between tabs */}
+      {/* Tab bar */}
       <div className="flex overflow-x-auto scrollbar-hide">
         {tabs.map((tab, i) => (
           <button
@@ -85,10 +127,17 @@ export default function ServicesTabs() {
         ))}
       </div>
 
-      {/* Auto-scrolling image strip */}
-      <div className="flex overflow-hidden h-[200px]">
-        <div className="flex gap-px animate-marquee h-[200px]" style={{ width: 'max-content' }}>
-          {[...marqueeImages, ...marqueeImages].map((item, i) => (
+      {/* Draggable image strip */}
+      <div
+        ref={stripRef}
+        className="flex overflow-x-auto scrollbar-hide h-[200px] cursor-grab select-none"
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={stopDrag}
+        onMouseLeave={stopDrag}
+      >
+        <div className="flex gap-px h-[200px] shrink-0" style={{ width: 'max-content' }}>
+          {doubled.map((item, i) => (
             <div
               key={i}
               className="relative shrink-0 h-[200px] overflow-hidden"
@@ -98,6 +147,7 @@ export default function ServicesTabs() {
                 src={item.src}
                 alt=""
                 fill
+                draggable={false}
                 className={item.contain ? 'object-contain' : 'object-cover object-center'}
                 sizes={`${item.w}px`}
               />
