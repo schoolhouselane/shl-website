@@ -28,7 +28,6 @@ export interface CaseStudyData {
   heroLines: string[]        // italic lines on the right side of hero
   heroAccentLine: number     // 0-based index of the line that gets the accent colour
   heroAccentColor: string    // colour of that line, e.g. '#d8c09c'
-  accentColor: string        // accent colour used in the CTA highlight
 
   // ── Title block (below hero) ──────────────────────────────────────────────
   category: string           // breadcrumb tag, e.g. 'BRAND IDENTITY — Campaigns'

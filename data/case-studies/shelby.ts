@@ -12,7 +12,6 @@ export const shelbyData: CaseStudyData = {
   heroLines: [],
   heroAccentLine: 1,
   heroAccentColor: '#d8c09c',
-  accentColor: '#d8c09c',
 
   // ── Title block ───────────────────────────────────────────────────────────
   category: 'BRAND IDENTITY — Campaigns',
