@@ -28,17 +28,6 @@ function RichContent({ project }: { project: WorkProject }) {
   return (
     <section className="bg-[#f5f3ef]">
 
-      {/* ── Title block ───────────────────────────────────────────────────── */}
-      <div className="px-5 md:px-[90px] pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px] flex flex-col gap-[8px]">
-        <p className="text-[12px] text-[#777] uppercase tracking-[0.1em]">{cs.category}</p>
-        <h1 className="font-black text-[36px] md:text-[64px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-1.5px]">
-          {project.title}
-        </h1>
-        <p className="font-black text-[20px] md:text-[36px] uppercase text-[#1e1e20] leading-tight tracking-[-0.5px]">
-          {cs.subtitle}
-        </p>
-      </div>
-
       {/* ── Section 1 + side images ───────────────────────────────────────── */}
       <div className="px-5 md:px-[90px] py-[40px] md:py-[80px] flex flex-col md:flex-row gap-[40px] md:gap-[60px]">
 

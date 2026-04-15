@@ -8,6 +8,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 export interface CaseStudyData {
   heroColor: string           // background colour behind the hero image, e.g. '#04f9f4'
+  heroImage: string           // hero image path (different from card thumbnail), e.g. '/images/cs-shelby-hero.png'
+  heroLines: string[]         // text lines overlaid on the right side of the hero
+  heroAccentLine: number      // index (0-based) of the line that gets the accent colour
+  heroAccentColor: string     // colour of the accent line, e.g. '#d8c09c'
   category: string            // tag line, e.g. 'BRAND IDENTITY — Campaigns'
   subtitle: string            // one-line subtitle below the big title
 
@@ -93,6 +97,10 @@ export const projects: WorkProject[] = [
     // ─────────────────────────────────────────────────────────────────────────
     caseStudy: {
       heroColor: '#04f9f4',
+      heroImage: '/images/cs-shelby-hero.png',
+      heroLines: ['The original', 'American ride.', 'Reimagined.'],
+      heroAccentLine: 2,
+      heroAccentColor: '#d8c09c',
       category: 'BRAND IDENTITY — Campaigns',
       subtitle: 'Reimagining Legacy through Creative Commerce',
 

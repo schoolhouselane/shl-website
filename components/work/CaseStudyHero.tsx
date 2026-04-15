@@ -6,79 +6,86 @@ import type { WorkProject } from '@/lib/work-data'
 
 export default function CaseStudyHero({ project }: { project: WorkProject }) {
   const [ref, inView] = useInView(0.1)
-
-  const heroColor = project.caseStudy?.heroColor
+  const cs = project.caseStudy
 
   return (
-    <section className="bg-[#f5f3ef]">
-      {/* Text block */}
-      <div className="px-5 md:px-[90px] pt-[140px] md:pt-[180px] pb-[40px] md:pb-[60px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#f5f3ef] pt-[82px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0 }}
+    >
+      {/* ── Hero image box — px-[90px] sides, colored bg, full-bleed inside ── */}
+      <div className="px-5 md:px-[90px]">
+        <div
+          className="relative w-full overflow-hidden"
+          style={{
+            height: 'clamp(260px, 40vw, 627px)',
+            backgroundColor: cs?.heroColor ?? '#1e1e20',
+          }}
+        >
+          {/* Hero photo — fills the full box */}
+          <Image
+            src={cs?.heroImage ?? project.heroImage}
+            alt={project.title}
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="(max-width: 768px) 100vw, calc(100vw - 180px)"
+          />
 
-        {/* Breadcrumb + meta row */}
-        <div className="flex flex-wrap items-center gap-[12px] mb-[28px]">
-          <Link
-            href="/work"
-            className="text-[12px] uppercase tracking-[0.1em] text-[#777] hover:text-[#1e1e20] transition-colors"
-          >
+          {/* Dark gradient — right half, same as Figma */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 30%, transparent 55%)',
+            }}
+          />
+
+          {/* Brand text overlay — right side */}
+          {cs?.heroLines && cs.heroLines.length > 0 && (
+            <div className="absolute right-[5%] top-1/2 -translate-y-1/2 text-center md:text-right pr-[2%]">
+              {cs.heroLines.map((line, i) => (
+                <p
+                  key={i}
+                  className="font-black uppercase leading-[1.15] text-[clamp(22px,4vw,72px)] whitespace-nowrap"
+                  style={{
+                    color: i === cs.heroAccentLine ? cs.heroAccentColor : '#ffffff',
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ── Title block ─────────────────────────────────────────────────── */}
+      <div className="px-5 md:px-[90px] pt-[40px] md:pt-[60px] pb-[10px] flex flex-col gap-[8px]">
+        {/* Breadcrumb */}
+        <div className="flex flex-wrap items-center gap-[10px] mb-[16px]">
+          <Link href="/work" className="text-[12px] uppercase tracking-[0.1em] text-[#777] hover:text-[#1e1e20] transition-colors">
             Work
           </Link>
           <span className="text-[#777]">/</span>
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-[11px] uppercase tracking-[0.08em] text-[#777] border border-[#1e1e20]/25 px-[12px] py-[5px] rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-          <span className="text-[11px] uppercase tracking-[0.08em] text-[#777] ml-auto">
-            {project.year}
+          <span className="text-[12px] uppercase tracking-[0.08em] text-[#777]">
+            {cs?.category ?? project.category}
           </span>
         </div>
 
-        {/* Title */}
-        <h1
-          ref={ref as React.RefObject<HTMLHeadingElement>}
-          className="font-black text-[56px] sm:text-[80px] md:text-[100px] lg:text-[120px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-2px] transition-all duration-700 max-w-[1100px]"
-          style={{
-            opacity: inView ? 1 : 0,
-            transform: inView ? 'translateY(0)' : 'translateY(30px)',
-          }}
-        >
+        {/* Big title */}
+        <h1 className="font-black text-[40px] md:text-[64px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-1.5px]">
           {project.title}
         </h1>
 
-        {/* Description */}
-        <p
-          className="mt-[24px] md:mt-[36px] text-[16px] md:text-[20px] text-[#111] leading-[1.6] max-w-[660px] transition-all duration-700"
-          style={{
-            opacity: inView ? 1 : 0,
-            transform: inView ? 'translateY(0)' : 'translateY(20px)',
-            transitionDelay: '150ms',
-          }}
-        >
-          {project.description}
-        </p>
-      </div>
-
-      {/* Full-width hero image */}
-      <div
-        className="relative w-full overflow-hidden transition-all duration-700"
-        style={{
-          opacity: inView ? 1 : 0,
-          transitionDelay: '250ms',
-          aspectRatio: '16 / 7',
-          backgroundColor: heroColor ?? 'transparent',
-        }}
-      >
-        <Image
-          src={project.heroImage}
-          alt={project.title}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+        {/* Subtitle */}
+        {cs?.subtitle && (
+          <p className="font-black text-[18px] md:text-[36px] uppercase text-[#1e1e20] leading-tight tracking-[-0.5px]">
+            {cs.subtitle}
+          </p>
+        )}
       </div>
     </section>
   )
