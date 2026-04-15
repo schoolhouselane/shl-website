@@ -14,15 +14,6 @@ const tabs = [
 type StripItem = { src: string; w: number; bg?: string; contain?: boolean }
 
 const marqueeImages: StripItem[] = [
-  { src: '/images/strategy-1.jpg', w: 200 },
-  { src: '/images/strategy-2.jpg', w: 200 },
-  { src: '/images/strategy-3.jpg', w: 200 },
-  { src: '/images/strategy-4.jpg', w: 200 },
-  { src: '/images/strategy-5.jpg', w: 200 },
-  { src: '/images/strategy-6.jpg', w: 200 },
-  { src: '/images/strategy-7.jpg', w: 200 },
-  { src: '/images/strategy-8.jpg', w: 200 },
-  { src: '/images/strategy-9.jpg', w: 200 },
   { src: '/images/strip-01.png', w: 356, bg: '#5a4734' },
   { src: '/images/strip-02.png', w: 320, bg: '#c24751' },
   { src: '/images/strip-03.png', w: 116, bg: '#ffffff', contain: true },
@@ -55,6 +46,15 @@ const marqueeImages: StripItem[] = [
   { src: '/images/strip-30.png', w: 116, bg: '#ffffff', contain: true },
   { src: '/images/strip-31.png', w: 116, bg: '#ffffff', contain: true },
   { src: '/images/strip-32.png', w: 116, bg: '#ffffff', contain: true },
+    { src: '/images/strategy-1.jpg', w: 200 },
+  { src: '/images/strategy-2.jpg', w: 200 },
+  { src: '/images/strategy-3.jpg', w: 200 },
+  { src: '/images/strategy-4.jpg', w: 200 },
+  { src: '/images/strategy-5.jpg', w: 200 },
+  { src: '/images/strategy-6.jpg', w: 200 },
+  { src: '/images/strategy-7.jpg', w: 200 },
+  { src: '/images/strategy-8.jpg', w: 200 },
+  { src: '/images/strategy-9.jpg', w: 200 },
 ]
 
 export default function ServicesTabs() {
