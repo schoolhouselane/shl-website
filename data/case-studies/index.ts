@@ -8,12 +8,14 @@
 import type { CaseStudyData } from '@/lib/case-study-types'
 import { shelbyData } from './shelby'
 import { vivoHotelsData } from './vivo-hotels'
+import { realMapWipesData } from './real-map-wipes'
+import { datadirectData } from './datadirect'
 
 const registry: Record<string, CaseStudyData> = {
   shelby: shelbyData,
-   'vivo-hotels': vivoHotelsData,
-  // 'datadirect': datadirectData,
-  // 'real-map-wipes': realMapWipesData,
+  'vivo-hotels': vivoHotelsData,
+  'real-map-wipes': realMapWipesData,
+  datadirect: datadirectData,
 }
 
 export function getCaseStudyData(slug: string): CaseStudyData | undefined {

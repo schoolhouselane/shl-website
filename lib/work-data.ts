@@ -24,7 +24,7 @@ export const projects: WorkProject[] = [
     tags: ['BRAND IDENTITY', 'CAMPAIGNS'],
     description:
       'A heritage motorsport brand repositioned for the modern performance lifestyle market. Bold visual identity, campaign direction, and digital activation across every touchpoint.',
-    image: '/images/case-shelby-5.png',
+    image: '/images/work-shelby.png',
     heroImage: '/images/case-shelby-1.png',
     year: '2024',
     client: 'Shelby',

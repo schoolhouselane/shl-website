@@ -93,7 +93,7 @@ export default function CaseStudyHero({
 
         {/* Subtitle */}
         {caseStudy?.subtitle && (
-          <p className="font-bold text-[16px] md:text-[20px] text-[#1e1e20] leading-snug mt-[8px]">
+          <p className="font-black text-[24px] md:text-[36px] uppercase text-[#1e1e20] leading-normal tracking-[-1.92px] mt-[8px]">
             {caseStudy.subtitle}
           </p>
         )}
