@@ -27,13 +27,6 @@ export default function LifeAtSHL() {
           <p className="text-[14px] md:text-[16px] lg:text-[20px] text-[#1e1e20] leading-[1.7] lg:text-right">
             The work is serious. The environment doesn&apos;t have to be. Behind every deliverable is a team that genuinely loves what they&apos;re building.
           </p>
-          <Link
-            href="/contact"
-            className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-[24px] py-[12px] text-[16px] font-normal uppercase text-[#1e1e20]"
-          >
-            We&apos;re Hiring
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </Link>
         </div>
       </div>
 
