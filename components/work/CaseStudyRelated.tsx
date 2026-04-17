@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { projects, type WorkProject } from '@/lib/work-data'
+import { useInView } from '@/hooks/useInView'
 
 function ArrowUpRight() {
   return (
@@ -21,13 +22,20 @@ export default function CaseStudyRelated({ currentSlug }: { currentSlug: string 
     setPicks(shuffled.slice(0, 2))
   }, [currentSlug])
 
+  const [ref, inView] = useInView(0.05)
+  const [gridRef, gridInView] = useInView(0.05)
+
   if (picks.length < 2) return null
 
   return (
     <section className="bg-[#f5f3ef] px-5 md:px-6 lg:px-[90px] pt-[60px] md:pt-[60px] lg:pt-[80px] pb-[60px] md:pb-[60px] lg:pb-[80px] flex flex-col gap-[40px] md:gap-[40px] lg:gap-[60px]">
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-[20px]">
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-[20px] transition-all duration-700"
+        style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+      >
         <h2 className="font-black text-[32px] md:text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-normal">
           Selected Work<br />That Delivered Growth
         </h2>
@@ -45,9 +53,17 @@ export default function CaseStudyRelated({ currentSlug }: { currentSlug: string 
       </div>
 
       {/* Two cards — same markup as WorkGrid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
-        {picks.map(p => (
-          <article key={p.slug} className="border border-black flex flex-col group">
+      <div ref={gridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
+        {picks.map((p, i) => (
+          <article
+            key={p.slug}
+            className="border border-black flex flex-col group transition-all duration-700"
+            style={{
+              opacity: gridInView ? 1 : 0,
+              transform: gridInView ? 'translateY(0)' : 'translateY(32px)',
+              transitionDelay: `${i * 100}ms`,
+            }}
+          >
             {/* Image — aspect ratio preserved */}
             <div className="relative w-full aspect-[764/428] overflow-hidden">
               <Image

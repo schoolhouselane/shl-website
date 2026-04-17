@@ -1,8 +1,16 @@
+'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 export default function AboutCTA() {
+  const [ref, inView] = useInView(0.15)
+
   return (
-    <section className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[50px] md:py-[60px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 md:gap-10">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[50px] md:py-[60px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 md:gap-10 transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
 
       {/* Left: headline + body */}
       <div className="flex flex-col gap-[19px] max-w-full lg:max-w-[446px]">

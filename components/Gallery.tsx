@@ -1,9 +1,17 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 export default function Gallery() {
+  const [ref, inView] = useInView(0.1)
+
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(28px)' }}
+    >
       {/* Arrow button */}
       <div className="flex justify-end mb-3">
         <Link

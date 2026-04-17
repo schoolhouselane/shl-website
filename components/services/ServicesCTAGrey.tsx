@@ -1,8 +1,16 @@
+'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 export default function ServicesCTAGrey() {
+  const [ref, inView] = useInView(0.15)
+
   return (
-    <section className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[50px] md:py-[60px] flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-10">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[50px] md:py-[60px] flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-10 transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
 
       {/* Left: headline */}
       <h2 className="font-black text-[22px] md:text-[32px] lg:text-[60px] leading-[0.95] tracking-[-1.2px] uppercase text-[#1e1e20] max-w-full lg:max-w-[760px]">

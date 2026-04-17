@@ -1,8 +1,16 @@
+'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 export default function LifeAtSHL() {
+  const [ref, inView] = useInView(0.2)
+
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[32px] md:pt-[80px] pb-0">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[32px] md:pt-[80px] pb-0 transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-[40px]">
 
         {/* Left — heading */}

@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 const stats = [
   { value: '99%', label: 'Client Retention' },
@@ -7,8 +9,14 @@ const stats = [
 ]
 
 export default function Stats() {
+  const [ref, inView] = useInView(0.15)
+
   return (
-    <section className="bg-white px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[40px] lg:py-[80px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-white px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[40px] lg:py-[80px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
       {/* Mobile layout */}
       <div className="flex items-start justify-between gap-4 md:hidden">
 

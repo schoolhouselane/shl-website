@@ -1,8 +1,16 @@
+'use client'
 import Image from 'next/image'
+import { useInView } from '@/hooks/useInView'
 
 export default function WorkGallery() {
+  const [ref, inView] = useInView(0.1)
+
   return (
-    <section className="bg-[#f5f3ef] pt-[20px] md:pt-[32px] pb-[60px] md:pb-[120px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#f5f3ef] pt-[20px] md:pt-[32px] pb-[60px] md:pb-[120px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
       <div className="flex gap-[16px] items-stretch px-5 md:px-[90px]">
 
         {/* Col 1 — tall portrait */}

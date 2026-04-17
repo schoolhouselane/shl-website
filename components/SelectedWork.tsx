@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 import { projects } from '@/lib/work-data'
 
 const slugs = ['shelby', 'vivo-hotels', 'datadirect', 'real-map-wipes']
@@ -22,11 +24,18 @@ function ArrowUpRight() {
 }
 
 export default function SelectedWork() {
+  const [headerRef, headerInView] = useInView(0.2)
+  const [gridRef, gridInView] = useInView(0.1)
+
   return (
     <section className="px-4 md:px-6 lg:px-[90px] pt-[32px] md:pt-[40px] lg:pt-[60px] pb-[40px] md:pb-[60px] bg-[#f5f3ef]">
 
       {/* Header */}
-      <div className="mb-8 md:mb-10 flex flex-col gap-[20px]">
+      <div
+        ref={headerRef as React.RefObject<HTMLDivElement>}
+        className="mb-8 md:mb-10 flex flex-col gap-[20px] transition-all duration-700"
+        style={{ opacity: headerInView ? 1 : 0, transform: headerInView ? 'translateY(0)' : 'translateY(24px)' }}
+      >
         <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20]">
           Selected Work<br />That Delivered Growth
         </h2>
@@ -44,10 +53,18 @@ export default function SelectedWork() {
         </div>
       </div>
 
-      {/* Grid — 2 on mobile, 4 on tablet+ (2×2) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
+      {/* Grid */}
+      <div ref={gridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
         {works.map((work, i) => (
-          <article key={work.id} className={`border border-black flex flex-col group${i >= 2 ? ' hidden md:flex' : ''}`}>
+          <article
+            key={work.id}
+            className={`border border-black flex flex-col group transition-all duration-700${i >= 2 ? ' hidden md:flex' : ''}`}
+            style={{
+              opacity: gridInView ? 1 : 0,
+              transform: gridInView ? 'translateY(0)' : 'translateY(32px)',
+              transitionDelay: `${i * 80}ms`,
+            }}
+          >
             <div className="relative w-full aspect-[764/428] overflow-hidden">
               <Image
                 src={work.image}

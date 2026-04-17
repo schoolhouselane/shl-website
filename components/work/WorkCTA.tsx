@@ -1,10 +1,19 @@
+'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 export default function WorkCTA() {
+  const [darkRef, darkInView] = useInView(0.15)
+  const [greyRef, greyInView] = useInView(0.15)
+
   return (
     <>
-      {/* Dark CTA — 949:28051 */}
-      <section className="bg-[#1e1e20] px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[40px] lg:py-[80px] flex flex-row items-end justify-between gap-[12px] md:gap-[40px]">
+      {/* Dark CTA */}
+      <section
+        ref={darkRef as React.RefObject<HTMLElement>}
+        className="bg-[#1e1e20] px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[40px] lg:py-[80px] flex flex-row items-end justify-between gap-[12px] md:gap-[40px] transition-all duration-700"
+        style={{ opacity: darkInView ? 1 : 0, transform: darkInView ? 'translateY(0)' : 'translateY(24px)' }}
+      >
         <h2 className="font-black text-[28px] md:text-[40px] lg:text-[60px] uppercase text-white leading-[0.92] tracking-[-1px]">
           Ready for Your<br />Own Growth<br />Story?
         </h2>
@@ -22,8 +31,12 @@ export default function WorkCTA() {
         </div>
       </section>
 
-      {/* Grey industry CTA — 949:28416 */}
-      <section className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[40px] lg:py-[80px] flex flex-col md:flex-row md:items-end md:justify-between gap-[24px] md:gap-[40px]">
+      {/* Grey industry CTA */}
+      <section
+        ref={greyRef as React.RefObject<HTMLElement>}
+        className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[40px] lg:py-[80px] flex flex-col md:flex-row md:items-end md:justify-between gap-[24px] md:gap-[40px] transition-all duration-700"
+        style={{ opacity: greyInView ? 1 : 0, transform: greyInView ? 'translateY(0)' : 'translateY(24px)' }}
+      >
         <div className="flex flex-col gap-[19px] md:max-w-[613px] lg:max-w-[875px]">
           <h2 className="font-black text-[28px] md:text-[40px] lg:text-[60px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-1px]">
             Not Seeing Your Industry?

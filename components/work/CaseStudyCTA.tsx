@@ -1,11 +1,19 @@
+'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 export default function CaseStudyCTA() {
+  const [ref, inView] = useInView(0.15)
+
   return (
-    <section className="bg-[#1e1e20] px-5 md:px-6 lg:px-[90px] py-[40px] md:py-[40px] lg:py-[60px] flex flex-row items-end justify-between gap-[12px] md:gap-[40px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#1e1e20] px-5 md:px-6 lg:px-[90px] py-[40px] md:py-[40px] lg:py-[60px] flex flex-row items-end justify-between gap-[12px] md:gap-[40px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
 
       {/* Headline */}
-      <h2 className="font-black text-[28px] md:text-[40px] lg:text-[60px] uppercase text-white leading-[0.92] tracking-[-1px]">
+      <h2 className="font-black text-[28px] md:text-[40px] lg:text-[60px] uppercase text-white leading-[0.92] tracking-[-1.5px]">
         LOVED THIS?<br />
         LET&apos;S APPLY IT<br />
         TO YOUR BRAND.

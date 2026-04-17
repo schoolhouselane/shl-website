@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 const projects = [
   {
@@ -49,14 +51,28 @@ function ArrowUpRight() {
 }
 
 export default function WorkGrid() {
+  const [headerRef, headerInView] = useInView(0.2)
+  const [gridRef, gridInView] = useInView(0.05)
+
   return (
     <section className="bg-[#f5f3ef] pb-[60px] md:pb-[80px]">
 
       <div className="w-full px-4 md:px-6 lg:px-[90px] pt-[40px] md:pt-[60px] lg:pt-[80px] flex flex-col gap-[40px] md:gap-[60px] items-center">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
-          {projects.map((project) => (
-            <article key={project.id} className="border border-black flex flex-col group">
+        <div
+          ref={gridRef as React.RefObject<HTMLDivElement>}
+          className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full"
+        >
+          {projects.map((project, i) => (
+            <article
+              key={project.id}
+              className="border border-black flex flex-col group transition-all duration-700"
+              style={{
+                opacity: gridInView ? 1 : 0,
+                transform: gridInView ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: `${i * 80}ms`,
+              }}
+            >
 
               {/* Image — aspect ratio 764:428 preserved at all sizes */}
               <div className="relative w-full aspect-[764/428] overflow-hidden">

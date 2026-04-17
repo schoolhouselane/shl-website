@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 import type { WorkProject } from '@/lib/work-data'
 
 export default function CaseStudyNav({
@@ -8,10 +10,16 @@ export default function CaseStudyNav({
   prev: WorkProject | null
   next: WorkProject | null
 }) {
+  const [ref, inView] = useInView(0.1)
+
   if (!prev && !next) return null
 
   return (
-    <section className="border-t border-[#1e1e20]/20 bg-[#f5f3ef]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="border-t border-[#1e1e20]/20 bg-[#f5f3ef] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(20px)' }}
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2">
 
         {/* Prev */}

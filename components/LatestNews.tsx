@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 const articles = [
   {
@@ -15,11 +17,18 @@ const articles = [
 ]
 
 export default function LatestNews() {
+  const [leftRef, leftInView] = useInView(0.2)
+  const [cardsRef, cardsInView] = useInView(0.1)
+
   return (
     <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[60px] lg:py-[120px]">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Left text */}
-        <div className="w-full lg:w-[380px] shrink-0 flex flex-col gap-5">
+        <div
+          ref={leftRef as React.RefObject<HTMLDivElement>}
+          className="w-full lg:w-[380px] shrink-0 flex flex-col gap-5 transition-all duration-700"
+          style={{ opacity: leftInView ? 1 : 0, transform: leftInView ? 'translateY(0)' : 'translateY(24px)' }}
+        >
           <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-tight tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20]">
             Latest News from Our Work
           </h2>
@@ -33,9 +42,17 @@ export default function LatestNews() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 flex-1">
+        <div ref={cardsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-5 flex-1">
           {articles.map((a, i) => (
-            <div key={i} className="flex flex-col">
+            <div
+              key={i}
+              className="flex flex-col transition-all duration-700"
+              style={{
+                opacity: cardsInView ? 1 : 0,
+                transform: cardsInView ? 'translateY(0)' : 'translateY(32px)',
+                transitionDelay: `${i * 100}ms`,
+              }}
+            >
               <div className="w-full overflow-hidden">
                 <Image src={a.img} alt={a.title} width={600} height={800} className="w-full h-auto hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 50vw" />
               </div>

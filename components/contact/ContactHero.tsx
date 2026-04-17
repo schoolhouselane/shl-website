@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useInView } from '@/hooks/useInView'
 
 function ArrowUpRight() {
   return (
@@ -11,6 +12,7 @@ function ArrowUpRight() {
 }
 
 export default function ContactHero() {
+  const [ref, inView] = useInView(0.05)
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -44,7 +46,11 @@ export default function ContactHero() {
   }
 
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[80px] md:pt-[100px] lg:pt-[120px] pb-[40px] md:pb-[60px] lg:pb-[120px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[80px] md:pt-[100px] lg:pt-[120px] pb-[40px] md:pb-[60px] lg:pb-[120px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
       <div className="flex flex-col lg:flex-row gap-[24px] md:gap-[40px] lg:gap-[30px] lg:items-end">
 
         {/* ── Left column ── */}
