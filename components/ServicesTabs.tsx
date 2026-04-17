@@ -102,15 +102,17 @@ export default function ServicesTabs() {
   }
 
   return (
-    <section className="w-full pb-[60px] flex flex-col gap-[40px]">
+    <section className="w-full pt-[32px] md:pt-[48px] lg:pt-[60px] pb-[60px] flex flex-col gap-[40px]">
 
       {/* Tab bar */}
-      <div className="flex overflow-x-auto scrollbar-hide">
+      <div className="flex overflow-x-auto scrollbar-hide border-t border-[#1e1e20]/20">
         {tabs.map((tab, i) => (
           <button
             key={tab}
             onClick={() => setActive(i)}
-            className={`flex items-center gap-[8px] px-[14px] md:px-[20px] lg:px-[60px] shrink-0 border-r border-[#1e1e20] font-normal lg:font-medium text-[16px] lg:text-[20px] uppercase whitespace-nowrap transition-colors ${
+            className={`flex items-center gap-[8px] shrink-0 border-r border-[#1e1e20] font-normal lg:font-medium text-[16px] lg:text-[20px] uppercase whitespace-nowrap transition-colors ${
+              i === 0 ? 'px-[14px] md:px-[20px] lg:pl-[90px] lg:pr-[60px]' : 'px-[14px] md:px-[20px] lg:px-[60px]'
+            } ${
               i === active
                 ? 'bg-[#1e1e20] text-white py-[10px] md:py-[18px] lg:py-[30px]'
                 : 'bg-transparent text-[#1e1e20] py-[8px] md:py-[12px] lg:py-[18px] hover:bg-[#1e1e20]/5'
