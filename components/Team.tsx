@@ -140,7 +140,7 @@ export default function Team() {
             <div key={i} className="group flex shrink-0">
 
               {/* Photo */}
-              <div className="relative w-[110px] md:w-[160px] lg:w-[200px] h-[260px] md:h-[500px] lg:h-[759px] overflow-hidden">
+              <div className="relative w-[91.6px] md:w-[160px] lg:w-[200px] h-[347.84px] md:h-[500px] lg:h-[759px] overflow-hidden">
                 <Image
                   src={member.src}
                   alt={member.name}
