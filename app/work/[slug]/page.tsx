@@ -23,15 +23,25 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug)
   if (!project) return {}
   const cs = getCaseStudyData(slug)
+  const heroImage = cs?.heroImage ?? project.heroImage
+  const title = cs?.seoTitle ?? `${project.title} — Case Study`
+  const description = cs?.seoDescription ?? project.description
   return {
-    title: cs?.seoTitle ?? `${project.title} — Schoolhouse Lane`,
-    description: cs?.seoDescription ?? project.description,
+    title,
+    description,
     alternates: { canonical: `https://schoolhouselane.co/work/${slug}` },
     openGraph: {
-      title: cs?.seoTitle ?? `${project.title} — Schoolhouse Lane`,
-      description: cs?.seoDescription ?? project.description,
+      title,
+      description,
       url: `https://schoolhouselane.co/work/${slug}`,
-      images: [{ url: cs?.heroImage ?? project.heroImage }],
+      type: 'article',
+      images: [{ url: heroImage, width: 1200, height: 630, alt: project.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [heroImage],
     },
   }
 }
@@ -48,8 +58,54 @@ export default async function CaseStudyPage({
   const caseStudy = getCaseStudyData(slug)
   const { prev, next } = getAdjacentProjects(slug)
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://schoolhouselane.co',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Work',
+        item: 'https://schoolhouselane.co/work',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: project.title,
+        item: `https://schoolhouselane.co/work/${slug}`,
+      },
+    ],
+  }
+
+  const caseStudySchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.description,
+    url: `https://schoolhouselane.co/work/${slug}`,
+    datePublished: `${project.year}-01-01`,
+    author: { '@id': 'https://schoolhouselane.co/#organization' },
+    provider: { '@id': 'https://schoolhouselane.co/#organization' },
+    about: { '@type': 'Organization', name: project.client },
+    keywords: project.tags.join(', '),
+  }
+
   return (
     <main className="bg-[#f5f3ef] overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
+      />
       <Header forceDark />
       <CaseStudyHero project={project} caseStudy={caseStudy} />
       <CaseStudyContent project={project} caseStudy={caseStudy} />

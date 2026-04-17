@@ -2,9 +2,21 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 
 export const metadata: Metadata = {
-  title: 'About — Schoolhouse Lane',
-  description: 'A small, senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.',
+  title: 'About Us — Schoolhouse Lane',
+  description: 'Senior strategists, creatives, and brand architects operating at the intersection of imagination and commercial rigour. 79+ projects. 5-star rated. 99% client retention.',
   alternates: { canonical: 'https://schoolhouselane.co/about' },
+  openGraph: {
+    title: 'About Schoolhouse Lane — Senior Creative Commerce Team',
+    description: 'Senior strategists, creatives, and brand architects. 79+ projects, 5-star rated, 99% client retention.',
+    url: 'https://schoolhouselane.co/about',
+    images: [{ url: '/images/about-hero.png', width: 1200, height: 630, alt: 'Schoolhouse Lane Team' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Schoolhouse Lane',
+    description: 'Senior strategists, creatives, and brand architects. 79+ projects, 5-star rated, 99% client retention.',
+    images: ['/images/about-hero.png'],
+  },
 }
 import Footer from '@/components/Footer'
 import AboutHero from '@/components/about/AboutHero'

@@ -1,7 +1,15 @@
 import { MetadataRoute } from 'next'
+import { projects } from '@/lib/work-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://schoolhouselane.co'
+
+  const caseStudyUrls: MetadataRoute.Sitemap = projects.map((p) => ({
+    url: `${base}/work/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }))
 
   return [
     {
@@ -22,6 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    {
+      url: `${base}/work`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    ...caseStudyUrls,
     {
       url: `${base}/contact`,
       lastModified: new Date(),

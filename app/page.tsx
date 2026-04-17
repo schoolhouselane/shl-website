@@ -3,8 +3,20 @@ import Header from '@/components/Header'
 
 export const metadata: Metadata = {
   title: 'Schoolhouse Lane — Creative Commerce Agency',
-  description: 'We exist at the intersection of creativity and revenue growth. A senior team of brand strategists and creatives transforming brand into a high-leverage strategic asset.',
+  description: 'Brand strategy, identity, campaigns, and websites built to drive revenue. 80+ brands transformed across hospitality, fintech, consumer, wellness, and fashion.',
   alternates: { canonical: 'https://schoolhouselane.co' },
+  openGraph: {
+    title: 'Schoolhouse Lane — Creative Commerce Agency',
+    description: 'Brand strategy, identity, campaigns, and websites built to drive revenue.',
+    url: 'https://schoolhouselane.co',
+    images: [{ url: '/images/hero-1.png', width: 1200, height: 630, alt: 'Schoolhouse Lane' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Schoolhouse Lane — Creative Commerce Agency',
+    description: 'Brand strategy, identity, campaigns, and websites built to drive revenue.',
+    images: ['/images/hero-1.png'],
+  },
 }
 import Hero from '@/components/Hero'
 import ServicesTabs from '@/components/ServicesTabs'

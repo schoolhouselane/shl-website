@@ -102,16 +102,16 @@ export const projects: WorkProject[] = [
   {
     id: 4,
     slug: 'real-map-wipes',
-    title: 'Real Map Wipes',
+    title: 'Real Man Wipes',
     subtitle: 'Weaponising Commercial Models with Attitude',
     category: 'BRAND IDENTITY',
     tags: ['BRAND IDENTITY', 'CAMPAIGNS'],
     description:
       'Brand identity and packaging system built to command shelf presence and own a distinct visual language in a crowded consumer category.',
     image: '/images/work-real-map-wipes.png',
-    heroImage: '/images/work-real-map-wipes.png',
-    year: '2024',
-    client: 'Real Map Wipes',
+    heroImage: '/images/case-rmw-1.png',
+    year: '2025',
+    client: 'Real Man Wipes',
     challenge:
       'In a saturated personal care category, differentiation at shelf is everything. Real Map Wipes needed an identity system that communicated product efficacy, premium positioning, and brand personality — all within seconds of a purchase decision.',
     approach:
