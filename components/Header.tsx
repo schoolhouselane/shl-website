@@ -40,7 +40,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-[18px] lg:gap-[36px] font-manrope">
-          {[['/', 'Home'], ['/services', 'Services'], ['/about', 'About'], ['/work', 'Work'], ['/blog', 'Blog'], ['/jobs', 'Jobs'], ['/contact', 'Contact']].map(([href, label]) => {
+          {[['/', 'Home'], ['/about', 'About'], ['/services', 'Services'], ['/work', 'Work'], ['/blog', 'Blog'], ['/jobs', 'Jobs']].map(([href, label]) => {
             const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href)
             return (
               <Link key={href} href={href} className={`transition-colors duration-300 ${isActive ? `font-bold text-[18px] border-b pb-0.5 ${textColor} ${borderColor}` : `text-[16px] ${textColor} hover:opacity-70`}`}>
@@ -48,7 +48,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               </Link>
             )
           })}
-          <Link href="/contact" className={`btn-cta flex items-center gap-2 border rounded-full px-6 py-2 text-[16px] font-medium uppercase transition-all duration-300 ${borderColor} ${textColor}`}>
+          <Link href="/contact" className={`btn-cta flex items-center gap-[12px] border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase transition-all duration-300 ${borderColor} ${textColor}`}>
             Let&apos;s Talk
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>
