@@ -64,12 +64,12 @@ export default function SelectedWork() {
   const filtered = activeTab === 'ALL' ? STRIP : STRIP.filter(item => item.tags.includes(activeTab))
 
   return (
-    <section className="bg-[#f5f3ef] pt-[32px] md:pt-[40px] lg:pt-[60px] pb-[40px] md:pb-[60px]">
+    <section className="bg-[#f5f3ef] pt-[32px] md:pt-[40px] lg:pt-[100px] pb-[40px] md:pb-[60px]">
 
       {/* Header */}
       <div
         ref={headerRef as React.RefObject<HTMLDivElement>}
-        className="px-4 md:px-6 lg:px-[90px] mb-8 md:mb-10 flex flex-col gap-[20px] transition-all duration-700"
+        className="px-4 md:px-6 lg:px-[90px] mb-8 md:mb-10 lg:mb-[60px] flex flex-col gap-[20px] transition-all duration-700"
         style={{ opacity: headerInView ? 1 : 0, transform: headerInView ? 'translateY(0)' : 'translateY(24px)' }}
       >
         <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20]">
