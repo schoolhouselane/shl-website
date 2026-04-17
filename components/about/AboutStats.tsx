@@ -46,9 +46,9 @@ export default function AboutStats() {
           </Link>
         </div>
 
-        {/* Right: 4 stats grid */}
+        {/* Right: 4 stats — fixed width, right-aligned */}
         <div
-          className="flex flex-col gap-[20px] flex-1 transition-all duration-700"
+          className="flex flex-col gap-[12px] md:w-[424px] shrink-0 transition-all duration-700"
           style={{
             opacity: inView ? 1 : 0,
             transform: inView ? 'translateX(0)' : 'translateX(40px)',
@@ -56,18 +56,18 @@ export default function AboutStats() {
           }}
         >
           {/* Top row */}
-          <div className="flex gap-[40px] md:gap-[60px]">
-            <div>
+          <div className="flex items-end justify-between">
+            <div className="flex flex-col items-end">
               <p className="font-black text-[32px] md:text-[48px] lg:text-[63px] text-white tracking-[-1.89px] leading-none">
                 <BigStat target={79} suffix="+" />
               </p>
-              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1">Brands Transformed</p>
+              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1 text-right">Brands Transformed</p>
             </div>
-            <div>
+            <div className="flex flex-col items-end">
               <p className="font-black text-[32px] md:text-[48px] lg:text-[63px] text-white tracking-[-1.89px] leading-none">
                 <BigStat target={5} suffix="★" />
               </p>
-              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1">Average Client Review</p>
+              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1 text-right">Average Client Review</p>
             </div>
           </div>
 
@@ -75,18 +75,18 @@ export default function AboutStats() {
           <div className="border-t border-white/20" />
 
           {/* Bottom row */}
-          <div className="flex gap-[40px] md:gap-[60px]">
-            <div>
+          <div className="flex items-end justify-between">
+            <div className="flex flex-col items-end">
               <p className="font-black text-[32px] md:text-[48px] lg:text-[63px] text-white tracking-[-1.89px] leading-none">
                 £<BigStat target={2} suffix="M+" />
               </p>
-              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1">Revenue Generated</p>
+              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1 text-right">Revenue Generated</p>
             </div>
-            <div>
+            <div className="flex flex-col items-end">
               <p className="font-black text-[32px] md:text-[48px] lg:text-[63px] text-white tracking-[-1.89px] leading-none">
                 <BigStat target={6} /><span className="text-[32px] md:text-[40px] lg:text-[47px]">yr</span>
               </p>
-              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1">In Market</p>
+              <p className="text-[11px] md:text-[16px] uppercase text-white/60 mt-1 text-right">In Market</p>
             </div>
           </div>
         </div>
