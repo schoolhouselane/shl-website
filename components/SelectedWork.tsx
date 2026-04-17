@@ -91,9 +91,12 @@ export default function SelectedWork() {
                   <ArrowUpRight />
                 </Link>
               </div>
-              <h3 className="font-black text-[24px] uppercase text-[#1e1e20] leading-tight">
+              <h3 className="font-black text-[24px] md:text-[28px] lg:text-[36px] uppercase text-[#1e1e20] leading-tight">
                 {work.title}
               </h3>
+              <p className="font-black text-[16px] md:text-[18px] lg:text-[24px] uppercase text-[#1e1e20] leading-tight">
+                {work.subtitle}
+              </p>
               <p className="text-[16px] text-[#1e1e20] leading-[1.71] font-normal">
                 {work.description}
               </p>
