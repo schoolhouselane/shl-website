@@ -93,28 +93,30 @@ export default function SelectedWork() {
       <div className="hidden lg:block">
 
         {/* Filter tabs */}
-        <div className="px-[90px] flex border-t border-b border-[#1e1e20] overflow-x-auto scrollbar-hide">
-          {TABS.map((tab) => {
-            const isActive = activeTab === tab
-            return (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`shrink-0 flex items-center gap-[10px] border-r border-[#1e1e20] whitespace-nowrap text-[20px] uppercase font-normal transition-colors duration-200 cursor-pointer
-                  ${isActive
-                    ? 'bg-[#1e1e20] text-white px-[40px] py-[20px]'
-                    : 'bg-transparent text-[#1e1e20] px-[24px] py-[14px] hover:bg-[#1e1e20]/5'
-                  }`}
-              >
-                {tab}
-                {isActive && (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                )}
-              </button>
-            )
-          })}
+        <div className="px-[90px]">
+          <div className="flex border-t border-b border-[#1e1e20]">
+            {TABS.map((tab) => {
+              const isActive = activeTab === tab
+              return (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`shrink-0 flex items-center gap-[10px] border-r border-[#1e1e20] whitespace-nowrap text-[20px] uppercase font-normal transition-colors duration-200 cursor-pointer
+                    ${isActive
+                      ? 'bg-[#1e1e20] text-white px-[40px] py-[20px]'
+                      : 'bg-transparent text-[#1e1e20] px-[24px] py-[14px] hover:bg-[#1e1e20]/5'
+                    }`}
+                >
+                  {tab}
+                  {isActive && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                  )}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
         {/* Image strip */}
