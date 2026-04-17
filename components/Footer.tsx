@@ -58,20 +58,20 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-[#1e1e20] px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[40px] flex flex-col gap-[24px] md:gap-[40px] lg:gap-[60px]">
+      <footer className="bg-[#1e1e20] px-4 md:px-6 lg:px-[90px] py-[32px] md:py-[32px] flex flex-col gap-[24px] md:gap-[40px] lg:gap-[60px]">
 
         {/* TOP ROW — Logos + Tagline */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-[24px] lg:gap-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-[24px] md:gap-6">
           <div className="flex items-center gap-[20px] shrink-0">
             <Image
               src="/everlough-logo.png"
               alt="Everlough Holdings"
               width={580}
               height={140}
-              className="h-[50px] md:h-[70px] w-auto max-w-[189px] md:max-w-[290px]"
+              className="h-[50px] w-auto max-w-[189px]"
             />
-            <div className="w-px h-[50px] md:h-[66px] lg:h-[93px] bg-white/40" />
-            <div className="relative w-[97px] md:w-[119px] h-[38px] md:h-[47px]">
+            <div className="w-px h-[50px] md:h-[50px] lg:h-[93px] bg-white/40" />
+            <div className="relative w-[97px] h-[38px]">
               <Image
                 src="/logo-white.svg"
                 alt="Schoolhouse Lane"
@@ -81,7 +81,7 @@ export default function Footer() {
               />
             </div>
           </div>
-          <p className="font-bold text-[18px] md:text-[20px] lg:text-[24px] uppercase text-white lg:text-right leading-normal max-w-full lg:max-w-[490px]">
+          <p className="font-bold text-[18px] md:text-[20px] lg:text-[24px] uppercase text-white md:text-right leading-normal md:max-w-[367px] lg:max-w-[490px]">
             We exist at the intersection of creativity and revenue growth
           </p>
         </div>
@@ -89,34 +89,24 @@ export default function Footer() {
         {/* DIVIDER */}
         <div className="border-t border-white/30" />
 
-        {/* BODY — mobile: stacked rows, desktop: 3 columns */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-[24px] lg:gap-10 xl:gap-[161px]">
+        {/* BODY */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-[24px] md:gap-[40px] lg:gap-x-[80px] xl:gap-x-[161px]">
 
-          {/* MOBILE: Contact + Social in one row */}
-          <div className="flex flex-row justify-between gap-4 lg:hidden">
-            {/* Left: Ready to Build + email */}
+          {/* MOBILE ONLY: Contact + Social in one row */}
+          <div className="flex flex-row justify-between gap-4 md:hidden">
             <div className="flex flex-col gap-[4px]">
               <p className="font-semibold text-[16px] uppercase text-white leading-tight max-w-[170px]">
                 Ready to Build Something Remarkable?
               </p>
               <div className="border-b border-white py-[10px]">
-                <Link
-                  href="mailto:hello@schoolhouselane.co"
-                  className="text-[12px] text-white lowercase hover:opacity-70 transition-opacity"
-                >
+                <Link href="mailto:hello@schoolhouselane.co" className="text-[12px] text-white lowercase hover:opacity-70 transition-opacity">
                   hello@schoolhouselane.co
                 </Link>
               </div>
             </div>
-            {/* Right: Social */}
             <div className="flex flex-col gap-[12px] justify-start pt-[4px]">
               {social.map((s) => (
-                <Link
-                  key={s.name}
-                  href={s.href}
-                  target="_blank"
-                  className="flex items-center gap-[4px] text-[12px] text-white hover:opacity-70 transition-opacity whitespace-nowrap"
-                >
+                <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[4px] text-[12px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
                   {s.name}
                   <ArrowUpRight size={16} />
                 </Link>
@@ -124,22 +114,20 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* DESKTOP COL 1 — Contact + Newsletter */}
-          <div className="hidden lg:flex flex-col gap-[72px] shrink-0 lg:w-[318px]">
+          {/* TABLET + DESKTOP COL 1 — Contact (tablet) / Contact + Newsletter (desktop) */}
+          <div className="hidden md:flex flex-col gap-[8px] lg:gap-[72px] md:w-[201px] lg:w-[318px] shrink-0">
             <div className="flex flex-col gap-[8px]">
-              <p className="font-semibold text-[20px] uppercase text-white leading-tight max-w-[236px]">
+              <p className="font-black md:text-[24px] lg:font-semibold lg:text-[20px] uppercase text-white leading-tight">
                 Ready to Build Something Remarkable?
               </p>
               <div className="border-b border-white py-[10px]">
-                <Link
-                  href="mailto:hello@schoolhouselane.co"
-                  className="text-[16px] text-white lowercase hover:opacity-70 transition-opacity whitespace-nowrap"
-                >
+                <Link href="mailto:hello@schoolhouselane.co" className="text-[12px] lg:text-[16px] text-white lowercase hover:opacity-70 transition-opacity whitespace-nowrap">
                   hello@schoolhouselane.co
                 </Link>
               </div>
             </div>
-            <div className="flex items-end gap-[20px]">
+            {/* Newsletter — desktop only */}
+            <div className="hidden lg:flex items-end gap-[20px]">
               <p className="font-semibold text-[20px] uppercase text-white leading-tight max-w-[203px]">
                 Get Growth Ideas in Your Inbox.
               </p>
@@ -152,29 +140,24 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* DESKTOP COL 2 — Services + Social */}
-          <div className="hidden lg:flex flex-wrap gap-x-[40px] gap-y-[30px] shrink-0 xl:gap-x-[60px]">
-            {servicesCols.map((col, ci) => (
-              <div key={ci} className="flex flex-col gap-[30px]">
-                {col.map((s) => (
-                  <Link
-                    key={s}
-                    href="/services"
-                    className="text-[18px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap"
-                  >
-                    {s}
-                  </Link>
-                ))}
-              </div>
-            ))}
-            <div className="flex flex-col gap-[30px]">
+          {/* TABLET + DESKTOP COL 2 — Social (tablet) / Services + Social (desktop) */}
+          <div className="hidden md:flex flex-col gap-[12px] lg:gap-[30px] shrink-0">
+            {/* Services — desktop only */}
+            <div className="hidden lg:flex flex-wrap gap-x-[40px] gap-y-[30px] xl:gap-x-[60px]">
+              {servicesCols.map((col, ci) => (
+                <div key={ci} className="flex flex-col gap-[30px]">
+                  {col.map((s) => (
+                    <Link key={s} href="/services" className="text-[18px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap">
+                      {s}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </div>
+            {/* Social links */}
+            <div className="flex flex-col gap-[12px] lg:gap-[30px]">
               {social.map((s) => (
-                <Link
-                  key={s.name}
-                  href={s.href}
-                  target="_blank"
-                  className="flex items-center gap-[4px] text-[18px] text-white hover:opacity-70 transition-opacity whitespace-nowrap"
-                >
+                <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[4px] text-[16px] lg:text-[18px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
                   {s.name}
                   <ArrowUpRight size={24} />
                 </Link>
@@ -182,9 +165,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* MOBILE + DESKTOP COL 3 — Quote + Book a Call */}
-          <div className="flex flex-col gap-[19px] lg:items-end lg:flex-1">
-            <p className="font-bold text-[18px] lg:text-[32px] uppercase text-white lg:text-right leading-tight max-w-[340px] lg:ml-auto">
+          {/* COL 3 — Quote + Book a Call (all breakpoints, sizes vary) */}
+          <div className="flex flex-col gap-[19px] md:items-end md:flex-1">
+            <p className="font-bold text-[18px] lg:text-[32px] uppercase text-white md:text-right leading-tight md:max-w-[169px] lg:max-w-[340px] lg:ml-auto">
               There is no cure for curiousity
             </p>
             <Link
@@ -201,25 +184,25 @@ export default function Footer() {
         {/* DIVIDER */}
         <div className="border-t border-white/30" />
 
-        {/* BOTTOM BAR — cities left, legal right */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[24px] lg:gap-0">
+        {/* BOTTOM BAR */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-[24px] md:gap-0">
 
           {/* Cities — 2×2 grid */}
-          <div className="grid grid-cols-2 gap-x-[40px] md:gap-x-[60px] gap-y-[12px] md:gap-y-[16px]">
+          <div className="grid grid-cols-2 gap-x-[40px] md:gap-x-[60px] gap-y-[12px] md:gap-y-[12px]">
             {offices.map((o) => (
               <div key={o.city} className="flex flex-col gap-[2px]">
                 <div className="flex items-center gap-[5px]">
                   <MapPin />
-                  <span className="font-bold text-[14px] lg:text-[18px] uppercase text-white leading-normal whitespace-nowrap">{o.city}</span>
+                  <span className="font-bold text-[14px] md:text-[18px] uppercase text-white leading-normal whitespace-nowrap">{o.city}</span>
                 </div>
                 <p className="text-[12px] font-light text-white leading-normal">{o.address}</p>
               </div>
             ))}
           </div>
 
-          {/* Legal — horizontal on mobile, stacked on desktop */}
-          <div className="flex flex-col gap-[8px] lg:gap-0 lg:flex-row lg:items-end lg:gap-[40px]">
-            <div className="flex flex-row flex-wrap gap-x-[12px] gap-y-[4px] lg:flex-col lg:gap-[10px]">
+          {/* Legal — horizontal on mobile, stacked right-aligned on tablet+ */}
+          <div className="flex flex-col gap-[8px] md:items-end">
+            <div className="flex flex-row flex-wrap gap-x-[12px] gap-y-[4px] md:flex-col md:items-end md:gap-[10px]">
               <Link href="/privacy" className="font-bold text-[12px] lg:text-[16px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Privacy Policy</Link>
               <Link href="/code-of-conduct" className="font-bold text-[12px] lg:text-[16px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Code of Conduct</Link>
               <Link href="/terms" className="font-bold text-[12px] lg:text-[16px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Terms &amp; Conditions</Link>
