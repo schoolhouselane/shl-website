@@ -17,7 +17,7 @@ export default function AboutCTA() {
         <h2 className="font-black text-[28px] md:text-[32px] lg:text-[60px] leading-[0.92] tracking-[-1.5px] uppercase text-[#1e1e20]">
           LET&apos;S BUILD<br />SOMETHING<br />remarkable.
         </h2>
-        <p className="text-[16px] leading-[1.6] text-[#1e1e20]">
+        <p className="text-[16px] lg:text-[20px] leading-[1.6] text-[#1e1e20]">
           15-minute strategy call. Let&apos;s discuss real ideas for your brand and what growth actually looks like for you.
         </p>
       </div>

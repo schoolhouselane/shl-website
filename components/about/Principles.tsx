@@ -39,7 +39,7 @@ export default function Principles() {
   const [gridRef, gridInView] = useInView(0.1)
 
   return (
-    <section className="bg-[#1e1e20] py-[60px] md:py-[80px] lg:py-[120px] flex flex-col gap-[40px] md:gap-[80px]">
+    <section className="bg-[#1e1e20] py-[60px] md:py-[80px] lg:py-[120px] flex flex-col gap-[40px] md:gap-[80px] lg:gap-[120px]">
 
       {/* Header */}
       <div
@@ -53,7 +53,7 @@ export default function Principles() {
         <h2 className="font-black text-[28px] md:text-[32px] lg:text-[64px] text-white uppercase leading-tight md:max-w-[264px] md:shrink-0">
           Our Operating Principles
         </h2>
-        <p className="text-[16px] text-white/50 leading-[1.8] md:text-right md:max-w-[460px] lg:max-w-[608px]">
+        <p className="text-[16px] lg:text-[20px] text-white/50 leading-[1.8] md:text-right md:max-w-[460px] lg:max-w-[608px]">
           Refining the lens from cultural values to commercial mechanics, our operating principles focus on the structural efficiency required to bridge the gap between high-level enterprise value and tactile execution.
         </p>
       </div>
@@ -72,7 +72,7 @@ export default function Principles() {
           >
             {/* Left: title + desc */}
             <div className="flex flex-col gap-[6px] max-w-[65%]">
-              <h3 className="font-black uppercase text-white leading-tight text-[14px] md:text-[18px]">
+              <h3 className="font-black uppercase text-white leading-tight text-[14px] md:text-[18px] lg:text-[22px]">
                 {p.title}
               </h3>
               <p className="text-[12px] md:text-[16px] text-white/40 leading-[1.7]">

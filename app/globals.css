@@ -1,3 +1,4 @@
+@layer properties, theme, base, components, utilities, overrides;
 @import "tailwindcss";
 
 @theme {
@@ -91,4 +92,148 @@ input:-webkit-autofill:active {
 }
 .btn-cta:hover svg {
   transform: translateX(4px);
+}
+
+/* Fix Tailwind v4 CSS ordering bug: within @layer utilities, lg: classes are generated before md:
+   so at 1280px+ the md: classes incorrectly win. @layer overrides is declared after utilities
+   in the layer order above, so it has higher cascade priority — no !important needed. */
+@layer overrides {
+  @media (min-width: 1280px) {
+    /* font-size */
+    .lg\:text-\[14px\] { font-size: 14px; }
+    .lg\:text-\[16px\] { font-size: 16px; }
+    .lg\:text-\[18px\] { font-size: 18px; }
+    .lg\:text-\[20px\] { font-size: 20px; }
+    .lg\:text-\[22px\] { font-size: 22px; }
+    .lg\:text-\[24px\] { font-size: 24px; }
+    .lg\:text-\[32px\] { font-size: 32px; }
+    .lg\:text-\[36px\] { font-size: 36px; }
+    .lg\:text-\[47px\] { font-size: 47px; }
+    .lg\:text-\[56px\] { font-size: 56px; }
+    .lg\:text-\[57px\] { font-size: 57px; }
+    .lg\:text-\[60px\] { font-size: 60px; }
+    .lg\:text-\[62px\] { font-size: 62px; }
+    .lg\:text-\[63px\] { font-size: 63px; }
+    .lg\:text-\[64px\] { font-size: 64px; }
+    .lg\:text-\[115px\] { font-size: 115px; }
+    .lg\:text-\[128px\] { font-size: 128px; }
+    /* width */
+    .lg\:w-\[55px\]  { width: 55px; }
+    .lg\:w-\[200px\] { width: 200px; }
+    .lg\:w-\[210px\] { width: 210px; }
+    .lg\:w-\[245px\] { width: 245px; }
+    .lg\:w-\[279px\] { width: 279px; }
+    .lg\:w-\[318px\] { width: 318px; }
+    .lg\:w-\[340px\] { width: 340px; }
+    .lg\:w-\[347px\] { width: 347px; }
+    .lg\:w-\[380px\] { width: 380px; }
+    .lg\:w-\[620px\] { width: 620px; }
+    .lg\:w-\[701px\] { width: 701px; }
+    /* height */
+    .lg\:h-\[55px\]  { height: 55px; }
+    .lg\:h-\[62px\]  { height: 62px; }
+    .lg\:h-\[82px\]  { height: 82px; }
+    .lg\:h-\[93px\]  { height: 93px; }
+    .lg\:h-\[200px\] { height: 200px; }
+    .lg\:h-\[260px\] { height: 260px; }
+    .lg\:h-\[300px\] { height: 300px; }
+    .lg\:h-\[460px\] { height: 460px; }
+    .lg\:h-\[500px\] { height: 500px; }
+    .lg\:h-\[739px\] { height: 739px; }
+    .lg\:h-\[759px\] { height: 759px; }
+    .lg\:h-\[762px\] { height: 762px; }
+    /* max-width */
+    .lg\:max-w-\[318px\] { max-width: 318px; }
+    .lg\:max-w-\[340px\] { max-width: 340px; }
+    .lg\:max-w-\[380px\] { max-width: 380px; }
+    .lg\:max-w-\[446px\] { max-width: 446px; }
+    .lg\:max-w-\[453px\] { max-width: 453px; }
+    .lg\:max-w-\[490px\] { max-width: 490px; }
+    .lg\:max-w-\[514px\] { max-width: 514px; }
+    .lg\:max-w-\[520px\] { max-width: 520px; }
+    .lg\:max-w-\[544px\] { max-width: 544px; }
+    .lg\:max-w-\[555px\] { max-width: 555px; }
+    .lg\:max-w-\[606px\] { max-width: 606px; }
+    .lg\:max-w-\[607px\] { max-width: 607px; }
+    .lg\:max-w-\[608px\] { max-width: 608px; }
+    .lg\:max-w-\[620px\] { max-width: 620px; }
+    .lg\:max-w-\[662px\] { max-width: 662px; }
+    .lg\:max-w-\[760px\] { max-width: 760px; }
+    .lg\:max-w-\[818px\] { max-width: 818px; }
+    .lg\:max-w-\[875px\] { max-width: 875px; }
+    .lg\:max-w-\[921px\] { max-width: 921px; }
+    /* min-height */
+    .lg\:min-h-\[939px\] { min-height: 939px; }
+    /* gap */
+    .lg\:gap-\[12px\]  { gap: 12px; }
+    .lg\:gap-\[18px\]  { gap: 18px; }
+    .lg\:gap-\[20px\]  { gap: 20px; }
+    .lg\:gap-\[24px\]  { gap: 24px; }
+    .lg\:gap-\[30px\]  { gap: 30px; }
+    .lg\:gap-\[36px\]  { gap: 36px; }
+    .lg\:gap-\[39px\]  { gap: 39px; }
+    .lg\:gap-\[40px\]  { gap: 40px; }
+    .lg\:gap-\[60px\]  { gap: 60px; }
+    .lg\:gap-\[63px\]  { gap: 63px; }
+    .lg\:gap-\[72px\]  { gap: 72px; }
+    .lg\:gap-\[80px\]  { gap: 80px; }
+    .lg\:gap-\[120px\] { gap: 120px; }
+    .lg\:gap-x-\[40px\] { column-gap: 40px; }
+    .lg\:gap-x-\[60px\] { column-gap: 60px; }
+    .lg\:gap-x-\[80px\] { column-gap: 80px; }
+    .lg\:gap-y-\[30px\] { row-gap: 30px; }
+    /* padding shorthand */
+    .lg\:p-\[16px\] { padding: 16px; }
+    .lg\:p-\[24px\] { padding: 24px; }
+    .lg\:p-\[40px\] { padding: 40px; }
+    .lg\:p-\[60px\] { padding: 60px; }
+    .lg\:p-\[90px\] { padding: 90px; }
+    /* padding x/y */
+    .lg\:px-\[24px\] { padding-left: 24px; padding-right: 24px; }
+    .lg\:px-\[40px\] { padding-left: 40px; padding-right: 40px; }
+    .lg\:px-\[60px\] { padding-left: 60px; padding-right: 60px; }
+    .lg\:px-\[90px\] { padding-left: 90px; padding-right: 90px; }
+    .lg\:py-\[10px\]  { padding-top: 10px;  padding-bottom: 10px; }
+    .lg\:py-\[16px\]  { padding-top: 16px;  padding-bottom: 16px; }
+    .lg\:py-\[18px\]  { padding-top: 18px;  padding-bottom: 18px; }
+    .lg\:py-\[20px\]  { padding-top: 20px;  padding-bottom: 20px; }
+    .lg\:py-\[24px\]  { padding-top: 24px;  padding-bottom: 24px; }
+    .lg\:py-\[25px\]  { padding-top: 25px;  padding-bottom: 25px; }
+    .lg\:py-\[30px\]  { padding-top: 30px;  padding-bottom: 30px; }
+    .lg\:py-\[38px\]  { padding-top: 38px;  padding-bottom: 38px; }
+    .lg\:py-\[60px\]  { padding-top: 60px;  padding-bottom: 60px; }
+    .lg\:py-\[80px\]  { padding-top: 80px;  padding-bottom: 80px; }
+    .lg\:py-\[90px\]  { padding-top: 90px;  padding-bottom: 90px; }
+    .lg\:py-\[120px\] { padding-top: 120px; padding-bottom: 120px; }
+    /* individual padding */
+    .lg\:pt-\[52px\]  { padding-top: 52px; }
+    .lg\:pt-\[60px\]  { padding-top: 60px; }
+    .lg\:pt-\[80px\]  { padding-top: 80px; }
+    .lg\:pt-\[90px\]  { padding-top: 90px; }
+    .lg\:pt-\[100px\] { padding-top: 100px; }
+    .lg\:pt-\[120px\] { padding-top: 120px; }
+    .lg\:pt-\[180px\] { padding-top: 180px; }
+    .lg\:pb-\[60px\]  { padding-bottom: 60px; }
+    .lg\:pb-\[80px\]  { padding-bottom: 80px; }
+    .lg\:pb-\[120px\] { padding-bottom: 120px; }
+    .lg\:pb-\[28vh\]  { padding-bottom: 28vh; }
+    .lg\:pl-\[49px\]  { padding-left: 49px; }
+    .lg\:pl-\[60px\]  { padding-left: 60px; }
+    .lg\:pl-\[90px\]  { padding-left: 90px; }
+    .lg\:pr-\[40px\]  { padding-right: 40px; }
+    .lg\:pr-\[60px\]  { padding-right: 60px; }
+    /* margin */
+    .lg\:mb-\[60px\] { margin-bottom: 60px; }
+    .lg\:mt-\[60px\] { margin-top: 60px; }
+    /* positioning */
+    .lg\:left-\[49px\] { left: 49px; }
+    .lg\:left-\[90px\] { left: 90px; }
+    .lg\:right-\[90px\] { right: 90px; }
+    /* letter-spacing */
+    .lg\:tracking-\[-0\.3px\]  { letter-spacing: -0.3px; }
+    .lg\:tracking-\[-1\.28px\] { letter-spacing: -1.28px; }
+    .lg\:tracking-\[-1\.5px\]  { letter-spacing: -1.5px; }
+    .lg\:tracking-\[-1\.89px\] { letter-spacing: -1.89px; }
+    .lg\:tracking-\[-1\.92px\] { letter-spacing: -1.92px; }
+  }
 }

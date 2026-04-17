@@ -124,20 +124,18 @@ export default function Team() {
   }
 
   return (
-    <section id="team" className="bg-[#f5f3ef] py-[60px] flex flex-col gap-[40px]">
+    <section id="team" className="bg-[#f5f3ef] py-[60px] lg:py-[120px] flex flex-col gap-[40px]">
 
-      {/* Title */}
-      <div className="px-4 md:px-6 lg:px-[90px]">
-        <h2 className="font-black text-[28px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20]">
-          People behind everything
-        </h2>
-      </div>
-
-      {/* Subtitle + CTA */}
-      <div className="px-4 md:px-6 lg:px-[90px] flex flex-wrap items-center justify-between gap-4">
-        <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-[1.37] text-[#1e1e20] max-w-[532px]">
-          Our work spans brand strategy, identity, campaigns, and digital.
-        </p>
+      {/* Header: title + subtitle on left, CTA on right */}
+      <div className="px-4 md:px-6 lg:px-[90px] lg:py-[10px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+        <div className="flex flex-col gap-[12px]">
+          <h2 className="font-black text-[28px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20]">
+            People behind everything
+          </h2>
+          <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-[1.37] text-[#1e1e20]">
+            Our work spans brand strategy, identity, campaigns, and digital.
+          </p>
+        </div>
         <Link
           href="/contact"
           className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-6 py-3 text-[16px] font-medium uppercase transition-colors shrink-0"
@@ -154,7 +152,7 @@ export default function Team() {
             <div key={i} className="group flex shrink-0">
 
               {/* Photo */}
-              <div className="relative w-[92px] md:w-[150px] lg:w-[200px] h-[300px] md:h-[500px] lg:h-[759px] overflow-hidden">
+              <div className="relative w-[92px] md:w-[150px] lg:w-[200px] h-[300px] md:h-[500px] lg:h-[762px] overflow-hidden">
                 <Image
                   src={member.src}
                   alt={member.name}

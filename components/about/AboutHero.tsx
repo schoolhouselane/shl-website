@@ -16,7 +16,7 @@ export default function AboutHero() {
 
       {/* Left */}
       <div
-        className="flex flex-col gap-[18px] max-w-full md:max-w-[390px] lg:max-w-[607px] shrink-0 transition-all duration-900"
+        className="flex flex-col gap-[18px] lg:gap-[30px] max-w-full md:max-w-[390px] lg:max-w-[607px] shrink-0 transition-all duration-900"
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateX(0)' : 'translateX(-30px)',
@@ -24,7 +24,7 @@ export default function AboutHero() {
           transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
         }}
       >
-        <div className="flex flex-col gap-[6px]">
+        <div className="flex flex-col gap-[6px] lg:gap-[18px]">
           <h1 className="font-black text-[28px] md:text-[32px] lg:text-[64px] leading-tight tracking-[-1.28px] uppercase text-[#1e1e20]">
             The ideas engine behind Creative Commerce.
           </h1>
