@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { projects } from '@/lib/work-data'
 
-const slugs = ['shelby', 'vivo-hotels']
+const slugs = ['shelby', 'vivo-hotels', 'datadirect', 'real-map-wipes']
 const works = slugs.map(s => projects.find(p => p.slug === s)!).filter(Boolean)
 
 function ArrowRight() {
@@ -23,14 +23,14 @@ function ArrowUpRight() {
 
 export default function SelectedWork() {
   return (
-    <section className="px-4 md:px-6 lg:px-[90px] pt-[32px] md:pt-[40px] lg:pt-[60px] pb-[80px] md:pb-[120px] bg-[#f5f3ef]">
+    <section className="px-4 md:px-6 lg:px-[90px] pt-[32px] md:pt-[40px] lg:pt-[60px] pb-[40px] md:pb-[60px] bg-[#f5f3ef]">
 
       {/* Header */}
       <div className="mb-8 md:mb-10 flex flex-col gap-[20px]">
         <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20]">
           Selected Work<br />That Delivered Growth
         </h2>
-        <p className="text-[16px] md:text-[20px] leading-[1.37] text-[#1e1e20] font-normal max-w-[608px]">
+        <p className="text-[16px] leading-[1.37] text-[#1e1e20] font-normal max-w-[608px]">
           Our work spans brand strategy, identity, campaigns, and digital. Each project is chosen because it pushed something a category, a business, a culture forward.
         </p>
         <div>
@@ -44,10 +44,10 @@ export default function SelectedWork() {
         </div>
       </div>
 
-      {/* 2×2 grid — same card style as WorkGrid */}
+      {/* Grid — 2 on mobile, 4 on tablet+ (2×2) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
-        {works.map((work) => (
-          <article key={work.id} className="border border-black flex flex-col group">
+        {works.map((work, i) => (
+          <article key={work.id} className={`border border-black flex flex-col group${i >= 2 ? ' hidden md:flex' : ''}`}>
             <div className="relative w-full h-[220px] md:h-[280px] lg:h-[371px] overflow-hidden">
               <Image
                 src={work.image}
@@ -78,7 +78,7 @@ export default function SelectedWork() {
                   {work.subtitle}
                 </p>
               </div>
-              <p className="text-[16px] md:text-[14px] lg:text-[16px] text-[#1e1e20] leading-normal font-normal">
+              <p className="text-[16px] text-[#1e1e20] leading-normal font-normal">
                 {work.description}
               </p>
             </div>

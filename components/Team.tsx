@@ -154,14 +154,14 @@ export default function Team() {
               <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[160px] md:group-hover:w-[240px] lg:group-hover:w-[347px] h-[260px] md:h-[500px] lg:h-[762px] bg-white">
                 <div className="w-[160px] md:w-[240px] lg:w-[347px] h-full flex flex-col justify-start gap-[16px] md:gap-[20px] lg:gap-[30px] px-[16px] md:px-[24px] lg:px-[40px] py-[20px] md:py-[32px] lg:py-[60px]">
                   <div className="flex flex-col gap-[6px]">
-                    <p className="font-black text-[14px] md:text-[18px] lg:text-[24px] text-[#111] leading-tight">
+                    <p className="font-black text-[14px] md:text-[16px] lg:text-[24px] text-[#111] leading-tight">
                       {member.name}
                     </p>
-                    <p className="text-[11px] md:text-[13px] lg:text-[16px] text-[#111] italic font-light">
+                    <p className="text-[11px] md:text-[16px] lg:text-[16px] text-[#111] italic font-light">
                       {member.role}
                     </p>
                   </div>
-                  <p className="text-[11px] md:text-[13px] lg:text-[16px] text-[#111] font-normal leading-snug">
+                  <p className="text-[11px] md:text-[16px] lg:text-[16px] text-[#111] font-normal leading-snug">
                     {member.bio}
                   </p>
                 </div>

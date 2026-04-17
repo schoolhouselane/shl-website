@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Gallery() {
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[90px] md:py-[120px]">
+    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px]">
       {/* Arrow button */}
       <div className="flex justify-end mb-3">
         <Link
@@ -17,7 +17,7 @@ export default function Gallery() {
       </div>
 
       {/* Text */}
-      <p className="text-[16px] md:text-[20px] text-[#1e1e20] text-right leading-[1.37] mb-6 md:mb-8">
+      <p className="text-[16px] text-[#1e1e20] text-right leading-[1.37] mb-6 md:mb-8">
         Loved what you saw? Let&apos;s create something like this for you.
       </p>
 
