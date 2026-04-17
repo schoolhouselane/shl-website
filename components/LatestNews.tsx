@@ -26,7 +26,7 @@ export default function LatestNews() {
           <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-[1.37] text-[#1e1e20]">
             Thinking, writing, and perspectives from the Schoolhouse Lane team on brand, culture, and the ideas shaping business today.
           </p>
-          <Link href="/blog" className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-6 py-2 text-[16px] font-medium uppercase transition-colors">
+          <Link href="/blog" className="btn-cta inline-flex items-center gap-[6px] w-fit border border-[#1e1e20] rounded-full px-[12px] py-[8px] md:px-6 md:py-3 text-[16px] font-medium uppercase transition-colors">
             CHECK OUR BLOGS
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>

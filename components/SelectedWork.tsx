@@ -36,7 +36,7 @@ export default function SelectedWork() {
         <div>
           <Link
             href="/work"
-            className="btn-cta inline-flex items-center gap-[8px] border border-[#1e1e20] rounded-[50px] px-[24px] py-[12px] text-[14px] md:text-[16px] font-medium uppercase text-[#1e1e20]"
+            className="btn-cta inline-flex items-center gap-[6px] border border-[#1e1e20] rounded-[50px] px-[12px] py-[8px] md:px-[24px] md:py-[12px] text-[16px] font-medium uppercase text-[#1e1e20]"
           >
             SEE MORE WORK
             <ArrowRight />
@@ -59,7 +59,7 @@ export default function SelectedWork() {
             </div>
             <div className="flex flex-col gap-[12px] px-[16px] md:px-[24px] lg:px-[40px] py-[16px] md:py-[20px] lg:py-[25px]">
               <div className="flex items-center justify-between gap-[12px]">
-                <p className="text-[11px] md:text-[12px] text-[#777] uppercase tracking-wide leading-normal font-normal">
+                <p className="text-[12px] text-[#777] uppercase tracking-wide leading-normal font-normal">
                   {work.tags.join(' — ')}
                 </p>
                 <Link
@@ -70,10 +70,15 @@ export default function SelectedWork() {
                   <ArrowUpRight />
                 </Link>
               </div>
-              <h3 className="font-black text-[16px] md:text-[20px] lg:text-[24px] uppercase text-[#1e1e20] leading-tight">
-                {work.title}
-              </h3>
-              <p className="text-[13px] md:text-[14px] lg:text-[16px] text-[#1e1e20] leading-[1.714] font-normal">
+              <div className="flex flex-col gap-[6px]">
+                <h3 className="font-black text-[24px] md:text-[20px] lg:text-[24px] uppercase text-[#1e1e20] leading-tight">
+                  {work.title}
+                </h3>
+                <p className="font-black text-[18px] md:text-[16px] lg:text-[18px] uppercase text-[#1e1e20] leading-tight">
+                  {work.subtitle}
+                </p>
+              </div>
+              <p className="text-[16px] md:text-[14px] lg:text-[16px] text-[#1e1e20] leading-normal font-normal">
                 {work.description}
               </p>
             </div>

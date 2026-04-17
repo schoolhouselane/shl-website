@@ -204,7 +204,7 @@ export default function ServicesAccordion() {
 
               {/* Inline detail panel */}
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="flex flex-col lg:flex-row gap-0 py-[30px] md:py-[40px] lg:py-[60px] border-b border-black">
+                <div className="flex flex-col lg:flex-row gap-0 pt-[30px] pb-0 md:py-[40px] lg:py-[60px] border-b border-black">
 
                   {/* Left col */}
                   <div className="flex flex-col justify-between gap-[30px] lg:w-[340px] xl:w-[420px] shrink-0 border-b lg:border-b-0 lg:border-r border-black pb-[30px] lg:pb-0 lg:pr-[60px]">

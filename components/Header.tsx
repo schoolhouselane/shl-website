@@ -22,25 +22,24 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
   const isDark = scrolled || forceDark || pageForceDark
   const textColor = isDark ? 'text-[#1e1e20]' : 'text-white'
   const borderColor = isDark ? 'border-[#1e1e20]' : 'border-white'
-  const hamburgerColor = isDark ? 'bg-[#1e1e20]' : 'bg-white'
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isDark ? 'bg-[#f5f3ef] border-b border-[rgba(54,31,6,0.16)]' : 'bg-transparent border-b border-white/20'
     }`}>
-      <div className="flex items-center justify-between px-5 md:px-[90px] h-[64px] md:h-[82px]">
+      <div className="flex items-center justify-between px-4 md:px-6 lg:px-[90px] h-[64px] md:h-[95px] lg:h-[82px]">
         <Link href="/">
           <Image
             src={isDark ? '/logo.svg' : '/logo-white.svg'}
             alt="Schoolhouse Lane"
             width={122}
             height={48}
-            className="object-contain transition-all duration-300"
+            className="w-[65px] md:w-[122px] h-auto object-contain transition-all duration-300"
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-[36px] font-manrope">
+        <nav className="hidden md:flex items-center gap-[18px] lg:gap-[36px] font-manrope">
           {[['/', 'Home'], ['/services', 'Services'], ['/about', 'About'], ['/work', 'Work'], ['/blog', 'Blog'], ['/jobs', 'Jobs'], ['/contact', 'Contact']].map(([href, label]) => {
             const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href)
             return (
@@ -55,11 +54,14 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
           </Link>
         </nav>
 
-        {/* Mobile hamburger */}
-        <button className="md:hidden flex flex-col gap-[5px] p-2" onClick={() => setOpen(!open)}>
-          <span className={`block w-6 h-0.5 transition-all duration-300 ${hamburgerColor} ${open ? 'rotate-45 translate-y-[7px]' : ''}`} />
-          <span className={`block w-6 h-0.5 transition-all duration-300 ${hamburgerColor} ${open ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-0.5 transition-all duration-300 ${hamburgerColor} ${open ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+        {/* Mobile menu button */}
+        <button
+          className={`md:hidden flex items-center pb-[2px] border-b transition-all duration-300 ${borderColor}`}
+          onClick={() => setOpen(!open)}
+        >
+          <span className={`text-[16px] font-medium uppercase tracking-wide transition-colors duration-300 ${textColor}`}>
+            {open ? 'Close' : 'Menu'}
+          </span>
         </button>
       </div>
 

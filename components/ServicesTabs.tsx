@@ -111,10 +111,10 @@ export default function ServicesTabs() {
           <button
             key={tab}
             onClick={() => setActive(i)}
-            className={`flex items-center gap-[10px] px-[28px] md:px-[60px] shrink-0 border-r border-[#1e1e20] font-medium text-[13px] md:text-[20px] uppercase whitespace-nowrap transition-colors ${
+            className={`flex items-center gap-[8px] px-[14px] md:px-[28px] lg:px-[60px] shrink-0 border-r border-[#1e1e20] font-normal md:font-medium text-[16px] md:text-[14px] lg:text-[20px] uppercase whitespace-nowrap transition-colors ${
               i === active
-                ? 'bg-[#1e1e20] text-white py-[18px] md:py-[30px]'
-                : 'bg-transparent text-[#1e1e20] py-[10px] md:py-[18px] hover:bg-[#1e1e20]/5'
+                ? 'bg-[#1e1e20] text-white py-[10px] md:py-[18px] lg:py-[30px]'
+                : 'bg-transparent text-[#1e1e20] py-[8px] md:py-[12px] lg:py-[18px] hover:bg-[#1e1e20]/5'
             }`}
           >
             {tab}

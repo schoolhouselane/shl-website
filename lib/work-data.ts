@@ -2,6 +2,7 @@ export interface WorkProject {
   id: number
   slug: string
   title: string
+  subtitle: string
   category: string
   tags: string[]
   description: string
@@ -19,7 +20,8 @@ export const projects: WorkProject[] = [
   {
     id: 1,
     slug: 'shelby',
-    title: 'Shelby for the Ride',
+    title: 'Shelby Cycles',
+    subtitle: 'Reimagining Legacy through Creative Commerce',
     category: 'BRAND IDENTITY',
     tags: ['BRAND IDENTITY', 'CAMPAIGNS'],
     description:
@@ -39,6 +41,7 @@ export const projects: WorkProject[] = [
     id: 2,
     slug: 'vivo-hotels',
     title: 'Vivo Hotels',
+    subtitle: 'Architecting the Theatre of the Living',
     category: 'WEBSITES',
     tags: ['WEBSITES', 'BRAND IDENTITY'],
     description:
@@ -69,6 +72,7 @@ export const projects: WorkProject[] = [
     id: 3,
     slug: 'datadirect',
     title: 'DataDirect',
+    subtitle: 'Re-engineering the Growth Engine',
     category: 'WEBSITES',
     tags: ['WEBSITES', 'STRATEGY'],
     description:
@@ -99,6 +103,7 @@ export const projects: WorkProject[] = [
     id: 4,
     slug: 'real-map-wipes',
     title: 'Real Map Wipes',
+    subtitle: 'Weaponising Commercial Models with Attitude',
     category: 'BRAND IDENTITY',
     tags: ['BRAND IDENTITY', 'CAMPAIGNS'],
     description:

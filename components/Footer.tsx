@@ -68,7 +68,7 @@ export default function Footer() {
               alt="Everlough Holdings"
               width={580}
               height={140}
-              className="h-[42px] md:h-[70px] w-auto max-w-[189px] md:max-w-[290px]"
+              className="h-[50px] md:h-[70px] w-auto max-w-[189px] md:max-w-[290px]"
             />
             <div className="w-px h-[50px] md:h-[66px] lg:h-[93px] bg-white/40" />
             <div className="relative w-[97px] md:w-[119px] h-[38px] md:h-[47px]">
