@@ -13,7 +13,7 @@ export default function Vision() {
 
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[8px] lg:gap-6">
-        <h2 className="font-bold text-[24px] md:text-[40px] lg:text-[64px] text-white uppercase leading-tight">
+        <h2 className="font-bold text-[24px] md:text-[32px] lg:text-[64px] text-white uppercase leading-tight">
           Values that we stand by
         </h2>
         <p className="text-[16px] md:text-[18px] text-white/50 leading-[1.8] lg:text-right max-w-[460px] lg:max-w-[520px]">

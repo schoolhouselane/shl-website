@@ -128,7 +128,7 @@ export default function Team() {
 
       {/* Title */}
       <div className="px-4 md:px-6 lg:px-[90px] flex justify-end">
-        <h2 className="font-black text-[24px] md:text-[40px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20] text-right">
+        <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20] text-right">
           People behind everything
         </h2>
       </div>
