@@ -137,7 +137,7 @@ export default function Team() {
             Senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.
           </p>
           <Link
-            href="/jobs"
+            href="/contact"
             className="hidden md:inline-flex lg:hidden btn-cta items-center gap-3 border border-[#1e1e20] rounded-full px-[24px] py-[12px] text-[16px] font-medium uppercase"
           >
             See Open Roles
@@ -215,7 +215,7 @@ export default function Team() {
           Senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.
         </p>
         <Link
-          href="/jobs"
+          href="/contact"
           className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-6 py-3 text-[16px] font-medium uppercase transition-colors"
         >
           See Open Roles

@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const caseStudyUrls: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${base}/work/${p.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date('2025-04-17'),
     changeFrequency: 'monthly' as const,
     priority: 0.75,
   }))
@@ -14,32 +14,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: base,
-      lastModified: new Date(),
+      lastModified: new Date('2025-04-17'),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: `${base}/about`,
-      lastModified: new Date(),
+      lastModified: new Date('2025-04-17'),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${base}/services`,
-      lastModified: new Date(),
+      lastModified: new Date('2025-04-17'),
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${base}/work`,
-      lastModified: new Date(),
+      lastModified: new Date('2025-04-17'),
       changeFrequency: 'monthly',
       priority: 0.85,
     },
     ...caseStudyUrls,
     {
       url: `${base}/contact`,
-      lastModified: new Date(),
+      lastModified: new Date('2025-04-17'),
       changeFrequency: 'yearly',
       priority: 0.7,
     },

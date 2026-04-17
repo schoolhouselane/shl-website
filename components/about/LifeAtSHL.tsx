@@ -28,7 +28,7 @@ export default function LifeAtSHL() {
             The work is serious. The environment doesn&apos;t have to be. Behind every deliverable is a team that genuinely loves what they&apos;re building.
           </p>
           <Link
-            href="/jobs"
+            href="/contact"
             className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-[24px] py-[12px] text-[16px] font-normal uppercase text-[#1e1e20]"
           >
             We&apos;re Hiring

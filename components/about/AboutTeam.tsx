@@ -139,7 +139,7 @@ export default function Team() {
           Our work spans brand strategy, identity, campaigns, and digital.
         </p>
         <Link
-          href="/jobs"
+          href="/contact"
           className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-6 py-3 text-[16px] font-medium uppercase transition-colors shrink-0"
         >
           See Open Roles
