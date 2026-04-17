@@ -27,7 +27,7 @@ export default function SelectedWork() {
 
       {/* Header */}
       <div className="mb-8 md:mb-10 flex flex-col gap-[20px]">
-        <h2 className="font-black text-[28px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20]">
+        <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20]">
           Selected Work<br />That Delivered Growth
         </h2>
         <p className="text-[16px] md:text-[20px] leading-[1.37] text-[#1e1e20] font-normal max-w-[608px]">
