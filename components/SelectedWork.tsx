@@ -48,7 +48,7 @@ export default function SelectedWork() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
         {works.map((work, i) => (
           <article key={work.id} className={`border border-black flex flex-col group${i >= 2 ? ' hidden md:flex' : ''}`}>
-            <div className="relative w-full h-[220px] md:h-[280px] lg:h-[371px] overflow-hidden">
+            <div className="relative w-full aspect-[764/428] overflow-hidden">
               <Image
                 src={work.image}
                 alt={work.title}
@@ -71,10 +71,10 @@ export default function SelectedWork() {
                 </Link>
               </div>
               <div className="flex flex-col gap-[6px]">
-                <h3 className="font-black text-[24px] md:text-[20px] lg:text-[24px] uppercase text-[#1e1e20] leading-tight">
+                <h3 className="font-black text-[24px] uppercase text-[#1e1e20] leading-tight">
                   {work.title}
                 </h3>
-                <p className="font-black text-[18px] md:text-[16px] lg:text-[18px] uppercase text-[#1e1e20] leading-tight">
+                <p className="font-black text-[18px] uppercase text-[#1e1e20] leading-tight">
                   {work.subtitle}
                 </p>
               </div>

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function WorkGallery() {
   return (
-    <section className="bg-[#f5f3ef] pt-[80px] pb-[60px] md:pb-[120px]">
+    <section className="bg-[#f5f3ef] pt-[20px] md:pt-[32px] pb-[60px] md:pb-[120px]">
       <div className="flex gap-[16px] items-stretch px-5 md:px-[90px]">
 
         {/* Col 1 — tall portrait */}

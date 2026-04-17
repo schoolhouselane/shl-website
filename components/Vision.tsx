@@ -12,7 +12,7 @@ export default function Vision() {
     <section className="bg-[#1e1e20] px-4 md:px-6 lg:px-[90px] py-[40px] md:py-[80px] lg:py-[120px] flex flex-col gap-[24px] md:gap-[80px] lg:gap-[60px]">
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-[8px] md:gap-6">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-[8px] md:gap-6">
         <h2 className="font-bold text-[24px] md:text-[32px] lg:text-[64px] text-white uppercase leading-tight">
           Values that we stand by
         </h2>
@@ -22,7 +22,7 @@ export default function Vision() {
       </div>
 
       {/* Values list — single col mobile, 2-col tablet+ (column-fill order) */}
-      <div className="flex flex-col md:grid md:grid-cols-2 md:grid-rows-3 md:grid-flow-col">
+      <div className="flex flex-col md:grid md:grid-cols-2 md:grid-rows-3 md:grid-flow-col md:gap-x-[40px] lg:gap-x-[60px]">
         {values.map((v) => (
           <div
             key={v}

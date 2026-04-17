@@ -2,6 +2,7 @@
 
 @theme {
   --font-manrope: 'Manrope', sans-serif;
+  --breakpoint-lg: 1280px;
 }
 
 :root {

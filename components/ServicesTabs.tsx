@@ -23,7 +23,6 @@ const marqueeImages: StripItem[] = [
   { src: '/images/strip-07.png', w: 111 },
   { src: '/images/strip-08.png', w: 163, bg: '#bb936a' },
   { src: '/images/strip-09.png', w: 116, bg: '#ffffff', contain: true },
-  { src: '/images/strip-10.png', w: 354 },
   { src: '/images/strip-11.png', w: 200 },
   { src: '/images/strip-12.png', w: 343, bg: '#04f9f4' },
   { src: '/images/strip-13.png', w: 342 },

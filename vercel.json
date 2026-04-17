@@ -1,4 +1,28 @@
 {
+  "redirects": [
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/about-us/", "destination": "/about", "permanent": true },
+    { "source": "/about-us-old", "destination": "/about", "permanent": true },
+    { "source": "/about-us-old/", "destination": "/about", "permanent": true },
+    { "source": "/data-direct", "destination": "/work/datadirect", "permanent": true },
+    { "source": "/data-direct/", "destination": "/work/datadirect", "permanent": true },
+    { "source": "/sealac", "destination": "/work/sealac", "permanent": true },
+    { "source": "/sealac/", "destination": "/work/sealac", "permanent": true },
+    { "source": "/man-tissues", "destination": "/work/man-tissues", "permanent": true },
+    { "source": "/man-tissues/", "destination": "/work/man-tissues", "permanent": true },
+    { "source": "/eddie-jordan-foundation", "destination": "/work/eddie-jordan-foundation", "permanent": true },
+    { "source": "/eddie-jordan-foundation/", "destination": "/work/eddie-jordan-foundation", "permanent": true },
+    { "source": "/mindful", "destination": "/work/mindful", "permanent": true },
+    { "source": "/mindful/", "destination": "/work/mindful", "permanent": true },
+    { "source": "/luvit", "destination": "/work/luvit", "permanent": true },
+    { "source": "/luvit/", "destination": "/work/luvit", "permanent": true },
+    { "source": "/blogs", "destination": "/blog", "permanent": true },
+    { "source": "/blogs/", "destination": "/blog", "permanent": true },
+    { "source": "/2025/:path*", "destination": "/blog", "permanent": true },
+    { "source": "/2026/:path*", "destination": "/blog", "permanent": true },
+    { "source": "/contact-old", "destination": "/contact", "permanent": true },
+    { "source": "/contact-old/", "destination": "/contact", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

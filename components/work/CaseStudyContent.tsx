@@ -8,7 +8,7 @@ import type { CaseStudyData, CaseStudySection } from '@/lib/case-study-types'
 function SectionTitle({ text }: { text: string }) {
   const lines = text.split('\n')
   return (
-    <h2 className="font-black text-[20px] uppercase text-[#1e1e20] leading-tight tracking-[-0.3px]">
+    <h2 className="font-black text-[16px] lg:text-[20px] uppercase text-[#1e1e20] leading-tight tracking-[-0.3px]">
       {lines.map((line, i) => (
         <span key={i}>{line}{i < lines.length - 1 && <br />}</span>
       ))}
@@ -21,7 +21,7 @@ function ItemList({ items }: { items: NonNullable<CaseStudySection['items']> }) 
   return (
     <ol className="flex flex-col gap-[12px] list-decimal list-outside pl-[20px]">
       {items.map((item, i) => (
-        <li key={i} className="text-[18px] text-[#595959] leading-normal font-normal">
+        <li key={i} className="text-[14px] lg:text-[18px] text-[#595959] leading-normal font-normal">
           <span className="font-bold uppercase text-[#1e1e20]">{item.label} </span>
           {item.text}
         </li>
@@ -34,7 +34,7 @@ function ItemList({ items }: { items: NonNullable<CaseStudySection['items']> }) 
 function SectionBody({ section }: { section: CaseStudySection }) {
   return (
     <div className="flex flex-col gap-[12px]">
-      <p className="text-[18px] text-[#595959] leading-normal font-normal">
+      <p className="text-[14px] lg:text-[18px] text-[#595959] leading-normal font-normal">
         {section.intro}
       </p>
       {section.items && section.items.length > 0 && <ItemList items={section.items} />}
@@ -54,7 +54,7 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
     <section className="bg-[#f5f3ef]">
 
       {/* ── Section 1: Challenger Strategy — left image (optional) + right text ── */}
-      <div className="px-5 md:px-[90px] py-[20px] md:py-[30px] flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">
+      <div className="px-5 md:px-6 lg:px-[90px] py-[20px] md:py-[30px] flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">
         {/* Left column: single image */}
         {caseStudy.challengerSideImage && (
           <div className="w-full md:w-[32%] shrink-0">
@@ -81,7 +81,7 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
       </div>
 
       {/* ── Section 2+3: Engineering Ecosystem + Human Advantage ─────────── */}
-      <div className="px-5 md:px-[90px] pt-[60px] pb-[80px] md:pb-[120px] flex flex-col gap-[60px]">
+      <div className="px-5 md:px-6 lg:px-[90px] pt-[60px] pb-[80px] md:pb-[60px] lg:pb-[120px] flex flex-col gap-[60px]">
 
         {/* Engineering Ecosystem: left images + right content */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">
@@ -188,7 +188,7 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
             <div className="w-full md:w-[78%]">
               <SectionTitle text={caseStudy.humanAdvantage.title} />
             </div>
-            <p className="font-bold text-[16px] md:text-[20px] text-[#1e1e20] leading-normal w-full md:w-[49%]">
+            <p className="font-bold text-[14px] lg:text-[20px] text-[#1e1e20] leading-normal w-full md:w-[49%]">
               {caseStudy.humanAdvantage.intro}
             </p>
 
@@ -218,7 +218,7 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
 // ─── Simple fallback (projects without case study data) ───────────────────────
 function SimpleContent({ project }: { project: WorkProject }) {
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[60px] md:py-[120px] flex flex-col gap-[80px]">
+    <section className="bg-[#f5f3ef] px-5 md:px-6 lg:px-[90px] py-[60px] md:py-[60px] lg:py-[120px] flex flex-col gap-[80px]">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-[#1e1e20]/15">
         <div className="bg-[#f5f3ef] flex flex-col gap-[20px] py-[40px] md:py-[60px] pr-0 md:pr-[60px]">
           <p className="text-[11px] uppercase tracking-[0.14em] text-[#777] font-normal">The Challenge</p>

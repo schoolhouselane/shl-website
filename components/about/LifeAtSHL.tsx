@@ -6,9 +6,10 @@ import { useInView } from '@/hooks/useInView'
 export default function LifeAtSHL() {
   const [headerRef, headerInView] = useInView(0.2)
   const [collageRef, collageInView] = useInView(0.1)
+  const [mobileCollageRef, mobileCollageInView] = useInView(0.1)
 
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[80px] md:py-[120px] flex flex-col gap-[40px] md:gap-[60px]">
+    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px] flex flex-col gap-[30px] md:gap-[40px] lg:gap-[60px]">
 
       {/* Header */}
       <div
@@ -19,12 +20,12 @@ export default function LifeAtSHL() {
           transform: headerInView ? 'translateY(0)' : 'translateY(24px)',
         }}
       >
-        <h2 className="font-black text-[36px] md:text-[56px] uppercase text-[#1e1e20] leading-tight max-w-[606px]">
+        <h2 className="font-black text-[28px] md:text-[32px] lg:text-[56px] uppercase text-[#1e1e20] leading-tight max-w-[606px]">
           Life at<br />Schoolhouse Lane
         </h2>
         <div className="flex flex-col gap-[20px] lg:items-end lg:max-w-[544px]">
-          <p className="text-[16px] md:text-[20px] text-[#1e1e20] leading-[1.7] lg:text-right">
-            The work is serious. The environment doesn&apos;t have to be. We hire people who are brilliant at what they do and genuinely great to be around.
+          <p className="text-[14px] md:text-[16px] lg:text-[20px] text-[#1e1e20] leading-[1.7] lg:text-right">
+            The work is serious. The environment doesn&apos;t have to be. Behind every deliverable is a team that genuinely loves what they&apos;re building.
           </p>
           <Link
             href="/jobs"
@@ -39,7 +40,7 @@ export default function LifeAtSHL() {
       {/* Photo collage — matches Figma 636-688 exactly */}
       {/* Desktop: 4 proportional columns (239:553:407:299), ~16px gaps */}
       {/* Col 2 splits 220/222, Col 4 splits 288/144 */}
-      <div ref={collageRef as React.RefObject<HTMLDivElement>} className="hidden md:flex gap-4 h-[460px]">
+      <div ref={collageRef as React.RefObject<HTMLDivElement>} className="hidden md:flex gap-3 lg:gap-4 h-[320px] lg:h-[460px]">
 
         {/* Col 1: man — full height */}
         <div
@@ -122,7 +123,7 @@ export default function LifeAtSHL() {
       </div>
 
       {/* Mobile: 2-column simplified grid */}
-      <div className="grid md:hidden grid-cols-2 gap-3">
+      <div ref={mobileCollageRef as React.RefObject<HTMLDivElement>} className="grid md:hidden grid-cols-2 gap-3">
         {[
           { src: '/images/life-1.png', delay: 0 },
           { src: '/images/life-3.png', delay: 80 },
@@ -135,8 +136,8 @@ export default function LifeAtSHL() {
             key={src}
             className="relative h-[200px] overflow-hidden rounded-sm transition-all duration-700"
             style={{
-              opacity: collageInView ? 1 : 0,
-              transform: collageInView ? 'translateY(0)' : 'translateY(20px)',
+              opacity: mobileCollageInView ? 1 : 0,
+              transform: mobileCollageInView ? 'translateY(0)' : 'translateY(20px)',
               transitionDelay: `${delay}ms`,
             }}
           >

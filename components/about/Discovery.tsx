@@ -4,7 +4,6 @@ import { useInView, useCountUp } from '@/hooks/useInView'
 function StatItem({ value, label, delay }: { value: string; label: string; delay: number }) {
   const [ref, inView] = useInView(0.3)
 
-  // Parse numeric part and suffix
   const match = value.match(/^([£]?)(\d+)(.*)$/)
   const prefix = match ? match[1] : ''
   const num = match ? parseInt(match[2]) : 0
@@ -15,17 +14,17 @@ function StatItem({ value, label, delay }: { value: string; label: string; delay
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className="flex flex-col items-center text-center w-[120px] sm:w-[140px] md:w-[210px] transition-all duration-700"
+      className="flex flex-col border-b border-[#1e1e20] pb-[4px] px-[16px] w-[calc(50%-10px)] md:w-auto md:flex-1 transition-all duration-700"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? 'translateY(0)' : 'translateY(24px)',
         transitionDelay: `${delay}ms`,
       }}
     >
-      <p className="font-black text-[36px] sm:text-[48px] md:text-[62px] tracking-[-1.87px] text-[#3a3a3a] leading-none">
+      <p className="font-extrabold text-[36px] md:text-[52px] tracking-[-1.87px] text-[#1e1e20] leading-none">
         {prefix}{inView ? count : 0}{suffix}
       </p>
-      <p className="text-[10px] md:text-[12px] uppercase tracking-[1.4px] text-[#1e1e20] mt-1">
+      <p className="text-[12px] uppercase text-[#1e1e20] font-light mt-1">
         {label}
       </p>
     </div>
@@ -37,19 +36,19 @@ export default function Discovery() {
   const [statsRef, statsInView] = useInView(0.1)
 
   const stats = [
-    { value: '80+', label: 'Brands Transformed' },
-    { value: '99%', label: 'Client Retention' },
-    { value: '6yr', label: 'In Market' },
+    { value: '79+', label: 'Brands Transformed' },
+    { value: '6YR', label: 'Average Partnership' },
     { value: '5★', label: 'Average Client Review' },
+    { value: '99%', label: 'Client Retention' },
   ]
 
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] pt-[80px] pb-[120px] flex flex-col gap-[40px]">
+    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[40px] md:py-[80px] flex flex-col gap-[22px] md:gap-[32px]">
 
       {/* Headline */}
       <h2
         ref={sectionRef as React.RefObject<HTMLHeadingElement>}
-        className="font-black text-[40px] md:text-[64px] uppercase text-[#111] leading-tight transition-all duration-700"
+        className="font-black text-[28px] md:text-[32px] lg:text-[64px] uppercase text-[#111] leading-tight transition-all duration-700"
         style={{
           opacity: sectionInView ? 1 : 0,
           transform: sectionInView ? 'translateY(0)' : 'translateY(30px)',
@@ -60,26 +59,29 @@ export default function Discovery() {
 
       {/* Body + pull quote */}
       <div
-        className="flex flex-col gap-[25px] max-w-[852px] transition-all duration-700"
+        className="flex flex-col gap-[22px] max-w-[852px] transition-all duration-700"
         style={{
           opacity: sectionInView ? 1 : 0,
           transform: sectionInView ? 'translateY(0)' : 'translateY(20px)',
           transitionDelay: '150ms',
         }}
       >
-        <p className="text-[16px] md:text-[20px] text-[#1e1e20] leading-[1.8]">
-          We are a human agency with an altruistic view of the world. We believe that business, done right, is one of the most powerful forces for good on earth. Our job is to make the brands that share that belief impossible to ignore.
+        <p className="text-[16px] text-[#1e1e20] leading-[1.8]">
+          We are a human agency with an altruistic view of the world. In an era of algorithmic noise, we prioritise the emotional, the meaningful, and the real.
         </p>
-        <div className="flex items-start gap-[12px]">
+        <div className="flex items-start gap-[8px]">
           <div className="w-[3px] h-6 bg-[#111] shrink-0 mt-1" />
-          <p className="font-bold text-[16px] md:text-[20px] text-[#1e1e20] leading-[1.35]">
+          <p className="font-bold text-[16px] text-[#1e1e20] leading-[1.35]">
             &ldquo;We exist at the intersection of creativity and revenue growth.&rdquo;
           </p>
         </div>
       </div>
 
       {/* Stats */}
-      <div ref={statsRef as React.RefObject<HTMLDivElement>} className="flex flex-wrap gap-x-[30px] md:gap-x-[60px] gap-y-[40px]">
+      <div
+        ref={statsRef as React.RefObject<HTMLDivElement>}
+        className="flex flex-wrap gap-x-[20px] gap-y-[20px] md:flex-nowrap md:gap-x-0 md:gap-y-0"
+      >
         {stats.map((s, i) => (
           <StatItem key={s.label} value={s.value} label={s.label} delay={i * 100} />
         ))}

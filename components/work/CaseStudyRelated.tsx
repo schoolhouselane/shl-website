@@ -24,19 +24,19 @@ export default function CaseStudyRelated({ currentSlug }: { currentSlug: string 
   if (picks.length < 2) return null
 
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] py-[80px] md:py-[120px] flex flex-col gap-[60px] md:gap-[80px]">
+    <section className="bg-[#f5f3ef] px-5 md:px-6 lg:px-[90px] pt-[60px] md:pt-[60px] lg:pt-[80px] pb-[60px] md:pb-[60px] lg:pb-[80px] flex flex-col gap-[40px] md:gap-[40px] lg:gap-[60px]">
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-[20px]">
-        <h2 className="font-black text-[36px] md:text-[64px] uppercase text-[#1e1e20] leading-normal">
-          some more work<br className="hidden md:block" /> like this one
+        <h2 className="font-black text-[32px] md:text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-normal">
+          Selected Work<br />That Delivered Growth
         </h2>
         <Link
           href="/work"
-          className="inline-flex items-center gap-[12px] border border-[#1e1e20] px-[24px] py-[8px] rounded-[50px] shrink-0 self-start hover:bg-[#1e1e20] hover:text-white transition-colors group"
+          className="inline-flex items-center gap-[12px] border border-[#1e1e20] px-[24px] py-[12px] rounded-[50px] shrink-0 self-start hover:bg-[#1e1e20] hover:text-white transition-colors group"
         >
-          <span className="font-medium text-[16px] uppercase whitespace-nowrap leading-[27.42px] group-hover:text-white transition-colors">
-            ALL WORKS
+          <span className="font-medium text-[16px] uppercase whitespace-nowrap leading-normal group-hover:text-white transition-colors">
+            See more work
           </span>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
@@ -44,12 +44,12 @@ export default function CaseStudyRelated({ currentSlug }: { currentSlug: string 
         </Link>
       </div>
 
-      {/* Two cards — exact same markup as WorkGrid */}
+      {/* Two cards — same markup as WorkGrid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
         {picks.map(p => (
           <article key={p.slug} className="border border-black flex flex-col group">
-            {/* Image */}
-            <div className="relative w-full h-[240px] sm:h-[300px] md:h-[371px] overflow-hidden">
+            {/* Image — aspect ratio preserved */}
+            <div className="relative w-full aspect-[764/428] overflow-hidden">
               <Image
                 src={p.image}
                 alt={p.title}
@@ -60,23 +60,28 @@ export default function CaseStudyRelated({ currentSlug }: { currentSlug: string 
             </div>
 
             {/* Card body */}
-            <div className="flex flex-col gap-[12px] px-[24px] md:px-[40px] py-[20px] md:py-[25px]">
+            <div className="flex flex-col gap-[12px] px-4 md:px-[24px] lg:px-[40px] py-[16px] md:py-[20px] lg:py-[25px]">
               <div className="flex items-center justify-between gap-[12px]">
                 <p className="text-[11px] md:text-[12px] text-[#777] uppercase tracking-wide leading-normal">
                   {p.tags.join(' — ')}
                 </p>
                 <Link
                   href={`/work/${p.slug}`}
-                  className="flex items-center justify-center bg-black rounded-full w-[44px] h-[44px] md:w-[55px] md:h-[55px] p-[14px] md:p-[16px] shrink-0 text-white hover:bg-[#333] transition-colors duration-200"
+                  className="flex items-center justify-center bg-black rounded-full w-[39px] h-[39px] md:w-[44px] md:h-[44px] lg:w-[55px] lg:h-[55px] p-[10px] md:p-[12px] lg:p-[16px] shrink-0 text-white hover:bg-[#333] transition-colors duration-200"
                   aria-label={`View ${p.title}`}
                 >
                   <ArrowUpRight />
                 </Link>
               </div>
-              <h3 className="font-black text-[18px] md:text-[24px] uppercase text-[#1e1e20] leading-tight">
-                {p.title}
-              </h3>
-              <p className="text-[14px] md:text-[16px] text-[#1e1e20] leading-[1.714]">
+              <div className="flex flex-col gap-[6px]">
+                <h3 className="font-black text-[24px] uppercase text-[#1e1e20] leading-tight">
+                  {p.title}
+                </h3>
+                <p className="font-black text-[18px] uppercase text-[#1e1e20] leading-tight">
+                  {p.subtitle}
+                </p>
+              </div>
+              <p className="text-[16px] text-[#1e1e20] leading-[1.6]">
                 {p.description}
               </p>
             </div>

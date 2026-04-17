@@ -4,33 +4,33 @@ import { useInView } from '@/hooks/useInView'
 const principles = [
   {
     num: '01',
-    title: 'Be Curious',
-    desc: 'Mediocrity is a choice. Relentless inquiry is how we live.',
+    title: 'Upstream Accountability',
+    desc: 'We prioritise the strategic engine over the marketing tail, ensuring every decision is anchored in enterprise value creation and business logic.',
   },
   {
     num: '02',
-    title: 'Communication',
-    desc: 'No black boxes. Ever. Just togetherness.',
+    title: 'Integrated Efficiency',
+    desc: 'We eliminate the gap between strategy and execution by architecting ecosystems where upstream clarity informs every downstream touchpoint.',
   },
   {
     num: '03',
-    title: 'Human',
-    desc: 'We work with people, not "clients." Emotional intelligence is our secret weapon.',
+    title: 'Relentless Inquiry',
+    desc: 'We move beyond "decorating" pre-made decisions; we use curiosity as a diagnostic tool to unearth latent commercial potential and hidden revenue drivers.',
   },
   {
     num: '04',
-    title: 'Be Bright. Be Industrious',
-    desc: 'High-level enterprise value meets relentless output.',
+    title: 'Commercial Discipline',
+    desc: 'We balance wild imagination with rigorous financial modeling, ensuring our creative commerce output is both culturally resonant and ruthlessly profitable.',
   },
   {
     num: '05',
-    title: 'Think Inside the BOX',
-    desc: 'We balance wild imagination with commercial discipline.',
+    title: 'The Shared Intelligence Node',
+    desc: 'We operate as a live, evolving system, aggregating data across our partner fleet to optimise performance, reduce risk, and compound value over time.',
   },
   {
     num: '06',
-    title: 'Discipline',
-    desc: "Standards don't slip. We architect the infrastructure for ambition.",
+    title: 'Defensible Infrastructure',
+    desc: 'We don\'t just tell stories; we build the technical and software-defined "moat" that protects margins and drives premium valuations for our clients.',
   },
 ]
 
@@ -39,31 +39,31 @@ export default function Principles() {
   const [gridRef, gridInView] = useInView(0.1)
 
   return (
-    <section className="bg-[#1e1e20] py-[80px] md:py-[120px] flex flex-col gap-[60px] md:gap-[120px]">
+    <section className="bg-[#1e1e20] py-[60px] md:py-[80px] lg:py-[120px] flex flex-col gap-[40px] md:gap-[80px]">
 
       {/* Header */}
       <div
         ref={headerRef as React.RefObject<HTMLDivElement>}
-        className="px-5 md:px-[90px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 transition-all duration-700"
+        className="px-4 md:px-6 lg:px-[90px] flex flex-col md:flex-row md:items-end md:justify-between gap-6 transition-all duration-700"
         style={{
           opacity: headerInView ? 1 : 0,
           transform: headerInView ? 'translateY(0)' : 'translateY(30px)',
         }}
       >
-        <h2 className="font-bold text-[36px] md:text-[64px] text-white uppercase max-w-[526px] leading-tight">
-          Our Operating Principles:
+        <h2 className="font-black text-[28px] md:text-[32px] lg:text-[64px] text-white uppercase leading-tight md:max-w-[264px] md:shrink-0">
+          Our Operating Principles
         </h2>
-        <p className="text-[16px] md:text-[20px] text-white/50 leading-[1.8] lg:text-right max-w-[582px]">
-          These aren&apos;t values on a wall. They are the operating system we run on. Every brief, every decision, every conversation — these are the principles we return to.
+        <p className="text-[16px] text-white/50 leading-[1.8] md:text-right md:max-w-[460px] lg:max-w-[608px]">
+          Refining the lens from cultural values to commercial mechanics, our operating principles focus on the structural efficiency required to bridge the gap between high-level enterprise value and tactile execution.
         </p>
       </div>
 
       {/* Principles grid */}
-      <div ref={gridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2">
+      <div ref={gridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 md:grid-flow-col">
         {principles.map((p, i) => (
           <div
             key={p.num}
-            className="relative flex items-center justify-between px-5 md:px-[90px] py-[28px] md:py-[38px] border-t border-white/10 overflow-hidden transition-all duration-700"
+            className="relative flex items-center justify-between px-4 md:px-6 lg:px-[90px] py-[20px] md:py-[28px] lg:py-[38px] border-t border-white/10 overflow-hidden transition-all duration-700"
             style={{
               opacity: gridInView ? 1 : 0,
               transform: gridInView ? 'translateY(0)' : 'translateY(40px)',
@@ -72,17 +72,17 @@ export default function Principles() {
           >
             {/* Left: title + desc */}
             <div className="flex flex-col gap-[6px] max-w-[65%]">
-              <h3 className={`font-black uppercase text-white leading-tight ${i === 0 ? 'text-[20px] md:text-[24px]' : 'text-[18px] md:text-[22px]'}`}>
+              <h3 className="font-black uppercase text-white leading-tight text-[14px] md:text-[18px]">
                 {p.title}
               </h3>
-              <p className="text-[14px] md:text-[16px] text-white/40 leading-[1.7]">
+              <p className="text-[12px] md:text-[16px] text-white/40 leading-[1.7]">
                 {p.desc}
               </p>
             </div>
 
-            {/* Right: ghost number — slides in from right */}
+            {/* Right: ghost number */}
             <span
-              className="font-black text-[40px] sm:text-[60px] md:text-[100px] tracking-[-4px] leading-none select-none shrink-0 transition-all duration-1000"
+              className="font-black text-[40px] md:text-[100px] tracking-[-4px] leading-none select-none shrink-0 transition-all duration-1000"
               style={{
                 color: 'white',
                 opacity: gridInView ? 0.08 : 0,

@@ -6,16 +6,19 @@ import { useEffect, useState, useRef } from 'react'
 const slides = [
   {
     image: '/images/hero-1.png',
+    mobileImage: '/images/mobile-home-hero1.png',
     heading: 'Creative Commerce',
     sub: 'We exist at the intersection of creativity and revenue growth',
   },
   {
     image: '/images/hero-2.png',
+    mobileImage: '/images/mobile-home-hero2.png',
     heading: 'Brand That Builds Revenue',
     sub: 'Strategy-first creative that turns brand into your most valuable asset',
   },
   {
     image: '/images/hero-3.png',
+    mobileImage: '/images/mobile-home-hero3.png',
     heading: 'Vision Led Value Creation',
     sub: 'From identity to campaigns — every touchpoint engineered for growth',
   },
@@ -58,14 +61,14 @@ export default function Hero() {
 
   return (
     <section className={`bg-[#f5f3ef] w-full transition-all duration-700 ease-in-out ${
-      scrolled ? 'px-5 md:px-[90px] pt-[60px] md:pt-[90px] pb-[40px] md:pb-[60px]' : ''
+      scrolled ? 'px-4 md:px-6 lg:px-[90px] pt-[60px] md:pt-[80px] lg:pt-[90px] pb-[30px] md:pb-[50px] lg:pb-[60px]' : ''
     }`}>
 
       {/* Image container */}
       <div className={`relative overflow-hidden transition-[height] duration-700 ease-in-out flex flex-col ${
         scrolled
           ? 'h-[280px] md:h-[433px] justify-center'
-          : 'h-screen justify-end pb-[20vh] md:pb-[28vh]'
+          : 'h-[604px] md:h-[500px] lg:h-screen justify-end pb-[64px] md:pb-[60px] lg:pb-[28vh]'
       }`}>
 
         {/* Slides */}
@@ -76,30 +79,39 @@ export default function Hero() {
               i === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           >
+            {/* Mobile image */}
+            <Image
+              src={slide.mobileImage}
+              alt={slide.heading}
+              fill
+              className="object-cover object-top md:hidden"
+              priority={i === 0}
+            />
+            {/* Tablet + desktop image */}
             <Image
               src={slide.image}
               alt={slide.heading}
               fill
-              className="object-cover object-top"
+              className="object-cover object-top hidden md:block"
               priority={i === 0}
             />
           </div>
         ))}
 
         {/* Content */}
-        <div className={`relative z-20 flex flex-col gap-5 md:gap-[30px] max-w-[95vw] md:max-w-[714px] transition-all duration-700 pr-5 md:pr-0 ${
-          scrolled ? 'pl-4 md:pl-[49px]' : 'pl-5 md:pl-[90px]'
+        <div className={`relative z-20 flex flex-col gap-4 md:gap-6 lg:gap-[30px] max-w-full md:max-w-[714px] transition-all duration-700 pr-4 md:pr-0 ${
+          scrolled ? 'pl-4 md:pl-6 lg:pl-[49px]' : 'pl-4 md:pl-6 lg:pl-[90px]'
         }`}>
           <div key={current} className="flex flex-col gap-1 text-white animate-fadeIn">
-            <h1 className="font-black text-[36px] md:text-[64px] leading-[0.87] tracking-[-1px] md:tracking-[-1.28px] uppercase">
+            <h1 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.87] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase">
               {slides[current].heading}
             </h1>
-            <p className="font-normal text-[18px] md:text-[24px] leading-tight mt-[3px] max-w-[453px]">
+            <p className="font-normal text-[16px] md:text-[20px] lg:text-[24px] leading-tight mt-[3px] max-w-[231px] md:max-w-[384px] lg:max-w-[453px]">
               {slides[current].sub}
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-[12px] md:gap-[20px]">
+          <div className="flex flex-col items-start gap-[8px] md:flex-row md:items-center md:gap-[20px]">
             <Link
               href="/contact"
               className="btn-cta flex items-center gap-3 border border-white rounded-full px-[24px] py-[12px] text-white text-[16px] font-medium uppercase"
@@ -117,8 +129,8 @@ export default function Hero() {
         </div>
 
         {/* Slide indicators */}
-        <div className={`absolute bottom-6 z-20 flex items-center gap-3 transition-all duration-700 ${
-          scrolled ? 'left-4 md:left-[49px]' : 'left-5 md:left-[90px]'
+        <div className={`absolute bottom-5 z-20 flex items-center gap-3 transition-all duration-700 ${
+          scrolled ? 'left-4 md:left-6 lg:left-[49px]' : 'left-4 md:left-6 lg:left-[90px]'
         }`}>
           {slides.map((_, i) => (
             <button
@@ -134,8 +146,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator — only on full screen */}
-        <div className={`absolute right-4 md:right-[90px] bottom-8 md:bottom-10 z-20 flex flex-col items-center gap-2 transition-opacity duration-500 ${
+        {/* Scroll indicator — only on desktop full screen */}
+        <div className={`absolute right-4 lg:right-[90px] bottom-8 lg:bottom-10 z-20 hidden lg:flex flex-col items-center gap-2 transition-opacity duration-500 ${
           scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}>
           <div className="border border-white rounded-full w-[55px] h-[55px] flex items-center justify-center">

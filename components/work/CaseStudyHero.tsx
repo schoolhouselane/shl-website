@@ -21,11 +21,11 @@ export default function CaseStudyHero({
       style={{ opacity: inView ? 1 : 0 }}
     >
       {/* ── Hero image — padded to match content columns ─────────────────── */}
-      <div className="px-5 md:px-[90px] mt-[64px] md:mt-[82px]">
+      <div className="px-5 md:px-6 lg:px-[90px] mt-[64px] md:mt-[82px]">
       <div
         className="relative w-full overflow-hidden"
         style={{
-          height: 'clamp(220px, 50vw, 580px)',
+          aspectRatio: '3556/1432',
           backgroundColor: caseStudy?.heroColor ?? '#1e1e20',
         }}
       >
@@ -71,7 +71,7 @@ export default function CaseStudyHero({
       </div>
 
       {/* ── Title block ──────────────────────────────────────────────────────── */}
-      <div className="px-5 md:px-[90px] pt-[36px] md:pt-[52px] pb-[10px] flex flex-col gap-[8px]">
+      <div className="px-5 md:px-6 lg:px-[90px] pt-[36px] md:pt-[32px] lg:pt-[52px] pb-[10px] flex flex-col gap-[8px]">
         {/* Breadcrumb */}
         <div className="flex flex-wrap items-center gap-[10px] mb-[14px]">
           <Link
@@ -87,13 +87,13 @@ export default function CaseStudyHero({
         </div>
 
         {/* Big title */}
-        <h1 className="font-black text-[40px] md:text-[64px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-1.5px]">
+        <h1 className="font-black text-[40px] md:text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-1.5px]">
           {project.title}
         </h1>
 
         {/* Subtitle */}
         {caseStudy?.subtitle && (
-          <p className="font-black text-[24px] md:text-[36px] uppercase text-[#1e1e20] leading-normal tracking-[-1.92px] mt-[8px]">
+          <p className="font-black text-[22px] md:text-[24px] lg:text-[36px] uppercase text-[#1e1e20] leading-normal tracking-[-1.92px] mt-[8px]">
             {caseStudy.subtitle}
           </p>
         )}

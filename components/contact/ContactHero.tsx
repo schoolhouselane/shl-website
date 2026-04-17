@@ -44,18 +44,18 @@ export default function ContactHero() {
   }
 
   return (
-    <section className="bg-[#f5f3ef] px-5 md:px-[90px] pt-[100px] pb-[60px] md:py-[120px]">
-      <div className="flex flex-col lg:flex-row gap-[40px] lg:gap-[30px] lg:items-end">
+    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[80px] md:pt-[100px] lg:pt-[120px] pb-[40px] md:pb-[60px] lg:pb-[120px]">
+      <div className="flex flex-col lg:flex-row gap-[24px] md:gap-[40px] lg:gap-[30px] lg:items-end">
 
         {/* ── Left column ── */}
         <div className="flex flex-col flex-1 lg:justify-between lg:min-h-[939px]">
 
           {/* Headline + description */}
           <div className="flex flex-col gap-[14px]">
-            <h1 className="font-black text-[36px] sm:text-[44px] md:text-[56px] lg:text-[64px] uppercase text-[#1e1e20] leading-[0.93] tracking-[-1.5px]">
+            <h1 className="font-black text-[24px] md:text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-[0.93] tracking-[-1.5px]">
               Let&apos;s Build Your Next Revenue Chapter
             </h1>
-            <p className="text-[15px] md:text-[20px] text-[#111] leading-[1.7] max-w-[670px]">
+            <p className="text-[14px] md:text-[16px] lg:text-[20px] text-[#111] leading-[1.7] max-w-[670px]">
               15 minutes. No sales pitch. No deck. Just specific, actionable growth ideas tailored to your brand — from someone who&apos;s done it 80 times.
             </p>
           </div>
@@ -100,11 +100,11 @@ export default function ContactHero() {
         </div>
 
         {/* ── Right column: Form card ── */}
-        <div className="bg-[#1e1e20] rounded-[20px] md:rounded-[30px] p-[28px] sm:p-[40px] md:p-[60px] lg:p-[90px] w-full lg:w-[620px] xl:w-[722px] shrink-0 flex flex-col gap-[40px] md:gap-[63px]">
+        <div className="bg-[#1e1e20] rounded-[30px] p-[24px] md:p-[40px] lg:p-[90px] w-full lg:w-[620px] xl:w-[722px] shrink-0 flex flex-col gap-[40px] lg:gap-[63px]">
 
           {/* Card header */}
           <div>
-            <p className="font-black text-[22px] md:text-[28px] uppercase text-white leading-normal">
+            <p className="font-black text-[20px] md:text-[24px] lg:text-[32px] uppercase text-white leading-normal">
               Let&apos;s Get In Touch
             </p>
             <p className="font-normal text-[14px] md:text-[16px] text-white leading-[24px]">
@@ -118,10 +118,10 @@ export default function ContactHero() {
               <p className="text-white/60 text-[15px] md:text-[16px]">We&apos;ll be in touch within 24 hours.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-[30px] md:gap-[39px]">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[28px] lg:gap-[39px]">
 
               {/* Fields wrapper */}
-              <div className="flex flex-col gap-[30px] md:gap-[40px]">
+              <div className="flex flex-col gap-[28px] lg:gap-[40px]">
 
                 {/* Name */}
                 <input
@@ -204,7 +204,7 @@ export default function ContactHero() {
                     </svg>
                   )}
                 </div>
-                <p className="font-normal text-[13px] md:text-[14px] text-white leading-[1.75]">
+                <p className="font-normal text-[12px] md:text-[13px] lg:text-[14px] text-white leading-[1.75]">
                   Subscribe to our newsletter, don't miss out on anything from us.
                 </p>
               </label>
@@ -255,7 +255,7 @@ export default function ContactHero() {
               { name: 'Behance', href: 'https://behance.net/schoolhouselane' },
               { name: 'Instagram', href: 'https://instagram.com/schoolhouselane' },
             ].map((s) => (
-              <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[2px] text-[16px] md:text-[20px] text-[#1e1e20] hover:opacity-60 transition-opacity">
+              <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[2px] text-[16px] text-[#1e1e20] hover:opacity-60 transition-opacity">
                 {s.name}
                 <ArrowUpRight />
               </Link>

@@ -128,9 +128,22 @@ export default function Team() {
 
       {/* Title */}
       <div className="px-4 md:px-6 lg:px-[90px] flex justify-end">
-        <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20] text-right">
-          People behind everything
-        </h2>
+        <div className="flex flex-col items-end gap-[16px]">
+          <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase text-[#1e1e20] text-right">
+            People behind everything
+          </h2>
+          {/* Tablet-only: description + button in header */}
+          <p className="hidden md:block lg:hidden text-[16px] leading-[1.37] text-[#1e1e20] max-w-[532px] text-right">
+            Senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.
+          </p>
+          <Link
+            href="/jobs"
+            className="hidden md:inline-flex lg:hidden btn-cta items-center gap-3 border border-[#1e1e20] rounded-full px-[24px] py-[12px] text-[16px] font-medium uppercase"
+          >
+            See Open Roles
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </Link>
+        </div>
       </div>
 
       {/* Scrollable strip */}
@@ -196,10 +209,10 @@ export default function Team() {
         </div>
       </div>
 
-      {/* Footer text + CTA */}
-      <div className="px-4 md:px-6 lg:px-[90px] flex flex-col gap-[25px]">
+      {/* Footer text + CTA — mobile and desktop only */}
+      <div className="px-4 lg:px-[90px] flex flex-col gap-[25px] md:hidden lg:flex">
         <p className="text-[16px] md:text-[20px] leading-[1.37] text-[#1e1e20] max-w-[532px]">
-          A small, senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.
+          Senior team of strategists, creatives, and brand architects. We bring deep expertise and genuine curiosity to every brief.
         </p>
         <Link
           href="/jobs"
