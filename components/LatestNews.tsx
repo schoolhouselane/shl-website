@@ -36,17 +36,17 @@ export default function LatestNews() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 flex-1">
           {articles.map((a, i) => (
             <div key={i} className="flex flex-col">
-              <div className="relative h-[180px] md:h-[220px] lg:h-[300px] overflow-hidden">
-                <Image src={a.img} alt={a.title} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 50vw" />
+              <div className="w-full overflow-hidden">
+                <Image src={a.img} alt={a.title} width={600} height={800} className="w-full h-auto hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 50vw" />
               </div>
               <div className="bg-[#1e1e20] p-5 md:p-6 flex-1">
                 <div className="flex gap-4 items-start justify-between">
-                  <h3 className="font-semibold text-[16px] md:text-[20px] leading-normal text-white flex-1">{a.title}</h3>
+                  <h3 className="font-semibold text-[24px] md:text-[20px] leading-normal text-white flex-1">{a.title}</h3>
                   <div className="flex items-center justify-center bg-white rounded-full w-[40px] h-[40px] md:w-[48px] md:h-[48px] shrink-0">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                   </div>
                 </div>
-                <p className="mt-3 text-[13px] md:text-[14px] leading-relaxed text-white/80">{a.excerpt}</p>
+                <p className="mt-3 text-[16px] md:text-[14px] leading-relaxed text-white/80">{a.excerpt}</p>
               </div>
             </div>
           ))}
