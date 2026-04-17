@@ -13,14 +13,14 @@ const slides = [
   {
     image: '/images/hero-2.png',
     mobileImage: '/images/mobile-home-hero2.png',
-    heading: 'Brand That Builds Revenue',
-    sub: 'Strategy-first creative that turns brand into your most valuable asset',
+    heading: 'There is no cure for curiousity',
+    sub: 'It started with "why." It didn\'t stop there.',
   },
   {
     image: '/images/hero-3.png',
     mobileImage: '/images/mobile-home-hero3.png',
-    heading: 'Vision Led Value Creation',
-    sub: 'From identity to campaigns — every touchpoint engineered for growth',
+    heading: 'It\'s only advertising.',
+    sub: 'Don\'t take yourself too seriously',
   },
 ]
 
@@ -147,15 +147,15 @@ export default function Hero() {
         </div>
 
         {/* Scroll indicator — only on desktop full screen */}
-        <div className={`absolute right-4 lg:right-[90px] bottom-8 lg:bottom-10 z-20 hidden lg:flex flex-col items-center gap-2 transition-opacity duration-500 ${
+        <div className={`absolute right-[90px] bottom-[10px] z-20 hidden lg:flex flex-col items-center gap-[6px] transition-opacity duration-500 ${
           scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}>
-          <div className="border border-white rounded-full w-[55px] h-[55px] flex items-center justify-center">
+          <div className="border border-white w-[59px] h-[63px] rounded-[27.5px] flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
               <path d="M12 5v14M5 12l7 7 7-7"/>
             </svg>
           </div>
-          <p className="text-white text-[14px] uppercase tracking-widest font-light">Scroll</p>
+          <p className="text-white text-[16px] uppercase">Scroll</p>
         </div>
 
       </div>

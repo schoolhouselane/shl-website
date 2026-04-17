@@ -130,6 +130,7 @@ input:-webkit-autofill:active {
     .lg\:w-\[620px\] { width: 620px; }
     .lg\:w-\[701px\] { width: 701px; }
     /* height */
+    .lg\:h-screen    { height: 100vh; }
     .lg\:h-\[55px\]  { height: 55px; }
     .lg\:h-\[62px\]  { height: 62px; }
     .lg\:h-\[82px\]  { height: 82px; }
