@@ -124,7 +124,7 @@ export default function Team() {
   }
 
   return (
-    <section className="bg-[#f5f3ef] pt-[32px] pb-[60px] md:py-[60px] flex flex-col gap-[40px]">
+    <section className="bg-[#f5f3ef] pt-[32px] pb-0 md:py-[60px] flex flex-col gap-[40px]">
 
       {/* Title */}
       <div className="px-4 md:px-6 lg:px-[90px] flex justify-end">
