@@ -68,7 +68,7 @@ export default function Hero() {
       <div className={`relative overflow-hidden transition-[height] duration-700 ease-in-out flex flex-col ${
         scrolled
           ? 'h-[280px] md:h-[433px] justify-center'
-          : 'h-[604px] md:h-[500px] lg:h-auto lg:aspect-[1728/946] justify-end pb-[64px] md:pb-[60px] lg:pb-[28vh]'
+          : 'h-[604px] md:h-[500px] lg:h-screen justify-end pb-[64px] md:pb-[60px] lg:pb-[28vh]'
       }`}>
 
         {/* Slides */}
