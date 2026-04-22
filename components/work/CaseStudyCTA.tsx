@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useInView } from '@/hooks/useInView'
+import CalendlyButton from '@/components/CalendlyButton'
 
 export default function CaseStudyCTA() {
   const [ref, inView] = useInView(0.15)
@@ -21,17 +22,14 @@ export default function CaseStudyCTA() {
 
       {/* CTA group */}
       <div className="flex flex-col gap-[8px] items-end shrink-0 md:w-[183px]">
-        <Link
-          href="/contact"
-          className="bg-white flex items-center gap-[12px] px-[24px] py-[12px] md:py-[12px] lg:py-[20px] rounded-[50px] whitespace-nowrap hover:bg-[#f5f3ef] transition-colors"
-        >
+        <CalendlyButton className="bg-white flex items-center gap-[12px] px-[24px] py-[12px] md:py-[12px] lg:py-[20px] rounded-[50px] whitespace-nowrap hover:bg-[#f5f3ef] transition-colors">
           <span className="font-medium text-[#1e1e20] text-[14px] md:text-[16px] lg:text-[24px] uppercase leading-normal">
             Book a Call
           </span>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
-        </Link>
+        </CalendlyButton>
         <p className="text-[12px] text-white font-normal tracking-[0.72px] text-center">
           hello@schoolhouselane.co
         </p>

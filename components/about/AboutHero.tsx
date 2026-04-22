@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import CalendlyButton from '@/components/CalendlyButton'
 
 export default function AboutHero() {
   const [mounted, setMounted] = useState(false)
@@ -42,13 +43,10 @@ export default function AboutHero() {
             transitionDuration: '700ms',
           }}
         >
-          <Link
-            href="/contact"
-            className="btn-cta inline-flex items-center gap-3 border border-[#1e1e20] rounded-full px-[12px] py-[8px] md:px-[24px] md:py-[12px] text-[16px] font-medium uppercase text-[#1e1e20]"
-          >
+          <CalendlyButton className="btn-cta inline-flex items-center gap-3 border border-[#1e1e20] rounded-full px-[12px] py-[8px] md:px-[24px] md:py-[12px] text-[16px] font-medium uppercase text-[#1e1e20]">
             Book a Call
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </Link>
+          </CalendlyButton>
           <Link
             href="#team"
             className="btn-cta inline-flex items-center gap-3 bg-[#1e1e20] rounded-full px-[12px] py-[8px] md:px-[24px] md:py-[12px] text-[16px] font-medium uppercase text-white"

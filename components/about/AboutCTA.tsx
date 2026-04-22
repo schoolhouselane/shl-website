@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useInView } from '@/hooks/useInView'
+import CalendlyButton from '@/components/CalendlyButton'
 
 export default function AboutCTA() {
   const [ref, inView] = useInView(0.15)
@@ -24,13 +25,10 @@ export default function AboutCTA() {
 
       {/* Right: CTA + email */}
       <div className="flex flex-col gap-[12px] items-start lg:items-end lg:w-[245px] shrink-0">
-        <Link
-          href="/contact"
-          className="btn-cta flex items-center gap-3 bg-white rounded-full px-[18px] md:px-[20px] lg:px-[24px] py-[12px] md:py-[16px] lg:py-[20px] text-[15px] md:text-[18px] lg:text-[24px] font-medium uppercase text-[#1e1e20] w-fit"
-        >
+        <CalendlyButton className="btn-cta flex items-center gap-3 bg-white rounded-full px-[18px] md:px-[20px] lg:px-[24px] py-[12px] md:py-[16px] lg:py-[20px] text-[15px] md:text-[18px] lg:text-[24px] font-medium uppercase text-[#1e1e20] w-fit">
           Book a Call
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </Link>
+        </CalendlyButton>
         <Link
           href="mailto:hello@schoolhouselane.co"
           className="text-[16px] text-[#1e1e20] tracking-[0.96px] hover:opacity-70 transition-opacity"
