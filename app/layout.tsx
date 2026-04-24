@@ -145,6 +145,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <link rel="preload" as="style" href="https://assets.calendly.com/assets/external/widget.css" />
         <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
       </head>
       <body className="font-[var(--font-inter)]">
