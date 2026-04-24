@@ -21,8 +21,8 @@ export default function CaseStudyCTA() {
       </h2>
 
       {/* CTA group */}
-      <div className="flex flex-col gap-[8px] items-end shrink-0 md:w-[183px]">
-        <CalendlyButton className="bg-white flex items-center gap-[12px] px-[24px] py-[12px] md:py-[12px] lg:py-[20px] rounded-[50px] whitespace-nowrap hover:bg-[#f5f3ef] transition-colors">
+      <div className="flex flex-col gap-[8px] items-stretch shrink-0 w-auto md:w-[183px] lg:w-[245px]">
+        <CalendlyButton className="bg-white flex items-center justify-center gap-[12px] px-[24px] py-[12px] md:py-[12px] lg:py-[20px] rounded-[50px] whitespace-nowrap hover:bg-[#f5f3ef] transition-colors w-full">
           <span className="font-medium text-[#1e1e20] text-[14px] md:text-[16px] lg:text-[24px] uppercase leading-normal">
             Book a Call
           </span>
