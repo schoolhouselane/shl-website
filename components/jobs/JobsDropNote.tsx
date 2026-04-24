@@ -23,9 +23,9 @@ const SOCIALS = [
   { label: 'Instagram', href: 'https://www.instagram.com/schoolhouselane' },
 ]
 
-function SocialLinks({ className = '' }: { className?: string }) {
+function SocialLinks({ className = '', iconSize = 16 }: { className?: string; iconSize?: number }) {
   return (
-    <div className={`flex gap-[24px] md:gap-[30px] lg:gap-[30px] ${className}`}>
+    <div className={`flex gap-[24px] md:gap-[30px] lg:flex-col lg:gap-[30px] ${className}`}>
       {SOCIALS.map((s) => (
         <a
           key={s.label}
@@ -35,7 +35,7 @@ function SocialLinks({ className = '' }: { className?: string }) {
           className="flex items-center gap-[4px] text-[#1e1e20] hover:opacity-60 transition-opacity w-fit"
         >
           <span className="font-normal text-[20px] md:text-[16px] lg:text-[24px] leading-none">{s.label}</span>
-          <ArrowUpRight size={16} />
+          <ArrowUpRight size={iconSize} />
         </a>
       ))}
     </div>
@@ -54,7 +54,7 @@ export default function JobsDropNote() {
       <div className="flex flex-col lg:flex-row lg:gap-[117px] lg:items-end">
 
         {/* Left column — heading always visible; socials desktop-only */}
-        <div className="lg:flex-1 flex flex-col lg:gap-[60px]">
+        <div className="lg:flex-1 flex flex-col lg:gap-[227px]">
           <div className="flex flex-col gap-[12px]">
             <h2 className="font-black text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-none tracking-[-1.5px]">
               Don&apos;t See Your Role?{' '}
@@ -65,7 +65,7 @@ export default function JobsDropNote() {
               If you&apos;re obsessed with great work and what it can do for a business, we want to hear from you.
             </p>
           </div>
-          <SocialLinks className="hidden lg:flex" />
+          <SocialLinks className="hidden lg:flex" iconSize={24} />
         </div>
 
         {/* Right column — form + emails + socials (mobile/tablet) */}
@@ -92,7 +92,7 @@ export default function JobsDropNote() {
               </div>
               <div className="flex items-center gap-[9px]">
                 <div className="flex-1 h-px bg-[#d0d0d0]" />
-                <p className="font-normal text-[12px] text-[#979797] shrink-0">or email us directly</p>
+                <p className="font-normal text-[12px] lg:text-[16px] text-[#979797] shrink-0">or email us directly</p>
               </div>
             </div>
 
