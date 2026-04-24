@@ -56,7 +56,7 @@ export default function BlogMoreJournal({ cards }: Props) {
             className={`flex flex-col group overflow-hidden${i === 2 ? ' hidden lg:flex' : ''}`}
           >
             {/* Image */}
-            <div className="relative w-full aspect-[503/638] overflow-hidden">
+            <div className="relative w-full aspect-[500/450] overflow-hidden">
               {card.image && (
                 <Image
                   src={card.image}
