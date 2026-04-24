@@ -197,7 +197,7 @@ export default function BlogArticle({ post }: Props) {
         {/* Main content */}
         <div className="flex flex-col gap-[28px] md:gap-[32px] lg:gap-[40px] w-full md:max-w-[629px] lg:max-w-[988px] shrink-0">
           {groups.map((group, gi) => {
-            const isSolo = group.length === 1 && (group[0].type === 'image' || group[0].type === 'quote-banner')
+            const isSolo = group.length === 1 && (group[0].type === 'image' || group[0].type === 'quote-banner' || group[0].type === 'image-pair')
             if (isSolo) return renderBlock(group[0], gi)
             return (
               <div key={gi} className="flex flex-col gap-[12px]">
