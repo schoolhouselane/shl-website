@@ -68,7 +68,7 @@ export default function BlogMoreJournal({ cards }: Props) {
               )}
             </div>
             {/* Dark caption bar */}
-            <div className="bg-[#1e1e20] px-[12px] md:px-[16px] lg:px-[13px] pt-[20px] md:pt-[22px] lg:pt-[26px] pb-[24px] md:pb-[26px] lg:pb-[30px] flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
+            <div className="bg-[#1e1e20] px-[12px] md:px-[16px] lg:px-[13px] pt-[20px] md:pt-[22px] lg:pt-[26px] pb-[24px] md:pb-[26px] lg:pb-[30px] flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px] flex-1">
               <div className="flex items-end justify-between">
                 <p className="font-semibold text-[18px] md:text-[20px] lg:text-[24px] text-white leading-tight flex-1 pr-[12px]">
                   {card.title}
