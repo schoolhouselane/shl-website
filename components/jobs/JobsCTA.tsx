@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 function ArrowRight({ size = 24 }: { size?: number }) {
   return (
@@ -10,8 +11,14 @@ function ArrowRight({ size = 24 }: { size?: number }) {
 }
 
 export default function JobsCTA() {
+  const [ref, inView] = useInView(0.15)
+
   return (
-    <section className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[48px] md:py-[60px] lg:py-[60px] flex flex-col md:flex-row md:items-end md:justify-between gap-[32px] md:gap-[40px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[48px] md:py-[60px] lg:py-[60px] flex flex-col md:flex-row md:items-end md:justify-between gap-[32px] md:gap-[40px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
 
       {/* Left — heading + description */}
       <div className="flex flex-col gap-[16px] md:gap-[19px] lg:max-w-[875px]">
@@ -27,7 +34,7 @@ export default function JobsCTA() {
       <div className="flex flex-col gap-[12px] shrink-0 md:items-end">
         <Link
           href="#open-roles"
-          className="bg-white flex items-center gap-[12px] justify-center px-[24px] py-[16px] md:py-[20px] rounded-full hover:bg-white/80 transition-colors"
+          className="btn-cta bg-white flex items-center gap-[12px] justify-center px-[24px] py-[16px] md:py-[20px] rounded-full border border-white"
         >
           <span className="font-medium text-[18px] md:text-[20px] lg:text-[24px] text-black uppercase whitespace-nowrap">
             See all open roles

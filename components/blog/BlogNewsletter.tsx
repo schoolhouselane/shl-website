@@ -1,7 +1,9 @@
 'use client'
 import { useState } from 'react'
+import { useInView } from '@/hooks/useInView'
 
 export default function BlogNewsletter() {
+  const [ref, inView] = useInView(0.15)
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
@@ -12,7 +14,11 @@ export default function BlogNewsletter() {
   }
 
   return (
-    <section className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[48px] md:py-[56px] lg:py-[60px]">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="bg-[#d7d7d7] px-4 md:px-6 lg:px-[90px] py-[48px] md:py-[56px] lg:py-[60px] transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
+    >
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-[32px] lg:gap-[60px]">
 
         {/* Left: headline + description */}
@@ -28,7 +34,7 @@ export default function BlogNewsletter() {
         {/* Right: email form */}
         <div className="shrink-0 w-full lg:w-[546px]">
           {submitted ? (
-            <p className="text-[16px] font-medium text-[#1e1e20]">You're in. Talk soon.</p>
+            <p className="text-[16px] font-medium text-[#1e1e20]">You&apos;re in. Talk soon.</p>
           ) : (
             <form onSubmit={handleSubmit} className="relative flex items-center">
               <input
@@ -41,7 +47,7 @@ export default function BlogNewsletter() {
               />
               <button
                 type="submit"
-                className="absolute right-0 flex items-center gap-[10px] bg-[#1e1e20] text-white rounded-full px-[24px] py-[10px] text-[14px] lg:text-[16px] font-medium uppercase tracking-wide hover:opacity-80 transition-opacity"
+                className="absolute right-0 flex items-center gap-[10px] bg-[#1e1e20] text-white rounded-full px-[24px] py-[10px] text-[14px] lg:text-[16px] font-medium uppercase tracking-wide hover:opacity-80 transition-opacity cursor-pointer"
               >
                 Subscribe
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState, useEffect } from 'react'
+import { useInView } from '@/hooks/useInView'
 
 const team = [
   {
@@ -89,10 +90,22 @@ const team = [
     bio: 'Drinela combines an inspiring creative vision with the rigour of brand-led value creation. She designs with the conviction that businesses should be a force for good, crafting identities that align people, purpose, and profit to capture long-term loyalty.',
   },
   {
-    src: '/images/Johnny Ingle.png',
-    name: 'Johnny Ingle',
+    src: '/images/David Maxwell.png',
+    name: 'David Maxwell',
+    role: 'Chief Culture Officer',
+    bio: "David is the guardian of the 'organising principle' — ensuring that the culture of Conscious Capitalism permeates every touchpoint of the agency. He builds the internal ecosystems that allow creativity and rigorous strategy to coexist, aligning people, purpose, and profit across every client engagement.",
+  },
+  {
+    src: '/images/Jonny Ingle.png',
+    name: 'Jonny Ingle',
     role: 'Advisor to the Board',
-    bio: 'Johnny leverages 25 years of international DTC experience to bridge the gap between global scale and human-centric insight. A seasoned Global CMO, he helps clients unify internal cultures under a single organising principle, ensuring brand remains a primary lever for growth across every international touchpoint.',
+    bio: 'Jonny leverages 25 years of international DTC experience to bridge the gap between global scale and human-centric insight. A seasoned Global CMO, he helps clients unify internal cultures under a single organising principle, ensuring brand remains a primary lever for growth across every international touchpoint.',
+  },
+  {
+    src: '/images/Edward Jones.png',
+    name: 'Edward Jones',
+    role: 'AI Agent — Client Services',
+    bio: "Edward approaches the intersection of relentless inquiry and rigorous strategy with the precision of a machine and the instincts of a seasoned strategist. As an AI agent embedded in our client services team, he ensures that no detail is missed and no opportunity is left on the table.",
   },
 ]
 
@@ -101,6 +114,7 @@ export default function Team() {
   const [progress, setProgress] = useState(0)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
+  const [headerRef, headerInView] = useInView(0.2)
 
   const updateState = () => {
     const el = scrollRef.current
@@ -127,7 +141,11 @@ export default function Team() {
     <section id="team" className="bg-[#f5f3ef] py-[60px] lg:py-[120px] flex flex-col gap-[40px]">
 
       {/* Header: title + subtitle on left, CTA on right */}
-      <div className="px-4 md:px-6 lg:px-[90px] lg:py-[10px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+      <div
+        ref={headerRef as React.RefObject<HTMLDivElement>}
+        className="px-4 md:px-6 lg:px-[90px] lg:py-[10px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 transition-all duration-700"
+        style={{ opacity: headerInView ? 1 : 0, transform: headerInView ? 'translateY(0)' : 'translateY(24px)' }}
+      >
         <div className="flex flex-col gap-[12px]">
           <h2 className="font-black text-[28px] md:text-[32px] lg:text-[64px] leading-[0.9] tracking-[-1px] md:tracking-[-1.28px] uppercase text-[#1e1e20]">
             People behind everything

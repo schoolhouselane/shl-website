@@ -1,17 +1,28 @@
 'use client'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 interface Props {
   openRolesCount: number
 }
 
 export default function JobsHero({ openRolesCount }: Props) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t) }, [])
+
   return (
     <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[100px] md:pt-[120px] lg:pt-[120px] pb-[60px] md:pb-[80px] lg:pb-[120px]">
       <div className="flex flex-col lg:flex-row lg:gap-[87px] lg:items-center gap-[32px] md:gap-[40px]">
 
         {/* Left — hero image with caption overlay */}
-        <div className="relative shrink-0 w-full lg:w-[642px] aspect-[642/578] lg:h-[578px] overflow-hidden">
+        <div
+          className="relative shrink-0 w-full lg:w-[642px] aspect-[642/578] lg:h-[578px] overflow-hidden transition-all duration-[1000ms]"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'translateX(0) scale(1)' : 'translateX(-24px) scale(1.02)',
+            transitionTimingFunction: 'cubic-bezier(0.22,1,0.36,1)',
+          }}
+        >
           <Image
             src="/images/jobs/jobs-hero.jpg"
             alt="Join Schoolhouse Lane — work from anywhere"
@@ -27,7 +38,15 @@ export default function JobsHero({ openRolesCount }: Props) {
         </div>
 
         {/* Right — title + open roles count */}
-        <div className="flex flex-col gap-[40px] md:gap-[60px] lg:gap-[264px] lg:flex-1">
+        <div
+          className="flex flex-col gap-[40px] md:gap-[60px] lg:gap-[264px] lg:flex-1 transition-all duration-[900ms]"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'translateX(0)' : 'translateX(24px)',
+            transitionDelay: '150ms',
+            transitionTimingFunction: 'cubic-bezier(0.22,1,0.36,1)',
+          }}
+        >
           {/* Title block */}
           <div className="flex flex-col gap-[12px]">
             <h1 className="font-black text-[36px] md:text-[48px] lg:text-[64px] uppercase text-[#1e1e20] leading-none tracking-[-1.92px]">

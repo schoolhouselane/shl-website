@@ -45,7 +45,7 @@ export default function JobsLifeMosaic() {
           </p>
           <Link
             href="#open-roles"
-            className="self-start md:self-end flex items-center gap-[12px] border border-[#1e1e20] rounded-full px-[24px] py-[8px] md:py-[12px] text-[16px] font-medium uppercase text-[#1e1e20] hover:bg-[#1e1e20] hover:text-white transition-colors"
+            className="btn-cta self-start md:self-end flex items-center gap-[12px] border border-[#1e1e20] rounded-full px-[24px] py-[8px] md:py-[12px] text-[16px] font-medium uppercase text-[#1e1e20]"
           >
             We&apos;re Hiring
             <ArrowRight size={18} />

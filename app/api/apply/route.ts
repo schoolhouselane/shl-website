@@ -2,6 +2,10 @@ import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not set')
+    return NextResponse.json({ error: 'Server configuration error — missing API key' }, { status: 500 })
+  }
   const resend = new Resend(process.env.RESEND_API_KEY)
 
   const formData = await req.formData()
@@ -44,7 +48,7 @@ export async function POST(req: Request) {
   `
 
   const { error } = await resend.emails.send({
-    from: 'Applications <onboarding@resend.dev>',
+    from: 'Applications <careers@schoolhouselane.co>',
     to: 'projects@schoolhouselane.co',
     replyTo: email,
     subject: `New Application: ${role} — ${name}`,

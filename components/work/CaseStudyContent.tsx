@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 import type { WorkProject } from '@/lib/work-data'
 import { projects } from '@/lib/work-data'
 import type { CaseStudyData, CaseStudySection } from '@/lib/case-study-types'
@@ -50,11 +52,18 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
 
   const hasLeftImages = caseStudy.ecosystemSideImages && caseStudy.ecosystemSideImages.length > 0
 
+  const [sec1Ref, sec1InView] = useInView(0.1)
+  const [sec2Ref, sec2InView] = useInView(0.05)
+
   return (
     <section className="bg-[#f5f3ef]">
 
       {/* ── Section 1: Challenger Strategy — left image (optional) + right text ── */}
-      <div className="px-5 md:px-6 lg:px-[90px] py-[20px] md:py-[30px] flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">
+      <div
+        ref={sec1Ref as React.RefObject<HTMLDivElement>}
+        className="px-5 md:px-6 lg:px-[90px] py-[20px] md:py-[30px] flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0 transition-all duration-700"
+        style={{ opacity: sec1InView ? 1 : 0, transform: sec1InView ? 'translateY(0)' : 'translateY(24px)' }}
+      >
         {/* Left column: single image */}
         {caseStudy.challengerSideImage && (
           <div className="w-full md:w-[32%] shrink-0">
@@ -81,7 +90,11 @@ function RichContent({ project, caseStudy }: { project: WorkProject; caseStudy: 
       </div>
 
       {/* ── Section 2+3: Engineering Ecosystem + Human Advantage ─────────── */}
-      <div className="px-5 md:px-6 lg:px-[90px] pt-[60px] pb-[80px] md:pb-[60px] lg:pb-[120px] flex flex-col gap-[60px]">
+      <div
+        ref={sec2Ref as React.RefObject<HTMLDivElement>}
+        className="px-5 md:px-6 lg:px-[90px] pt-[60px] pb-[80px] md:pb-[60px] lg:pb-[120px] flex flex-col gap-[60px] transition-all duration-700"
+        style={{ opacity: sec2InView ? 1 : 0, transform: sec2InView ? 'translateY(0)' : 'translateY(24px)', transitionDelay: '100ms' }}
+      >
 
         {/* Engineering Ecosystem: left images + right content */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-[32px] md:gap-0">

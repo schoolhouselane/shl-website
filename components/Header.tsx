@@ -65,16 +65,17 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <nav className="md:hidden bg-[#f5f3ef] border-t border-[rgba(54,31,6,0.16)] flex flex-col px-5 py-6 gap-5">
-          {['/', '/services', '/about', '/work', '/blog', '/jobs', '/contact'].map((href, i) => (
-            <Link key={href} href={href} onClick={() => setOpen(false)} className="text-[#1e1e20] text-[20px] font-medium">
-              {['Home', 'Services', 'About', 'Work', 'Blog', 'Jobs', 'Contact'][i]}
-            </Link>
-          ))}
-        </nav>
-      )}
+      {/* Mobile menu — slide down */}
+      <nav
+        className="md:hidden bg-[#f5f3ef] border-t border-[rgba(54,31,6,0.16)] flex flex-col px-5 gap-5 overflow-hidden transition-all duration-300 ease-in-out"
+        style={{ maxHeight: open ? '400px' : '0', paddingTop: open ? '24px' : '0', paddingBottom: open ? '24px' : '0' }}
+      >
+        {['/', '/services', '/about', '/work', '/blog', '/jobs', '/contact'].map((href, i) => (
+          <Link key={href} href={href} onClick={() => setOpen(false)} className="text-[#1e1e20] text-[20px] font-medium">
+            {['Home', 'Services', 'About', 'Work', 'Blog', 'Jobs', 'Contact'][i]}
+          </Link>
+        ))}
+      </nav>
     </header>
   )
 }

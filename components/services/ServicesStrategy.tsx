@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from '@/hooks/useInView'
 
 const cards = [
   {
@@ -53,16 +55,23 @@ const marqueeImages = [
 ]
 
 export default function ServicesStrategy() {
+  const [gridRef, gridInView] = useInView(0.05)
+
   return (
     <section className="bg-[#f5f3ef] flex flex-col pb-[0]">
 
       {/* Card grid */}
-      <div className="px-5 md:px-[90px] py-[60px] md:py-[100px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e20]">
-        {cards.map((card) => (
+      <div ref={gridRef as React.RefObject<HTMLDivElement>} className="px-5 md:px-[90px] py-[60px] md:py-[100px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e20]">
+        {cards.map((card, i) => (
           <Link
             key={card.title}
             href={card.href}
-            className="group bg-[#f5f3ef] flex flex-col overflow-hidden border border-[#1e1e20]"
+            className="group bg-[#f5f3ef] flex flex-col overflow-hidden border border-[#1e1e20] transition-all duration-700"
+            style={{
+              opacity: gridInView ? 1 : 0,
+              transform: gridInView ? 'translateY(0)' : 'translateY(32px)',
+              transitionDelay: `${i * 80}ms`,
+            }}
           >
             {/* Image — shrinks on hover */}
             <div className="relative overflow-hidden h-[240px] sm:h-[280px] md:h-[340px] transition-all duration-500 ease-in-out group-hover:h-[160px] md:group-hover:h-[200px]">
