@@ -51,8 +51,8 @@ export default function JobsRoles({ jobs }: Props) {
             </div>
 
             {/* Col 3 — tags */}
-            <div className="border-r border-[#1e1e20] px-[30px] py-[37px] w-[220px] shrink-0 flex flex-col gap-[12px] justify-center">
-              <div className="flex items-center gap-[9px] flex-wrap">
+            <div className="border-r border-[#1e1e20] px-[24px] py-[37px] w-[260px] shrink-0 flex flex-col gap-[12px] justify-center">
+              <div className="flex items-center gap-[9px]">
                 <span className="bg-[#1e1e20] text-white text-[12px] tracking-[1.44px] px-[8px] py-[4px] rounded-full whitespace-nowrap">
                   {job.location}
                 </span>
