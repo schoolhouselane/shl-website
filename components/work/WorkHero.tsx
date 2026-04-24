@@ -28,14 +28,14 @@ export default function WorkHero() {
               className="hidden md:block relative overflow-hidden shrink-0 ml-auto"
               style={{
                 width: 'clamp(200px, 28vw, 523px)',
-                height: 'clamp(88px, 11.5vw, 241px)',
+                aspectRatio: '4094 / 2589',
               }}
             >
               <Image
                 src="/images/work-hero.png"
                 alt="SHL editorial work"
                 fill
-                className="object-cover object-center"
+                className="object-contain object-center"
                 sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 523px"
                 priority
               />
@@ -58,7 +58,7 @@ export default function WorkHero() {
             Selected projects where creativity met commerce and revenue followed.
           </p>
           <p className="text-[15px] md:text-[20px] text-[#111] leading-[1.6] max-w-[900px]">
-            Every case study is chosen because it pushed something forward — a category, a business, a culture.
+            Every case study is chosen because it pushed something forward a category, a business, a culture.
           </p>
         </div>
 
