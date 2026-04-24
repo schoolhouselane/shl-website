@@ -4,6 +4,14 @@ import Link from 'next/link'
 import { useInView } from '@/hooks/useInView'
 import type { JournalCard } from '@/lib/blog-data'
 
+function ArrowUpRight({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M7 17L17 7M7 7h10v10" />
+    </svg>
+  )
+}
+
 function ArrowRight({ size = 24 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -39,16 +47,16 @@ export default function BlogMoreJournal({ cards }: Props) {
         </Link>
       </div>
 
-      {/* Cards — 1 col mobile, 2 col tablet, 3 col desktop */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[20px] items-stretch">
-        {cards.map((card) => (
+      {/* Cards — 2 col mobile+tablet, 3 col desktop */}
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-[12px] md:gap-[16px] lg:gap-[20px] items-stretch">
+        {cards.map((card, i) => (
           <Link
             key={card.slug}
             href={`/blog/${card.slug}`}
-            className="flex flex-col group overflow-hidden"
+            className={`flex flex-col group overflow-hidden${i === 2 ? ' hidden lg:flex' : ''}`}
           >
             {/* Image */}
-            <div className="relative w-full aspect-[503/452] overflow-hidden">
+            <div className="relative w-full aspect-[503/638] overflow-hidden">
               {card.image && (
                 <Image
                   src={card.image}
@@ -60,17 +68,17 @@ export default function BlogMoreJournal({ cards }: Props) {
               )}
             </div>
             {/* Dark caption bar */}
-            <div className="bg-[#1e1e20] px-[16px] md:px-[20px] lg:px-[26px] pt-[20px] md:pt-[22px] lg:pt-[26px] pb-[24px] md:pb-[26px] lg:pb-[30px] flex flex-col gap-[12px] md:gap-[14px] lg:gap-[16px]">
-              <div className="flex gap-[12px] md:gap-[14px] lg:gap-[16px] items-end justify-between">
-                <p className="font-semibold text-[18px] md:text-[20px] lg:text-[24px] text-white leading-tight flex-1">
+            <div className="bg-[#1e1e20] px-[12px] md:px-[16px] lg:px-[13px] pt-[20px] md:pt-[22px] lg:pt-[26px] pb-[24px] md:pb-[26px] lg:pb-[30px] flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
+              <div className="flex items-end justify-between">
+                <p className="font-semibold text-[18px] md:text-[20px] lg:text-[24px] text-white leading-tight flex-1 pr-[12px]">
                   {card.title}
                 </p>
                 <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] md:w-[44px] md:h-[44px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
-                  <ArrowRight size={18} />
+                  <ArrowUpRight size={18} />
                 </div>
               </div>
               {card.excerpt && (
-                <p className="text-[13px] md:text-[14px] lg:text-[16px] text-white/80 leading-relaxed">
+                <p className="text-[13px] md:text-[14px] lg:text-[16px] text-white leading-relaxed">
                   {card.excerpt}
                 </p>
               )}

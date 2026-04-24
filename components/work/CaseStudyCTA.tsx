@@ -30,7 +30,7 @@ export default function CaseStudyCTA() {
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </CalendlyButton>
-        <p className="text-[12px] text-white font-normal tracking-[0.72px] text-center">
+        <p className="w-full text-[12px] text-white font-normal tracking-[0.72px] text-center">
           hello@schoolhouselane.co
         </p>
       </div>

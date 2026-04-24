@@ -37,13 +37,13 @@ export default function BlogArticle({ post }: Props) {
         <p className="md:hidden text-[12px] font-normal uppercase text-[#777] mb-[8px]">
           by {post.author.name}
         </p>
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between md:gap-4">
-          <h1 className="font-black text-[24px] md:text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-none lg:max-w-[993px]">
+        <div className="flex items-start justify-between gap-[24px]">
+          <h1 className="font-black text-[28px] md:text-[40px] lg:text-[64px] uppercase text-[#1e1e20] leading-none">
             {post.title}
           </h1>
-          {/* Tablet + desktop byline */}
-          <div className="hidden md:flex border-r border-[#1e1e20] items-center justify-center py-[10px] pr-[24px] md:w-[140px] lg:w-[274px] shrink-0">
-            <p className="font-normal text-[12px] lg:text-[24px] uppercase text-[#1e1e20] whitespace-nowrap">
+          {/* Tablet + desktop: byline right side, w-fit avoids cascade bug */}
+          <div className="hidden md:flex border-r border-[#1e1e20] items-start pt-[6px] pr-[20px] shrink-0 w-fit">
+            <p className="font-normal text-[13px] lg:text-[16px] uppercase text-[#1e1e20] whitespace-nowrap">
               by {post.author.name}
             </p>
           </div>
@@ -51,26 +51,26 @@ export default function BlogArticle({ post }: Props) {
       </div>
 
       {/* Two-column layout: sidebar hidden on mobile */}
-      <div className="flex flex-col md:flex-row md:gap-[28px] lg:gap-0 items-start">
+      <div className="flex flex-col md:flex-row md:gap-[28px] lg:gap-0 items-stretch">
 
         {/* ── Main content ── */}
         <div className="flex flex-col gap-[28px] lg:gap-[40px] w-full md:max-w-[629px] lg:max-w-[988px] shrink-0">
 
           {/* Intro paragraphs */}
           <div className="flex flex-col gap-[12px]">
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#111]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go, platforms evolve, and yet the central challenge of leadership remains strikingly human: how to communicate clearly, align teams, and drive real productivity.
             </p>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#333]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               The pandemic accelerated remote and hybrid work models, and since then, much has been said about the productivity pitfalls of working from home. But I've come to believe we're diagnosing the wrong issue. Remote work isn't the problem, instant messaging is.
             </p>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#333]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               Slack, Teams, WhatsApp, these tools were designed for speed. But in our quest for efficiency, we've unwittingly created a culture of low touch, low context communication that often leads to the abdication of responsibility. A quick "FYI" or a thumbs-up emoji doesn't equal clarity. It doesn't build trust. And it certainly doesn't drive accountability.
             </p>
             {/* Blockquote */}
             <div className="flex gap-[12px] md:gap-[17px] items-center">
               <div className="w-[3px] shrink-0 self-stretch bg-[#111]" />
-              <p className="font-bold text-[12px] md:text-[16px] lg:text-[20px] text-[#1e1e20]">
+              <p className="font-bold text-[16px] md:text-[18px] lg:text-[20px] text-[#1e1e20]">
                 We've confused short messaging with clear communication.
               </p>
             </div>
@@ -78,35 +78,35 @@ export default function BlogArticle({ post }: Props) {
 
           {/* Section: The Illusion of Communication */}
           <div className="flex flex-col gap-[16px] md:gap-[20px] lg:gap-[30px]">
-            <h2 className="font-black text-[16px] md:text-[18px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
+            <h2 className="font-black text-[18px] md:text-[20px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
               The Illusion of Communication
             </h2>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#333]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               Think about it: how often have you seen a critical project update buried in a chat thread? Or watched a decision get "made" because someone sent a "👍" without truly engaging? This isn't collaboration, it's communication theater.
             </p>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#333]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               When messages are stripped of tone, context, and consequence, responsibility diffuses. People assume someone else will act. Follow up becomes optional. And leaders are left with blind spots — places where things fall apart not because of malice, but because of ambiguity.
             </p>
           </div>
 
           {/* Section: Leadership in the Age of Low Touch */}
           <div className="flex flex-col gap-[12px]">
-            <h2 className="font-black text-[16px] md:text-[18px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
+            <h2 className="font-black text-[18px] md:text-[20px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
               Leadership in the Age of Low Touch Communication
             </h2>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               This is where emotional intelligence isn't just a nice to have, it's the core competency of modern leadership. Leaders today must be able to:
             </p>
             {/* Dark callout */}
             <div className="bg-[#1e1e20] p-[12px]">
-              <p className="font-extrabold text-[13px] md:text-[14px] lg:text-[16px] text-white leading-relaxed">
+              <p className="font-extrabold text-[14px] md:text-[16px] lg:text-[20px] text-white leading-relaxed">
                 · Read between the lines of silent chats and unanswered threads.<br />
                 · Sense disengagement even when the "online" indicator is green.<br />
                 · Create clarity where tools create clutter.<br />
                 · Restore human connection where technology has made interaction transactional.
               </p>
             </div>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               Productivity blind spots now hide in plain sight: in the unread channel, the hastily closed ticket, the assumption that "someone's got it." It's not that people aren't working, it's that they're working in the dark, without the context, clarity, or confidence they need to truly own their outcomes.
             </p>
           </div>
@@ -124,26 +124,26 @@ export default function BlogArticle({ post }: Props) {
 
           {/* Section: From Low Touch to High Clarity */}
           <div className="flex flex-col gap-[12px]">
-            <h2 className="font-black text-[16px] md:text-[18px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
+            <h2 className="font-black text-[18px] md:text-[20px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
               From Low Touch to High Clarity
             </h2>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               At Schoolhouse Lane, we work with leadership teams to build brands and businesses that are aligned from the inside out. And alignment doesn't happen in a chat window. It happens in intentional conversation, structured collaboration, and a shared understanding of what clarity actually looks like.
             </p>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               Here's what we advise our clients:
             </p>
             <ol className="list-decimal pl-[21px] md:pl-[30px] flex flex-col gap-[12px]">
-              <li className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+              <li className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
                 <span className="font-bold text-[#1e1e20]">Default to deliberate communication.</span>{' '}Replace FYIs with clear asks. Replace assumptions with confirmation.
               </li>
-              <li className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+              <li className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
                 <span className="font-bold text-[#1e1e20]">Reinforce the "why."</span>{' '}Context is everything. Don't just share the what, explain the why, again and again.
               </li>
-              <li className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+              <li className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
                 <span className="font-bold text-[#1e1e20]">Create rituals of reconnection.</span>{' '}Use video. Pick up the phone. Host regular syncs that are about more than task updates.
               </li>
-              <li className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+              <li className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
                 <span className="font-bold text-[#1e1e20]">Model ownership.</span>{' '}As a leader, your communication sets the tone. Choose clarity over speed, especially when it matters most.
               </li>
             </ol>
@@ -151,19 +151,19 @@ export default function BlogArticle({ post }: Props) {
 
           {/* Section: The Way Forward */}
           <div className="flex flex-col gap-[12px]">
-            <h2 className="font-black text-[16px] md:text-[18px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
+            <h2 className="font-black text-[18px] md:text-[20px] lg:text-[24px] text-[#111] tracking-[-0.48px]">
               The Way Forward
             </h2>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               Remote work is here to stay — and that's a good thing. It offers flexibility, access to talent, and freedom from the confines of location. But we must not let the tools designed to connect us become the very things that disconnect us from purpose, clarity, and each other.
             </p>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               The next generation of leadership won't be measured by who responds the fastest, but by who communicates the clearest. Who builds trust, not just threads. Who sees the human behind the handle.
             </p>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               Because at the end of the day, productivity isn't about presence — it's about purpose. And purpose can't be summed up in a DM.
             </p>
-            <p className="text-[14px] md:text-[16px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
               Schoolhouse Lane helps leaders build brands and teams that are aligned, accountable, and resilient in the face of change. If you're ready to turn communication from a blind spot into a superpower, let's talk.
             </p>
           </div>

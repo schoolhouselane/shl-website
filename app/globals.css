@@ -106,6 +106,7 @@ input:-webkit-autofill:active {
     .lg\:text-\[20px\] { font-size: 20px; }
     .lg\:text-\[22px\] { font-size: 22px; }
     .lg\:text-\[24px\] { font-size: 24px; }
+    .lg\:text-\[28px\] { font-size: 28px; }
     .lg\:text-\[32px\] { font-size: 32px; }
     .lg\:text-\[36px\] { font-size: 36px; }
     .lg\:text-\[47px\] { font-size: 47px; }
@@ -195,6 +196,7 @@ input:-webkit-autofill:active {
     .lg\:p-\[60px\] { padding: 60px; }
     .lg\:p-\[90px\] { padding: 90px; }
     /* padding x/y */
+    .lg\:px-\[13px\] { padding-left: 13px; padding-right: 13px; }
     .lg\:px-\[24px\] { padding-left: 24px; padding-right: 24px; }
     .lg\:px-\[40px\] { padding-left: 40px; padding-right: 40px; }
     .lg\:px-\[60px\] { padding-left: 60px; padding-right: 60px; }
@@ -212,6 +214,7 @@ input:-webkit-autofill:active {
     .lg\:py-\[90px\]  { padding-top: 90px;  padding-bottom: 90px; }
     .lg\:py-\[120px\] { padding-top: 120px; padding-bottom: 120px; }
     /* individual padding */
+    .lg\:pt-\[26px\]  { padding-top: 26px; }
     .lg\:pt-\[52px\]  { padding-top: 52px; }
     .lg\:pt-\[60px\]  { padding-top: 60px; }
     .lg\:pt-\[80px\]  { padding-top: 80px; }
@@ -219,6 +222,7 @@ input:-webkit-autofill:active {
     .lg\:pt-\[100px\] { padding-top: 100px; }
     .lg\:pt-\[120px\] { padding-top: 120px; }
     .lg\:pt-\[180px\] { padding-top: 180px; }
+    .lg\:pb-\[30px\]  { padding-bottom: 30px; }
     .lg\:pb-\[60px\]  { padding-bottom: 60px; }
     .lg\:pb-\[80px\]  { padding-bottom: 80px; }
     .lg\:pb-\[120px\] { padding-bottom: 120px; }

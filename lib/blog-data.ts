@@ -92,6 +92,68 @@ export const blogPosts: BlogPost[] = [
   },
 ]
 
+const DARREN: BlogAuthor = {
+  name: 'Darren McGrath',
+  role: 'Partner',
+  bio: 'A Cannes Lion-winning creative strategist with 25 years of experience building brands and leading teams across global markets.',
+  image: '/images/blog/blog-author.png',
+}
+
+const PLACEHOLDER_POSTS: BlogPost[] = [
+  {
+    slug: 'creative-commerce',
+    title: 'Creative Commerce: Where Imagination Meets Revenue',
+    category: 'Strategy',
+    heroImage: '/images/blog/blog-journal-1.png',
+    publishedAt: '2026-03-15',
+    author: DARREN,
+    relatedArticles: [],
+    journalCards: [],
+  },
+  {
+    slug: 'brand-measurable-asset',
+    title: 'Why Brand Is Your Most Measurable Asset',
+    category: 'Branding',
+    heroImage: '/images/blog/blog-journal-2.png',
+    publishedAt: '2026-03-10',
+    author: DARREN,
+    relatedArticles: [],
+    journalCards: [],
+  },
+  {
+    slug: 'compounding-effect',
+    title: 'The Compounding Effect Nobody Talks About',
+    category: 'Growth',
+    heroImage: '/images/blog/blog-journal-3.png',
+    publishedAt: '2026-03-05',
+    author: DARREN,
+    relatedArticles: [],
+    journalCards: [],
+  },
+  {
+    slug: 'attention-economy',
+    title: 'Winning the Attention Economy in 2026',
+    category: 'Digital',
+    heroImage: '/images/blog/blog-related-1.png',
+    publishedAt: '2026-02-28',
+    author: DARREN,
+    relatedArticles: [],
+    journalCards: [],
+  },
+  {
+    slug: 'brand-voice-consistency',
+    title: 'Brand Voice Consistency Across Every Channel',
+    category: 'Branding',
+    heroImage: '/images/blog/blog-related-2.png',
+    publishedAt: '2026-02-20',
+    author: DARREN,
+    relatedArticles: [],
+    journalCards: [],
+  },
+]
+
+export const allBlogPosts: BlogPost[] = [...blogPosts, ...PLACEHOLDER_POSTS]
+
 export function getBlogPost(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug)
 }
