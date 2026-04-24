@@ -7,12 +7,12 @@ import BlogArticle from '@/components/blog/BlogArticle'
 import BlogMoreJournal from '@/components/blog/BlogMoreJournal'
 import BlogNewsletter from '@/components/blog/BlogNewsletter'
 import CaseStudyCTA from '@/components/work/CaseStudyCTA'
-import { getBlogPost, blogPosts } from '@/lib/blog-data'
+import { getBlogPost, allBlogPosts } from '@/lib/blog-data'
 
 const BASE_URL = 'https://schoolhouselane.co'
 
 export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }))
+  return allBlogPosts.map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({
