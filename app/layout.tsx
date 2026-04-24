@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -144,8 +145,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
       </head>
-      <body className="font-[var(--font-inter)]">{children}</body>
+      <body className="font-[var(--font-inter)]">
+        {children}
+        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
+      </body>
     </html>
   );
 }

@@ -8,12 +8,18 @@ interface Props {
 }
 
 export default function CalendlyButton({ className, children }: Props) {
+  function handleClick() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const Calendly = (window as any).Calendly
+    if (Calendly?.initPopupWidget) {
+      Calendly.initPopupWidget({ url: BOOKING_URL })
+    } else {
+      window.open(BOOKING_URL, '_blank', 'noopener,noreferrer')
+    }
+  }
+
   return (
-    <button
-      type="button"
-      className={className}
-      onClick={() => window.open(BOOKING_URL, '_blank', 'noopener,noreferrer')}
-    >
+    <button type="button" className={className} onClick={handleClick}>
       {children}
     </button>
   )
