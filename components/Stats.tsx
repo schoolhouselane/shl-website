@@ -15,7 +15,7 @@ function StatRow({ target, suffix, label, delay }: { target: number; suffix: str
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className="border-b border-[#1e1e20] py-[6px] lg:py-[5px] transition-all duration-700"
+      className="border-b border-[#1e1e20]/30 py-[5px] transition-all duration-700 w-full"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? 'translateY(0)' : 'translateY(20px)',
@@ -25,7 +25,7 @@ function StatRow({ target, suffix, label, delay }: { target: number; suffix: str
       <p className="font-semibold text-[44px] md:text-[52px] lg:text-[58px] text-[#1e1e20] leading-tight tracking-[-1px]">
         {inView ? count : 0}{suffix}
       </p>
-      <p className="font-light text-[12px] md:text-[13px] lg:text-[14px] text-[#1e1e20] uppercase tracking-[0.5px]">
+      <p className="font-light text-[12px] md:text-[13px] lg:text-[14px] text-[#1e1e20] uppercase tracking-[0.5px] whitespace-nowrap">
         {label}
       </p>
     </div>
@@ -36,10 +36,10 @@ export default function Stats() {
   const [ref, inView] = useInView(0.1)
 
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[40px] pb-[48px] md:pt-[48px] md:pb-[60px] lg:pt-[40px] lg:pb-[60px]">
+    <section className="bg-white px-4 md:px-6 lg:px-[90px] pt-[40px] pb-[48px] md:pt-[48px] md:pb-[60px] lg:pt-[40px] lg:pb-[60px]">
 
-      {/* Desktop: 3-column flex row */}
-      <div className="hidden lg:flex items-end justify-between gap-[40px]">
+      {/* ── Desktop: strict 3-column row, bottom-aligned ── */}
+      <div className="hidden lg:flex items-end justify-between">
 
         {/* Left — stacked stats */}
         <div className="flex flex-col w-[166px] shrink-0">
@@ -50,9 +50,9 @@ export default function Stats() {
 
         {/* Center — headline + body */}
         <div
+          ref={ref as React.RefObject<HTMLDivElement>}
           className="flex flex-col gap-[19px] w-[446px] shrink-0 transition-all duration-700"
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)', transitionDelay: '150ms' }}
-          ref={ref as React.RefObject<HTMLDivElement>}
         >
           <h2 className="font-black text-[60px] text-[#1e1e20] leading-[0.92] tracking-[-1.5px] uppercase">
             Let&apos;s Build<br />Something<br />Remarkable.
@@ -62,7 +62,7 @@ export default function Stats() {
           </p>
         </div>
 
-        {/* Right — CTA */}
+        {/* Right — CTA button, bottom-aligned */}
         <div
           className="shrink-0 transition-all duration-700"
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)', transitionDelay: '300ms' }}
@@ -75,14 +75,13 @@ export default function Stats() {
 
       </div>
 
-      {/* Mobile + Tablet */}
+      {/* ── Mobile + Tablet ── */}
       <div className="lg:hidden flex flex-col gap-[32px] md:gap-[40px]">
 
-        {/* Heading */}
         <div
+          ref={ref as React.RefObject<HTMLDivElement>}
           className="flex flex-col gap-[16px] transition-all duration-700"
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
-          ref={ref as React.RefObject<HTMLDivElement>}
         >
           <h2 className="font-black text-[36px] md:text-[52px] text-[#1e1e20] leading-[0.92] tracking-[-1.2px] uppercase">
             Let&apos;s Build<br />Something<br />Remarkable.
@@ -92,14 +91,12 @@ export default function Stats() {
           </p>
         </div>
 
-        {/* Stats row */}
         <div className="flex gap-[24px] md:gap-[40px]">
           {stats.map((s, i) => (
             <StatRow key={s.label} {...s} delay={i * 80} />
           ))}
         </div>
 
-        {/* CTA */}
         <CalendlyButton className="btn-cta inline-flex items-center gap-[10px] border border-[#1e1e20] rounded-[50px] px-[20px] py-[12px] md:py-[14px] text-[16px] md:text-[18px] font-medium uppercase text-[#1e1e20] w-fit">
           Let&apos;s talk
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
