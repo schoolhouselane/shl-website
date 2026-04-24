@@ -149,7 +149,7 @@ export default function RootLayout({
       </head>
       <body className="font-[var(--font-inter)]">
         {children}
-        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
+        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
       </body>
     </html>
   );
