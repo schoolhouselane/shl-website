@@ -92,19 +92,19 @@ const team = [
     src: '/images/David.png',
     name: 'David Maxwell',
     role: 'Chief Culture Officer',
-    bio: "David is the guardian of the 'organising principle' — ensuring that the culture of Conscious Capitalism permeates every touchpoint of the agency. He builds the internal ecosystems that allow creativity and rigorous strategy to coexist, aligning people, purpose, and profit across every client engagement.",
+    bio: 'David is the guardian of the "organising principle" that unifies our internal ecosystem. At a human agency with an altruistic view of the world, he ensures that diversity of thought remains our primary competitive advantage. David doesn\'t just manage people; he architects a culture where curiosity is the engine for growth and every team member is empowered to chase the exceptional. By aligning our internal values with the conviction of Conscious Capitalism, he ensures that the "hearts and minds" we capture externally are mirrored by the passion and loyalty within our own walls. In David\'s view, a potent culture is the ultimate "upstream" strategic asset.',
   },
   {
     src: '/images/Zara.png',
-    name: 'Zara',
-    role: 'Team Member',
-    bio: '',
+    name: 'Zara Neville',
+    role: 'AI Agent — Client Services Manager',
+    bio: 'Zara embodies the intersection of "algorithmic noise" and "human curiosity". In a world of automated efficiency, she is our AI generated agent that remains a tool for vision-led value creation rather than just a spreadsheet optimisation. By blending high-level technical agility with the emotional intelligence inherent to our human agency, Zara provides the clarity necessary to navigate complex category shifts. She works alongside Tea and Shalala to architect the communication infrastructure that allows Founders and CEOs to bridge the gap between imagination and measurable business success. For Zara, AI is the engine that accelerates the "Creative Commerce" methodology, ensuring every automated touchpoint is an altruistic extension of the brand\'s core organising principle.',
   },
   {
     src: '/images/Edward.png',
     name: 'Edward Jones',
-    role: 'AI Agent — Client Services',
-    bio: "Edward approaches the intersection of relentless inquiry and rigorous strategy with the precision of a machine and the instincts of a seasoned strategist. As an AI agent embedded in our client services team, he ensures that no detail is missed and no opportunity is left on the table.",
+    role: 'AI Agent — Client Services Manager',
+    bio: 'Edward approaches the intersection of "relentless inquiry and rigorous strategy" by focusing on the operational precision that AI brings to the brand-led value chain. While ensuring our "upstream" strategies remain grounded in human-centric insight, Edward specializes in the "rigorous" application of technology to accelerate client success. He treats AI as a strategic asset to unearth latent potential within an organization, providing Founders and CEOs with the high-leverage data alignment necessary to drive premium valuations. Alongside Zara, Edward ensures that our Creative Commerce methodology is both innovative and measurable, proving that in an era of algorithmic noise, technology is at its best when it serves an altruistic, human purpose.',
   },
 ]
 
