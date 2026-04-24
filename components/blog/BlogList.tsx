@@ -4,43 +4,107 @@ import Link from 'next/link'
 import { useInView } from '@/hooks/useInView'
 import type { BlogPost } from '@/lib/blog-data'
 
-function ArrowUpRight({ size = 18 }: { size?: number }) {
+function ArrowUpRight() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M7 17L17 7M7 7h10v10" />
     </svg>
   )
 }
 
-function ArrowRight({ size = 16 }: { size?: number }) {
+function ArrowRight() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   )
 }
 
-function BlogCard({ post, featured = false }: { post: BlogPost; featured?: boolean }) {
+function FeaturedCard({ post }: { post: BlogPost }) {
+  const img = post.listingImage ?? post.heroImage
   return (
-    <Link href={`/blog/${post.slug}`} className="flex flex-col group overflow-hidden h-full">
-      <div className="relative w-full aspect-[503/638] overflow-hidden">
+    <Link href={`/blog/${post.slug}`} className="flex flex-col group overflow-hidden">
+      {/* Mobile + Tablet: landscape */}
+      <div className="relative w-full h-[220px] md:h-[266px] lg:hidden overflow-hidden">
         <Image
-          src={post.heroImage}
+          src={img}
           alt={post.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 503px"
+          sizes="100vw"
+          priority
         />
       </div>
-      <div className="bg-[#1e1e20] px-[12px] md:px-[16px] lg:px-[13px] pt-[20px] md:pt-[22px] lg:pt-[26px] pb-[24px] md:pb-[26px] lg:pb-[30px] flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px] flex-1">
-        <div className="flex items-end justify-between">
-          <p className={`font-black text-white leading-tight flex-1 pr-[12px] ${featured ? 'text-[24px] md:text-[28px] lg:text-[28px]' : 'text-[18px] md:text-[20px] lg:text-[24px]'}`}>
+      {/* Desktop: near-square */}
+      <div className="hidden lg:block relative w-full aspect-square overflow-hidden">
+        <Image
+          src={img}
+          alt={post.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="50vw"
+          priority
+        />
+      </div>
+      {/* Caption */}
+      <div className="bg-[#1e1e20] px-[13px] lg:px-[24px] py-[24px] lg:py-[30px] flex flex-col gap-[12px] lg:gap-[20px]">
+        <div className="flex items-start justify-between gap-[12px]">
+          <p className="font-black text-[20px] md:text-[24px] lg:text-[28px] text-white leading-tight flex-1">
             {post.title}
           </p>
-          <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] md:w-[44px] md:h-[44px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
-            <ArrowUpRight size={18} />
+          <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
+            <ArrowUpRight />
           </div>
         </div>
+        {post.seoDescription && (
+          <p className="text-[14px] md:text-[16px] text-white leading-relaxed">
+            {post.seoDescription}
+          </p>
+        )}
+      </div>
+    </Link>
+  )
+}
+
+function RegularCard({ post }: { post: BlogPost }) {
+  const img = post.listingImage ?? post.heroImage
+  return (
+    <Link href={`/blog/${post.slug}`} className="flex flex-col group overflow-hidden h-full">
+      {/* Mobile + Tablet */}
+      <div className="relative w-full h-[180px] md:h-[211px] lg:hidden overflow-hidden">
+        <Image
+          src={img}
+          alt={post.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+      {/* Desktop */}
+      <div className="hidden lg:block relative w-full overflow-hidden" style={{ height: '445px' }}>
+        <Image
+          src={img}
+          alt={post.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="33vw"
+        />
+      </div>
+      {/* Caption */}
+      <div className="bg-[#1e1e20] px-[13px] py-[24px] lg:pt-[26px] lg:pb-[30px] flex flex-col gap-[12px] lg:gap-[20px] flex-1">
+        <div className="flex items-start justify-between gap-[12px]">
+          <p className="font-black text-[16px] md:text-[24px] text-white leading-tight flex-1">
+            {post.title}
+          </p>
+          <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
+            <ArrowUpRight />
+          </div>
+        </div>
+        {post.seoDescription && (
+          <p className="text-[13px] md:text-[16px] text-white leading-relaxed">
+            {post.seoDescription}
+          </p>
+        )}
       </div>
     </Link>
   )
@@ -56,57 +120,54 @@ export default function BlogList({ posts }: Props) {
   const featured = posts[0]
   const side = posts.slice(1, 3)
   const bottom = posts.slice(3, 6)
-  const hasMore = posts.length > 6
 
   if (!featured) return null
 
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[60px] md:pt-[80px] lg:pt-[120px] pb-[60px] md:pb-[80px] lg:pb-[120px] flex flex-col gap-[32px] md:gap-[40px] lg:gap-[60px] transition-all duration-700"
+      className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[48px] md:pt-[32px] lg:pt-[120px] pb-[60px] md:pb-[80px] lg:pb-[120px] flex flex-col gap-[24px] md:gap-[32px] lg:gap-[40px] transition-all duration-700"
       style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
     >
-      {/* Page heading */}
-      <h1 className="font-black text-[32px] md:text-[48px] lg:text-[64px] uppercase text-[#1e1e20] leading-none tracking-[-1px] lg:tracking-[-1.5px]">
-        LATEST IDEAS<br />AND RESEARCH
+      {/* Heading — one line on tablet+, wraps naturally on mobile */}
+      <h1 className="font-black text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-none tracking-[-1px] lg:tracking-[-1.5px]">
+        LATEST IDEAS AND RESEARCH
       </h1>
 
-      {/* Row 1: Featured (full width mobile/tablet) + 2 side cards (desktop right column) */}
+      {/* Row 1: Featured full width (mobile/tablet) or 2/3 (desktop) + side column (desktop only) */}
       <div className="flex flex-col lg:flex-row gap-[16px] lg:gap-[20px]">
         <div className="w-full lg:flex-[2]">
-          <BlogCard post={featured} featured />
+          <FeaturedCard post={featured} />
         </div>
         {side.length > 0 && (
           <div className="hidden lg:flex flex-col gap-[20px] flex-[1]">
-            {side.map(post => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
+            {side.map(post => <RegularCard key={post.slug} post={post} />)}
           </div>
         )}
       </div>
 
-      {/* Grid: side cards (mobile/tablet only) + bottom cards (all) + load more */}
+      {/* Grid section: mobile/tablet renders side cards here; desktop renders bottom 3 */}
       {(side.length > 0 || bottom.length > 0) && (
         <div className="flex flex-col gap-[16px] lg:gap-[20px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px] lg:gap-[20px]">
-            {/* Side cards hidden on desktop (shown in right column above) */}
+            {/* Side cards: visible in grid on mobile/tablet, hidden on desktop (shown in right column above) */}
             {side.map(post => (
               <div key={`mob-${post.slug}`} className="lg:hidden">
-                <BlogCard post={post} />
+                <RegularCard post={post} />
               </div>
             ))}
-            {/* Bottom cards always shown */}
+            {/* Bottom cards: always in grid */}
             {bottom.map(post => (
-              <BlogCard key={post.slug} post={post} />
+              <RegularCard key={post.slug} post={post} />
             ))}
           </div>
           <div className="flex justify-end">
             <button
               type="button"
-              className="flex items-center gap-[10px] bg-[#1e1e20] text-white rounded-full px-[24px] py-[12px] text-[14px] lg:text-[16px] font-medium uppercase tracking-wide hover:opacity-80 transition-opacity"
+              className="flex items-center gap-[12px] bg-[#1e1e20] text-white rounded-full px-[24px] py-[12px] lg:py-[20px] text-[14px] lg:text-[24px] font-medium uppercase tracking-wide hover:opacity-80 transition-opacity"
             >
               Load more blogs
-              <ArrowRight size={16} />
+              <ArrowRight />
             </button>
           </div>
         </div>
