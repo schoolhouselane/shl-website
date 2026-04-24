@@ -1,6 +1,6 @@
 'use client'
 
-const BOOKING_URL = 'https://calendar.app.google/C4qDMvtDwRQqiCcx7'
+const BOOKING_URL = 'https://calendly.com/dmg-schoolhouselane/30min'
 
 interface Props {
   className?: string
