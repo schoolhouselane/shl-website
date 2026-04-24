@@ -15,7 +15,8 @@
   box-sizing: border-box;
 }
 
-a, button, [role="button"] {
+/* Safari ignores cursor:pointer on links/buttons unless forced on the element itself */
+a, a *, button, button *, [role="button"], [role="button"] * {
   cursor: pointer !important;
 }
 
