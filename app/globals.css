@@ -245,9 +245,31 @@ input:-webkit-autofill:active {
     .lg\:pl-\[90px\]  { padding-left: 90px; }
     .lg\:pr-\[40px\]  { padding-right: 40px; }
     .lg\:pr-\[60px\]  { padding-right: 60px; }
+    /* flex direction */
+    .lg\:flex-row  { flex-direction: row; }
+    .lg\:flex-col  { flex-direction: column; }
+    /* flex grow / shrink / basis */
+    .lg\:flex-1    { flex: 1 1 0%; }
+    .lg\:flex-none { flex: none; }
+    .lg\:shrink    { flex-shrink: 1; }
+    .lg\:shrink-0  { flex-shrink: 0; }
+    /* align / justify */
+    .lg\:items-start   { align-items: flex-start; }
+    .lg\:items-center  { align-items: center; }
+    .lg\:items-end     { align-items: flex-end; }
+    .lg\:items-stretch { align-items: stretch; }
+    .lg\:justify-start   { justify-content: flex-start; }
+    .lg\:justify-center  { justify-content: center; }
+    .lg\:justify-end     { justify-content: flex-end; }
+    .lg\:justify-between { justify-content: space-between; }
     /* margin */
+    .lg\:mt-0        { margin-top: 0; }
     .lg\:mb-\[60px\] { margin-bottom: 60px; }
     .lg\:mt-\[60px\] { margin-top: 60px; }
+    /* width */
+    .lg\:w-full { width: 100%; }
+    /* gap */
+    .lg\:gap-\[227px\] { gap: 227px; }
     /* positioning */
     .lg\:bottom-\[24px\] { bottom: 24px; }
     .lg\:left-\[49px\] { left: 49px; }

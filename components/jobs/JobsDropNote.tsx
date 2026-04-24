@@ -72,7 +72,7 @@ export default function JobsDropNote() {
         <div className="flex flex-col gap-[28px] mt-[48px] md:mt-[60px] lg:mt-0 lg:w-[504px] shrink-0">
 
           {/* Form + emails: stacked on mobile, side-by-side on tablet, stacked on desktop */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between lg:flex-col gap-[40px] md:gap-[20px] lg:gap-[30px]">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between lg:flex-col lg:justify-start gap-[40px] md:gap-[20px] lg:gap-[30px]">
 
             {/* Input + or-divider */}
             <div className="flex flex-col gap-[20px] md:flex-1 lg:flex-none lg:w-full">
