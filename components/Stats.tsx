@@ -51,10 +51,10 @@ export default function Stats() {
         {/* Center — headline + body */}
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
-          className="flex flex-col gap-[19px] w-[446px] shrink-0 transition-all duration-700"
+          className="flex flex-col gap-[19px] w-[560px] shrink-0 transition-all duration-700"
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)', transitionDelay: '150ms' }}
         >
-          <h2 className="font-black text-[60px] text-[#1e1e20] leading-[0.92] tracking-[-1.5px] uppercase">
+          <h2 className="font-black text-[76px] text-[#1e1e20] leading-[0.92] tracking-[-2px] uppercase">
             Let&apos;s Build<br />Something<br />Remarkable.
           </h2>
           <p className="text-[16px] text-[#1e1e20] leading-[1.6]">
