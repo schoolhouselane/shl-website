@@ -11,12 +11,6 @@ const cards = [
     href: '/contact',
   },
   {
-    img: '/images/strategy-2.jpg',
-    title: 'Gallery & Videos',
-    desc: 'Cinematic photography and video that converts browsers into buyers and elevates perceived value.',
-    href: '/contact',
-  },
-  {
     img: '/images/strategy-3.jpg',
     title: 'Websites & Digital',
     desc: 'Conversion-engineered sites with performance, accessibility, and brand storytelling woven into every scroll.',

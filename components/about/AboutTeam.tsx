@@ -114,7 +114,17 @@ export default function Team() {
   const [progress, setProgress] = useState(0)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [panelW, setPanelW] = useState(347)
   const [headerRef, headerInView] = useInView(0.2)
+
+  useEffect(() => {
+    const updatePanel = () =>
+      setPanelW(window.innerWidth >= 1280 ? 347 : window.innerWidth >= 768 ? 240 : 160)
+    updatePanel()
+    window.addEventListener('resize', updatePanel, { passive: true })
+    return () => window.removeEventListener('resize', updatePanel)
+  }, [])
 
   const updateState = () => {
     const el = scrollRef.current
@@ -136,6 +146,10 @@ export default function Team() {
   const scroll = (dir: 'left' | 'right') => {
     scrollRef.current?.scrollBy({ left: dir === 'right' ? 420 : -420, behavior: 'smooth' })
   }
+
+  const handleMouseEnter = (i: number) => setActiveIndex(i)
+  const handleMouseLeave = () => setActiveIndex(null)
+  const handleClick = (i: number) => setActiveIndex(prev => prev === i ? null : i)
 
   return (
     <section id="team" className="bg-[#f5f3ef] py-[60px] lg:py-[120px] flex flex-col gap-[40px]">
@@ -166,39 +180,57 @@ export default function Team() {
       {/* Scrollable strip */}
       <div className="relative">
         <div ref={scrollRef} className="flex gap-px overflow-x-auto scrollbar-hide">
-          {team.map((member, i) => (
-            <div key={i} className="group flex shrink-0">
+          {team.map((member, i) => {
+            const isActive = activeIndex === i
+            return (
+              <div
+                key={i}
+                className="flex shrink-0 cursor-pointer"
+                onMouseEnter={() => handleMouseEnter(i)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleClick(i)}
+              >
 
-              {/* Photo */}
-              <div className="relative w-[92px] md:w-[150px] lg:w-[200px] h-[300px] md:h-[500px] lg:h-[762px] overflow-hidden">
-                <Image
-                  src={member.src}
-                  alt={member.name}
-                  fill
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  sizes="200px"
-                />
-              </div>
+                {/* Photo */}
+                <div className="relative w-[92px] md:w-[150px] lg:w-[200px] h-[300px] md:h-[500px] lg:h-[762px] overflow-hidden">
+                  <Image
+                    src={member.src}
+                    alt={member.name}
+                    fill
+                    className={`object-cover object-top transition-transform duration-500 ${isActive ? 'scale-105' : 'scale-100'}`}
+                    sizes="200px"
+                  />
+                </div>
 
-              {/* White info card — expands on hover */}
-              <div className="overflow-hidden transition-all duration-500 ease-in-out w-0 group-hover:w-[130px] md:group-hover:w-[220px] lg:group-hover:w-[347px] h-[300px] md:h-[500px] lg:h-[762px] bg-white">
-                <div className="w-[130px] md:w-[220px] lg:w-[347px] h-full flex flex-col justify-between px-[14px] md:px-[24px] lg:px-[40px] py-[20px] md:py-[32px] lg:py-[60px]">
-                  <div className="flex flex-col gap-[6px]">
-                    <p className="font-black text-[13px] md:text-[18px] lg:text-[24px] text-[#111] leading-tight">
-                      {member.name}
-                    </p>
-                    <p className="text-[11px] md:text-[13px] lg:text-[16px] text-[#111] italic font-light">
-                      {member.role}
+                {/* White info card — expands on hover */}
+                <div
+                  className="overflow-hidden bg-white h-[300px] md:h-[500px] lg:h-[762px] shrink-0"
+                  style={{
+                    width: isActive ? panelW : 0,
+                    transition: 'width 480ms cubic-bezier(0.4, 0, 0.2, 1)',
+                  }}
+                >
+                  <div
+                    className="h-full flex flex-col justify-between px-[14px] md:px-[24px] lg:px-[40px] py-[20px] md:py-[32px] lg:py-[60px]"
+                    style={{ width: panelW }}
+                  >
+                    <div className="flex flex-col gap-[6px]">
+                      <p className="font-black text-[13px] md:text-[18px] lg:text-[24px] text-[#111] leading-tight">
+                        {member.name}
+                      </p>
+                      <p className="text-[11px] md:text-[13px] lg:text-[16px] text-[#111] italic font-light">
+                        {member.role}
+                      </p>
+                    </div>
+                    <p className="text-[11px] md:text-[13px] lg:text-[16px] text-[#111] font-semibold italic leading-snug">
+                      {member.bio}
                     </p>
                   </div>
-                  <p className="text-[11px] md:text-[13px] lg:text-[16px] text-[#111] font-semibold italic leading-snug">
-                    {member.bio}
-                  </p>
                 </div>
-              </div>
 
-            </div>
-          ))}
+              </div>
+            )
+          })}
         </div>
 
         {/* Scroll arrows */}

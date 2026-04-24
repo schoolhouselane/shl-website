@@ -22,7 +22,6 @@ import Hero from '@/components/Hero'
 import ServicesTabs from '@/components/ServicesTabs'
 import SelectedWork from '@/components/SelectedWork'
 import Vision from '@/components/Vision'
-import Stats from '@/components/Stats'
 import LatestNews from '@/components/LatestNews'
 import Team from '@/components/Team'
 import Gallery from '@/components/Gallery'
@@ -36,7 +35,6 @@ export default function Home() {
       <ServicesTabs />
       <SelectedWork />
       <Vision />
-      <Stats />
       <LatestNews />
       <Team />
       <Gallery />

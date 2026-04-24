@@ -3,7 +3,6 @@ import { useInView, useCountUp } from '@/hooks/useInView'
 import CalendlyButton from '@/components/CalendlyButton'
 
 const stats = [
-  { target: 99, suffix: '%',  label: 'Client Retention' },
   { target: 6,  suffix: 'YR', label: 'Average Partnership' },
   { target: 79, suffix: '+',  label: 'Brands Transformed' },
 ]

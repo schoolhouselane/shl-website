@@ -89,10 +89,22 @@ const team = [
     bio: 'Drinela combines an inspiring creative vision with the rigour of brand-led value creation. She designs with the conviction that businesses should be a force for good, crafting identities that align people, purpose, and profit to capture long-term loyalty.',
   },
   {
-    src: '/images/Johnny Ingle.png',
-    name: 'Johnny Ingle',
+    src: '/images/David Maxwell.png',
+    name: 'David Maxwell',
+    role: 'Chief Culture Officer',
+    bio: "David is the guardian of the 'organising principle' — ensuring that the culture of Conscious Capitalism permeates every touchpoint of the agency. He builds the internal ecosystems that allow creativity and rigorous strategy to coexist, aligning people, purpose, and profit across every client engagement.",
+  },
+  {
+    src: '/images/Jonny Ingle.png',
+    name: 'Jonny Ingle',
     role: 'Advisor to the Board',
-    bio: 'Johnny leverages 25 years of international DTC experience to bridge the gap between global scale and human-centric insight. A seasoned Global CMO, he helps clients unify internal cultures under a single organising principle, ensuring brand remains a primary lever for growth across every international touchpoint.',
+    bio: 'Jonny leverages 25 years of international DTC experience to bridge the gap between global scale and human-centric insight. A seasoned Global CMO, he helps clients unify internal cultures under a single organising principle, ensuring brand remains a primary lever for growth across every international touchpoint.',
+  },
+  {
+    src: '/images/Edward Jones.png',
+    name: 'Edward Jones',
+    role: 'AI Agent — Client Services',
+    bio: "Edward approaches the intersection of relentless inquiry and rigorous strategy with the precision of a machine and the instincts of a seasoned strategist. As an AI agent embedded in our client services team, he ensures that no detail is missed and no opportunity is left on the table.",
   },
 ]
 
@@ -102,6 +114,7 @@ export default function Team() {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [panelW, setPanelW] = useState(347)
 
   const updateState = () => {
     const el = scrollRef.current
@@ -111,6 +124,14 @@ export default function Team() {
     setCanScrollLeft(scrollLeft > 0)
     setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1)
   }
+
+  useEffect(() => {
+    const updatePanel = () =>
+      setPanelW(window.innerWidth >= 1280 ? 347 : window.innerWidth >= 768 ? 240 : 160)
+    updatePanel()
+    window.addEventListener('resize', updatePanel, { passive: true })
+    return () => window.removeEventListener('resize', updatePanel)
+  }, [])
 
   useEffect(() => {
     const el = scrollRef.current
@@ -124,7 +145,6 @@ export default function Team() {
     scrollRef.current?.scrollBy({ left: dir === 'right' ? 420 : -420, behavior: 'smooth' })
   }
 
-  // Desktop: hover opens/closes. Mobile/touch: tap toggles.
   const handleMouseEnter = (i: number) => setActiveIndex(i)
   const handleMouseLeave = () => setActiveIndex(null)
   const handleClick = (i: number) => setActiveIndex(prev => prev === i ? null : i)
@@ -176,12 +196,18 @@ export default function Team() {
                   />
                 </div>
 
-                {/* White info panel — expands on active */}
+                {/* White info panel — slides in on hover/tap */}
                 <div
-                  className="overflow-hidden transition-all duration-500 ease-in-out h-[347.84px] md:h-[500px] lg:h-[762px] bg-white"
-                  style={{ width: isActive ? undefined : 0 }}
+                  className="overflow-hidden bg-white h-[347.84px] md:h-[500px] lg:h-[762px] shrink-0"
+                  style={{
+                    width: isActive ? panelW : 0,
+                    transition: 'width 480ms cubic-bezier(0.4, 0, 0.2, 1)',
+                  }}
                 >
-                  <div className="w-[160px] md:w-[240px] lg:w-[347px] h-full flex flex-col justify-start gap-[16px] md:gap-[20px] lg:gap-[30px] px-[16px] md:px-[24px] lg:px-[40px] py-[20px] md:py-[32px] lg:py-[60px]">
+                  <div
+                    className="h-full flex flex-col justify-between gap-[16px] md:gap-[20px] lg:gap-[30px] px-[16px] md:px-[24px] lg:px-[40px] py-[20px] md:py-[32px] lg:py-[60px]"
+                    style={{ width: panelW }}
+                  >
                     <div className="flex flex-col gap-[6px]">
                       <p className="font-black text-[14px] md:text-[16px] lg:text-[24px] text-[#111] leading-tight">
                         {member.name}
