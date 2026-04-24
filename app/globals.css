@@ -110,6 +110,7 @@ input:-webkit-autofill:active {
     .lg\:text-\[32px\] { font-size: 32px; }
     .lg\:text-\[36px\] { font-size: 36px; }
     .lg\:text-\[47px\] { font-size: 47px; }
+    .lg\:text-\[48px\] { font-size: 48px; }
     .lg\:text-\[56px\] { font-size: 56px; }
     .lg\:text-\[57px\] { font-size: 57px; }
     .lg\:text-\[60px\] { font-size: 60px; }
@@ -128,7 +129,9 @@ input:-webkit-autofill:active {
     .lg\:w-\[340px\] { width: 340px; }
     .lg\:w-\[347px\] { width: 347px; }
     .lg\:w-\[380px\] { width: 380px; }
+    .lg\:w-\[504px\] { width: 504px; }
     .lg\:w-\[620px\] { width: 620px; }
+    .lg\:w-\[642px\] { width: 642px; }
     .lg\:w-\[701px\] { width: 701px; }
     /* height */
     .lg\:h-screen    { height: 100vh; }
@@ -144,11 +147,13 @@ input:-webkit-autofill:active {
     .lg\:h-\[55px\]  { height: 55px; }
     .lg\:h-\[113px\] { height: 113px; }
     .lg\:h-\[269px\] { height: 269px; }
+    .lg\:h-\[578px\] { height: 578px; }
     .lg\:h-\[739px\] { height: 739px; }
     .lg\:h-\[759px\] { height: 759px; }
     .lg\:h-\[762px\] { height: 762px; }
     /* max-width */
     .lg\:max-w-\[318px\] { max-width: 318px; }
+    .lg\:max-w-\[1037px\] { max-width: 1037px; }
     .lg\:max-w-\[340px\] { max-width: 340px; }
     .lg\:max-w-\[380px\] { max-width: 380px; }
     .lg\:max-w-\[446px\] { max-width: 446px; }
@@ -184,7 +189,10 @@ input:-webkit-autofill:active {
     .lg\:gap-\[63px\]  { gap: 63px; }
     .lg\:gap-\[72px\]  { gap: 72px; }
     .lg\:gap-\[80px\]  { gap: 80px; }
+    .lg\:gap-\[87px\]  { gap: 87px; }
+    .lg\:gap-\[117px\] { gap: 117px; }
     .lg\:gap-\[120px\] { gap: 120px; }
+    .lg\:gap-\[264px\] { gap: 264px; }
     .lg\:gap-x-\[40px\] { column-gap: 40px; }
     .lg\:gap-x-\[60px\] { column-gap: 60px; }
     .lg\:gap-x-\[80px\] { column-gap: 80px; }
@@ -236,8 +244,10 @@ input:-webkit-autofill:active {
     .lg\:mb-\[60px\] { margin-bottom: 60px; }
     .lg\:mt-\[60px\] { margin-top: 60px; }
     /* positioning */
+    .lg\:bottom-\[24px\] { bottom: 24px; }
     .lg\:left-\[49px\] { left: 49px; }
     .lg\:left-\[90px\] { left: 90px; }
+    .lg\:right-\[24px\] { right: 24px; }
     .lg\:right-\[90px\] { right: 90px; }
     /* letter-spacing */
     .lg\:tracking-\[-0\.3px\]  { letter-spacing: -0.3px; }
