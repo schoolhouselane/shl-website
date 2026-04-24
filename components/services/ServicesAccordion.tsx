@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useRef, useCallback } from 'react'
+import { useInView } from '@/hooks/useInView'
 
 const services = [
   {
@@ -18,12 +19,7 @@ const services = [
       'Leadership workshops & team enablement',
     ],
     result: '4× ARR growth · 12-month retainer',
-    images: [
-      '/images/services-01-1.png',
-      '/images/services-01-2.png',
-      '/images/services-01-3.png',
-      '/images/services-01-4.png',
-    ],
+    images: ['/images/services-d1.png'],
   },
   {
     num: '02',
@@ -39,12 +35,7 @@ const services = [
       'Launch campaigns & brand activation',
     ],
     result: '+312% revenue uplift · 6-month engagement',
-    images: [
-      '/images/services-02-1.png',
-      '/images/services-02-2.png',
-      '/images/services-02-3.png',
-      '/images/services-02-4.png',
-    ],
+    images: ['/images/services-d2.png'],
   },
   {
     num: '03',
@@ -60,12 +51,7 @@ const services = [
       'AI workflow integration for in-house teams',
     ],
     result: '3× content output · 50% cost reduction',
-    images: [
-      '/images/services-03-1.png',
-      '/images/services-03-2.png',
-      '/images/services-03-3.png',
-      '/images/services-03-4.png',
-    ],
+    images: ['/images/services-d3.png'],
   },
   {
     num: '04',
@@ -81,12 +67,7 @@ const services = [
       'Performance reporting & creative iteration',
     ],
     result: '+940K organic reach · 8-week campaign',
-    images: [
-      '/images/services-04-1.png',
-      '/images/services-04-2.png',
-      '/images/services-04-3.png',
-      '/images/services-04-4.png',
-    ],
+    images: ['/images/services-d4.png'],
   },
   {
     num: '05',
@@ -102,12 +83,7 @@ const services = [
       'Post-launch A/B testing & iteration',
     ],
     result: '+187% conversion rate · 4-month build',
-    images: [
-      '/images/services-05-1.png',
-      '/images/services-05-2.png',
-      '/images/services-05-3.png',
-      '/images/services-05-4.png',
-    ],
+    images: ['/images/services-d5.png'],
   },
   {
     num: '06',
@@ -123,18 +99,14 @@ const services = [
       'Motion identity & logo animation systems',
     ],
     result: '940K organic reach · 8-week campaign',
-    images: [
-      '/images/services-06-1.png',
-      '/images/services-06-2.png',
-      '/images/services-06-3.png',
-      '/images/services-06-4.png',
-    ],
+    images: ['/images/services-d6.png'],
   },
 ]
 
 export default function ServicesAccordion() {
   const [active, setActive] = useState<number | null>(null)
   const rowRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [headerRef, headerInView] = useInView(0.2)
 
   const toggle = useCallback((i: number) => {
     setActive((prev) => {
@@ -157,7 +129,11 @@ export default function ServicesAccordion() {
     <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[40px] md:pt-[60px] pb-[60px] lg:pb-[120px] flex flex-col gap-[40px] md:gap-[60px] lg:gap-[120px]">
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
+      <div
+        ref={headerRef as React.RefObject<HTMLDivElement>}
+        className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6 transition-all duration-700"
+        style={{ opacity: headerInView ? 1 : 0, transform: headerInView ? 'translateY(0)' : 'translateY(24px)' }}
+      >
         <h2 className="font-black text-[22px] md:text-[28px] lg:text-[64px] uppercase text-[#1e1e20] leading-tight max-w-full md:max-w-[380px] lg:max-w-[514px]">
           Six Ways We Drive Growth
         </h2>
@@ -231,10 +207,10 @@ export default function ServicesAccordion() {
                     <div className="bg-[#1e1e20] flex items-center justify-center px-4 md:px-[51px] py-[18px] h-[53px]">
                       <p className="font-bold text-[11px] md:text-[12px] lg:text-[14px] text-white whitespace-nowrap">{service.result}</p>
                     </div>
-                    <div className="flex gap-[5px] overflow-x-auto scrollbar-hide">
+                    <div className="flex gap-[5px]">
                       {service.images.map((src, j) => (
-                        <div key={j} className="relative shrink-0 w-[120px] h-[120px] md:w-[160px] md:h-[160px] lg:w-[200px] lg:h-[200px] bg-[#d9d9d9] overflow-hidden">
-                          <Image src={src} alt="Case study" fill className="object-cover" sizes="200px" />
+                        <div key={j} className="relative flex-1 min-w-0 h-[180px] md:h-[220px] lg:h-[280px] bg-[#d9d9d9] overflow-hidden">
+                          <Image src={src} alt="Case study" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 60vw, 800px" />
                         </div>
                       ))}
                     </div>

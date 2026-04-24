@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
 }
 import ServicesHero from '@/components/services/ServicesHero'
+import ServicesStrategy from '@/components/services/ServicesStrategy'
 import ServicesAccordion from '@/components/services/ServicesAccordion'
 import ServicesCTADark from '@/components/services/ServicesCTADark'
 import ServicesMethod from '@/components/services/ServicesMethod'
@@ -45,6 +46,7 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       <Header forceDark />
       <ServicesHero />
+      <ServicesStrategy />
       <ServicesAccordion />
       <ServicesCTADark />
       <ServicesMethod />
