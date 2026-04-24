@@ -96,7 +96,7 @@ const team = [
     bio: "David is the guardian of the 'organising principle' — ensuring that the culture of Conscious Capitalism permeates every touchpoint of the agency. He builds the internal ecosystems that allow creativity and rigorous strategy to coexist, aligning people, purpose, and profit across every client engagement.",
   },
   {
-    src: '/images/Jonny Ingle.png',
+    src: '/images/Johnny Ingle.png',
     name: 'Jonny Ingle',
     role: 'Advisor to the Board',
     bio: 'Jonny leverages 25 years of international DTC experience to bridge the gap between global scale and human-centric insight. A seasoned Global CMO, he helps clients unify internal cultures under a single organising principle, ensuring brand remains a primary lever for growth across every international touchpoint.',
