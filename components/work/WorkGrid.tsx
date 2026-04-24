@@ -55,7 +55,7 @@ export default function WorkGrid() {
   const [gridRef, gridInView] = useInView(0.05)
 
   return (
-    <section className="bg-[#f5f3ef] pb-[60px] md:pb-[80px]">
+    <section id="work-grid" className="bg-[#f5f3ef] pb-[60px] md:pb-[80px]">
 
       <div className="w-full px-4 md:px-6 lg:px-[90px] pt-[40px] md:pt-[60px] lg:pt-[80px] flex flex-col gap-[40px] md:gap-[60px] items-center">
 

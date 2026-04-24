@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useInView } from '@/hooks/useInView'
+import CalendlyButton from '@/components/CalendlyButton'
 
 export default function WorkHero() {
   const [ref, inView] = useInView(0.1)
@@ -31,7 +32,7 @@ export default function WorkHero() {
               }}
             >
               <Image
-                src="/images/work-hero-fashion.png"
+                src="/images/work-hero.png"
                 alt="SHL editorial work"
                 fill
                 className="object-cover object-center"
@@ -46,16 +47,41 @@ export default function WorkHero() {
         </h1>
 
         {/* Body text */}
-        <p
-          className="mt-[24px] md:mt-[30px] text-[16px] md:text-[20px] text-[#111] leading-[1.6] max-w-[900px]"
+        <div
+          className="mt-[24px] md:mt-[30px] flex flex-col gap-0"
           style={{
             opacity: inView ? 1 : 0,
             transition: 'opacity 700ms 150ms',
           }}
         >
-          Selected projects where creativity met commerce and revenue followed.{' '}
-          Every case study is chosen because it pushed something forward — a category, a business, a culture.
-        </p>
+          <p className="text-[15px] md:text-[20px] text-[#111] leading-[1.6] max-w-[900px]">
+            Selected projects where creativity met commerce and revenue followed.
+          </p>
+          <p className="text-[15px] md:text-[20px] text-[#111] leading-[1.6] max-w-[900px]">
+            Every case study is chosen because it pushed something forward — a category, a business, a culture.
+          </p>
+        </div>
+
+        {/* CTAs */}
+        <div
+          className="mt-[28px] md:mt-[32px] flex flex-wrap gap-[12px] md:gap-[20px] items-center"
+          style={{
+            opacity: inView ? 1 : 0,
+            transition: 'opacity 700ms 250ms',
+          }}
+        >
+          <CalendlyButton className="btn-cta inline-flex items-center gap-[12px] border border-[#1e1e20] rounded-[50px] px-[20px] md:px-[24px] py-[10px] md:py-[12px] text-[14px] md:text-[16px] font-medium uppercase text-[#1e1e20]">
+            Book a Call
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </CalendlyButton>
+
+          <a
+            href="#work-grid"
+            className="inline-flex items-center justify-center bg-[#1e1e20] rounded-[50px] px-[20px] md:px-[24px] py-[10px] md:py-[12px] h-[44px] md:h-[54px] text-[14px] md:text-[16px] font-medium uppercase text-white whitespace-nowrap"
+          >
+            See Our Work
+          </a>
+        </div>
 
       </div>
 
