@@ -1,8 +1,11 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 import { useInView } from '@/hooks/useInView'
 import type { BlogPost } from '@/lib/blog-data'
+
+const INITIAL_BOTTOM = 2
 
 function ArrowUpRight() {
   return (
@@ -12,6 +15,13 @@ function ArrowUpRight() {
   )
 }
 
+function ArrowRight({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  )
+}
 
 function FeaturedCard({ post }: { post: BlogPost }) {
   const img = post.listingImage ?? post.heroImage
@@ -109,10 +119,14 @@ interface Props {
 
 export default function BlogList({ posts }: Props) {
   const [ref, inView] = useInView(0.05)
+  const [showAll, setShowAll] = useState(false)
 
   const featured = posts[0]
   const side = posts.slice(1, 3)
   const bottom = posts.slice(3)
+  const visibleBottom = showAll ? bottom : bottom.slice(0, INITIAL_BOTTOM)
+  // Show button whenever there are bottom-row posts and user hasn't expanded yet
+  const showLoadMore = !showAll && bottom.length >= INITIAL_BOTTOM
 
   if (!featured) return null
 
@@ -122,12 +136,11 @@ export default function BlogList({ posts }: Props) {
       className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[48px] md:pt-[32px] lg:pt-[120px] pb-[60px] md:pb-[80px] lg:pb-[120px] flex flex-col gap-[24px] md:gap-[32px] lg:gap-[40px] transition-all duration-700"
       style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
     >
-      {/* Heading — one line on tablet+, wraps naturally on mobile */}
       <h1 className="font-black text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-none tracking-[-1px] lg:tracking-[-1.5px]">
         LATEST IDEAS AND RESEARCH
       </h1>
 
-      {/* Row 1: Featured full width (mobile/tablet) or 2/3 (desktop) + side column (desktop only) */}
+      {/* Row 1: Featured + side column */}
       <div className="flex flex-col lg:flex-row gap-[16px] lg:gap-[20px]">
         <div className="w-full lg:flex-[2]">
           <FeaturedCard post={featured} />
@@ -139,21 +152,45 @@ export default function BlogList({ posts }: Props) {
         )}
       </div>
 
-      {/* Grid section: mobile/tablet renders side cards here; desktop renders bottom 3 */}
+      {/* Bottom grid */}
       {(side.length > 0 || bottom.length > 0) && (
         <div className="flex flex-col gap-[16px] lg:gap-[20px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px] lg:gap-[20px]">
-            {/* Side cards: visible in grid on mobile/tablet, hidden on desktop (shown in right column above) */}
+            {/* Side cards: mobile/tablet only (shown in right column above on desktop) */}
             {side.map(post => (
               <div key={`mob-${post.slug}`} className="lg:hidden">
                 <RegularCard post={post} />
               </div>
             ))}
-            {/* Bottom cards: always in grid */}
-            {bottom.map(post => (
+            {/* Bottom cards */}
+            {visibleBottom.map(post => (
               <RegularCard key={post.slug} post={post} />
             ))}
+            {/* Load more — 3rd column slot on desktop, bottom-right aligned */}
+            {showLoadMore && (
+              <div className="hidden lg:flex flex-col items-end justify-end" style={{ minHeight: '633px' }}>
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="bg-[#1e1e20] flex items-center gap-[12px] justify-center px-[24px] py-[20px] rounded-[50px] text-white font-medium text-[24px] uppercase hover:opacity-80 transition-opacity whitespace-nowrap cursor-pointer"
+                >
+                  Load more blogs
+                  <ArrowRight size={24} />
+                </button>
+              </div>
+            )}
           </div>
+          {/* Load more — below grid on mobile/tablet */}
+          {showLoadMore && (
+            <div className="lg:hidden flex justify-end">
+              <button
+                onClick={() => setShowAll(true)}
+                className="bg-[#1e1e20] flex items-center gap-[10px] justify-center px-[20px] py-[12px] rounded-[50px] text-white font-medium text-[14px] md:text-[16px] uppercase hover:opacity-80 transition-opacity cursor-pointer"
+              >
+                Load more blogs
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          )}
         </div>
       )}
     </section>
