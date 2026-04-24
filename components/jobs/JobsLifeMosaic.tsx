@@ -26,26 +26,26 @@ export default function JobsLifeMosaic() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[48px] md:py-[60px] lg:py-[60px] flex flex-col gap-[40px] md:gap-[60px] lg:gap-[80px] transition-all duration-700"
+      className="bg-[#f5f3ef] px-4 md:px-[24px] lg:px-[90px] py-[48px] md:py-[32px] lg:py-[60px] flex flex-col gap-[40px] md:gap-[32px] lg:gap-[80px] transition-all duration-700"
       style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
     >
       {/* Header row */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-[20px] md:gap-[24px]">
         {/* Left — heading */}
         <div className="shrink-0">
-          <h2 className="font-black text-[36px] md:text-[44px] lg:text-[56px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-1.4px]">
+          <h2 className="font-black text-[36px] md:text-[32px] lg:text-[56px] uppercase text-[#1e1e20] leading-[0.92] tracking-[-1.4px]">
             Life at<br />Schoolhouse Lane
           </h2>
         </div>
         {/* Right — description + CTA */}
-        <div className="flex flex-col gap-[16px] md:gap-[20px] md:items-end md:text-right md:max-w-[438px]">
-          <p className="font-normal text-[15px] md:text-[16px] text-[#1e1e20] leading-[1.7]">
+        <div className="flex flex-col gap-[16px] md:items-end md:text-right md:max-w-[544px]">
+          <p className="font-normal text-[15px] md:text-[16px] text-[#1e1e20] leading-[1.7] md:max-w-[397px]">
             The work is serious. The environment doesn&apos;t have to be.<br className="hidden md:block" />
             Behind every deliverable is a team that genuinely loves what they&apos;re building.
           </p>
           <Link
             href="#open-roles"
-            className="self-start md:self-end btn-cta flex items-center gap-[12px] border border-[#1e1e20] rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase text-[#1e1e20]"
+            className="self-start md:self-end flex items-center gap-[12px] border border-[#1e1e20] rounded-full px-[24px] py-[8px] md:py-[12px] text-[16px] font-medium uppercase text-[#1e1e20] hover:bg-[#1e1e20] hover:text-white transition-colors"
           >
             We&apos;re Hiring
             <ArrowRight size={18} />
@@ -53,21 +53,21 @@ export default function JobsLifeMosaic() {
         </div>
       </div>
 
-      {/* Desktop mosaic — 5-column complex grid (proportional to Figma percentages) */}
+      {/* Desktop mosaic — 5-column absolute layout */}
       <div className="hidden lg:block relative w-full" style={{ height: '460px' }}>
-        {/* Photo 1: 15.45% wide, full 460px tall */}
+        {/* Photo 1: 15.45% wide, full tall */}
         <div className="absolute overflow-hidden" style={{ left: '0%', top: 0, width: '15.45%', height: '460px' }}>
           <Image src={PHOTOS[0].src} alt={PHOTOS[0].alt} fill className="object-cover" sizes="220px" />
         </div>
-        {/* Photo 3: 35.77% wide, top half ~220px */}
+        {/* Photo 3: 35.77% wide, top half */}
         <div className="absolute overflow-hidden" style={{ left: '16.48%', top: 0, width: '35.77%', height: '220px' }}>
           <Image src={PHOTOS[2].src} alt={PHOTOS[2].alt} fill className="object-cover" sizes="500px" />
         </div>
-        {/* Photo 4: 35.77% wide, bottom half ~222px */}
+        {/* Photo 4: 35.77% wide, bottom half */}
         <div className="absolute overflow-hidden" style={{ left: '16.48%', top: '238px', width: '35.77%', height: '222px' }}>
           <Image src={PHOTOS[3].src} alt={PHOTOS[3].alt} fill className="object-cover" sizes="500px" />
         </div>
-        {/* Photo 2: 26.33% wide, full 460px tall */}
+        {/* Photo 2: 26.33% wide, full tall */}
         <div className="absolute overflow-hidden" style={{ left: '53.28%', top: 0, width: '26.33%', height: '460px' }}>
           <Image src={PHOTOS[1].src} alt={PHOTOS[1].alt} fill className="object-cover" sizes="380px" />
         </div>
@@ -75,22 +75,47 @@ export default function JobsLifeMosaic() {
         <div className="absolute overflow-hidden" style={{ left: '80.64%', top: 0, width: '19.36%', height: '300px' }}>
           <Image src={PHOTOS[4].src} alt={PHOTOS[4].alt} fill className="object-cover" sizes="280px" />
         </div>
-        {/* Photo 6: 19.36% wide, bottom 144px (with 16px gap) */}
+        {/* Photo 6: 19.36% wide, bottom 144px */}
         <div className="absolute overflow-hidden" style={{ left: '80.64%', top: '316px', width: '19.36%', height: '144px' }}>
           <Image src={PHOTOS[5].src} alt={PHOTOS[5].alt} fill className="object-cover" sizes="280px" />
         </div>
       </div>
 
-      {/* Tablet mosaic — 2-column grid */}
-      <div className="hidden md:grid lg:hidden grid-cols-2 gap-[12px]" style={{ gridAutoRows: '220px' }}>
-        {PHOTOS.map((photo, i) => (
-          <div key={i} className="relative overflow-hidden">
-            <Image src={photo.src} alt={photo.alt} fill className="object-cover" sizes="50vw" />
+      {/* Tablet mosaic — exact Figma proportions, 2 rows */}
+      <div className="hidden md:flex lg:hidden flex-col gap-[32px]">
+
+        {/* Row 1: tall portrait left (29.6%) + two stacked right (68.5%) — total h≈554px */}
+        <div className="flex gap-[20px] items-stretch" style={{ height: '554px' }}>
+          <div className="relative overflow-hidden shrink-0" style={{ width: '29.6%' }}>
+            <Image src={PHOTOS[0].src} alt={PHOTOS[0].alt} fill className="object-cover" sizes="30vw" />
           </div>
-        ))}
+          <div className="flex flex-col gap-[22px] flex-1">
+            <div className="relative overflow-hidden" style={{ height: '265px' }}>
+              <Image src={PHOTOS[1].src} alt={PHOTOS[1].alt} fill className="object-cover" sizes="68vw" />
+            </div>
+            <div className="relative overflow-hidden flex-1">
+              <Image src={PHOTOS[2].src} alt={PHOTOS[2].alt} fill className="object-cover" sizes="68vw" />
+            </div>
+          </div>
+        </div>
+
+        {/* Row 2: wide left (56.4%) + two stacked right (41.4%) — total h≈619px */}
+        <div className="flex gap-[21px] items-stretch" style={{ height: '619px' }}>
+          <div className="relative overflow-hidden shrink-0" style={{ width: '56.4%' }}>
+            <Image src={PHOTOS[3].src} alt={PHOTOS[3].alt} fill className="object-cover" sizes="57vw" />
+          </div>
+          <div className="flex flex-col gap-[22px] flex-1">
+            <div className="relative overflow-hidden" style={{ height: '404px' }}>
+              <Image src={PHOTOS[4].src} alt={PHOTOS[4].alt} fill className="object-cover" sizes="41vw" />
+            </div>
+            <div className="relative overflow-hidden flex-1">
+              <Image src={PHOTOS[5].src} alt={PHOTOS[5].alt} fill className="object-cover" sizes="41vw" />
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Mobile mosaic — 2×2 top + 2 bottom stacked */}
+      {/* Mobile — 2-col square grid */}
       <div className="md:hidden grid grid-cols-2 gap-[8px]">
         {PHOTOS.map((photo, i) => (
           <div key={i} className="relative overflow-hidden aspect-square">
