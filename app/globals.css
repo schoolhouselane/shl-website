@@ -99,6 +99,11 @@ input:-webkit-autofill:active {
    in the layer order above, so it has higher cascade priority — no !important needed. */
 @layer overrides {
   @media (min-width: 1280px) {
+    /* display */
+    .lg\:hidden { display: none; }
+    .lg\:block  { display: block; }
+    .lg\:flex   { display: flex; }
+    .lg\:grid   { display: grid; }
     /* font-size */
     .lg\:text-\[14px\] { font-size: 14px; }
     .lg\:text-\[16px\] { font-size: 16px; }
