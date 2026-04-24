@@ -28,14 +28,14 @@ export default function WorkHero() {
               className="hidden md:block relative overflow-hidden shrink-0 ml-auto"
               style={{
                 width: 'clamp(200px, 28vw, 523px)',
-                aspectRatio: '4094 / 2589',
+                height: 'clamp(88px, 11.5vw, 241px)',
               }}
             >
               <Image
                 src="/images/work-hero.png"
                 alt="SHL editorial work"
                 fill
-                className="object-contain object-center"
+                className="object-cover object-top"
                 sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 523px"
                 priority
               />
