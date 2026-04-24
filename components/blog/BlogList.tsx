@@ -26,7 +26,7 @@ function ArrowRight({ size = 24 }: { size?: number }) {
 function FeaturedCard({ post }: { post: BlogPost }) {
   const img = post.listingImage ?? post.heroImage
   return (
-    <Link href={`/blog/${post.slug}`} className="flex flex-col group overflow-hidden">
+    <Link href={`/blog/${post.slug}`} className="flex flex-col group overflow-hidden lg:h-full">
       {/* Mobile + Tablet: landscape */}
       <div className="relative w-full h-[220px] md:h-[266px] lg:hidden overflow-hidden">
         <Image
@@ -38,8 +38,8 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           priority
         />
       </div>
-      {/* Desktop: near-square */}
-      <div className="hidden lg:block relative w-full aspect-square overflow-hidden">
+      {/* Desktop: fills remaining height to match 2 right-column cards */}
+      <div className="hidden lg:block relative w-full flex-1 overflow-hidden">
         <Image
           src={img}
           alt={post.title}
@@ -50,7 +50,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
         />
       </div>
       {/* Caption */}
-      <div className="bg-[#1e1e20] px-[13px] lg:px-[24px] py-[24px] lg:py-[30px] flex flex-col gap-[12px] lg:gap-[20px]">
+      <div className="bg-[#1e1e20] px-[13px] lg:px-[24px] py-[24px] lg:py-[30px] flex flex-col gap-[12px] lg:gap-[20px] lg:shrink-0">
         <div className="flex items-start justify-between gap-[12px]">
           <p className="font-black text-[20px] md:text-[24px] lg:text-[28px] text-white leading-tight flex-1">
             {post.title}
@@ -141,7 +141,7 @@ export default function BlogList({ posts }: Props) {
       </h1>
 
       {/* Row 1: Featured + side column */}
-      <div className="flex flex-col lg:flex-row gap-[16px] lg:gap-[20px]">
+      <div className="flex flex-col lg:flex-row lg:items-stretch gap-[16px] lg:gap-[20px]">
         <div className="w-full lg:flex-[2]">
           <FeaturedCard post={featured} />
         </div>

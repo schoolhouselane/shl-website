@@ -266,8 +266,9 @@ input:-webkit-autofill:active {
     .lg\:mt-0        { margin-top: 0; }
     .lg\:mb-\[60px\] { margin-bottom: 60px; }
     .lg\:mt-\[60px\] { margin-top: 60px; }
-    /* width */
+    /* width / height */
     .lg\:w-full { width: 100%; }
+    .lg\:h-full { height: 100%; }
     /* gap */
     .lg\:gap-\[227px\] { gap: 227px; }
     /* positioning */
