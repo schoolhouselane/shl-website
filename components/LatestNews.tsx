@@ -6,13 +6,13 @@ import { useInView } from '@/hooks/useInView'
 const articles = [
   {
     slug: 'brand-measurable-asset',
-    img: '/images/blog/listing-brand.jpg',
+    img: '/images/blog-1.png',
     title: 'Why Brand Is Your Most Measurable Asset',
     excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.",
   },
   {
     slug: 'creative-commerce',
-    img: '/images/blog/listing-creative.jpg',
+    img: '/images/blog-2.png',
     title: 'Creative Commerce: Where Imagination Meets Revenue',
     excerpt: "We don't just build identities. We build ecosystems where every touchpoint accelerates business growth.",
   },
