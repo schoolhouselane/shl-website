@@ -45,7 +45,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           alt={post.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="50vw"
+          sizes="(max-width: 1280px) 100vw, 733px"
           priority
         />
       </div>
@@ -168,7 +168,7 @@ export default function BlogList({ posts }: Props) {
             ))}
             {/* Load more — 3rd column slot on desktop, bottom-right aligned */}
             {showLoadMore && (
-              <div className="hidden lg:flex flex-col items-end justify-end" style={{ minHeight: '633px' }}>
+              <div className="hidden lg:flex flex-col items-end justify-end h-full">
                 <button
                   onClick={() => setShowAll(true)}
                   className="bg-[#1e1e20] flex items-center gap-[12px] justify-center px-[24px] py-[20px] rounded-[50px] text-white font-medium text-[24px] uppercase hover:opacity-80 transition-opacity whitespace-nowrap cursor-pointer"
