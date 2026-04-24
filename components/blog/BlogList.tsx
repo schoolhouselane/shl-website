@@ -12,13 +12,6 @@ function ArrowUpRight() {
   )
 }
 
-function ArrowRight() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M5 12h14M12 5l7 7-7 7" />
-    </svg>
-  )
-}
 
 function FeaturedCard({ post }: { post: BlogPost }) {
   const img = post.listingImage ?? post.heroImage
@@ -119,7 +112,7 @@ export default function BlogList({ posts }: Props) {
 
   const featured = posts[0]
   const side = posts.slice(1, 3)
-  const bottom = posts.slice(3, 6)
+  const bottom = posts.slice(3)
 
   if (!featured) return null
 
@@ -160,15 +153,6 @@ export default function BlogList({ posts }: Props) {
             {bottom.map(post => (
               <RegularCard key={post.slug} post={post} />
             ))}
-          </div>
-          <div className="flex justify-end">
-            <button
-              type="button"
-              className="flex items-center gap-[12px] bg-[#1e1e20] text-white rounded-full px-[24px] py-[12px] lg:py-[20px] text-[14px] lg:text-[24px] font-medium uppercase tracking-wide hover:opacity-80 transition-opacity"
-            >
-              Load more blogs
-              <ArrowRight />
-            </button>
           </div>
         </div>
       )}
