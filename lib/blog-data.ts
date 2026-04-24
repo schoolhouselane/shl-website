@@ -165,13 +165,13 @@ export const blogPosts: BlogPost[] = [
     slug: 'is-ai-killing-seo',
     title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me",
     category: 'SEO',
-    heroImage: '/images/blog/blog-seo.jpg',
+    heroImage: '/images/blog/seo-hero.jpg',
     seoTitle: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me — Schoolhouse Lane",
     seoDescription:
       "After 15 years in SEO, Darren McGrath has seen every death-of-SEO prediction come and go. Here's why AI isn't killing SEO — and what you should actually do about it.",
     keywords: ['SEO', 'AI', 'search', 'digital marketing', 'brand visibility', 'Schoolhouse Lane', 'content strategy'],
     publishedAt: '2026-04-10',
-    author: DARREN,
+    author: { ...DARREN, image: '/images/blog/seo-author.jpg' },
     body: [
       {
         type: 'paragraph',
@@ -219,7 +219,7 @@ export const blogPosts: BlogPost[] = [
         type: 'paragraph',
         text: "What's changed is you can no longer afford to ignore how AI interprets your presence.",
       },
-      { type: 'image', src: '/images/blog/blog-article-body.png', alt: 'AI and SEO landscape' },
+      { type: 'image', src: '/images/blog/seo-inline-1.jpg', alt: 'AI and SEO landscape' },
       { type: 'heading', text: 'Your Website Is No Longer the Whole Story' },
       {
         type: 'paragraph',
@@ -260,7 +260,7 @@ export const blogPosts: BlogPost[] = [
         type: 'paragraph',
         text: 'SEO builds long-term authority -- the slow compound interest of visibility. AI optimisation builds present-tense relevance. You need both. They reinforce each other.',
       },
-      { type: 'image', src: '/images/blog/blog-quote-bg.png', alt: 'SEO and AI working together' },
+      { type: 'image', src: '/images/blog/seo-inline-2.jpg', alt: 'SEO and AI working together' },
       { type: 'heading', text: "What I'd Do If I Were Starting Today" },
       {
         type: 'rich-list',
@@ -290,14 +290,14 @@ export const blogPosts: BlogPost[] = [
       { type: 'callout', text: "That's not the death of SEO. That's what it was supposed to be all along." },
     ],
     relatedArticles: [
-      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-related-1.png' },
-      { slug: 'creative-commerce', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/blog-related-2.png' },
-      { slug: 'compounding-effect', title: 'Creative Commerce. Where Imagination Meets Revenue', excerpt: 'In the relentless pursuit of growth, many modern enterprises have fallen into the "efficiency trap."', thumbnail: '/images/blog/blog-related-3.png' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/seo-related-1.jpg' },
+      { slug: 'creative-commerce', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/seo-related-2.jpg' },
+      { slug: 'compounding-effect', title: 'Creative Commerce. Where Imagination Meets Revenue', excerpt: 'In the relentless pursuit of growth, many modern enterprises have fallen into the "efficiency trap."', thumbnail: '/images/blog/seo-related-3.jpg' },
     ],
     journalCards: [
-      { slug: 'creative-commerce', title: 'Creative Commerce: Where Imagination Meets Revenue', excerpt: "We don't just build identities. We build ecosystems where every touchpoint accelerates business growth.", image: '/images/blog/blog-journal-1.png' },
-      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-journal-2.png' },
-      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-journal-3.png' },
+      { slug: 'creative-commerce', title: 'Creative Commerce: Where Imagination Meets Revenue', excerpt: "We don't just build identities. We build ecosystems where every touchpoint accelerates business growth.", image: '/images/blog/seo-related-3.jpg' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/seo-journal-2.jpg' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/seo-journal-3.jpg' },
     ],
   },
 ]
