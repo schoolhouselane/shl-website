@@ -1,10 +1,11 @@
 // ─── Content model ────────────────────────────────────────────────────────────
 
 export type ContentBlock =
-  | { type: 'paragraph'; text: string; dark?: boolean }
+  | { type: 'paragraph'; text?: string; parts?: Array<{ text: string; bold?: boolean }>; dark?: boolean }
   | { type: 'heading'; text: string }
   | { type: 'blockquote'; text: string }
   | { type: 'image'; src: string; alt: string }
+  | { type: 'image-pair'; src1: string; alt1: string; src2: string; alt2: string }
   | { type: 'callout'; text: string }
   | { type: 'rich-list'; items: Array<{ lead: string; text: string }> }
   | { type: 'ordered-list'; items: Array<{ lead: string; text: string }> }
@@ -321,22 +322,150 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     title: 'Why Brand Is Your Most Measurable Asset',
     category: 'Branding',
     heroImage: '/images/blog/blog-brand-asset.jpg',
+    seoTitle: 'Why Brand Is Your Most Measurable Asset — Schoolhouse Lane',
     seoDescription: 'In the traditional corporate world, brand is often dismissed as a "downstream" marketing cost — a coat of paint applied after the real business decisions have been made.',
+    keywords: ['brand strategy', 'enterprise value', 'creative commerce', 'brand equity', 'Schoolhouse Lane'],
     publishedAt: '2026-03-15',
     author: DARREN,
-    relatedArticles: [],
-    journalCards: [],
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'In the traditional corporate world, brand is often dismissed as a "downstream" marketing cost—a coat of paint applied after the real business decisions have been made. At Schoolhouse Lane, we believe this is a fundamental misunderstanding of value creation. In an era of algorithmic noise, the most powerful engine for growth isn\'t a spreadsheet; it\'s a question.',
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'When you shift your perspective to view brand as business strategy made tangible, it ceases to be a subjective expense and becomes your most measurable advantage.',
+      },
+      { type: 'heading', text: 'Moving from Decoration to Strategy' },
+      {
+        type: 'paragraph',
+        text: 'Most agencies "decorate" decisions that are already finalized. Our approach is "upstream," positioning brand as a primary lever for accelerating enterprise value.',
+      },
+      {
+        type: 'paragraph',
+        text: 'By treating brand as the core organising principle, businesses can:',
+      },
+      {
+        type: 'callout',
+        text: '\u00b7 Drive Premium Valuations: Investors don\'t just buy cash flow; they buy the certainty of future growth that a potent brand promises during exits or capital raises.\n\u00b7 Navigate Category Shifts: A brand-led strategy provides the agility to pivot with human-centric insight when a market fluctuates.\n\u00b7 Unify Internal Culture: Brand acts as a North Star, aligning diverse teams under a single, potent vision.',
+      },
+      { type: 'heading', text: 'Creative Commerce: The Methodology of ROI' },
+      {
+        type: 'paragraph',
+        text: 'We bridge the gap between imagination and business success through Creative Commerce. This isn\'t about vague awareness; it\'s about building ecosystems where every touchpoint—from high-level strategy to the final checkout—accelerates business goals.',
+      },
+      {
+        type: 'paragraph',
+        text: 'By aligning profit with purpose and people, we move beyond capturing market share to capturing hearts and minds. This alignment is the core of Conscious Capitalism: the conviction that being a force for good delivers outsized returns.',
+      },
+      { type: 'image', src: '/images/blog/blog-brand-inline-1.jpg', alt: 'Brand strategy and creative commerce' },
+      { type: 'heading', text: 'Diversity of Thought as a Competitive Advantage' },
+      {
+        type: 'paragraph',
+        text: 'At Schoolhouse Lane, we operate at the intersection of relentless inquiry and rigorous strategy. Our competitive advantage lies in our diversity of thought, allowing us to unearth latent potential within an organization that a standard, linear approach would miss.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We don\'t just tell stories; we architect the infrastructure that allows ambitious companies to live them.',
+      },
+      { type: 'heading', text: 'Is your brand working as a strategic engine?' },
+      {
+        type: 'paragraph',
+        text: 'If your brand is currently a line item under "marketing expenses" rather than a driver of "enterprise value," it\'s time to ask a better question. Through discovery and creativity, we transform your most intangible asset into your most measurable lever for growth.',
+      },
+      {
+        type: 'blockquote',
+        text: 'Schoolhouse Lane: The Brand-Led Value Creation Agency. Because there is no cure for curiosity.',
+      },
+      { type: 'image', src: '/images/blog/blog-brand-inline-2.jpg', alt: 'Brand as measurable asset' },
+    ],
+    relatedArticles: [
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.jpg' },
+      { slug: 'eddie-jordan-foundation', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/blog-eddie-jordan.jpg' },
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", thumbnail: '/images/blog/blog-seo.jpg' },
+    ],
+    journalCards: [
+      { slug: 'creative-commerce', title: 'Creative Commerce: Where Imagination Meets Revenue', excerpt: "We don't just build identities. We build ecosystems where every touchpoint accelerates business growth.", image: '/images/blog/blog-creative-commerce.jpg' },
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/blog-seo.jpg' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.jpg' },
+    ],
   },
   {
     slug: 'creative-commerce',
     title: 'Creative Commerce: Where Imagination Meets Revenue',
     category: 'Strategy',
     heroImage: '/images/blog/blog-creative-commerce.jpg',
+    seoTitle: 'Creative Commerce: Where Imagination Meets Revenue — Schoolhouse Lane',
     seoDescription: 'In the relentless pursuit of growth, many modern enterprises have fallen into the "efficiency trap." True growth doesn\'t come from doing the same things more efficiently.',
+    keywords: ['creative commerce', 'brand strategy', 'vision-led growth', 'conscious capitalism', 'Schoolhouse Lane'],
     publishedAt: '2026-03-10',
     author: DARREN,
-    relatedArticles: [],
-    journalCards: [],
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'In the relentless pursuit of growth, many modern enterprises have fallen into the "efficiency trap." They focus on squeezing margins, optimising algorithms, and refining spreadsheets. But at Schoolhouse Lane, we believe the most powerful engine for growth isn\'t a spreadsheet—it\'s a question. True growth doesn\'t come from doing the same things more efficiently; it comes from shifting from efficiency-based value to vision-led value creation.',
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'This shift is the foundation of Creative Commerce.',
+      },
+      { type: 'image', src: '/images/blog/blog-creative-inline-1.jpg', alt: 'Creative Commerce in action' },
+      { type: 'heading', text: 'From Efficiency to Vision. The New Competitive Advantage' },
+      {
+        type: 'paragraph',
+        text: 'Efficiency is a race to the bottom. In a world of "good enough," optimisation eventually plateaus. Vision-led value creation, however, is limitless. It treats brand not as a downstream marketing cost, but as an upstream strategic engine.',
+      },
+      {
+        type: 'paragraph',
+        text: 'While others "decorate" decisions already made, we use curiosity to unearth the latent potential within an organisation. By aligning profit with purpose and people, we build brands that don\'t just capture market share, but capture hearts and minds. This is where diversity of thought becomes a competitive advantage, allowing us to see the "human" in an era of algorithmic noise.',
+      },
+      { type: 'heading', text: 'Building Ecosystems. Not Just Identities.' },
+      {
+        type: 'paragraph',
+        text: 'We don\'t just build identities, we build ecosystems. Creative Commerce is our methodology for making brand strategy tangible. It ensures that every touchpoint—from the high-level strategy to the final checkout—accelerates the business goals of our clients.',
+      },
+      {
+        type: 'paragraph',
+        text: 'By treating brand as business strategy made tangible, we ensure your most intangible asset becomes your most measurable advantage. This ecosystem approach allows ambitious companies to:',
+      },
+      {
+        type: 'callout',
+        text: '\u00b7 Navigate Category Shifts: Move with agility and human-centric insight.\n\u00b7 Design and Launch: Create new products and business divisions with clarity.\n\u00b7 Drive Premium Valuations: Use brand as a primary lever for accelerating enterprise value during exits or capital raises.',
+      },
+      { type: 'heading', text: 'The Philosophy. There Is No Cure for Curiosity' },
+      {
+        type: 'paragraph',
+        text: 'At the intersection of relentless inquiry and rigorous strategy, we find the "exceptional". We are a human agency with an altruistic view of the world, operating on the conviction of Conscious Capitalism. We believe businesses can—and should—be a force for good while delivering outsized returns.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Creative Commerce is the bridge between imagination and business success. We don\'t just tell stories; we architect the infrastructure that allows companies to live them.',
+      },
+      { type: 'heading', text: 'Shift Your Strategy Upstream' },
+      {
+        type: 'paragraph',
+        text: 'Is your brand a marketing tool or a high-leverage strategic asset? If you are ready to move beyond efficiency and toward a vision that drives real enterprise value, it\'s time to explore the power of Creative Commerce.',
+      },
+      {
+        type: 'blockquote',
+        text: 'Schoolhouse Lane: There is no cure for curiosity.',
+      },
+      { type: 'image', src: '/images/blog/blog-creative-inline-2.jpg', alt: 'Vision-led value creation' },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: 'In the traditional corporate world, brand is often dismissed as a downstream marketing cost.', thumbnail: '/images/blog/blog-brand-asset.jpg' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.jpg' },
+      { slug: 'eddie-jordan-foundation', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/blog-eddie-jordan.jpg' },
+    ],
+    journalCards: [
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/blog-seo.jpg' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.jpg' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.jpg' },
+    ],
   },
 ]
 

@@ -19,7 +19,7 @@ function groupBlocks(blocks: ContentBlock[]): ContentBlock[][] {
   let current: ContentBlock[] = []
 
   for (const block of blocks) {
-    if (block.type === 'image' || block.type === 'quote-banner') {
+    if (block.type === 'image' || block.type === 'quote-banner' || block.type === 'image-pair') {
       if (current.length) { groups.push(current); current = [] }
       groups.push([block])
     } else if (block.type === 'heading' && current.length) {
@@ -37,11 +37,10 @@ function renderBlock(block: ContentBlock, idx: number) {
   switch (block.type) {
     case 'paragraph':
       return (
-        <p
-          key={idx}
-          className={`text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed ${block.dark ? 'text-[#111]' : 'text-[#595959]'}`}
-        >
-          {block.text}
+        <p key={idx} className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#111]">
+          {block.parts
+            ? block.parts.map((p, i) => p.bold ? <strong key={i}>{p.text}</strong> : <span key={i}>{p.text}</span>)
+            : block.text}
         </p>
       )
 
@@ -91,10 +90,7 @@ function renderBlock(block: ContentBlock, idx: number) {
       return (
         <div key={idx} className="flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
           {block.items.map((item, i) => (
-            <p
-              key={i}
-              className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]"
-            >
+            <p key={i} className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#111]">
               <span className="font-bold text-[#1e1e20]">{item.lead}</span>
               {item.text}
             </p>
@@ -106,12 +102,24 @@ function renderBlock(block: ContentBlock, idx: number) {
       return (
         <ol key={idx} className="list-decimal pl-[21px] md:pl-[28px] flex flex-col gap-[12px]">
           {block.items.map((item, i) => (
-            <li key={i} className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#595959]">
+            <li key={i} className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#111]">
               <span className="font-bold text-[#1e1e20]">{item.lead}</span>
               {item.text}
             </li>
           ))}
         </ol>
+      )
+
+    case 'image-pair':
+      return (
+        <div key={idx} className="flex flex-col md:flex-row gap-[16px] md:gap-[40px]">
+          <div className="relative w-full md:w-1/2 aspect-[451/269] overflow-hidden">
+            <Image src={block.src1} alt={block.alt1} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 294px, 474px" />
+          </div>
+          <div className="relative w-full md:w-1/2 aspect-[451/269] overflow-hidden">
+            <Image src={block.src2} alt={block.alt2} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 294px, 474px" />
+          </div>
+        </div>
       )
 
     case 'quote-banner':
