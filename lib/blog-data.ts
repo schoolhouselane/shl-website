@@ -302,85 +302,6 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 
-  // ── Article 3 — Eddie Jordan Foundation ────────────────────────────────────
-  {
-    slug: 'eddie-jordan-foundation',
-    title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?',
-    category: 'Leadership',
-    heroImage: '/images/blog/ej-hero.jpg',
-    seoTitle: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change? — Schoolhouse Lane',
-    seoDescription: `Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin arguing that human creativity and ambition are the most powerful forces for change.`,
-    keywords: ['Eddie Jordan', 'Eddie Jordan Foundation', 'leadership', 'creativity', 'brand strategy', 'Schoolhouse Lane', 'Keith O\'Loughlin'],
-    publishedAt: '2026-03-25',
-    author: { ...DARREN, image: '/images/blog/ej-author.jpg' },
-    body: [
-      {
-        type: 'paragraph',
-        text: `Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin arguing that human behavior can be changed and that a better good can be achieved if people are allowed to think big and are allowed to bring joy into what they do.`,
-      },
-      {
-        type: 'paragraph',
-        text: `O'Loughlin is pragmatic, at peace with his intellect and thought process. He's at peace with the building blocks needed to get humanity from this moment in time, forward to a place where being a better human unfolds as naturally as the lower self currently does.`,
-      },
-      {
-        type: 'paragraph',
-        text: `O'Loughlin has people's attention, in front of him sit, an accomplished sailor (who has circumnavigated the globe), an award winning music artist, a human dynamo and myself, legs crossed and slouching to my right. The pitch isn't emotional, it's factual and calculated. Like all solutions it is communicated with simplicity and neatly packaged in such a way that delivery is as efficient as Amazon FBA.`,
-      },
-      {
-        type: 'paragraph',
-        text: `See O'Loughlin has an advantage and that advantage is the advantage of experience. Like anything in life, when you have done something once, and overcome beleaguerment and fear then the next challenge seems obvious and un daunting. He wrote and published a book in 8 weeks, then launched this foundation in less. He can build companies and sell and defeat time zones with ease so why wouldn't changing human behaviour for the better be the obvious next thing to do?`,
-      },
-      { type: 'image-pair', src1: '/images/blog/ej-inline-left.jpg', alt1: 'Keith O\'Loughlin speaking', src2: '/images/blog/ej-inline-right.jpg', alt2: 'Eddie Jordan Foundation gathering' },
-      {
-        type: 'paragraph',
-        text: `There are no external distractions, my mental absorption is intense, I'm conscious that my weakness is my ferocious need for mental stimulation but I completely relate to the points he is making and I completely understand that there is a place where empathy and dreams can meet and something beautiful can be born.`,
-      },
-      {
-        type: 'paragraph',
-        text: `As the one sided conversation rocks on, I'm conscious that I've had my time wasted many times before. There's always been sales people with big ideas who can pitch big but then lack the conviction and discipline to see it through.`,
-      },
-      {
-        type: 'paragraph',
-        text: `I'm awake, I'm conscious and I'm happy that this feels different, there's a catalyst present, a mentor, someone who changed my attitude to myself. I can't profess to being as close to him as the others in the room but I do have a heightened sense of his influence.`,
-      },
-      {
-        type: 'paragraph',
-        parts: [
-          { text: `Recently we launched ` },
-          { text: `the Eddie Jordan foundation`, bold: true },
-          { text: ` in his memory and I'm honoured to be named a trustee. As O'Loughlin expatiates, my thoughts flip flop from delusion to opportunity and back again. Is this a futile endeavour or can we fuel change? I question how I'm thinking and I wonder if it's just negativity but I am reminded of the line: it's not the critic who counts, or how the doer of deeds could do them better. I'm reminded that credit belongs to the man that is actually in the arena, the man whose face is marred by sweat and dust and blood. I'm reminded of Full Throttle, the doers, the dreamers and the wise fools.` },
-        ],
-      },
-      { type: 'image', src: '/images/blog/ej-inline-full.jpg', alt: 'Eddie Jordan Foundation' },
-      {
-        type: 'paragraph',
-        text: `As humans most of us exist in an echo chamber of ambitions or just floating on a sea of personal goals.`,
-      },
-      {
-        type: 'paragraph',
-        text: `People talk but don't deliver, this feels different. Yes there are nodding heads around the table but these nodding heads are "doers", people who have enough about them to get it done.`,
-      },
-      {
-        type: 'paragraph',
-        text: `We might not know exactly what "it" is right now but this group has an extraordinary chance of success. The critics might consider our objective delusional but 1980s Dublin thought a young man from Bray who was building a Formula 1 team was delusional too.`,
-      },
-      {
-        type: 'paragraph',
-        text: `If you have any interest in Thinking Big, check out ej.foundation or if you would like to purchase a copy of Full Throttle, Keith O'Loughlin's book about Eddie's philosophy you can purchase it here:`,
-      },
-      { type: 'callout', text: `"EDDIE JORDAN: FULL THROTTLE: Lessons from a Life of Motorsport, Money and Mischief"` },
-    ],
-    relatedArticles: [
-      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: `In my twenty five years as an ad man, I've witnessed countless shifts in how we work.`, thumbnail: '/images/blog/ej-related-1.jpg' },
-      { slug: 'creative-commerce', title: 'Creative Commerce. Where Imagination Meets Revenue', excerpt: `In the relentless pursuit of growth, many modern enterprises have fallen into the "efficiency trap."`, thumbnail: '/images/blog/ej-related-2.jpg' },
-      { slug: 'is-ai-killing-seo', title: `Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me`, excerpt: `I've been doing this long enough to have heard the death knell for SEO more times than I care to count.`, thumbnail: '/images/blog/ej-related-3.jpg' },
-    ],
-    journalCards: [
-      { slug: 'is-ai-killing-seo', title: `Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me`, excerpt: `I've been doing this long enough to have heard the death knell for SEO more times than I care to count.`, image: '/images/blog/ej-related-3.jpg' },
-      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: `The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.`, image: '/images/blog/ej-journal-2.jpg' },
-      { slug: 'creative-commerce', title: 'Creative Commerce: Where Imagination Meets Revenue', excerpt: `We don't just build identities. We build ecosystems where every touchpoint accelerates business growth.`, image: '/images/blog/ej-related-2.jpg' },
-    ],
-  },
 ]
 
 // ─── Placeholder stubs ────────────────────────────────────────────────────────
@@ -453,7 +374,6 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     ],
     relatedArticles: [
       { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.jpg' },
-      { slug: 'eddie-jordan-foundation', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/blog-eddie-jordan.jpg' },
       { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", thumbnail: '/images/blog/blog-seo.jpg' },
     ],
     journalCards: [
@@ -530,7 +450,6 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     relatedArticles: [
       { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: 'In the traditional corporate world, brand is often dismissed as a downstream marketing cost.', thumbnail: '/images/blog/blog-brand-asset.jpg' },
       { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.jpg' },
-      { slug: 'eddie-jordan-foundation', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/blog-eddie-jordan.jpg' },
     ],
     journalCards: [
       { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/blog-seo.jpg' },
