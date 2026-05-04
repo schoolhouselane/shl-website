@@ -36,6 +36,36 @@ export const jobs: Job[] = [
     description: ' who rejects "good enough" in favor of the exceptional. You won\'t just "decorate" decisions already made; you will use curiosity to unearth latent potential within organizations, architecting the infrastructure that allows ambitious companies to live their stories.',
     boldWord: 'Senior Brand Strategist',
   },
+  {
+    id: 'project-manager',
+    number: '03',
+    title: 'Project Manager',
+    category: 'Operations',
+    location: 'Remote',
+    type: 'FULL-TIME',
+    description: ' who can hold together the chaos of creative work without squeezing the life out of it. You run the timeline, own the client relationship, and keep the team sharp and focused — without becoming the reason the work suffers.',
+    boldWord: 'Project Manager',
+  },
+  {
+    id: 'designer',
+    number: '04',
+    title: 'Designer',
+    category: 'Design',
+    location: 'Remote',
+    type: 'FULL-TIME',
+    description: ' who thinks before they open Figma. You bring a point of view to every brief, know when to push back, and understand that the best creative decisions are made well before a single pixel hits the screen.',
+    boldWord: 'Designer',
+  },
+  {
+    id: 'developer',
+    number: '05',
+    title: 'Developer',
+    category: 'Engineering',
+    location: 'Remote',
+    type: 'FULL-TIME',
+    description: ' who takes pride in the invisible work — the performance, the precision, the code nobody applauds but everyone notices when it\'s wrong. You bridge design and reality without cutting corners.',
+    boldWord: 'Developer',
+  },
 ]
 
 export const testimonials: Testimonial[] = [
