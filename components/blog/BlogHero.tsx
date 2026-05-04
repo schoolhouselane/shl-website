@@ -26,7 +26,8 @@ export default function BlogHero({ src, alt }: Props) {
           src={src}
           alt={alt}
           fill
-          className="object-cover object-top"
+          className="object-cover"
+          style={{ objectPosition: '50% 20%' }}
           priority
           sizes="(max-width: 768px) 100vw, calc(100vw - 48px), calc(100vw - 180px)"
         />
