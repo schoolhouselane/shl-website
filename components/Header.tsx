@@ -30,11 +30,11 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
       <div className="flex items-center justify-between px-4 md:px-6 lg:px-[90px] h-[64px] md:h-[95px] lg:h-[82px]">
         <Link href="/">
           <Image
-            src={isDark ? '/logo.svg' : '/logo-white.svg'}
+            src="/logo-white.svg"
             alt="Schoolhouse Lane"
             width={122}
             height={48}
-            className="w-[65px] md:w-[122px] h-auto object-contain transition-all duration-300"
+            className={`w-[65px] md:w-[122px] h-auto object-contain transition-all duration-300 ${isDark ? 'invert' : ''}`}
           />
         </Link>
 
@@ -48,7 +48,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               </Link>
             )
           })}
-          <Link href="/contact" className={`btn-cta flex items-center gap-[12px] border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase transition-all duration-300 ${borderColor} ${textColor}`}>
+          <Link href="/contact" className={`btn-cta flex items-center gap-[12px] border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap transition-all duration-300 ${borderColor} ${textColor}`}>
             Book a Demo
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>

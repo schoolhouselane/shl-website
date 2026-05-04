@@ -7,20 +7,20 @@ const slides = [
   {
     image: '/images/hero-1.png',
     mobileImage: '/images/mobile-home-hero1.png',
-    heading: 'Creative Commerce',
-    sub: 'We exist at the intersection of creativity and revenue growth',
+    heading: "Your product is brilliant. Let's make your brand undeniable.",
+    sub: 'We fuse executive-level human strategy with custom AI models to build brands that scale faster, look premium, and actually close deals.',
   },
   {
     image: '/images/hero-2.png',
     mobileImage: '/images/mobile-home-hero2.png',
-    heading: 'There is no cure for curiousity',
-    sub: 'It started with "why." It didn\'t stop there.',
+    heading: 'Creative at the speed of AI. Strategy with the depth of humans.',
+    sub: 'Stop settling for mindless content mills. We train AI on your unique voice to deliver rapid, strategy-first creative that drives serious revenue.',
   },
   {
     image: '/images/hero-3.png',
     mobileImage: '/images/mobile-home-hero3.png',
-    heading: 'It\'s only advertising.',
-    sub: 'Don\'t take yourself too seriously',
+    heading: 'The scale of an AI engine. The soul of a creative studio.',
+    sub: 'Turn your brand into an unfair competitive advantage. We handle the heavy lifting of design and production so you can focus on growing your business.',
   },
 ]
 
@@ -116,7 +116,7 @@ export default function Hero() {
               href="/contact"
               className="btn-cta flex items-center gap-3 border border-white rounded-full px-[24px] py-[12px] text-white text-[16px] font-medium uppercase"
             >
-              Let&apos;s Build Something Exceptional
+              Book a Demo
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
             <Link

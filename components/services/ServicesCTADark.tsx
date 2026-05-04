@@ -26,7 +26,7 @@ export default function ServicesCTADark() {
 
       {/* Right: CTA */}
       <div className="flex flex-col gap-[12px] items-start md:items-end md:w-[245px] shrink-0">
-        <CalendlyButton className="btn-cta flex items-center gap-3 bg-white rounded-full px-[20px] md:px-[24px] py-[12px] md:py-[14px] lg:py-[20px] text-[15px] md:text-[16px] lg:text-[24px] font-medium uppercase text-[#1e1e20] w-fit">
+        <CalendlyButton className="btn-cta flex items-center gap-3 bg-white rounded-full px-[20px] md:px-[24px] py-[12px] md:py-[14px] lg:py-[20px] text-[24px] font-medium uppercase whitespace-nowrap text-[#1e1e20] w-fit">
           Book a Demo
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </CalendlyButton>

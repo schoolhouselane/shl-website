@@ -20,7 +20,7 @@ export default function ServicesCTAGrey() {
 
       {/* Right: CTA */}
       <div className="flex flex-col gap-[12px] items-start md:items-end md:w-[245px] shrink-0">
-        <CalendlyButton className="btn-cta flex items-center gap-3 bg-[#1e1e20] text-white rounded-full px-[20px] md:px-[24px] py-[12px] md:py-[14px] lg:py-[20px] text-[15px] md:text-[16px] lg:text-[24px] font-medium uppercase w-fit">
+        <CalendlyButton className="btn-cta flex items-center gap-3 bg-[#1e1e20] text-white rounded-full px-[20px] md:px-[24px] py-[12px] md:py-[14px] lg:py-[20px] text-[24px] font-medium uppercase whitespace-nowrap w-fit">
           Book a Demo
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </CalendlyButton>
