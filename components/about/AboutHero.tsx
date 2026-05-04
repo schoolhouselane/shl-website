@@ -44,7 +44,7 @@ export default function AboutHero() {
           }}
         >
           <CalendlyButton className="btn-cta inline-flex items-center gap-3 border border-[#1e1e20] rounded-full px-[12px] py-[8px] md:px-[24px] md:py-[12px] text-[16px] font-medium uppercase text-[#1e1e20]">
-            Book a Call
+            Book a Demo
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </CalendlyButton>
           <Link

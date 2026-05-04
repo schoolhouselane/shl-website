@@ -3,6 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useInView } from '@/hooks/useInView'
 
+const GALLERY_IMAGES = [
+  { src: '/images/gallery-1.png', alt: 'Gallery image 1' },
+  { src: '/images/gallery-2.png', alt: 'Gallery image 2' },
+  { src: '/images/gallery-3.png', alt: 'Gallery image 3' },
+  { src: '/images/gallery-4.png', alt: 'Gallery image 4' },
+]
+
 export default function Gallery() {
   const [ref, inView] = useInView(0.1)
 
@@ -29,15 +36,20 @@ export default function Gallery() {
         Loved what you saw? Let&apos;s create something like this for you.
       </p>
 
-      {/* Image — full width, no crop */}
-      <Image
-        src="/images/gallery-hero.png"
-        alt="Gallery & Videos"
-        width={1729}
-        height={1092}
-        className="w-full h-auto"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) calc(100vw - 180px), 1549px"
-      />
+      {/* Gallery images */}
+      <div className="grid grid-cols-2 gap-3 md:gap-4 lg:gap-5">
+        {GALLERY_IMAGES.map((image) => (
+          <Image
+            key={image.src}
+            src={image.src}
+            alt={image.alt}
+            width={800}
+            height={600}
+            className="w-full h-auto"
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) calc(50vw - 90px), 760px"
+          />
+        ))}
+      </div>
     </section>
   )
 }
