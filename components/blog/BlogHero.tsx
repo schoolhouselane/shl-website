@@ -16,7 +16,7 @@ export default function BlogHero({ src, alt }: Props) {
       <div
         className="relative w-full overflow-hidden transition-all duration-700"
         style={{
-          height: 'clamp(137px, 35vw, 578px)',
+          height: 'clamp(220px, 50vw, 578px)',
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.99)',
           transitionTimingFunction: 'cubic-bezier(0.22,1,0.36,1)',
@@ -26,7 +26,7 @@ export default function BlogHero({ src, alt }: Props) {
           src={src}
           alt={alt}
           fill
-          className="object-cover object-center"
+          className="object-cover object-top"
           priority
           sizes="(max-width: 768px) 100vw, calc(100vw - 48px), calc(100vw - 180px)"
         />
