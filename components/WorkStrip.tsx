@@ -3,14 +3,11 @@ import Image from 'next/image'
 const images = [
   { src: '/images/strip-01.png', w: 356, bg: '#5a4734' },
   { src: '/images/strip-02.png', w: 320, bg: '#c24751' },
-  { src: '/images/strip-03.png', w: 116, bg: '#ffffff', contain: true },
   { src: '/images/strip-04.png', w: 112 },
   { src: '/images/strip-05.png', w: 160 },
   { src: '/images/strip-06.png', w: 200 },
   { src: '/images/strip-07.png', w: 111 },
   { src: '/images/strip-08.png', w: 163, bg: '#bb936a' },
-  { src: '/images/strip-09.png', w: 116, bg: '#ffffff', contain: true },
-  { src: '/images/strip-10.png', w: 354 },
   { src: '/images/strip-11.png', w: 200 },
   { src: '/images/strip-12.png', w: 343, bg: '#04f9f4' },
   { src: '/images/strip-13.png', w: 342 },
@@ -26,13 +23,8 @@ const images = [
   { src: '/images/strip-23.png', w: 178, bg: '#ee942e' },
   { src: '/images/strip-24.png', w: 116, bg: '#ffffff', contain: true },
   { src: '/images/strip-25.png', w: 116, bg: '#ffffff', contain: true },
-  { src: '/images/strip-26.png', w: 200 },
-  { src: '/images/strip-27.png', w: 200 },
   { src: '/images/strip-28.png', w: 277, bg: '#bb936a' },
-  { src: '/images/strip-29.png', w: 200 },
-  { src: '/images/strip-30.png', w: 116, bg: '#ffffff', contain: true },
-  { src: '/images/strip-31.png', w: 116, bg: '#ffffff', contain: true },
-  { src: '/images/strip-32.png', w: 116, bg: '#ffffff', contain: true },
+  { src: '/images/strip-31.png', w: 116, bg: '#ffffff', contain: true }
 ]
 
 // Double the array so the seamless loop never shows a gap
