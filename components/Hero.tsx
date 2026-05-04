@@ -7,20 +7,20 @@ const slides = [
   {
     image: '/images/hero-1.png',
     mobileImage: '/images/mobile-home-hero1.png',
-    heading: "Your product is brilliant. Let's make your brand undeniable.",
-    sub: 'We fuse executive-level human strategy with custom AI models to build brands that scale faster, look premium, and actually close deals.',
+    heading: 'AI powered\ncreative & design',
+    sub: 'We exist at the intersection of creative and Generative AI',
   },
   {
     image: '/images/hero-2.png',
     mobileImage: '/images/mobile-home-hero2.png',
-    heading: 'Creative at the speed of AI. Strategy with the depth of humans.',
-    sub: 'Stop settling for mindless content mills. We train AI on your unique voice to deliver rapid, strategy-first creative that drives serious revenue.',
+    heading: "The marketing teams' creative team",
+    sub: 'We remove the bottlenecks in the traditional marketing model',
   },
   {
     image: '/images/hero-3.png',
     mobileImage: '/images/mobile-home-hero3.png',
-    heading: 'The scale of an AI engine. The soul of a creative studio.',
-    sub: 'Turn your brand into an unfair competitive advantage. We handle the heavy lifting of design and production so you can focus on growing your business.',
+    heading: 'Creative-as-a-Service\nfor Marketing teams',
+    sub: 'Top-tier creative talent with proprietary AI-powered workflows',
   },
 ]
 
@@ -104,7 +104,9 @@ export default function Hero() {
         }`}>
           <div key={current} className="flex flex-col gap-1 text-white animate-fadeIn">
             <h1 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.87] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase">
-              {slides[current].heading}
+              {slides[current].heading.split('\n').map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br className="md:hidden" />}</span>
+              ))}
             </h1>
             <p className="font-normal text-[16px] md:text-[20px] lg:text-[24px] leading-tight mt-[3px] max-w-[231px] md:max-w-[384px] lg:max-w-[453px]">
               {slides[current].sub}
