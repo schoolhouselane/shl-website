@@ -14,9 +14,8 @@ export default function BlogHero({ src, alt }: Props) {
   return (
     <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[24px] md:pt-[40px] lg:pt-[60px]">
       <div
-        className="relative w-full overflow-hidden transition-all duration-700"
+        className="relative w-full overflow-hidden transition-all duration-700 aspect-[4095/2361] md:aspect-auto md:h-[clamp(220px,50vw,578px)]"
         style={{
-          height: 'clamp(220px, 50vw, 578px)',
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.99)',
           transitionTimingFunction: 'cubic-bezier(0.22,1,0.36,1)',
