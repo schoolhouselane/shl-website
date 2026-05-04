@@ -94,7 +94,7 @@ export default function ContactHero() {
               {[
                 { name: 'LinkedIn', href: 'https://linkedin.com/company/schoolhouselane' },
                 { name: 'Behance', href: 'https://behance.net/schoolhouselane' },
-                { name: 'Instagram', href: 'https://instagram.com/schoolhouselane' },
+                { name: 'Instagram', href: 'https://www.instagram.com/schoolhouselane_' },
               ].map((s) => (
                 <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[2px] text-[20px] lg:text-[24px] text-[#1e1e20] hover:opacity-60 transition-opacity">
                   {s.name}
@@ -259,7 +259,7 @@ export default function ContactHero() {
             {[
               { name: 'LinkedIn', href: 'https://linkedin.com/company/schoolhouselane' },
               { name: 'Behance', href: 'https://behance.net/schoolhouselane' },
-              { name: 'Instagram', href: 'https://instagram.com/schoolhouselane' },
+              { name: 'Instagram', href: 'https://www.instagram.com/schoolhouselane_' },
             ].map((s) => (
               <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[2px] text-[16px] text-[#1e1e20] hover:opacity-60 transition-opacity">
                 {s.name}

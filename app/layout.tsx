@@ -20,15 +20,15 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://schoolhouselane.co"),
   title: {
-    default: "Schoolhouse Lane — Creative Commerce Agency",
-    template: "%s — Schoolhouse Lane",
+    default: "Schoolhouse Lane | Creative Commerce & Brand Marketing Agency",
+    template: "%s | Schoolhouse Lane",
   },
   description:
-    "We exist at the intersection of creativity and revenue growth. A senior team of brand strategists, creatives, and architects transforming brand from a cost into a strategic growth engine.",
+    "Schoolhouse Lane is a brand strategy and digital marketing agency that turns creative thinking into commercial results. Identity, campaigns, ecommerce, and AI creative.",
   openGraph: {
-    title: "Schoolhouse Lane — Creative Commerce Agency",
+    title: "Schoolhouse Lane | Creative Commerce & Brand Marketing Agency",
     description:
-      "We exist at the intersection of creativity and revenue growth. Brand strategy, identity, campaigns, and websites that convert.",
+      "Schoolhouse Lane is a brand strategy and digital marketing agency that turns creative thinking into commercial results. Identity, campaigns, ecommerce, and AI creative.",
     url: "https://schoolhouselane.co",
     siteName: "Schoolhouse Lane",
     type: "website",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Schoolhouse Lane — Creative Commerce Agency",
+    title: "Schoolhouse Lane | Creative Commerce & Brand Marketing Agency",
     description:
-      "We exist at the intersection of creativity and revenue growth. Brand strategy, identity, campaigns, and websites that convert.",
+      "Schoolhouse Lane is a brand strategy and digital marketing agency that turns creative thinking into commercial results. Identity, campaigns, ecommerce, and AI creative.",
     images: ["/images/hero-1.png"],
   },
   alternates: {
@@ -108,7 +108,7 @@ const organizationSchema = {
   sameAs: [
     "https://www.linkedin.com/company/schoolhouselane",
     "https://www.behance.net/schoolhouselane",
-    "https://www.instagram.com/schoolhouselane",
+    "https://www.instagram.com/schoolhouselane_",
   ],
 };
 

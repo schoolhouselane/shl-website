@@ -44,7 +44,7 @@ const servicesCols = [
 const social = [
   { name: 'LinkedIn',  href: 'https://linkedin.com/company/schoolhouselane' },
   { name: 'Behance',   href: 'https://behance.net/schoolhouselane' },
-  { name: 'Instagram', href: 'https://instagram.com/schoolhouselane' },
+  { name: 'Instagram', href: 'https://www.instagram.com/schoolhouselane_' },
 ]
 
 export default function Footer() {
