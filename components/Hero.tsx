@@ -13,7 +13,7 @@ const slides = [
   {
     image: '/images/hero-2.png',
     mobileImage: '/images/mobile-home-hero2.png',
-    heading: "The marketing teams' creative team",
+    heading: "The marketing teams'\ncreative team",
     sub: 'We remove the bottlenecks in the traditional marketing model',
   },
   {
@@ -102,13 +102,13 @@ export default function Hero() {
         <div className={`relative z-20 flex flex-col gap-4 md:gap-6 lg:gap-[30px] max-w-full md:max-w-[714px] transition-all duration-700 pr-4 md:pr-0 ${
           scrolled ? 'pl-4 md:pl-6 lg:pl-[49px]' : 'pl-4 md:pl-6 lg:pl-[90px]'
         }`}>
-          <div key={current} className="flex flex-col gap-1 text-white animate-fadeIn">
+          <div key={current} className="flex flex-col gap-4 md:gap-5 lg:gap-6 text-white animate-fadeIn">
             <h1 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.87] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase">
               {slides[current].heading.split('\n').map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br className="md:hidden" />}</span>
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
               ))}
             </h1>
-            <p className="font-normal text-[16px] md:text-[20px] lg:text-[24px] leading-tight mt-[3px] max-w-[231px] md:max-w-[384px] lg:max-w-[453px]">
+            <p className="font-normal text-[16px] md:text-[20px] lg:text-[24px] leading-tight max-w-[231px] md:max-w-[384px] lg:max-w-[453px]">
               {slides[current].sub}
             </p>
           </div>
