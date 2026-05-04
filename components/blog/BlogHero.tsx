@@ -18,7 +18,7 @@ export default function BlogHero({ src, alt }: Props) {
   }
 
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[24px] md:pt-[40px] lg:pt-[60px]">
+    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[72px] md:pt-[40px] lg:pt-[60px]">
 
       {/* Mobile — full image, no crop */}
       <div className="md:hidden w-full overflow-hidden transition-all duration-700" style={animStyle}>
