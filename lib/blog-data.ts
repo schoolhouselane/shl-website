@@ -302,6 +302,110 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 
+  // ── Article 3 — CEO's Blueprint ────────────────────────────────────────────
+  {
+    slug: 'ceos-blueprint-ai-marketing',
+    title: "The CEO's Blueprint: 5 Strategic Mandates for Integrating AI into Marketing",
+    category: 'AI Strategy',
+    heroImage: '/images/blog/blog-creative-inline-1.jpg',
+    listingImage: '/images/blog/listing-creative.jpg',
+    seoTitle: "The CEO's Blueprint: 5 Strategic Mandates for Integrating AI into Marketing — Schoolhouse Lane",
+    seoDescription: "For the modern CEO, the AI conversation has shifted from 'what is it?' to 'how does it accelerate enterprise value?' Here are five mandates every leader needs.",
+    keywords: ['AI marketing', 'CEO strategy', 'brand strategy', 'AI integration', 'vision-led growth', 'Schoolhouse Lane'],
+    publishedAt: '2026-04-10',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: "For the modern CEO, the conversation around AI has shifted from \"what is it?\" to \"how does it accelerate enterprise value?\" In an era of algorithmic noise, simply using AI to produce more content is a recipe for mediocrity. At Schoolhouse Lane, we believe the most powerful engine for growth isn't a spreadsheet or a prompt—it's a question.",
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        parts: [
+          { text: 'To transform brand from a downstream marketing cost into an upstream strategic engine, CEOs must move beyond efficiency and toward ' },
+          { text: 'Vision-Led Value Creation.', bold: true },
+        ],
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'Here are the five mandates for any CEO looking to integrate AI into their marketing strategy to drive outsized returns.',
+      },
+      { type: 'image', src: '/images/blog/blog-brand-inline-1.jpg', alt: 'AI and marketing strategy' },
+      { type: 'heading', text: '1. Shift AI Strategy "Upstream"' },
+      {
+        type: 'paragraph',
+        text: 'Most organizations use AI as a "decoration" tool—a way to generate assets faster once decisions are already made. A strategic CEO must move AI integration "upstream" to the boardroom level.',
+      },
+      {
+        type: 'callout',
+        text: '· The Action: Use AI-accelerated insights during the discovery phase to unearth latent potential within the organization.\n· The Goal: Turn brand into a high-leverage strategic asset that drives premium valuations during exits or capital raises.',
+      },
+      { type: 'heading', text: '2. Move from Efficiency to Vision-Led Value' },
+      {
+        type: 'paragraph',
+        text: "Efficiency—doing the same things faster—is a race to the bottom. AI's true power lies in its ability to architect the infrastructure that allows a company to live its most ambitious stories.",
+      },
+      {
+        type: 'callout',
+        text: "· The Action: Audit your marketing spend to ensure AI is being used to design new products and business divisions, not just \"feed the machine\".\n· The Goal: Transition from \"good enough\" to the exceptional.",
+      },
+      { type: 'heading', text: '3. Implement a "Creative Commerce" Ecosystem' },
+      {
+        type: 'paragraph',
+        text: "Individual AI assets are meaningless if they don't accelerate the business goal. CEOs must demand a methodology where imagination meets revenue.",
+      },
+      {
+        type: 'callout',
+        text: '· The Action: Ensure your team is building a "Creative Commerce" ecosystem where every AI touchpoint, from initial strategy to the final checkout, is unified under a single organising principle.\n· The Goal: Make your most intangible asset your most measurable advantage.',
+      },
+      { type: 'heading', text: '4. Champion Diversity of Thought as a Competitive Advantage' },
+      {
+        type: 'paragraph',
+        text: 'In an automated world, the "human" becomes the ultimate differentiator. AI can optimise, but it cannot replicate the emotional intelligence and altruistic view required to capture hearts and minds.',
+      },
+      {
+        type: 'callout',
+        text: '· The Action: Hire and partner with teams that prioritise the emotional, the ethical, and the real.\n· The Goal: Align profit with purpose and people to build a brand that captures market share and long-term loyalty.',
+      },
+      { type: 'heading', text: '5. Practice Conscious Capitalism through Technology' },
+      {
+        type: 'paragraph',
+        text: 'AI should not just be a tool for margin improvement; it should be a force for good.',
+      },
+      {
+        type: 'callout',
+        text: "· The Action: Mandate that AI integration aligns with the company's core values and ethical standards.\n· The Goal: Build a brand that isn't just an industry player, but a pioneering force that delivers outsized returns through ethical innovation.",
+      },
+      { type: 'heading', text: 'The Verdict: There is No Cure for Curiosity' },
+      {
+        type: 'paragraph',
+        text: "As a CEO, your role is to ensure that AI serves the relentless inquiry and rigorous strategy of your business. By following these five mandates, you ensure that AI doesn't just create noise—it creates enterprise value.",
+      },
+      {
+        type: 'paragraph',
+        parts: [{ text: 'Is your brand-led strategy architected for the AI era?', bold: true }],
+      },
+      {
+        type: 'blockquote',
+        text: 'Schoolhouse Lane: The Brand-Led Value Creation Agency. We bridge the gap between imagination and business success.',
+      },
+      { type: 'image', src: '/images/blog/blog-brand-inline-2.jpg', alt: 'Brand-led value creation' },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In the traditional corporate world, brand is often dismissed as a downstream marketing cost.", thumbnail: '/images/blog/blog-related-1.png' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.jpg' },
+      { slug: 'creative-commerce', title: 'Creative Commerce: Where Imagination Meets Revenue', excerpt: "We don't just build identities. We build ecosystems where every touchpoint accelerates business growth.", thumbnail: '/images/blog/blog-creative-commerce.jpg' },
+    ],
+    journalCards: [
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/seo-hero.jpg' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.jpg' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.jpg' },
+    ],
+  },
+
 ]
 
 // ─── Placeholder stubs ────────────────────────────────────────────────────────
