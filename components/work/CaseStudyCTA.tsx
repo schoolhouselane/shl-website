@@ -24,7 +24,7 @@ export default function CaseStudyCTA() {
       <div className="flex flex-col gap-[8px] items-stretch shrink-0 w-auto md:w-[183px] lg:w-[245px]">
         <CalendlyButton className="btn-cta bg-white flex items-center justify-center gap-[12px] px-[24px] py-[12px] md:py-[12px] lg:py-[20px] rounded-[50px] whitespace-nowrap w-full border border-white">
           <span className="font-medium text-[#1e1e20] text-[14px] md:text-[16px] lg:text-[24px] uppercase leading-normal">
-            Book a Call
+            Book a Demo
           </span>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e1e20" strokeWidth="2">
             <path d="M5 12h14M12 5l7 7-7 7" />

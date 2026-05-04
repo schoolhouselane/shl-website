@@ -71,7 +71,7 @@ export default function WorkHero() {
           }}
         >
           <CalendlyButton className="btn-cta inline-flex items-center gap-[12px] border border-[#1e1e20] rounded-[50px] px-[20px] md:px-[24px] py-[10px] md:py-[12px] text-[14px] md:text-[16px] font-medium uppercase text-[#1e1e20]">
-            Book a Call
+            Book a Demo
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </CalendlyButton>
 

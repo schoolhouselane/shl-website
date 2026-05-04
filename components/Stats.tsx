@@ -67,7 +67,7 @@ export default function Stats() {
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)', transitionDelay: '300ms' }}
         >
           <CalendlyButton className="btn-cta inline-flex items-center gap-[12px] border border-[#1e1e20] rounded-[50px] px-[24px] py-[20px] text-[24px] font-medium uppercase text-[#1e1e20]">
-            Let&apos;s talk
+            Book a Demo
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </CalendlyButton>
         </div>
@@ -97,7 +97,7 @@ export default function Stats() {
         </div>
 
         <CalendlyButton className="btn-cta inline-flex items-center gap-[10px] border border-[#1e1e20] rounded-[50px] px-[20px] py-[12px] md:py-[14px] text-[16px] md:text-[18px] font-medium uppercase text-[#1e1e20] w-fit">
-          Let&apos;s talk
+          Book a Demo
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </CalendlyButton>
 

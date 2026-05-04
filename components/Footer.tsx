@@ -166,13 +166,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* COL 3 — Quote + Book a Call (all breakpoints, sizes vary) */}
+          {/* COL 3 — Quote + Book a Demo (all breakpoints, sizes vary) */}
           <div className="flex flex-col gap-[19px] md:items-end md:flex-1">
             <p className="font-bold text-[18px] lg:text-[32px] uppercase text-white md:text-right leading-tight md:max-w-[169px] lg:max-w-[340px] lg:ml-auto">
               There is no cure for curiousity
             </p>
             <CalendlyButton className="btn-cta flex items-center gap-[6px] lg:gap-[12px] border border-white rounded-full px-[12px] lg:px-[24px] py-[8px] lg:py-[16px] text-[16px] lg:text-[18px] font-medium uppercase text-white w-fit whitespace-nowrap">
-              Book a Call
+              Book a Demo
               <ArrowRight size={24} />
             </CalendlyButton>
           </div>
