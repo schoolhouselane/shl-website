@@ -111,7 +111,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
           </div>
 
           {/* Nav + CTA — inner scrollable area */}
-          <div className="flex-1 min-h-0 overflow-y-auto flex flex-col justify-between px-[24px] pt-[32px] pb-[32px]">
+          <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-[40px] px-[24px] pt-[32px] pb-[32px]">
 
             {/* Nav items */}
             <div className="flex flex-col gap-[40px]">
@@ -129,8 +129,8 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               ))}
             </div>
 
-            {/* CTA buttons — always visible at bottom */}
-            <div className="flex flex-col gap-[18px] pt-[48px]">
+            {/* CTA buttons */}
+            <div className="flex flex-col gap-[18px]">
               <CalendlyButton className="w-full h-[58px] bg-[#1e1e20] rounded-[50px] flex items-center justify-center text-[16px] font-bold text-white">
                 Book a Demo
               </CalendlyButton>
