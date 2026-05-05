@@ -4,19 +4,19 @@ const testimonials = [
   {
     name: 'Adam Ferris',
     company: 'DataDirect',
-    photo: '/images/people-3.png',
+    photo: '/images/pricing/person-adam.webp',
     quote: '"Within 60 days of the rebrand, our close rate on enterprise deals went from 28% to 47%. Turns out our old brand was doing the selling against us."',
   },
   {
     name: 'Tim Whyte',
     company: 'Vivo Hotels',
-    photo: '/images/people-5.png',
+    photo: '/images/pricing/person-tim.webp',
     quote: '"Schoolhouse Lane gave us the brand that finally matched the quality of our product. We raised our Series A three months after the rebrand — investors noticed immediately."',
   },
   {
     name: 'Alan Bates',
     company: 'CEO at Hubbcat',
-    photo: '/images/people-7.png',
+    photo: '/images/pricing/person-alan.webp',
     quote: '"Working with Schoolhouse Lane transformed how we present ourselves to the market. Our brand finally reflects the level of expertise and innovation we deliver. The impact was immediate and measurable."',
   },
 ]
@@ -36,12 +36,12 @@ export default function PricingTestimonials() {
           >
             {/* Author */}
             <div className="flex items-center gap-[14px]">
-              <div className="relative w-[64px] h-[64px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] rounded-full overflow-hidden shrink-0">
+              <div className="relative w-[64px] h-[64px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] shrink-0">
                 <Image
                   src={t.photo}
                   alt={t.name}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-center rounded-full"
                   sizes="90px"
                 />
               </div>
