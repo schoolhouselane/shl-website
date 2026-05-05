@@ -65,6 +65,9 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                 </Link>
               )
             })}
+            <Link href="/login" className={`transition-colors duration-300 text-[16px] ${textColor} hover:opacity-70`}>
+              Login
+            </Link>
             <Link href="/contact" className={`btn-cta flex items-center gap-[12px] border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap transition-all duration-300 ${borderColor} ${textColor}`}>
               Book a Demo
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
