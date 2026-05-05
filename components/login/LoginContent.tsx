@@ -58,21 +58,19 @@ export default function LoginContent() {
       </div>
 
       {/* ── DESKTOP: two-column full-screen ── */}
-      <div className="hidden md:flex min-h-screen">
+      <div className="hidden md:flex h-screen">
 
         {/* Left: cream panel */}
-        <div className="flex-1 bg-[#f5f3ef] relative flex flex-col items-center justify-center px-[60px] lg:px-[90px] py-[120px]">
+        <div className="flex-1 bg-[#f5f3ef] flex flex-col items-center justify-center px-[60px] lg:px-[90px] py-[80px] gap-[40px] lg:gap-[48px] overflow-y-auto">
 
-          {/* Logo — top left */}
-          <div className="absolute top-[48px] left-[60px] lg:left-[90px]">
-            <Image
-              src="/logo-white.svg"
-              alt="Schoolhouse Lane"
-              width={220}
-              height={86}
-              className="w-[160px] lg:w-[220px] h-auto invert"
-            />
-          </div>
+          {/* Logo — centered */}
+          <Image
+            src="/logo-white.svg"
+            alt="Schoolhouse Lane"
+            width={220}
+            height={86}
+            className="w-[160px] lg:w-[220px] h-auto invert shrink-0"
+          />
 
           {/* White card */}
           <div className="bg-white rounded-[24px] w-full max-w-[710px] px-[24px] py-[40px] lg:py-[48px] flex flex-col items-center gap-[60px] lg:gap-[80px]">
@@ -194,8 +192,8 @@ export default function LoginContent() {
         </div>
 
         {/* Right: full-height image */}
-        <div className="flex-1 relative">
-          <Image src="/images/hero-2.png" alt="Schoolhouse Lane" fill className="object-cover" priority />
+        <div className="flex-1 relative min-h-0">
+          <Image src="/images/hero-2.png" alt="Schoolhouse Lane" fill className="object-cover object-center" priority />
         </div>
 
       </div>
