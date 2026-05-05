@@ -65,7 +65,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                 </Link>
               )
             })}
-            <Link href="/login" className={`btn-cta flex items-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap transition-all duration-300 ${borderColor} ${textColor}`}>
+            <Link href="/login" className="btn-cta flex items-center bg-white border border-white rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap text-[#1e1e20] hover:opacity-80 transition-opacity">
               Sign In
             </Link>
             <Link href="/contact" className={`btn-cta flex items-center gap-[12px] border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap transition-all duration-300 ${borderColor} ${textColor}`}>

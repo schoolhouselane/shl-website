@@ -16,9 +16,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user }) {
       // Allowlist of approved client emails — add client emails here
       const ALLOWED_EMAILS: string[] = [
-        // 'client@example.com',
+        'selale.memmedli11@gmail.com',
       ]
-      if (ALLOWED_EMAILS.length === 0) return false
       return ALLOWED_EMAILS.includes(user.email ?? '')
     },
     async redirect({ baseUrl }) {
