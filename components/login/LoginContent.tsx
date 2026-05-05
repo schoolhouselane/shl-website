@@ -105,7 +105,7 @@ export default function LoginContent() {
 
                 {/* Password */}
                 <div className="flex flex-col gap-[12px]">
-                  <label className="text-[16px] text-[#1e1e20]">Password</label>
+                  <label className="text-[16px] text-[#1e1e20] uppercase">Password</label>
                   <div className="relative">
                     <input
                       type={showPassword ? 'text' : 'password'}
