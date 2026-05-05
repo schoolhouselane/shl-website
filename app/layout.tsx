@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import Script from "next/script";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     locale: "en_IE",
     images: [
       {
-        url: "/images/hero-1.png",
+        url: "/images/hero-1.webp",
         width: 1200,
         height: 630,
         alt: "Schoolhouse Lane — Creative Commerce Agency",
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     title: "Schoolhouse Lane | Creative Commerce & Brand Marketing Agency",
     description:
       "Schoolhouse Lane is a brand strategy and digital marketing agency that turns creative thinking into commercial results. Identity, campaigns, ecommerce, and AI creative.",
-    images: ["/images/hero-1.png"],
+    images: ["/images/hero-1.webp"],
   },
   alternates: {
     canonical: "https://schoolhouselane.co",
@@ -72,7 +73,7 @@ const organizationSchema = {
     width: 122,
     height: 48,
   },
-  image: "https://schoolhouselane.co/images/hero-1.png",
+  image: "https://schoolhouselane.co/images/hero-1.webp",
   description:
     "Schoolhouse Lane is a Creative Commerce agency existing at the intersection of creativity and revenue growth. We transform brand from a marketing cost into a high-leverage strategic asset.",
   email: "hello@schoolhouselane.co",
@@ -139,10 +140,12 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <link rel="preconnect" href="https://assets.calendly.com" />
@@ -150,7 +153,9 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
       </head>
       <body className="font-[var(--font-inter)]">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
       </body>
     </html>

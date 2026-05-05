@@ -2,19 +2,31 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import CalendlyButton from '@/components/CalendlyButton'
 
 export default function LoginContent() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [showForgotMsg, setShowForgotMsg] = useState(false)
 
+  // Show error if Google auth was denied (no account found)
+  const oauthError = searchParams.get('error')
+  const [error, setError] = useState(
+    oauthError === 'AccessDenied' ? "We couldn't find an account linked to that Google profile." : ''
+  )
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: authenticate
+    setError("We couldn't find an account with that email address.")
+  }
+
+  const handleGoogle = () => {
+    signIn('google', { callbackUrl: '/portal' })
   }
 
   return (
@@ -48,6 +60,8 @@ export default function LoginContent() {
               showPassword={showPassword} setShowPassword={setShowPassword}
               showForgotMsg={showForgotMsg} setShowForgotMsg={setShowForgotMsg}
               onSubmit={handleSubmit}
+              error={error}
+              onGoogle={handleGoogle}
             />
           </div>
         </div>
@@ -86,7 +100,7 @@ export default function LoginContent() {
             </div>
 
             {/* Form */}
-            <div className="w-full max-w-[544px] flex flex-col gap-[30px]">
+            <form onSubmit={handleSubmit} className="w-full max-w-[544px] flex flex-col gap-[30px]">
 
               <div className="flex flex-col gap-[16px]">
 
@@ -148,10 +162,19 @@ export default function LoginContent() {
                   </div>
                 </div>
 
+                {/* Error message */}
+                {error && (
+                  <div className="flex items-start gap-[10px] bg-red-50 border border-red-200 rounded-[12px] px-[16px] py-[12px]">
+                    <svg className="shrink-0 mt-[2px]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+                    </svg>
+                    <p className="text-[14px] text-red-600 leading-[1.5]">{error}</p>
+                  </div>
+                )}
+
                 {/* Log In */}
                 <button
-                  type="button"
-                  onClick={handleSubmit as unknown as React.MouseEventHandler}
+                  type="submit"
                   className="w-full bg-[#1e1e20] text-white rounded-[50px] py-[14px] text-[20px] font-bold uppercase tracking-[0.2px] hover:opacity-80 transition-opacity"
                 >
                   Log In
@@ -176,6 +199,7 @@ export default function LoginContent() {
               {/* Google */}
               <button
                 type="button"
+                onClick={handleGoogle}
                 className="w-full flex items-center justify-center gap-[12px] bg-white border border-[#868686]/30 rounded-[12px] px-[9px] py-[8px] text-[16px] font-bold text-[#1e1e20] hover:bg-[#f5f3ef] transition-colors"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" className="shrink-0">
@@ -187,13 +211,13 @@ export default function LoginContent() {
                 Continue with Google
               </button>
 
-            </div>
+            </form>
           </div>
         </div>
 
         {/* Right: full-height image */}
         <div className="flex-1 relative min-h-0">
-          <Image src="/images/login-hero.jpg" alt="Schoolhouse Lane" fill className="object-cover object-center" priority />
+          <Image src="/images/login-hero.webp" alt="Schoolhouse Lane" fill className="object-cover object-center" priority />
         </div>
 
       </div>
@@ -207,9 +231,11 @@ interface MobileFormProps {
   showPassword: boolean; setShowPassword: (v: boolean) => void
   showForgotMsg: boolean; setShowForgotMsg: (v: boolean) => void
   onSubmit: (e: React.FormEvent) => void
+  error: string
+  onGoogle: () => void
 }
 
-function MobileForm({ email, setEmail, password, setPassword, showPassword, setShowPassword, showForgotMsg, setShowForgotMsg, onSubmit }: MobileFormProps) {
+function MobileForm({ email, setEmail, password, setPassword, showPassword, setShowPassword, showForgotMsg, setShowForgotMsg, onSubmit, error, onGoogle }: MobileFormProps) {
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-[16px]">
 
@@ -250,6 +276,15 @@ function MobileForm({ email, setEmail, password, setPassword, showPassword, setS
         </div>
       </div>
 
+      {error && (
+        <div className="flex items-start gap-[10px] bg-red-50 border border-red-200 rounded-[12px] px-[16px] py-[12px]">
+          <svg className="shrink-0 mt-[2px]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+          </svg>
+          <p className="text-[14px] text-red-600 leading-[1.5]">{error}</p>
+        </div>
+      )}
+
       <button type="submit" className="w-full bg-[#1e1e20] text-white rounded-[50px] py-[14px] text-[16px] font-bold uppercase tracking-[0.16px] hover:opacity-80 transition-opacity">
         Log In
       </button>
@@ -265,7 +300,7 @@ function MobileForm({ email, setEmail, password, setPassword, showPassword, setS
         <div className="flex-1 h-px bg-[#868686]/30" />
       </div>
 
-      <button type="button" className="w-full flex items-center justify-center gap-[12px] bg-white border border-[#868686]/30 rounded-[12px] px-[9px] py-[8px] text-[16px] font-bold text-[#1e1e20] hover:bg-[#f5f3ef] transition-colors">
+      <button type="button" onClick={onGoogle} className="w-full flex items-center justify-center gap-[12px] bg-white border border-[#868686]/30 rounded-[12px] px-[9px] py-[8px] text-[16px] font-bold text-[#1e1e20] hover:bg-[#f5f3ef] transition-colors">
         <svg width="24" height="24" viewBox="0 0 24 24" className="shrink-0">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
