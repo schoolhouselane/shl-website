@@ -12,10 +12,14 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="bg-[#f5f3ef] flex flex-col min-h-screen">
-      <Header forceDark />
+    <main className="bg-[#1e1e20] md:bg-[#f5f3ef] flex flex-col min-h-screen">
+      <div className="hidden md:block">
+        <Header forceDark />
+      </div>
       <LoginContent />
-      <Footer />
+      <div className="hidden md:block">
+        <Footer />
+      </div>
     </main>
   )
 }
