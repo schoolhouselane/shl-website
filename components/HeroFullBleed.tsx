@@ -5,23 +5,23 @@ import { useEffect, useState, useRef } from 'react'
 
 const slides = [
   {
-    image: '/images/hero-1.png',
+    image: '/images/hero-1.webp',
     heading: 'Creative Commerce',
     sub: 'We exist at the intersection of creativity and revenue growth',
   },
   {
-    image: '/images/hero-2.png',
+    image: '/images/hero-2.webp',
     heading: 'Brand That Builds Revenue',
     sub: 'Strategy-first creative that turns brand into your most valuable asset',
   },
   {
-    image: '/images/hero-3.png',
+    image: '/images/hero-3.webp',
     heading: 'Vision Led Value Creation',
     sub: 'From identity to campaigns — every touchpoint engineered for growth',
   },
 ]
 
-const SLIDE_DURATION = 5000
+const SLIDE_DURATION = 10000
 
 export default function HeroFullBleed() {
   const [current, setCurrent] = useState(0)
