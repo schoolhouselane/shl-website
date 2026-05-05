@@ -73,7 +73,7 @@ export default function LoginContent() {
           />
 
           {/* White card */}
-          <div className="bg-white rounded-[24px] w-full max-w-[710px] px-[24px] py-[40px] lg:py-[48px] flex flex-col items-center gap-[60px] lg:gap-[80px]">
+          <div className="bg-white rounded-[24px] w-full max-w-[710px] px-[24px] py-[40px] lg:py-[48px] flex flex-col items-center gap-[60px]">
 
             {/* Heading */}
             <div className="flex flex-col items-center text-center gap-[8px]">
@@ -86,26 +86,26 @@ export default function LoginContent() {
             </div>
 
             {/* Form */}
-            <div className="w-full max-w-[482px] flex flex-col gap-[30px]">
+            <div className="w-full max-w-[544px] flex flex-col gap-[30px]">
 
               <div className="flex flex-col gap-[16px]">
 
                 {/* Email */}
-                <div className="flex flex-col gap-[8px]">
-                  <label className="text-[24px] text-[#1e1e20] tracking-[0.24px]">Email</label>
+                <div className="flex flex-col gap-[12px]">
+                  <label className="text-[16px] text-[#1e1e20] uppercase">EMAIL</label>
                   <input
                     type="email"
                     required
-                    placeholder="Enter your email"
+                    placeholder="Enter your business email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full h-[42px] border border-[#868686] rounded-[8px] px-[14px] text-[18px] text-[#1e1e20] bg-white outline-none focus:border-[#1e1e20] transition-colors placeholder:text-[#868686]"
+                    className="w-full h-[47px] border border-[#1e1e20] rounded-[50px] px-[24px] py-[14px] text-[16px] text-[#1e1e20] bg-white outline-none focus:opacity-80 transition-opacity placeholder:text-[#7c7c7c]"
                   />
                 </div>
 
                 {/* Password */}
-                <div className="flex flex-col gap-[8px]">
-                  <label className="text-[24px] text-[#1e1e20] tracking-[0.24px]">Password</label>
+                <div className="flex flex-col gap-[12px]">
+                  <label className="text-[16px] text-[#1e1e20]">Password</label>
                   <div className="relative">
                     <input
                       type={showPassword ? 'text' : 'password'}
@@ -113,12 +113,12 @@ export default function LoginContent() {
                       placeholder="Enter your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full h-[42px] border border-[#868686] rounded-[8px] px-[14px] pr-[46px] text-[18px] text-[#1e1e20] bg-white outline-none focus:border-[#1e1e20] transition-colors placeholder:text-[#868686]"
+                      className="w-full h-[47px] border border-[#1e1e20] rounded-[50px] px-[24px] pr-[50px] py-[14px] text-[16px] text-[#1e1e20] bg-white outline-none focus:opacity-80 transition-opacity placeholder:text-[#7c7c7c]"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-[14px] top-1/2 -translate-y-1/2 text-[#868686] hover:text-[#1e1e20] transition-colors"
+                      className="absolute right-[20px] top-1/2 -translate-y-1/2 text-[#7c7c7c] hover:text-[#1e1e20] transition-colors"
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
                     >
                       {showPassword ? (
