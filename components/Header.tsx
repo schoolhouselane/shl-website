@@ -8,7 +8,7 @@ import CalendlyButton from '@/components/CalendlyButton'
 const LIGHT_BG_ROUTES = ['/services', '/about', '/work', '/blog', '/jobs', '/contact', '/login']
 
 const MOBILE_NAV = [
-  { label: 'SERVICES', href: '/services', chevron: true },
+  { label: 'SERVICES', href: '/services' },
   { label: 'ABOUT',    href: '/about' },
   { label: 'WORK',     href: '/work' },
   { label: 'BLOG',     href: '/blog' },
@@ -86,7 +86,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
 
       {/* Mobile full-screen menu overlay */}
       {open && (
-        <div className="md:hidden fixed inset-0 z-[200] bg-[#f5f3ef] flex flex-col overflow-y-auto">
+        <div className="md:hidden fixed inset-0 z-[200] bg-[#f5f3ef] flex flex-col">
 
           {/* Overlay header: dark logo + X */}
           <div className="flex items-center justify-between px-[16px] h-[64px] border-b border-[rgba(54,31,6,0.16)] shrink-0">
@@ -110,34 +110,27 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
             </button>
           </div>
 
-          {/* Nav + CTA */}
-          <div className="flex flex-col flex-1 px-[24px] pt-[32px] pb-[32px] gap-[48px]">
+          {/* Nav + CTA — inner scrollable area */}
+          <div className="flex-1 min-h-0 overflow-y-auto flex flex-col justify-between px-[24px] pt-[32px] pb-[32px]">
 
             {/* Nav items */}
             <div className="flex flex-col gap-[40px]">
-              {MOBILE_NAV.map(({ label, href, chevron }) => (
+              {MOBILE_NAV.map(({ label, href }) => (
                 <div key={href} className="flex flex-col gap-[20px]">
                   <Link
                     href={href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between"
+                    className="font-black text-[16px] text-[#2f2f2f] uppercase leading-normal"
                   >
-                    <span className="font-black text-[16px] text-[#2f2f2f] uppercase leading-normal">
-                      {label}
-                    </span>
-                    {chevron && (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f2f2f" strokeWidth="2">
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    )}
+                    {label}
                   </Link>
                   <div className="h-px bg-[rgba(54,31,6,0.16)]" />
                 </div>
               ))}
             </div>
 
-            {/* CTA buttons — pushed to bottom */}
-            <div className="flex flex-col gap-[18px] mt-auto">
+            {/* CTA buttons — always visible at bottom */}
+            <div className="flex flex-col gap-[18px] pt-[48px]">
               <CalendlyButton className="w-full h-[58px] bg-[#1e1e20] rounded-[50px] flex items-center justify-center text-[16px] font-bold text-white">
                 Book a Demo
               </CalendlyButton>
