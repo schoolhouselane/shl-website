@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import LoginContent from '@/components/login/LoginContent'
 
 export const metadata: Metadata = {
@@ -12,14 +10,8 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="bg-[#1e1e20] md:bg-[#f5f3ef] flex flex-col min-h-screen">
-      <div className="hidden md:block">
-        <Header forceDark />
-      </div>
+    <main>
       <LoginContent />
-      <div className="hidden md:block">
-        <Footer />
-      </div>
     </main>
   )
 }
