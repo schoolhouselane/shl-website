@@ -9,13 +9,13 @@ export const metadata: Metadata = {
     title: 'Schoolhouse Lane — Creative Commerce Agency',
     description: 'Brand strategy, identity, campaigns, and websites built to drive revenue.',
     url: 'https://schoolhouselane.co',
-    images: [{ url: '/images/hero-1.png', width: 1200, height: 630, alt: 'Schoolhouse Lane' }],
+    images: [{ url: '/images/hero-1.webp', width: 1200, height: 630, alt: 'Schoolhouse Lane' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Schoolhouse Lane — Creative Commerce Agency',
     description: 'Brand strategy, identity, campaigns, and websites built to drive revenue.',
-    images: ['/images/hero-1.png'],
+    images: ['/images/hero-1.webp'],
   },
 }
 import Hero from '@/components/Hero'

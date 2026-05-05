@@ -45,7 +45,7 @@ export default function PricingIncludes() {
         {items.map((item, i) => (
           <div
             key={i}
-            className={`flex flex-col gap-[16px] justify-center flex-1 min-w-[180px] px-[16px] md:px-[20px] py-[32px] md:py-[40px] ${i < items.length - 1 ? 'border-r border-black' : ''}`}
+            className={`flex flex-col gap-[16px] justify-center flex-1 min-w-[180px] md:min-w-0 px-[16px] md:px-[20px] py-[32px] md:py-[40px] ${i < items.length - 1 ? 'border-r border-black' : ''}`}
           >
             <p className="font-medium text-[15px] md:text-[18px] lg:text-[22px] text-[#111] leading-snug whitespace-pre-line">
               {item.title}

@@ -158,7 +158,7 @@ export default function PricingPlans() {
 
                 {/* CTA — sliding dark overlay matching .btn-cta easing */}
                 <CalendlyButton
-                  className="group relative overflow-hidden self-start flex items-center gap-3 rounded-full px-[24px] py-[14px] md:py-[16px] lg:py-[18px] text-white text-[16px] md:text-[18px] lg:text-[24px] font-medium uppercase w-[280px] md:w-[340px] lg:w-[408px] justify-center"
+                  className="group relative overflow-hidden self-start flex items-center gap-3 rounded-full px-[24px] py-[14px] md:py-[16px] lg:py-[18px] text-white text-[16px] md:text-[18px] lg:text-[24px] font-medium uppercase w-full md:w-[340px] lg:w-[408px] justify-center"
                   style={{ background: plan.bgStyle }}
                 >
                   {/* Dark slide overlay */}

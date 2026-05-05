@@ -24,7 +24,7 @@ const testimonials = [
 export default function PricingTestimonials() {
   return (
     <section className="bg-[#1e1e20] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px]">
-      <h2 className="font-black text-[28px] md:text-[44px] lg:text-[56px] uppercase text-white leading-[1] tracking-tight mb-[40px] md:mb-[60px] lg:mb-[80px] max-w-[700px]">
+      <h2 className="font-black text-[22px] md:text-[40px] lg:text-[56px] uppercase text-white leading-[1.05] tracking-tight mb-[32px] md:mb-[60px] lg:mb-[80px] max-w-[700px]">
         What happens when<br />your brand gets serious.
       </h2>
 

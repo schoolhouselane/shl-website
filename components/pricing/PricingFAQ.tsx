@@ -57,7 +57,7 @@ export default function PricingFAQ() {
     <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px]">
       {/* Header */}
       <div className="flex flex-col gap-[16px] md:gap-[20px] lg:gap-[25px] mb-[40px] md:mb-[60px] lg:mb-[80px]">
-        <h2 className="font-black text-[22px] md:text-[36px] lg:text-[64px] uppercase text-[#1e1e20] leading-tight whitespace-nowrap">
+        <h2 className="font-black text-[22px] md:text-[36px] lg:text-[64px] uppercase text-[#1e1e20] leading-tight md:whitespace-nowrap">
           Frequently Asked Questions
         </h2>
         <p className="text-[14px] md:text-[16px] lg:text-[20px] text-black max-w-[700px] leading-relaxed">
