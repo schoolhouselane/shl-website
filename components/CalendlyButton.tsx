@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const BOOKING_URL = 'https://calendly.com/dmg-schoolhouselane/30min'
 
-const COMPANY_SIZES = ['Startup 1–10', '11–50', '51–150', '150+']
+const COMPANY_SIZES = ['Startup', '11–50', '51–150', '150+']
 
 const SERVICES = [
   'Brand Identity & Positioning',
