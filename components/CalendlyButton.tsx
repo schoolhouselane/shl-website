@@ -33,10 +33,11 @@ function openCalendly(fullName: string, email: string, companySize: string, serv
 
 interface Props {
   className?: string
+  style?: React.CSSProperties
   children: React.ReactNode
 }
 
-export default function CalendlyButton({ className, children }: Props) {
+export default function CalendlyButton({ className, style, children }: Props) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [fullName, setFullName] = useState('')
@@ -86,7 +87,7 @@ export default function CalendlyButton({ className, children }: Props) {
 
   return (
     <>
-      <button type="button" className={className} onClick={() => setOpen(true)}>
+      <button type="button" className={className} style={style} onClick={() => setOpen(true)}>
         {children}
       </button>
 

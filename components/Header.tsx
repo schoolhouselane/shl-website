@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import CalendlyButton from '@/components/CalendlyButton'
 
-const LIGHT_BG_ROUTES = ['/services', '/about', '/work', '/blog', '/jobs', '/contact', '/login']
+const LIGHT_BG_ROUTES = ['/services', '/about', '/work', '/blog', '/jobs', '/contact', '/login', '/pricing']
 
 const MOBILE_NAV = [
   { label: 'SERVICES', href: '/services' },
@@ -57,7 +57,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-[18px] lg:gap-[36px] font-manrope">
-            {[['/', 'Home'], ['/about', 'About'], ['/services', 'Services'], ['/work', 'Work'], ['/blog', 'Blog'], ['/jobs', 'Jobs']].map(([href, label]) => {
+            {[['/', 'Home'], ['/about', 'About'], ['/services', 'Services'], ['/work', 'Work'], ['/blog', 'Blog'], ['/jobs', 'Jobs'], ['/pricing', 'Pricing']].map(([href, label]) => {
               const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href)
               return (
                 <Link key={href} href={href} className={`transition-colors duration-300 ${isActive ? `font-bold text-[18px] border-b pb-0.5 ${textColor} ${borderColor}` : `text-[16px] ${textColor} hover:opacity-70`}`}>
