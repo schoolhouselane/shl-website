@@ -1,5 +1,4 @@
 'use client'
-import Link from 'next/link'
 import { useInView } from '@/hooks/useInView'
 import CalendlyButton from '@/components/CalendlyButton'
 
@@ -19,15 +18,12 @@ export default function WorkCTA() {
           Ready for Your<br />Own Growth<br />Story?
         </h2>
         <div className="flex flex-col gap-[8px] items-end shrink-0 md:w-[183px]">
-          <Link
-            href="/contact"
-            className="btn-cta flex items-center gap-[8px] md:gap-[12px] bg-white text-[#1e1e20] px-[16px] md:px-[24px] py-[10px] md:py-[12px] lg:py-[20px] rounded-[50px] text-[24px] font-medium uppercase whitespace-nowrap w-fit"
-          >
+          <CalendlyButton className="btn-cta flex items-center gap-[8px] md:gap-[12px] bg-white text-[#1e1e20] px-[16px] md:px-[24px] py-[10px] md:py-[12px] lg:py-[20px] rounded-[50px] text-[24px] font-medium uppercase whitespace-nowrap w-fit">
             Book a Demo
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </Link>
+          </CalendlyButton>
           <p className="text-[12px] text-white tracking-wide">For results like these!</p>
         </div>
       </section>

@@ -2,23 +2,24 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState, useRef } from 'react'
+import CalendlyButton from '@/components/CalendlyButton'
 
 const slides = [
   {
-    image: '/images/hero-1.png',
-    mobileImage: '/images/mobile-home-hero1.png',
+    image: '/images/hero-1.webp',
+    mobileImage: '/images/mobile-home-hero1.webp',
     heading: 'AI powered\ncreative & design',
     sub: 'We exist at the intersection of creative and Generative AI',
   },
   {
-    image: '/images/hero-2.png',
-    mobileImage: '/images/mobile-home-hero2.png',
+    image: '/images/hero-2.webp',
+    mobileImage: '/images/mobile-home-hero2.webp',
     heading: "The marketing teams'\ncreative team",
     sub: 'We remove the bottlenecks in the traditional marketing model',
   },
   {
-    image: '/images/hero-3.png',
-    mobileImage: '/images/mobile-home-hero3.png',
+    image: '/images/hero-3.webp',
+    mobileImage: '/images/mobile-home-hero3.webp',
     heading: 'Creative-as-a-Service\nfor Marketing teams',
     sub: 'Top-tier creative talent with proprietary AI-powered workflows',
   },
@@ -114,13 +115,10 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col items-start gap-[8px] md:flex-row md:items-center md:gap-[20px]">
-            <Link
-              href="/contact"
-              className="btn-cta flex items-center gap-3 border border-white rounded-full px-[24px] py-[12px] text-white text-[16px] font-medium uppercase"
-            >
+            <CalendlyButton className="btn-cta flex items-center gap-3 border border-white rounded-full px-[24px] py-[12px] text-white text-[16px] font-medium uppercase">
               Book a Demo
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </Link>
+            </CalendlyButton>
             <Link
               href="/work"
               className="btn-cta flex items-center justify-center bg-white rounded-full px-[24px] py-[12px] text-[#1e1e20] text-[16px] font-medium uppercase"
