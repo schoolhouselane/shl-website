@@ -48,7 +48,7 @@ export default function LoginContent() {
           {/* Form card */}
           <div className="w-full lg:flex-1 bg-white rounded-[24px] p-[24px] md:px-[48px] md:py-[48px] lg:px-[60px] lg:py-[60px] flex flex-col gap-[24px] md:gap-[32px]">
 
-            <h1 className="font-bold md:font-black text-[24px] md:text-[48px] lg:text-[64px] uppercase tracking-[0.24px] md:tracking-[0.64px] text-[#1e1e20] leading-none text-center md:text-left">
+            <h1 className="font-bold md:font-black text-[24px] md:text-[48px] lg:text-[64px] uppercase tracking-[0.24px] md:tracking-[0.64px] text-[#1e1e20] leading-none text-center">
               WELCOME
             </h1>
 
