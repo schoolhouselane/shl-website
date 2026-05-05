@@ -65,6 +65,19 @@ function renderBlock(block: ContentBlock, idx: number) {
       )
 
     case 'image':
+      if (block.width && block.height) {
+        return (
+          <Image
+            key={idx}
+            src={block.src}
+            alt={block.alt}
+            width={block.width}
+            height={block.height}
+            className="w-full h-auto"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 629px, 988px"
+          />
+        )
+      }
       return (
         <div key={idx} className="relative w-full aspect-[988/269] overflow-hidden">
           <Image

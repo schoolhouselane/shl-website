@@ -4,7 +4,7 @@ export type ContentBlock =
   | { type: 'paragraph'; text?: string; parts?: Array<{ text: string; bold?: boolean }>; dark?: boolean }
   | { type: 'heading'; text: string }
   | { type: 'blockquote'; text: string }
-  | { type: 'image'; src: string; alt: string }
+  | { type: 'image'; src: string; alt: string; width?: number; height?: number }
   | { type: 'image-pair'; src1: string; alt1: string; src2: string; alt2: string }
   | { type: 'callout'; text: string }
   | { type: 'rich-list'; items: Array<{ lead: string; text: string; leadBold?: boolean }>; dark?: boolean }
@@ -568,7 +568,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     title: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI",
     category: 'Strategy',
     heroImage: '/images/blog-8.png',
-    listingImage: '/images/blog-8.png',
+    listingImage: '/images/blog-8-0.png',
     seoTitle: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI — Schoolhouse Lane",
     seoDescription: "For founders eyeing an exit or Series B, brand is your most measurable advantage. Discover how to use AI to drive enterprise value — not just efficiency.",
     keywords: ['enterprise value', 'AI marketing', 'brand strategy', 'founder', 'creative commerce', 'Schoolhouse Lane'],
@@ -593,7 +593,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
           { text: '.' },
         ],
       },
-      { type: 'image', src: '/images/blog/founders-inline-1.jpg', alt: 'AI creative strategy' },
+      { type: 'image', src: '/images/blog-8-1.png', alt: 'AI creative strategy', width: 988, height: 453 },
       { type: 'heading', text: '1. Shift AI "Upstream" to Drive Valuation' },
       { type: 'paragraph', text: 'Most startups use AI to "decorate" decisions already made—generating social posts or ad copy as a downstream cost. Strategic founders move AI "upstream".' },
       {
@@ -651,7 +651,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
         parts: [{ text: 'Are you using AI to survive the noise, or to architect the exceptional?', bold: true }],
       },
       { type: 'blockquote', text: 'Schoolhouse Lane: The Brand-Led Value Creation Agency. Because there is no cure for curiosity.' },
-      { type: 'image', src: '/images/blog/founders-inline-2.jpg', alt: 'Creative strategy in practice' },
+      { type: 'image', src: '/images/blog-8-2.png', alt: 'Creative strategy in practice', width: 988, height: 269 },
     ],
     relatedArticles: [
       { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-related-3.png' },
