@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
-const LIGHT_BG_ROUTES = ['/services', '/about', '/work', '/blog', '/jobs', '/contact']
+const LIGHT_BG_ROUTES = ['/services', '/about', '/work', '/blog', '/jobs', '/contact', '/login']
 
 export default function Header({ forceDark = false }: { forceDark?: boolean }) {
   const pathname = usePathname()
