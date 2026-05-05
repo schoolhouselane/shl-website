@@ -127,7 +127,7 @@ export default function CalendlyButton({ className, children }: Props) {
 
                 {/* Business Email */}
                 <div className="flex flex-col gap-[10px]">
-                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide">
+                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide text-left">
                     Business Email
                   </label>
                   <input
@@ -142,7 +142,7 @@ export default function CalendlyButton({ className, children }: Props) {
 
                 {/* Full Name */}
                 <div className="flex flex-col gap-[10px]">
-                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide">
+                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide text-left">
                     Full Name
                   </label>
                   <input
@@ -157,7 +157,7 @@ export default function CalendlyButton({ className, children }: Props) {
 
                 {/* Company Size */}
                 <div className="flex flex-col gap-[10px]">
-                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide">
+                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide text-left">
                     Company Size
                   </label>
                   <div className="relative">
@@ -178,7 +178,7 @@ export default function CalendlyButton({ className, children }: Props) {
 
                 {/* Services */}
                 <div className="flex flex-col gap-[10px]">
-                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide">
+                  <label className="text-[16px] text-[#1e1e20] uppercase tracking-wide text-left">
                     Services
                   </label>
                   <div className="relative">
