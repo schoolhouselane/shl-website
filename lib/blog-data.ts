@@ -7,7 +7,7 @@ export type ContentBlock =
   | { type: 'image'; src: string; alt: string }
   | { type: 'image-pair'; src1: string; alt1: string; src2: string; alt2: string }
   | { type: 'callout'; text: string }
-  | { type: 'rich-list'; items: Array<{ lead: string; text: string }> }
+  | { type: 'rich-list'; items: Array<{ lead: string; text: string; leadBold?: boolean }>; dark?: boolean }
   | { type: 'ordered-list'; items: Array<{ lead: string; text: string }> }
   | { type: 'quote-banner'; src: string; text: string }
 
@@ -557,6 +557,109 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     ],
     journalCards: [
       { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/blog-seo.jpg' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.jpg' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.jpg' },
+    ],
+  },
+
+  // ── The Founder's Dilemma ────────────────────────────────────────────────────
+  {
+    slug: 'founders-dilemma-enterprise-value-ai',
+    title: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI",
+    category: 'Strategy',
+    heroImage: '/images/blog/founders-hero.jpg',
+    listingImage: '/images/blog/founders-listing.jpg',
+    seoTitle: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI — Schoolhouse Lane",
+    seoDescription: "For founders eyeing an exit or Series B, brand is your most measurable advantage. Discover how to use AI to drive enterprise value — not just efficiency.",
+    keywords: ['enterprise value', 'AI marketing', 'brand strategy', 'founder', 'creative commerce', 'Schoolhouse Lane'],
+    publishedAt: '2026-05-01',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'For founders and entrepreneurs, the primary objective is clear: ' },
+          { text: 'Enterprise Value (EV) creation', bold: true },
+          { text: '. Whether you are eyeing an eventual exit, preparing for a Series B, or launching a new business division, your brand is not just a logo—it is your most measurable advantage.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: "In a world of \"good enough,\" the integration of AI into your marketing strategy is no longer a choice; it is a strategic mandate. However, the most powerful engine for growth isn't the AI itself—it's the question you ask it. To move the needle on valuation, founders must shift from " },
+          { text: 'efficiency-led execution', bold: true },
+          { text: ' to ' },
+          { text: 'vision-led value creation', bold: true },
+          { text: '.' },
+        ],
+      },
+      { type: 'image', src: '/images/blog/founders-inline-1.jpg', alt: 'AI creative strategy' },
+      { type: 'heading', text: '1. Shift AI "Upstream" to Drive Valuation' },
+      { type: 'paragraph', text: 'Most startups use AI to "decorate" decisions already made—generating social posts or ad copy as a downstream cost. Strategic founders move AI "upstream".' },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action:  ', text: 'Use AI-powered insights to unearth the latent potential within your organization during the discovery phase.' },
+          { lead: 'The Goal: ', text: 'Build the clarity and alignment necessary to drive premium valuations during capital raises.' },
+        ],
+      },
+      { type: 'heading', text: '2. Move from Content Production to "Creative Commerce"' },
+      { type: 'paragraph', text: 'Founders cannot afford to waste capital on "algorithmic noise". Every touchpoint must perform.' },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action:  ', text: 'Adopt a Creative Commerce methodology, where AI accelerates everything from the high-level strategy to the final checkout.' },
+          { lead: 'The Goal: ', text: 'Create a tangible ecosystem where imagination meets revenue.' },
+        ],
+      },
+      { type: 'heading', text: '3. Leverage Diversity of Thought as Your Edge' },
+      { type: 'paragraph', text: 'In an automated world, the "human" is the ultimate differentiator. While competitors use AI to blend in, founders must use it to stand out.' },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action:  ', text: 'Partner with an agency that views diversity of thought as a competitive advantage.' },
+          { lead: 'The Goal: ', text: 'Prioritize the emotional, the ethical, and the real to capture both market share and hearts.' },
+        ],
+      },
+      { type: 'heading', text: '4. Architect the Infrastructure, Don\'t Just Tell Stories' },
+      { type: 'paragraph', text: 'Founders often fall into the trap of selling a story before they have the infrastructure to support it.' },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action:  ', text: 'Use AI to architect the infrastructure that allows your ambitious company to live its brand story.' },
+          { lead: 'The Goal: ', text: 'Transform your brand from a marketing tool into a high-leverage strategic asset.' },
+        ],
+      },
+      { type: 'heading', text: '5. Practice Conscious Capitalism' },
+      { type: 'paragraph', text: 'We believe businesses can, and should, be a force for good while delivering outsized returns.' },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action:  ', text: 'Use AI to align your profit with purpose and people.' },
+          { lead: 'The Goal: ', text: 'Build a brand that captures minds and ensures long-term loyalty in a shifting category.' },
+        ],
+      },
+      { type: 'heading', text: 'The Verdict: No Cure for Curiosity' },
+      { type: 'paragraph', text: 'As a founder, your adventurous and pioneering spirit is what built your business. AI is the fuel that allows that spirit to scale. By treating brand as business strategy made tangible, you ensure your intangible assets become your greatest measurable advantage.' },
+      {
+        type: 'paragraph',
+        parts: [{ text: 'Are you using AI to survive the noise, or to architect the exceptional?', bold: true }],
+      },
+      { type: 'blockquote', text: 'Schoolhouse Lane: The Brand-Led Value Creation Agency. Because there is no cure for curiosity.' },
+      { type: 'image', src: '/images/blog/founders-inline-2.jpg', alt: 'Creative strategy in practice' },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-related-3.png' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.jpg' },
+      { slug: 'is-ai-killing-seo', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/blog-eddie-jordan.jpg' },
+    ],
+    journalCards: [
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/seo-hero.jpg' },
       { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.jpg' },
       { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.jpg' },
     ],

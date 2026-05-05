@@ -87,6 +87,20 @@ function renderBlock(block: ContentBlock, idx: number) {
       )
 
     case 'rich-list':
+      if (block.dark) {
+        return (
+          <div key={idx} className="bg-[#1e1e20] p-[12px] w-full">
+            <ul className="list-disc pl-[24px] flex flex-col gap-[4px]">
+              {block.items.map((item, i) => (
+                <li key={i} className="text-[14px] md:text-[15px] lg:text-[16px] text-white leading-relaxed">
+                  <span className="font-extrabold">{item.lead}</span>
+                  <span className="font-normal">{item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
       return (
         <div key={idx} className="flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
           {block.items.map((item, i) => (
