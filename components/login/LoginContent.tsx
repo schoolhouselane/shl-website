@@ -193,7 +193,7 @@ export default function LoginContent() {
 
         {/* Right: full-height image */}
         <div className="flex-1 relative min-h-0">
-          <Image src="/images/hero-2.png" alt="Schoolhouse Lane" fill className="object-cover object-center" priority />
+          <Image src="/images/login-hero.jpg" alt="Schoolhouse Lane" fill className="object-cover object-center" priority />
         </div>
 
       </div>
