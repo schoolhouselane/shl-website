@@ -4,10 +4,7 @@ import Link from 'next/link'
 import { useInView } from '@/hooks/useInView'
 
 const GALLERY_IMAGES = [
-  { src: '/images/gallery-1.png', alt: 'Gallery image 1' },
-  { src: '/images/gallery-2.png', alt: 'Gallery image 2' },
-  { src: '/images/gallery-3.png', alt: 'Gallery image 3' },
-  { src: '/images/gallery-4.png', alt: 'Gallery image 4' },
+  { src: '/images/gallery-video-1.png', alt: 'Gallery image 1' },
 ]
 
 export default function Gallery() {
@@ -37,16 +34,16 @@ export default function Gallery() {
       </p>
 
       {/* Gallery images */}
-      <div className="grid grid-cols-2 gap-3 md:gap-4 lg:gap-5">
+      <div className="flex flex-col gap-3 md:gap-4 lg:gap-5">
         {GALLERY_IMAGES.map((image) => (
           <Image
             key={image.src}
             src={image.src}
             alt={image.alt}
-            width={800}
-            height={600}
+            width={1729}
+            height={1092}
             className="w-full h-auto"
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) calc(50vw - 90px), 760px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) calc(100vw - 48px), 1312px"
           />
         ))}
       </div>
