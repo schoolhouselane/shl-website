@@ -6,7 +6,6 @@ const logos = [
   { src: '/images/pricing/logo-shelby.svg',      alt: 'Shelby',         w: 157, h: 30  },
   { src: '/images/pricing/logo-manwipes.svg',    alt: 'Man Wipes',      w: 75,  h: 64  },
   { src: '/images/pricing/logo-vivo.svg',        alt: 'Vivo Hotels',    w: 99,  h: 59  },
-  { src: '/images/pricing/logo-itv.svg',         alt: 'ITV OddsFinder', w: 136, h: 44  },
   { src: '/images/pricing/logo-funteron.svg',    alt: 'Funteron',       w: 87,  h: 80  },
   { src: '/images/pricing/logo-hubbcat.png',     alt: 'Hubbcat',        w: 144, h: 64  },
 ]
