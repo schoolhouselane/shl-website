@@ -1,5 +1,6 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 const BOOKING_URL = 'https://calendly.com/dmg-schoolhouselane/30min'
 
@@ -39,6 +40,8 @@ interface Props {
 
 export default function CalendlyButton({ className, style, children }: Props) {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
   const [loading, setLoading] = useState(false)
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
@@ -85,17 +88,11 @@ export default function CalendlyButton({ className, style, children }: Props) {
     openCalendly(fullName, email, companySize, service)
   }
 
-  return (
-    <>
-      <button type="button" className={className} style={style} onClick={() => setOpen(true)}>
-        {children}
-      </button>
-
-      {open && (
-        <div
-          className="fixed inset-0 z-[200] flex items-center justify-center px-4 py-6"
-          onClick={() => { setOpen(false); reset() }}
-        >
+  const modal = open && (
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center px-4 py-6"
+      onClick={() => { setOpen(false); reset() }}
+    >
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
 
           <div
@@ -213,8 +210,15 @@ export default function CalendlyButton({ className, style, children }: Props) {
             </form>
 
           </div>
-        </div>
-      )}
+    </div>
+  )
+
+  return (
+    <>
+      <button type="button" className={className} style={style} onClick={() => setOpen(true)}>
+        {children}
+      </button>
+      {mounted && modal ? createPortal(modal, document.body) : null}
     </>
   )
 }
