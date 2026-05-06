@@ -43,9 +43,39 @@ const servicesCols = [
 
 const social = [
   { name: 'LinkedIn',  href: 'https://linkedin.com/company/schoolhouselane' },
-  { name: 'Behance',   href: 'https://behance.net/schoolhouselane' },
-  { name: 'Instagram', href: 'https://www.instagram.com/schoolhouselane_' },
+  { name: 'Behance',   href: 'https://www.behance.net/schoolhagency' },
+  { name: 'Facebook',  href: 'https://www.facebook.com/people/Schoolhouse-Lane/61573346141652/' },
+  { name: 'Instagram', href: 'https://www.instagram.com/schoolhouselane_/' },
 ]
+
+function SocialIcon({ name }: { name: string }) {
+  if (name === 'LinkedIn') return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    </svg>
+  )
+  if (name === 'Behance') return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.2.421 1.875 1.338 2.393.517.298 1.268.48 2.067.48.891 0 1.518-.21 2.053-.792l1.298.948zM15.973 13.75h4.01c-.036-1.099-.503-1.875-1.878-1.875-1.29 0-1.984.75-2.132 1.875z"/>
+      <path d="M6.5 11.5c.828 0 1.5-.672 1.5-1.5S7.328 8.5 6.5 8.5H4v3h2.5zM4 14.5v3h3c.828 0 1.5-.672 1.5-1.5S7.828 14.5 7 14.5H4z"/>
+      <path d="M2 6h5.5C9.434 6 11 7.343 11 9.25c0 1.157-.5 2-1.438 2.562C10.688 12.375 11.25 13.344 11.25 14.5 11.25 16.5 9.5 18 7.5 18H2V6z"/>
+    </svg>
+  )
+  if (name === 'Facebook') return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+  )
+  if (name === 'Instagram') return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    </svg>
+  )
+  return null
+}
 
 export default function Footer() {
   const [open, setOpen] = useState(false)
@@ -105,11 +135,10 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col gap-[12px] justify-start pt-[4px]">
+            <div className="flex flex-col gap-[10px] justify-start pt-[4px]">
               {social.map((s) => (
-                <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[4px] text-[12px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
-                  {s.name}
-                  <ArrowUpRight size={16} />
+                <Link key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name} className="flex items-center justify-center w-[32px] h-[32px] rounded-full border border-white/30 text-white hover:bg-white hover:text-[#1e1e20] transition-all duration-200">
+                  <SocialIcon name={s.name} />
                 </Link>
               ))}
             </div>
@@ -143,8 +172,8 @@ export default function Footer() {
 
           {/* TABLET + DESKTOP COL 2 — Social (tablet) / Services + Social (desktop) */}
           <div className="hidden md:flex flex-col gap-[12px] lg:gap-[30px] shrink-0">
-            {/* Services — desktop only */}
-            <div className="hidden lg:flex flex-wrap gap-x-[40px] gap-y-[30px] xl:gap-x-[60px]">
+            {/* Services + Social icons side-by-side — desktop only */}
+            <div className="hidden lg:flex items-start gap-[40px] xl:gap-[60px]">
               {servicesCols.map((col, ci) => (
                 <div key={ci} className="flex flex-col gap-[30px]">
                   {col.map((s) => (
@@ -154,13 +183,28 @@ export default function Footer() {
                   ))}
                 </div>
               ))}
+              {/* Social icons column — right of services */}
+              <div className="flex flex-col gap-[20px] pl-[20px] border-l border-white/20">
+                {social.map((s) => (
+                  <Link
+                    key={s.name}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.name}
+                    className="flex items-center justify-center w-[36px] h-[36px] rounded-full border border-white/30 text-white hover:bg-white hover:text-[#1e1e20] transition-all duration-200"
+                  >
+                    <SocialIcon name={s.name} />
+                  </Link>
+                ))}
+              </div>
             </div>
-            {/* Social links */}
-            <div className="flex flex-col gap-[12px] lg:gap-[30px]">
+            {/* Social links — tablet only (text style) */}
+            <div className="flex flex-col gap-[12px] lg:hidden">
               {social.map((s) => (
-                <Link key={s.name} href={s.href} target="_blank" className="flex items-center gap-[4px] text-[16px] lg:text-[18px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
+                <Link key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-[6px] text-[16px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
+                  <SocialIcon name={s.name} />
                   {s.name}
-                  <ArrowUpRight size={24} />
                 </Link>
               ))}
             </div>
