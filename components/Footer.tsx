@@ -42,7 +42,7 @@ const servicesCols = [
 ]
 
 const social = [
-  { name: 'LinkedIn',  href: 'https://linkedin.com/company/schoolhouselane' },
+  { name: 'LinkedIn',  href: 'https://www.linkedin.com/company/schoolhouse-lane' },
   { name: 'Behance',   href: 'https://www.behance.net/schoolhagency' },
   { name: 'Facebook',  href: 'https://www.facebook.com/people/Schoolhouse-Lane/61573346141652/' },
   { name: 'Instagram', href: 'https://www.instagram.com/schoolhouselane_/' },
