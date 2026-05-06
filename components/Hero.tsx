@@ -7,19 +7,19 @@ import CalendlyButton from '@/components/CalendlyButton'
 const slides = [
   {
     image: '/images/hero-1.webp',
-    mobileImage: '/images/mobile-home-hero1.webp',
+    mobileImage: '/images/mobile-hm-hero-1.webp',
     heading: 'AI powered\ncreative & design',
     sub: 'We exist at the intersection of creative and Generative AI',
   },
   {
     image: '/images/hero-2.webp',
-    mobileImage: '/images/mobile-hero2-bigger.webp',
+    mobileImage: '/images/mobile-hm-hero-2.webp',
     heading: "The marketing teams'\ncreative team",
     sub: 'We remove the bottlenecks in the traditional marketing model',
   },
   {
     image: '/images/hero-3.webp',
-    mobileImage: '/images/mobile-home-hero3.webp',
+    mobileImage: '/images/mobile-hm-hero-3.webp',
     heading: 'Creative-as-a-Service\nfor Marketing teams',
     sub: 'Top-tier creative talent with proprietary AI-powered workflows',
   },
