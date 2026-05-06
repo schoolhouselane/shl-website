@@ -82,8 +82,8 @@ export default function BlogList({ posts }: Props) {
 
   const featured = posts[0]
   const side    = posts.slice(1, 3)   // blog 2 + 3 → right column in row 1
-  const bottom  = posts.slice(3, 5)   // blog 4 + 5 → row 2
-  const extra   = showAll ? posts.slice(5) : []
+  const gallery = posts.slice(3)      // blog 4+ → 3-col gallery rows
+  const visibleGallery = showAll ? gallery : gallery.slice(0, 3)
 
   if (!featured) return null
 
@@ -102,9 +102,13 @@ export default function BlogList({ posts }: Props) {
         <FeaturedCard post={featured} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
           {side.map(post => <RegularCard key={post.slug} post={post} />)}
-          {bottom.map(post => <RegularCard key={post.slug} post={post} />)}
         </div>
-        {!showAll && (
+        {visibleGallery.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
+            {visibleGallery.map(post => <RegularCard key={post.slug} post={post} />)}
+          </div>
+        )}
+        {!showAll && gallery.length > 3 && (
           <div className="flex justify-end">
             <button
               onClick={() => setShowAll(true)}
@@ -116,12 +120,8 @@ export default function BlogList({ posts }: Props) {
         )}
       </div>
 
-      {/* ── Desktop: single 3-col grid so every card shares the same column track ── */}
-      {/*
-          Row 1: [Featured col-span-2 row-span-2] [Blog 2]
-          Row 2: [Featured continues            ] [Blog 3]
-          Row 3: [Blog 4] [Blog 5] [Button]
-      */}
+      {/* ── Desktop ── */}
+      {/* Row 1: [Featured col-span-2 row-span-2] [Blog 2] [Blog 3] */}
       <div
         className="hidden lg:grid lg:gap-[20px]"
         style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
@@ -130,34 +130,30 @@ export default function BlogList({ posts }: Props) {
         <div style={{ gridColumn: '1 / 3', gridRow: '1 / 3' }}>
           <FeaturedCard post={featured} />
         </div>
-
-        {/* Blog 2 (col 3, row 1) and Blog 3 (col 3, row 2) */}
+        {/* Blog 2 + Blog 3 in col 3 */}
         {side.map(post => (
           <RegularCard key={post.slug} post={post} />
         ))}
-
-        {/* Blog 4 and Blog 5 — auto-placed into row 3 cols 1 and 2 */}
-        {bottom.map(post => (
-          <RegularCard key={post.slug} post={post} />
-        ))}
-
-        {/* Button — always occupies row 3 col 3 to keep layout stable */}
-        <div className="flex items-end justify-center">
-          {!showAll && (
-            <button
-              onClick={() => setShowAll(true)}
-              className="bg-[#1e1e20] flex items-center gap-[12px] px-[24px] py-[20px] rounded-[50px] text-white font-medium text-[20px] uppercase hover:opacity-80 transition-opacity whitespace-nowrap"
-            >
-              Load more blogs <ArrowRight size={24} />
-            </button>
-          )}
-        </div>
       </div>
 
-      {/* Extra posts after load more */}
-      {extra.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[20px]">
-          {extra.map(post => <RegularCard key={post.slug} post={post} />)}
+      {/* Row 2+: 3-col gallery */}
+      {visibleGallery.length > 0 && (
+        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-[20px]">
+          {visibleGallery.map(post => (
+            <RegularCard key={post.slug} post={post} />
+          ))}
+        </div>
+      )}
+
+      {/* Load more */}
+      {!showAll && gallery.length > 3 && (
+        <div className="hidden lg:flex justify-end">
+          <button
+            onClick={() => setShowAll(true)}
+            className="bg-[#1e1e20] flex items-center gap-[12px] px-[24px] py-[20px] rounded-[50px] text-white font-medium text-[20px] uppercase hover:opacity-80 transition-opacity whitespace-nowrap"
+          >
+            Load more blogs <ArrowRight size={24} />
+          </button>
         </div>
       )}
     </section>
