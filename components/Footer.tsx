@@ -173,8 +173,8 @@ export default function Footer() {
 
           {/* TABLET + DESKTOP COL 2 — Social (tablet) / Services + Social (desktop) */}
           <div className="hidden md:flex flex-col gap-[12px] lg:gap-[30px] shrink-0">
-            {/* Services — desktop only */}
-            <div className="hidden lg:flex flex-wrap gap-x-[40px] gap-y-[30px] xl:gap-x-[60px]">
+            {/* Services + Social side by side — desktop only */}
+            <div className="hidden lg:flex items-start gap-x-[40px] xl:gap-x-[60px]">
               {servicesCols.map((col, ci) => (
                 <div key={ci} className="flex flex-col gap-[30px]">
                   {col.map((s) => (
@@ -184,11 +184,20 @@ export default function Footer() {
                   ))}
                 </div>
               ))}
+              {/* Social links — same text style, right of services */}
+              <div className="flex flex-col gap-[30px]">
+                {social.map((s) => (
+                  <Link key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-[4px] text-[18px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
+                    {s.name}
+                    <ArrowUpRight size={24} />
+                  </Link>
+                ))}
+              </div>
             </div>
-            {/* Social links */}
-            <div className="flex flex-col gap-[12px] lg:gap-[30px]">
+            {/* Social links — tablet only */}
+            <div className="flex flex-col gap-[12px] lg:hidden">
               {social.map((s) => (
-                <Link key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-[4px] text-[16px] lg:text-[18px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
+                <Link key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-[4px] text-[16px] text-white hover:opacity-70 transition-opacity whitespace-nowrap">
                   {s.name}
                   <ArrowUpRight size={24} />
                 </Link>
