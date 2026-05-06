@@ -13,7 +13,7 @@ const slides = [
   },
   {
     image: '/images/hero-2.webp',
-    mobileImage: '/images/mobile-home-hero2.webp',
+    mobileImage: '/images/mobile-hero2-bigger.webp',
     heading: "The marketing teams'\ncreative team",
     sub: 'We remove the bottlenecks in the traditional marketing model',
   },
