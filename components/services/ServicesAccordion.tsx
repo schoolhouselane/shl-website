@@ -115,19 +115,24 @@ export default function ServicesAccordion() {
   const [headerRef, headerInView] = useInView(0.2)
 
   useEffect(() => {
-    const hash = window.location.hash.replace('#', '')
-    if (!hash) return
-    const idx = services.findIndex((s) => s.slug === hash)
-    if (idx === -1) return
-    setActive(idx)
-    setTimeout(() => {
-      const el = rowRefs.current[idx]
-      if (el) {
-        const headerH = window.innerWidth >= 768 ? 82 : 64
-        const top = el.getBoundingClientRect().top + window.scrollY - headerH - 12
-        window.scrollTo({ top, behavior: 'smooth' })
-      }
-    }, 300)
+    function openFromHash() {
+      const hash = window.location.hash.replace('#', '')
+      if (!hash) return
+      const idx = services.findIndex((s) => s.slug === hash)
+      if (idx === -1) return
+      setActive(idx)
+      setTimeout(() => {
+        const el = rowRefs.current[idx]
+        if (el) {
+          const headerH = window.innerWidth >= 768 ? 82 : 64
+          const top = el.getBoundingClientRect().top + window.scrollY - headerH - 12
+          window.scrollTo({ top, behavior: 'smooth' })
+        }
+      }, 300)
+    }
+    openFromHash()
+    window.addEventListener('hashchange', openFromHash)
+    return () => window.removeEventListener('hashchange', openFromHash)
   }, [])
 
   const toggle = useCallback((i: number) => {
