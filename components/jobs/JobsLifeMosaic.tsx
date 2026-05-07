@@ -39,8 +39,8 @@ export default function JobsLifeMosaic() {
         </div>
         {/* Right — description + CTA */}
         <div className="flex flex-col gap-[16px] md:items-end md:text-right md:max-w-[544px]">
-          <p className="font-normal text-[15px] md:text-[16px] text-[#1e1e20] leading-[1.7] md:max-w-[397px]">
-            The work is serious. The environment doesn&apos;t have to be.<br className="hidden md:block" />
+          <p className="font-normal text-[15px] md:text-[16px] text-[#1e1e20] leading-[1.7]">
+            <span className="whitespace-nowrap">The work is serious. The environment doesn&apos;t have to be.</span><br />
             Behind every deliverable is a team that genuinely loves what they&apos;re building.
           </p>
           <Link
