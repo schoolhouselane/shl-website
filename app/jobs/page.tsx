@@ -24,13 +24,6 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/jobs`,
     siteName: 'Schoolhouse Lane',
     locale: 'en_IE',
-    images: [{ url: `${BASE_URL}/images/jobs/jobs-life-1.webp`, width: 1200, height: 630, alt: 'Life at Schoolhouse Lane' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Jobs — Schoolhouse Lane',
-    description: 'We\'re always on the search for curious minds who want to build brands that actually make money.',
-    images: [`${BASE_URL}/images/jobs/jobs-life-1.webp`],
   },
 }
 

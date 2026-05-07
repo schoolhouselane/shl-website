@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!post) return {}
 
   const title = post.seoTitle ?? post.title
-  const description = post.seoDescription || `${post.title} — insights from the Schoolhouse Lane team.`
+  const description = post.seoDescription ?? ''
   const url = `${BASE_URL}/blog/${slug}`
   const imageUrl = post.heroImage.startsWith('http') ? post.heroImage : `${BASE_URL}${post.heroImage}`
 
