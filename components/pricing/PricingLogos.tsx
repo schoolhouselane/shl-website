@@ -3,7 +3,7 @@ import Image from 'next/image'
 const logos = [
   { src: '/images/pricing/logo-lavit.svg',      alt: 'Lavit Sports',   w: 75,  h: 43  },
   { src: '/images/pricing/logo-datadirect.svg',  alt: 'DataDirect',     w: 137, h: 37  },
-  { src: '/images/pricing/logo-shelby.svg',      alt: 'Shelby',         w: 157, h: 30  },
+  { src: '/images/pricing/logo-shelby.png',      alt: 'Shelby',         w: 157, h: 25  },
   { src: '/images/pricing/logo-manwipes.svg',    alt: 'Man Wipes',      w: 75,  h: 64  },
   { src: '/images/pricing/logo-vivo.svg',        alt: 'Vivo Hotels',    w: 99,  h: 59  },
   { src: '/images/pricing/logo-funteron.svg',    alt: 'Funteron',       w: 87,  h: 80  },
