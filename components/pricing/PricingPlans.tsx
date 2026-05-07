@@ -6,7 +6,7 @@ const plans = [
     tier: 'Beginner',
     name: 'Brand Essentials',
     desc: 'Startups and founders needing a professional, high-impact foundation fast.',
-    price: '$3,500',
+    price: '€6,500',
     priceSuffix: '/ project',
     color: '#98bfa0',
     bgStyle: 'linear-gradient(to right, #79a482, #9bc2a3)',
