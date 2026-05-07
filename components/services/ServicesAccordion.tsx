@@ -150,7 +150,7 @@ export default function ServicesAccordion() {
   }, [])
 
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[40px] md:pt-[60px] pb-[60px] lg:pb-[120px] flex flex-col gap-[40px] md:gap-[60px] lg:gap-[120px]">
+    <section id="services-accordion" className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[40px] md:pt-[60px] pb-[60px] lg:pb-[120px] flex flex-col gap-[40px] md:gap-[60px] lg:gap-[120px]">
 
       {/* Header */}
       <div
