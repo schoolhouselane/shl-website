@@ -169,7 +169,7 @@ export default function Team() {
           </p>
         </div>
         <Link
-          href="/contact"
+          href="/jobs"
           className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-6 py-3 text-[16px] font-medium uppercase transition-colors shrink-0"
         >
           See Open Roles

@@ -51,7 +51,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               alt="Schoolhouse Lane"
               width={122}
               height={48}
-              className={`w-[65px] md:w-[122px] h-auto object-contain transition-all duration-300 ${isDark ? 'invert' : ''}`}
+              className={`w-[65px] md:w-[95px] h-auto object-contain transition-all duration-300 ${isDark ? 'invert' : ''}`}
             />
           </Link>
 
