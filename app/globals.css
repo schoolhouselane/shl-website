@@ -219,7 +219,8 @@ input:-webkit-autofill:active {
     .lg\:px-\[24px\] { padding-left: 24px; padding-right: 24px; }
     .lg\:px-\[40px\] { padding-left: 40px; padding-right: 40px; }
     .lg\:px-\[60px\] { padding-left: 60px; padding-right: 60px; }
-    .lg\:px-\[90px\] { padding-left: 90px; padding-right: 90px; }
+    .lg\:px-\[90px\]  { padding-left: 90px;  padding-right: 90px; }
+    .lg\:px-\[120px\] { padding-left: 120px; padding-right: 120px; }
     .lg\:py-\[5px\]   { padding-top: 5px;   padding-bottom: 5px; }
     .lg\:py-\[10px\]  { padding-top: 10px;  padding-bottom: 10px; }
     .lg\:py-\[16px\]  { padding-top: 16px;  padding-bottom: 16px; }
