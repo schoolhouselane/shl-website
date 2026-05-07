@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Header from '@/components/Header'
 
 export const metadata: Metadata = {
@@ -44,7 +45,9 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       <Header forceDark />
       <ServicesHero />
-      <ServicesAccordion />
+      <Suspense fallback={null}>
+        <ServicesAccordion />
+      </Suspense>
       <ServicesCTADark />
       <ServicesMethod />
       <ServicesCTAGrey />

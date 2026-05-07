@@ -38,14 +38,14 @@ const offices = [
 
 const servicesCols = [
   [
-    { name: 'Brand Identity',  href: '/services#brand-identity' },
-    { name: 'Gallery & Videos', href: '/services#gallery-videos' },
-    { name: 'Campaigns',       href: '/services#campaigns' },
+    { name: 'Brand Identity',  href: '/services?s=brand-identity' },
+    { name: 'Gallery & Videos', href: '/services?s=gallery-videos' },
+    { name: 'Campaigns',       href: '/services?s=campaigns' },
   ],
   [
-    { name: 'Websites',   href: '/services#websites' },
-    { name: 'AI Creative', href: '/services#ai-creative' },
-    { name: 'Strategy',   href: '/services#strategy' },
+    { name: 'Websites',   href: '/services?s=websites' },
+    { name: 'AI Creative', href: '/services?s=ai-creative' },
+    { name: 'Strategy',   href: '/services?s=strategy' },
   ],
 ]
 
