@@ -412,7 +412,7 @@ export const blogPosts: BlogPost[] = [
     title: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants',
     category: 'AI Strategy',
     heroImage: '/images/blog/blog5-hero.webp',
-    listingImage: '/images/blog/blog5-hero.webp',
+    listingImage: '/images/blog/blog5-listing.webp',
     seoTitle: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants — Schoolhouse Lane',
     seoDescription: 'For SME owners, AI is a leveller. Discover 5 steps to move AI upstream in your business — from decorating to strategising — and compete with enterprise giants.',
     keywords: ['AI for SME', 'brand strategy', 'creative commerce', 'SME growth', 'AI marketing', 'vision-led value', 'Schoolhouse Lane'],
