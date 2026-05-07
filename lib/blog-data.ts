@@ -406,6 +406,127 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 
+  // ── Article 4 — AI for the Ambitious SME ──────────────────────────────────
+  {
+    slug: 'ai-for-the-ambitious-sme',
+    title: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants',
+    category: 'AI Strategy',
+    heroImage: '/images/blog/blog5-hero.webp',
+    listingImage: '/images/blog/blog5-hero.webp',
+    seoTitle: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants — Schoolhouse Lane',
+    seoDescription: 'For SME owners, AI is a leveller. Discover 5 steps to move AI upstream in your business — from decorating to strategising — and compete with enterprise giants.',
+    keywords: ['AI for SME', 'brand strategy', 'creative commerce', 'SME growth', 'AI marketing', 'vision-led value', 'Schoolhouse Lane'],
+    publishedAt: '2026-05-05',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'For an SME business owner, the arrival of AI-powered creative production is a leveling of the playing field. In the past, “upstream” strategic branding was the luxury of enterprise giants. Today, AI provides the leverage to transform your brand from a downstream marketing cost into an engine for growth.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'At Schoolhouse Lane, we believe the most powerful engine for growth isn’t a spreadsheet—it’s a question. For an SME, the question isn’t “how do I save money with AI?” but “how do I use AI to create a measurable advantage?”.',
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'Here is how SME owners can strategically integrate AI to drive ' },
+          { text: 'Vision-Led Value Creation', bold: true },
+          { text: '.' },
+        ],
+      },
+      { type: 'image', src: '/images/blog/blog5-inline1.webp', alt: 'AI-powered creative production for SMEs', width: 988, height: 773 },
+      { type: 'heading', text: '1. Stop “Decorating” and Start Strategizing' },
+      {
+        type: 'paragraph',
+        text: 'Most SMEs use AI to generate social media posts or images for decisions they’ve already made. To win, you must move AI “upstream”.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action: ', text: 'Use AI to help unearth the latent potential within your organisation—finding the unique “curiosity” that sets you apart from competitors.' },
+          { lead: 'The Goal: ', text: 'Build a brand that captures hearts and minds, not just market share.' },
+        ],
+      },
+      { type: 'heading', text: '2. Focus on Creative Commerce' },
+      {
+        type: 'paragraph',
+        text: 'For an SME, every dollar must perform. You don’t just need a “look”; you need an ecosystem.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action: ', text: 'Implement a Creative Commerce methodology where every AI-generated touchpoint—from your brand story to your checkout page—accelerates your business goals.' },
+          { lead: 'The Goal: ', text: 'Turn your brand into a tangible business strategy that drives revenue.' },
+        ],
+      },
+      { type: 'heading', text: '3. Prioritize the Human Connection' },
+      {
+        type: 'paragraph',
+        text: 'In a world of “algorithmic noise,” being human is your competitive advantage.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action: ', text: 'Use AI to handle the heavy lifting of production, but ensure the final output reflects an altruistic, ethical, and real perspective.' },
+          { lead: 'The Goal: ', text: 'Build trust through emotional intelligence—something a pure algorithm can never replicate.' },
+        ],
+      },
+      { type: 'heading', text: '4. Solve Problems Through Relentless Inquiry' },
+      {
+        type: 'paragraph',
+        text: 'SMEs thrive on agility. Use AI to stay curious about your customers’ changing needs.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action: ', text: 'Use AI-driven insights to navigate complex category shifts and design new products or services with pioneer-level speed.' },
+          { lead: 'The Goal: ', text: 'Stay ahead of the curve by treating discovery as a path to fulfilment.' },
+        ],
+      },
+      { type: 'heading', text: '5. Align Profit with Purpose (Conscious Capitalism)' },
+      {
+        type: 'paragraph',
+        text: 'Modern customers want to buy from businesses that stand for something.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Action: ', text: 'Use AI to communicate your core organising principle clearly across all channels.' },
+          { lead: 'The Goal: ', text: 'Aligning profit with purpose doesn’t just feel good—it delivers outsized returns.' },
+        ],
+      },
+      { type: 'heading', text: 'The Verdict: Curiosity is Your Greatest Asset' },
+      {
+        type: 'paragraph',
+        text: 'As an SME owner, you have the adventurous spirit required to innovate. AI is simply the infrastructure that allows you to live that ambition. By shifting from efficiency-based value to vision-led value, you ensure your business isn’t just “good enough”—it’s exceptional.',
+      },
+      {
+        type: 'paragraph',
+        parts: [{ text: 'Is your SME using AI to survive, or to create enterprise value?', bold: true }],
+      },
+      { type: 'blockquote', text: 'Schoolhouse Lane: The Brand-Led Value Creation Agency. Because there is no cure for curiosity.' },
+      { type: 'image', src: '/images/blog/blog5-inline2.webp', alt: 'Brand-led value creation in action', width: 988, height: 414 },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-related-3.png' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.jpg' },
+      { slug: 'creative-commerce', title: 'Eddie Jordan Foundation. Engaging in delusion or fuelling change?', excerpt: "Sitting in Soho while London’s finest scurry through their morning I find myself listening to Keith O’Loughlin", thumbnail: '/images/blog/blog-eddie-jordan.jpg' },
+    ],
+    journalCards: [
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/seo-hero.jpg' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.jpg' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.jpg' },
+    ],
+  },
+
 ]
 
 // ─── Placeholder stubs ────────────────────────────────────────────────────────
