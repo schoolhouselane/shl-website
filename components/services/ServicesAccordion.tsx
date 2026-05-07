@@ -7,6 +7,7 @@ import { useInView } from '@/hooks/useInView'
 const services = [
   {
     num: '01',
+    slug: 'strategy',
     title: 'Strategy & Growth Consulting',
     tagline: 'The blueprint behind every brand that outperforms its category.',
     headline: 'Good Creative Without\nStrategy Is Decoration',
@@ -23,6 +24,7 @@ const services = [
   },
   {
     num: '02',
+    slug: 'brand-identity',
     title: 'Brand Identity & Brand Planning',
     tagline: 'Transform your brand from a cost center into a strategic growth engine.',
     headline: 'Your Brand Should\nCommand A Category',
@@ -39,6 +41,7 @@ const services = [
   },
   {
     num: '03',
+    slug: 'ai-creative',
     title: 'AI Creative & Innovation',
     tagline: 'Velocity without compromise. AI-augmented execution for the modern era.',
     headline: 'Faster. Smarter.\nStill Beautiful',
@@ -55,6 +58,7 @@ const services = [
   },
   {
     num: '04',
+    slug: 'campaigns',
     title: 'Campaigns & Creative Direction',
     tagline: 'Award-worthy work that moves the needle on business goals.',
     headline: 'We Make Cultural\nMoments That Sell',
@@ -71,6 +75,7 @@ const services = [
   },
   {
     num: '05',
+    slug: 'websites',
     title: 'Websites & Digital Experiences',
     tagline: 'Conversion-engineered sites that work while you sleep.',
     headline: 'Your Website Is\nYour Best Salesperson',
@@ -87,6 +92,7 @@ const services = [
   },
   {
     num: '06',
+    slug: 'gallery-videos',
     title: 'Gallery & Videos',
     tagline: 'Visual assets so sharp they tell the story for you.',
     headline: 'Visual Assets That Do\nthe Selling for You',
@@ -147,7 +153,7 @@ export default function ServicesAccordion() {
         {services.map((service, i) => {
           const isOpen = active === i
           return (
-            <div key={service.num} ref={(el) => { rowRefs.current[i] = el }}>
+            <div key={service.num} id={service.slug} ref={(el) => { rowRefs.current[i] = el }}>
 
               {/* Row header */}
               <button

@@ -37,8 +37,16 @@ const offices = [
 ]
 
 const servicesCols = [
-  ['Brand Identity', 'Gallery & Videos', 'Campaigns'],
-  ['Websites', 'AI Creative', 'Strategy'],
+  [
+    { name: 'Brand Identity',  href: '/services#brand-identity' },
+    { name: 'Gallery & Videos', href: '/services#gallery-videos' },
+    { name: 'Campaigns',       href: '/services#campaigns' },
+  ],
+  [
+    { name: 'Websites',   href: '/services#websites' },
+    { name: 'AI Creative', href: '/services#ai-creative' },
+    { name: 'Strategy',   href: '/services#strategy' },
+  ],
 ]
 
 const social = [
@@ -178,8 +186,8 @@ export default function Footer() {
               {servicesCols.map((col, ci) => (
                 <div key={ci} className="flex flex-col gap-[30px]">
                   {col.map((s) => (
-                    <Link key={s} href="/services" className="text-[18px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap">
-                      {s}
+                    <Link key={s.name} href={s.href} className="text-[18px] text-white capitalize hover:opacity-70 transition-opacity whitespace-nowrap">
+                      {s.name}
                     </Link>
                   ))}
                 </div>
