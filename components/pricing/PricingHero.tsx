@@ -5,7 +5,7 @@ import CalendlyButton from '@/components/CalendlyButton'
 
 export default function PricingHero() {
   return (
-    <section className="relative mx-4 md:mx-6 lg:mx-[90px] mt-[64px] md:mt-[95px] lg:mt-[82px] h-[536px] md:h-[545px] lg:h-[calc(100vh-82px)] overflow-hidden flex items-end pb-[60px] md:pb-[80px] lg:pb-[120px]">
+    <section className="relative mx-4 md:mx-6 lg:mx-[180px] mt-[64px] md:mt-[95px] lg:mt-[82px] h-[536px] md:h-[545px] lg:h-[calc(100vh-82px)] overflow-hidden flex items-end pb-[60px] md:pb-[80px] lg:pb-[120px]">
       {/* Background image */}
       <Image
         src="/images/pricing.png"
