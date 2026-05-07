@@ -12,12 +12,12 @@ function ArrowRight({ size = 18 }: { size?: number }) {
 }
 
 const PHOTOS = [
-  { src: '/images/jobs/jobs-life-1.jpg', alt: 'Life at Schoolhouse Lane — team culture' },
-  { src: '/images/jobs/jobs-life-2.jpg', alt: 'Life at Schoolhouse Lane — office vibes' },
-  { src: '/images/jobs/jobs-life-3.jpg', alt: 'Life at Schoolhouse Lane — creative environment' },
-  { src: '/images/jobs/jobs-life-4.jpg', alt: 'Life at Schoolhouse Lane — collaboration' },
-  { src: '/images/jobs/jobs-life-5.jpg', alt: 'Life at Schoolhouse Lane — team moments' },
-  { src: '/images/jobs/jobs-life-6.jpg', alt: 'Life at Schoolhouse Lane — workspace' },
+  { src: '/images/jobs/jobs-life-1.webp', alt: 'Life at Schoolhouse Lane — creative culture' },
+  { src: '/images/jobs/jobs-life-2.webp', alt: 'Life at Schoolhouse Lane — open for business' },
+  { src: '/images/jobs/jobs-life-3.webp', alt: 'Life at Schoolhouse Lane — team moments' },
+  { src: '/images/jobs/jobs-life-4.webp', alt: 'Life at Schoolhouse Lane — office vibes' },
+  { src: '/images/jobs/jobs-life-5.webp', alt: 'Life at Schoolhouse Lane — team environment' },
+  { src: '/images/jobs/jobs-life-6.webp', alt: 'Life at Schoolhouse Lane — workspace' },
 ]
 
 export default function JobsLifeMosaic() {
