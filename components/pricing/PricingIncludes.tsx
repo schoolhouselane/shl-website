@@ -23,7 +23,7 @@ const items = [
 
 export default function PricingIncludes() {
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px] flex flex-col gap-[40px] md:gap-[60px] lg:gap-[80px]">
+    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[200px] flex flex-col gap-[40px] md:gap-[60px] lg:gap-[120px]">
 
       {/* Header row — title left, description right, baseline-aligned */}
       <div className="flex items-end justify-between">

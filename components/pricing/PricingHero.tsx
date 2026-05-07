@@ -5,7 +5,7 @@ import CalendlyButton from '@/components/CalendlyButton'
 
 export default function PricingHero() {
   return (
-    <section className="relative w-full h-[600px] md:h-[640px] lg:h-screen overflow-hidden flex items-end pb-[60px] md:pb-[80px] lg:pb-[120px]">
+    <section className="relative mx-4 md:mx-6 lg:mx-[90px] mt-[64px] md:mt-[95px] lg:mt-[82px] h-[536px] md:h-[545px] lg:h-[calc(100vh-82px)] overflow-hidden flex items-end pb-[60px] md:pb-[80px] lg:pb-[120px]">
       {/* Background image */}
       <Image
         src="/images/pricing.png"
@@ -18,7 +18,7 @@ export default function PricingHero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 px-4 md:px-6 lg:px-[90px] max-w-[900px]">
+      <div className="relative z-10 px-4 md:px-6 lg:px-[40px] max-w-[900px]">
         <div className="flex flex-col gap-[16px] md:gap-[20px] lg:gap-[24px] mb-[28px] md:mb-[36px] lg:mb-[40px]">
           <h1 className="font-black text-[28px] md:text-[44px] lg:text-[64px] leading-[0.9] tracking-[-0.5px] md:tracking-[-1px] lg:tracking-[-1.92px] uppercase text-white">
             Serious Strategy.<br />Unbeatable Speed.<br />Simple Pricing.
