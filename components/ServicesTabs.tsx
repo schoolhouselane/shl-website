@@ -19,7 +19,8 @@ export default function ServicesTabs() {
     <section className="w-full pt-[60px] md:pt-[80px] lg:pt-[120px] pb-[60px] flex flex-col gap-[40px]">
 
       {/* Tab bar */}
-      <div className="flex overflow-x-auto scrollbar-hide lg:justify-center px-4 md:px-6 lg:px-[120px]">
+      <div className="px-4 md:px-6 lg:px-[120px]">
+        <div className="flex overflow-x-auto scrollbar-hide lg:justify-center">
         {tabs.map((tab, i) => (
           <button
             key={tab}
@@ -38,6 +39,7 @@ export default function ServicesTabs() {
             )}
           </button>
         ))}
+        </div>
       </div>
 
       <WorkStrip />
