@@ -18,7 +18,7 @@ interface Props {
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
     <div className="flex gap-[20px] items-start flex-1 min-w-0">
-      <p className="font-extralight italic text-[18px] md:text-[20px] lg:text-[24px] text-white leading-[1.5] flex-1 min-w-0">
+      <p className="font-extralight italic text-[16px] text-white leading-[1.5] flex-1 min-w-0">
         {t.quote}
       </p>
       <div className="border-l-[3px] border-white flex flex-col shrink-0 min-w-[140px] lg:min-w-[180px]">
@@ -126,7 +126,7 @@ export default function JobsTestimonials({ testimonials }: Props) {
             >
               {testimonials.map((t, i) => (
                 <div key={i} className="flex gap-[16px] md:gap-[20px] items-start w-full shrink-0">
-                  <p className="font-extralight italic text-[15px] md:text-[18px] text-white leading-[1.5] flex-1 min-w-0">
+                  <p className="font-extralight italic text-[16px] text-white leading-[1.5] flex-1 min-w-0">
                     {t.quote}
                   </p>
                   <div className="border-l-[3px] border-white flex flex-col shrink-0">
