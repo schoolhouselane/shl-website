@@ -29,7 +29,7 @@ export default function ServicesMethod() {
   const [stepsRef, stepsInView] = useInView(0.1)
 
   return (
-    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[120px] flex flex-col gap-[40px] lg:gap-[80px]">
+    <section className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] py-[60px] md:py-[80px] lg:py-[200px] flex flex-col gap-[40px] lg:gap-[80px]">
 
       {/* Header */}
       <div

@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useInView } from '@/hooks/useInView'
+import CalendlyButton from '@/components/CalendlyButton'
 
 const services = [
   {
@@ -238,13 +238,10 @@ export default function ServicesAccordion() {
                         </div>
                       ))}
                     </div>
-                    <Link
-                      href="/contact"
-                      className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-[20px] md:px-[24px] py-[10px] md:py-[12px] text-[14px] md:text-[16px] font-medium uppercase text-[#1e1e20]"
-                    >
+                    <CalendlyButton className="btn-cta inline-flex items-center gap-3 w-fit border border-[#1e1e20] rounded-full px-[20px] md:px-[24px] py-[10px] md:py-[12px] text-[14px] md:text-[16px] font-medium uppercase text-[#1e1e20]">
                       Ready for this level of growth?
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </Link>
+                    </CalendlyButton>
                   </div>
 
                 </div>
