@@ -65,13 +65,12 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                 </Link>
               )
             })}
-            <Link href="/login" className={`btn-cta flex items-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'bg-[#1e1e20] border-[#1e1e20] text-white' : 'bg-white border-white text-[#1e1e20]'}`}>
+            <CalendlyButton className={`btn-cta flex items-center justify-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'bg-[#1e1e20] border-[#1e1e20] text-white' : 'bg-white border-white text-[#1e1e20]'}`}>
+              Book a Demo
+            </CalendlyButton>
+            <Link href="/login" className={`btn-cta flex items-center justify-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'border-[#1e1e20] text-[#1e1e20]' : 'border-white text-white'}`}>
               Sign In
             </Link>
-            <CalendlyButton className={`btn-cta flex items-center gap-[12px] border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap transition-all duration-300 ${borderColor} ${textColor}`}>
-              Book a Demo
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </CalendlyButton>
           </nav>
 
           {/* Mobile menu button */}
