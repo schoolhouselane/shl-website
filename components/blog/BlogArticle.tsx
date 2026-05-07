@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import type { BlogPost, ContentBlock } from '@/lib/blog-data'
+import { allBlogPosts } from '@/lib/blog-data'
 
 function ArrowUpRight({ size = 24 }: { size?: number }) {
   return (
@@ -278,12 +279,15 @@ export default function BlogArticle({ post }: Props) {
                 Related Articles
               </p>
               <div className="flex flex-col gap-[24px]">
-                {post.relatedArticles.map((article, i) => (
+                {post.relatedArticles.map((article, i) => {
+                  const linked = allBlogPosts.find(p => p.slug === article.slug)
+                  const img = linked?.listingImage ?? linked?.heroImage ?? article.thumbnail
+                  return (
                   <div key={article.slug}>
                     <a href={`/blog/${article.slug}`} className="flex gap-[12px] items-center group">
                       <div className="relative shrink-0 w-[80px] h-[80px] lg:w-[114px] lg:h-[114px] overflow-hidden">
                         <Image
-                          src={article.thumbnail}
+                          src={img}
                           alt={article.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -303,7 +307,8 @@ export default function BlogArticle({ post }: Props) {
                       <div className="mt-[24px] border-b border-[#e0e0e0]" />
                     )}
                   </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
           )}
