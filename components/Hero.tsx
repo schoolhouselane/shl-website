@@ -18,7 +18,7 @@ const slides = [
     sub: 'We remove the bottlenecks in the traditional marketing model',
   },
   {
-    image: '/images/hero-3.webp',
+    image: '/images/hero-3-v2.webp',
     mobileImage: '/images/mobile-hm-hero-3.webp',
     heading: 'Creative-as-a-Service\nfor Marketing teams',
     sub: 'Top-tier creative talent with proprietary AI-powered workflows',

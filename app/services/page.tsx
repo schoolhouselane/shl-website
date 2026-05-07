@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: 'Services — Schoolhouse Lane Brand Strategy & Creative',
     description: 'Brand Identity, Campaigns, Websites, AI Creative, and Growth Consulting.',
     url: 'https://schoolhouselane.co/services',
-    images: [{ url: '/images/services-hero.png', width: 1200, height: 630, alt: 'Schoolhouse Lane Services' }],
+    images: [{ url: '/images/services-hero.webp', width: 1200, height: 630, alt: 'Schoolhouse Lane Services' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Services — Schoolhouse Lane',
     description: 'Brand Identity, Campaigns, Websites, AI Creative, and Growth Consulting.',
-    images: ['/images/services-hero.png'],
+    images: ['/images/services-hero.webp'],
   },
 }
 import ServicesHero from '@/components/services/ServicesHero'

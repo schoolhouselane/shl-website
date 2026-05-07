@@ -33,7 +33,7 @@ export default function ServicesHero() {
         }}
       >
         <Image
-          src="/images/services-hero.png"
+          src="/images/services-hero.webp"
           alt="Services"
           fill
           className="object-cover object-center"
