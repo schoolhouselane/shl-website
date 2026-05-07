@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/blog`,
     siteName: 'Schoolhouse Lane',
     locale: 'en_IE',
+    images: [{ url: `${BASE_URL}/images/blog-1.webp`, width: 1200, height: 630, alt: 'The Journal — Schoolhouse Lane' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The Journal — Schoolhouse Lane',
+    description: 'Strategy, branding, and digital thinking from the Schoolhouse Lane team.',
+    images: [`${BASE_URL}/images/blog-1.webp`],
   },
 }
 
