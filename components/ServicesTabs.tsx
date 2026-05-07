@@ -16,7 +16,7 @@ export default function ServicesTabs() {
   const [active, setActive] = useState(0)
 
   return (
-    <section className="w-full pt-[60px] md:pt-[80px] lg:pt-[120px] pb-[60px] flex flex-col gap-[40px]">
+    <section className="w-full px-4 md:px-6 lg:px-[120px] pt-[60px] md:pt-[80px] lg:pt-[120px] pb-[60px] flex flex-col gap-[40px]">
 
       {/* Tab bar */}
       <div className="flex overflow-x-auto scrollbar-hide lg:justify-center">
