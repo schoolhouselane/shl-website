@@ -13,7 +13,7 @@ import PricingCTABanner from '@/components/pricing/PricingCTABanner'
 
 export const metadata: Metadata = {
   title: 'Pricing — Serious Strategy. Unbeatable Speed.',
-  description: 'Simple, transparent pricing for world-class brand strategy and AI-powered creative. From Brand Essentials at $3,500 to full enterprise creative suites.',
+  description: 'Simple, transparent pricing for world-class brand strategy and AI-powered creative. From Brand Essentials at 6,500€ to full enterprise creative suites.',
   alternates: { canonical: 'https://schoolhouselane.co/pricing' },
   openGraph: {
     title: 'Pricing — Schoolhouse Lane',
