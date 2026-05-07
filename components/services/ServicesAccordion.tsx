@@ -21,7 +21,7 @@ const services = [
       'Leadership workshops & team enablement',
     ],
     result: '4× ARR growth · 12-month retainer',
-    images: ['/images/services-d1.png'],
+    images: ['/images/services/01-1.webp', '/images/services/01-2.webp', '/images/services/01-3.webp'],
   },
   {
     num: '02',
@@ -38,7 +38,7 @@ const services = [
       'Launch campaigns & brand activation',
     ],
     result: '+312% revenue uplift · 6-month engagement',
-    images: ['/images/services-d2.png'],
+    images: ['/images/services/02-1.webp', '/images/services/02-2.webp', '/images/services/02-3.webp', '/images/services/02-4.webp'],
   },
   {
     num: '03',
@@ -55,7 +55,7 @@ const services = [
       'AI workflow integration for in-house teams',
     ],
     result: '3× content output · 50% cost reduction',
-    images: ['/images/services-d3.png'],
+    images: ['/images/services/03-1.webp', '/images/services/03-2.webp', '/images/services/03-3.webp', '/images/services/03-4.webp'],
   },
   {
     num: '04',
@@ -72,7 +72,7 @@ const services = [
       'Performance reporting & creative iteration',
     ],
     result: '+940K organic reach · 8-week campaign',
-    images: ['/images/services-d4.png'],
+    images: ['/images/services/04-1.webp', '/images/services/04-2.webp', '/images/services/04-3.webp'],
   },
   {
     num: '05',
@@ -89,7 +89,7 @@ const services = [
       'Post-launch A/B testing & iteration',
     ],
     result: '+187% conversion rate · 4-month build',
-    images: ['/images/services-d5.png'],
+    images: ['/images/services/05-1.webp', '/images/services/05-2.webp', '/images/services/05-3.webp', '/images/services/05-4.webp'],
   },
   {
     num: '06',
@@ -106,7 +106,7 @@ const services = [
       'Motion identity & logo animation systems',
     ],
     result: '940K organic reach · 8-week campaign',
-    images: ['/images/services-d6.png'],
+    images: ['/images/services/06-1.webp', '/images/services/06-2.webp', '/images/services/06-3.webp', '/images/services/06-4.webp', '/images/services/06-5.webp', '/images/services/06-6.webp'],
   },
 ]
 
