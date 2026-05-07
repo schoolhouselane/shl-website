@@ -45,7 +45,7 @@ export default function ServicesHero() {
       {/* Body + CTAs */}
       <div
         ref={bodyRef as React.RefObject<HTMLDivElement>}
-        className="flex flex-col md:flex-row md:justify-between md:items-center gap-[16px] md:gap-6 pb-[40px] md:pb-[60px] lg:pb-[80px] transition-all duration-700"
+        className="flex flex-col gap-[16px] md:gap-[24px] lg:gap-[32px] pb-[40px] md:pb-[60px] lg:pb-[80px] transition-all duration-700"
         style={{ opacity: bodyInView ? 1 : 0, transform: bodyInView ? 'translateY(0)' : 'translateY(20px)', transitionDelay: '160ms' }}
       >
         <p className="text-[15px] md:text-[16px] lg:text-[20px] text-[#111] leading-normal max-w-full md:max-w-[476px] lg:max-w-[921px]">
