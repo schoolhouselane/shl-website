@@ -616,7 +616,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     seoTitle: 'Creative Commerce: Where Imagination Meets Revenue — Schoolhouse Lane',
     seoDescription: 'In the relentless pursuit of growth, many modern enterprises have fallen into the "efficiency trap." True growth doesn\'t come from doing the same things more efficiently.',
     keywords: ['creative commerce', 'brand strategy', 'vision-led growth', 'conscious capitalism', 'Schoolhouse Lane'],
-    publishedAt: '2026-05-07',
+    publishedAt: '2026-03-10',
     author: DARREN,
     body: [
       {
@@ -787,9 +787,11 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
   },
 ]
 
-export const allBlogPosts: BlogPost[] = [...blogPosts, ...PLACEHOLDER_POSTS].sort(
-  (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-)
+export const allBlogPosts: BlogPost[] = [...blogPosts, ...PLACEHOLDER_POSTS].sort((a, b) => {
+  if (a.slug === 'creative-commerce') return -1
+  if (b.slug === 'creative-commerce') return 1
+  return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+})
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return allBlogPosts.find((p) => p.slug === slug)
