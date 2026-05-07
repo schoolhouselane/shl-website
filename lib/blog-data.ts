@@ -616,7 +616,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     seoTitle: 'Creative Commerce: Where Imagination Meets Revenue — Schoolhouse Lane',
     seoDescription: 'In the relentless pursuit of growth, many modern enterprises have fallen into the "efficiency trap." True growth doesn\'t come from doing the same things more efficiently.',
     keywords: ['creative commerce', 'brand strategy', 'vision-led growth', 'conscious capitalism', 'Schoolhouse Lane'],
-    publishedAt: '2026-03-10',
+    publishedAt: '2026-05-07',
     author: DARREN,
     body: [
       {
