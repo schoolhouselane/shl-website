@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { useInView } from '@/hooks/useInView'
 
 const services = [
@@ -113,6 +113,22 @@ export default function ServicesAccordion() {
   const [active, setActive] = useState<number | null>(null)
   const rowRefs = useRef<(HTMLDivElement | null)[]>([])
   const [headerRef, headerInView] = useInView(0.2)
+
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '')
+    if (!hash) return
+    const idx = services.findIndex((s) => s.slug === hash)
+    if (idx === -1) return
+    setActive(idx)
+    setTimeout(() => {
+      const el = rowRefs.current[idx]
+      if (el) {
+        const headerH = window.innerWidth >= 768 ? 82 : 64
+        const top = el.getBoundingClientRect().top + window.scrollY - headerH - 12
+        window.scrollTo({ top, behavior: 'smooth' })
+      }
+    }, 300)
+  }, [])
 
   const toggle = useCallback((i: number) => {
     setActive((prev) => {
