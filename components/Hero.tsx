@@ -104,7 +104,7 @@ export default function Hero() {
           scrolled ? 'pl-4 md:pl-6 lg:pl-[49px]' : 'pl-4 md:pl-6 lg:pl-[90px]'
         }`}>
           <div key={current} className="flex flex-col gap-4 md:gap-5 lg:gap-6 text-white animate-fadeIn">
-            <h1 className="font-black text-[24px] md:text-[32px] lg:text-[64px] leading-[0.87] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase">
+            <h1 className="font-black text-[24px] md:text-[32px] lg:text-[48px] leading-[0.87] tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1.28px] uppercase">
               {slides[current].heading.split('\n').map((line, i, arr) => (
                 <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
               ))}

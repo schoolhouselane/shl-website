@@ -37,7 +37,7 @@ export default function AboutStats() {
             </p>
             <p className="font-medium text-[13px] md:text-[16px] text-white mt-2">Of clients stay. Every year.</p>
           </div>
-          <CalendlyButton className="btn-cta inline-flex items-center justify-center gap-3 w-fit bg-white border border-[#1e1e20] rounded-full px-[12px] py-[8px] md:px-6 md:py-3 lg:px-[24px] lg:py-[20px] text-[24px] font-medium uppercase whitespace-nowrap text-[#1e1e20]">
+          <CalendlyButton className="btn-cta inline-flex items-center justify-center gap-3 w-fit bg-white border border-[#1e1e20] rounded-full px-[12px] py-[8px] md:px-6 md:py-3 lg:px-[24px] lg:py-[12px] text-[16px] font-medium uppercase whitespace-nowrap text-[#1e1e20]">
             Book a Demo
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </CalendlyButton>

@@ -34,9 +34,9 @@ export default function JobsCTA() {
       <div className="flex flex-col gap-[12px] shrink-0 md:items-end">
         <Link
           href="#open-roles"
-          className="btn-cta bg-white flex items-center gap-[12px] justify-center px-[24px] py-[16px] md:py-[20px] rounded-full border border-white"
+          className="btn-cta bg-white flex items-center gap-[12px] justify-center px-[24px] py-[12px] rounded-full border border-white"
         >
-          <span className="font-medium text-[18px] md:text-[20px] lg:text-[24px] text-black uppercase whitespace-nowrap">
+          <span className="font-medium text-[16px] text-black uppercase whitespace-nowrap">
             See all open roles
           </span>
           <ArrowRight size={22} />

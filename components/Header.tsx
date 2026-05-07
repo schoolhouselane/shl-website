@@ -44,7 +44,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isDark ? 'bg-[#f5f3ef] border-b border-[rgba(54,31,6,0.16)]' : 'bg-transparent border-b border-white/20'
       }`}>
-        <div className="flex items-center justify-between px-4 md:px-6 lg:px-[90px] h-[64px] md:h-[95px] lg:h-[82px]">
+        <div className="hidden md:grid md:grid-cols-[auto_1fr_auto] lg:grid-cols-[160px_1fr_260px] items-center px-4 md:px-6 lg:px-[90px] h-[64px] md:h-[95px] lg:h-[82px]">
           <Link href="/">
             <Image
               src="/logo-white.svg"
@@ -55,8 +55,8 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-[18px] lg:gap-[36px] font-manrope">
+          {/* Desktop nav — truly centered */}
+          <nav className="flex items-center justify-center gap-[18px] lg:gap-[36px] font-manrope">
             {[['/', 'Home'], ['/about', 'About'], ['/services', 'Services'], ['/work', 'Work'], ['/blog', 'Blog'], ['/jobs', 'Jobs'], ['/pricing', 'Pricing']].map(([href, label]) => {
               const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href)
               return (
@@ -65,17 +65,34 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                 </Link>
               )
             })}
+          </nav>
+
+          {/* Desktop CTA buttons */}
+          <div className="flex items-center justify-end gap-[12px]">
             <CalendlyButton className={`btn-cta flex items-center justify-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'bg-[#1e1e20] border-[#1e1e20] text-white' : 'bg-white border-white text-[#1e1e20]'}`}>
               Book a Demo
             </CalendlyButton>
             <Link href="/login" className={`btn-cta flex items-center justify-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'border-[#1e1e20] text-[#1e1e20]' : 'border-white text-white'}`}>
               Sign In
             </Link>
-          </nav>
+          </div>
+        </div>
+
+        {/* Mobile header row */}
+        <div className="md:hidden flex items-center justify-between px-4 h-[64px]">
+          <Link href="/">
+            <Image
+              src="/logo-white.svg"
+              alt="Schoolhouse Lane"
+              width={94}
+              height={37}
+              className={`w-[65px] h-auto object-contain transition-all duration-300 ${isDark ? 'invert' : ''}`}
+            />
+          </Link>
 
           {/* Mobile menu button */}
           <button
-            className={`md:hidden flex items-center pb-[2px] border-b transition-all duration-300 ${borderColor}`}
+            className={`flex items-center pb-[2px] border-b transition-all duration-300 ${borderColor}`}
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
