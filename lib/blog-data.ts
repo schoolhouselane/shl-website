@@ -793,9 +793,9 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     category: 'AI & Strategy',
     heroImage: '/images/blog3-0.webp',
     listingImage: '/images/blog-3-gallery.webp',
-    seoTitle: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution — Schoolhouse Lane',
-    seoDescription: 'As AI transforms creative production, marketing leaders must move beyond speed and use AI as a lever for measurable enterprise value. Here are five strategic actions to stay ahead.',
-    keywords: ['AI creative', 'marketing strategy', 'enterprise value', 'creative commerce', 'brand strategy', 'AI marketing', 'Schoolhouse Lane'],
+    seoTitle: 'AI Creative Revolution: 5 Strategic Actions for Marketing Leaders — Schoolhouse Lane',
+    seoDescription: 'Speed is now a commodity. For marketing leaders, the challenge is no longer "how to use AI" but how to use it for enterprise value. Darren McGrath shares 5 proven strategies.',
+    keywords: ['AI creative revolution', 'AI marketing strategy', 'AI creative production', 'enterprise value', 'creative commerce', 'brand strategy', 'marketing leaders', 'AI for marketers', 'Schoolhouse Lane'],
     publishedAt: '2026-05-11',
     author: DARREN,
     body: [

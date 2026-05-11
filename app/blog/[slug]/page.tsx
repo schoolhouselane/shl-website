@@ -7,7 +7,7 @@ import BlogArticle from '@/components/blog/BlogArticle'
 import BlogMoreJournal from '@/components/blog/BlogMoreJournal'
 import BlogNewsletter from '@/components/blog/BlogNewsletter'
 import CaseStudyCTA from '@/components/work/CaseStudyCTA'
-import { getBlogPost, allBlogPosts } from '@/lib/blog-data'
+import { getBlogPost, allBlogPosts, type JournalCard } from '@/lib/blog-data'
 
 const BASE_URL = 'https://schoolhouselane.co'
 
@@ -68,6 +68,21 @@ export default async function BlogPostPage({
   const url = `${BASE_URL}/blog/${slug}`
   const imageUrl = post.heroImage.startsWith('http') ? post.heroImage : `${BASE_URL}${post.heroImage}`
 
+  // Pick 3 varied posts for "More From The Journal" — different selection per slug
+  const others = allBlogPosts.filter(p => p.slug !== slug)
+  const offset = allBlogPosts.findIndex(p => p.slug === slug)
+  const step = Math.max(1, Math.floor(others.length / 3))
+  const journalCards: JournalCard[] = [
+    others[offset % others.length],
+    others[(offset + step) % others.length],
+    others[(offset + step * 2) % others.length],
+  ].filter(Boolean).map(p => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.seoDescription ?? '',
+    image: p.listingImage ?? p.heroImage,
+  }))
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -108,7 +123,7 @@ export default async function BlogPostPage({
         <BlogHero src={post.heroImage} alt={post.title} />
         <BlogArticle post={post} />
         <CaseStudyCTA />
-        <BlogMoreJournal cards={post.journalCards} />
+        <BlogMoreJournal cards={journalCards} />
         <BlogNewsletter />
       </main>
       <Footer />
