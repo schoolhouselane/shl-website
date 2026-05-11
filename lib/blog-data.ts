@@ -785,6 +785,121 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
       { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.webp' },
     ],
   },
+
+  // ── Article: AI Creative Revolution ────────────────────────────────────────
+  {
+    slug: 'ai-creative-revolution',
+    title: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution',
+    category: 'AI & Strategy',
+    heroImage: '/images/blog3-0.webp',
+    listingImage: '/images/blog-3-gallery.webp',
+    seoTitle: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution — Schoolhouse Lane',
+    seoDescription: 'As AI transforms creative production, marketing leaders must move beyond speed and use AI as a lever for measurable enterprise value. Here are five strategic actions to stay ahead.',
+    keywords: ['AI creative', 'marketing strategy', 'enterprise value', 'creative commerce', 'brand strategy', 'AI marketing', 'Schoolhouse Lane'],
+    publishedAt: '2026-05-11',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        text: 'The shift from manual execution to AI-powered production is no longer a future forecast—it is the current reality of the marketing landscape. However, as speed becomes a commodity, the risk of "algorithmic noise" increases. For marketing leaders, the challenge is no longer "how do we use AI?" but "how do we use AI to drive measurable enterprise value?".',
+      },
+      {
+        type: 'paragraph',
+        text: "At Schoolhouse Lane, we believe the most powerful engine for growth isn't a generative prompt; it's a question. Here are the top five strategic actions marketers must take to effectively leverage AI creative production and select the right agency partners.",
+      },
+      { type: 'image', src: '/images/blog3-1.webp', alt: 'AI creative production', width: 988, height: 453 },
+      { type: 'heading', text: '1. Shift Strategy "Upstream"' },
+      {
+        type: 'paragraph',
+        text: 'Most teams treat AI as a "downstream" tool for creating content once decisions are finalized. To gain a competitive advantage, you must move AI integration "upstream".',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Action:  ', text: 'Use AI-powered insights during the discovery phase to unearth latent potential within your organization.' },
+          { lead: 'Why it matters: ', text: 'This transforms brand from a marketing cost into a high-leverage strategic engine that accelerates business goals.' },
+        ],
+      },
+      { type: 'heading', text: '2. Prioritize "Vision-Led" Over "Efficiency-Led" Value' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'Efficiency—doing the same things faster—eventually plateaus. The real paradigm shift is moving toward ' },
+          { text: 'vision-led value creation', bold: true },
+          { text: '.' },
+        ],
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Action: ', text: 'Evaluate agency partners not just on their production speed, but on their ability to architect the infrastructure that allows your company to live its vision.' },
+          { lead: 'Why it matters: ', text: 'AI should serve as the bridge between imagination and business success, not just a shortcut to more content.' },
+        ],
+      },
+      { type: 'heading', text: '3. Build a "Creative Commerce" Ecosystem' },
+      {
+        type: 'paragraph',
+        text: 'Individual assets are secondary to the ecosystem they inhabit. Every AI-generated touchpoint must be part of a unified methodology.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Action: ', text: 'Ensure every piece of AI creative—from social posts to the digital checkout—is aligned with a single, potent organizing principle.' },
+          { lead: 'Why it matters: ', text: 'This ensures that your most intangible asset (brand) becomes your most measurable advantage.' },
+        ],
+      },
+      { type: 'heading', text: '4. Demand Diversity of Thought' },
+      {
+        type: 'paragraph',
+        text: 'In an era of automated outputs, the "human" element is your primary differentiator.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Action: ', text: 'Look for partners who view diversity of thought as a competitive advantage. AI can optimize, but it cannot replace the altruistic, emotional intelligence required to capture hearts and minds.' },
+          { lead: 'Why it matters: ', text: 'Brands that prioritize the emotional and ethical in their AI strategies are more resilient to category shifts.' },
+        ],
+      },
+      { type: 'heading', text: '5. Focus on Enterprise Value Creation' },
+      {
+        type: 'paragraph',
+        text: 'The ultimate objective of any creative production—AI or otherwise—is to increase the valuation of the company.',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Action: ', text: 'Partner with agencies that understand how to use AI to drive premium valuations during exits or capital raises.' },
+          { lead: 'Why it matters: ', text: 'For Founders, Investors, and CEOs, AI should be a lever for accelerating enterprise value, not just a tool for generating clicks.' },
+        ],
+      },
+      { type: 'heading', text: 'Conclusion: No Cure for Curiosity' },
+      {
+        type: 'paragraph',
+        text: 'As you navigate the world of AI creative production, remember that technology is only as potent as the strategy behind it. By choosing to focus on relentless inquiry and rigorous strategy, you ensure your brand doesn\'t just survive the AI revolution—it leads it.',
+      },
+      {
+        type: 'paragraph',
+        parts: [{ text: 'Is your AI strategy architected for growth?', bold: true }],
+      },
+      { type: 'blockquote', text: 'Schoolhouse Lane: The Brand-Led Value Creation Agency. Where Creative Commerce meets enterprise value.' },
+      { type: 'image', src: '/images/blog3-3.webp', alt: 'Brand-led value creation', width: 988, height: 269 },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-related-1.webp' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.webp' },
+      { slug: 'founders-dilemma-enterprise-value-ai', title: "Eddie Jordan Foundation. Engaging in delusion or fuelling change?", excerpt: "Sitting in Soho while London's finest scurry through their morning I find myself listening to Keith O'Loughlin", thumbnail: '/images/blog/blog-eddie-jordan.webp' },
+    ],
+    journalCards: [
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/seo-hero.webp' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.webp' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.webp' },
+    ],
+  },
 ]
 
 export const allBlogPosts: BlogPost[] = [...blogPosts, ...PLACEHOLDER_POSTS].sort((a, b) => {
