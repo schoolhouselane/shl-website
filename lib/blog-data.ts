@@ -527,6 +527,123 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 
+
+  // ── Article: Beyond the Prompt ─────────────────────────────────────────────
+  {
+    slug: 'beyond-the-prompt',
+    title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value',
+    category: 'AI & Strategy',
+    heroImage: '/images/blog2-0.webp',
+    listingImage: '/images/blog-2-gallery.webp',
+    seoTitle: 'Beyond the Prompt: How Marketing Teams Drive Enterprise Value with AI — Schoolhouse Lane',
+    seoDescription: 'Modern marketing teams face a new challenge: using AI for enterprise value, not just efficiency. Darren McGrath shares four strategic moves that separate leaders from followers in the AI era.',
+    keywords: ['AI marketing', 'enterprise value', 'creative commerce', 'vision-led growth', 'marketing strategy', 'AI creative production', 'brand strategy', 'marketing teams', 'Schoolhouse Lane'],
+    publishedAt: '2026-05-08',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'We have reached a marketing tipping point. AI has lowered the barrier to content production so dramatically that the volume of "algorithmic noise" has become deafening. For modern marketing teams, the challenge is no longer "how do we use AI?" — it is "how do we use AI to create genuine enterprise value?"',
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        parts: [
+          { text: 'At Schoolhouse Lane, we have seen firsthand that the distinction between brands that lead and those that follow lies not in their technology stack, but in their strategic intent. The brands that will outperform their category have moved decisively from efficiency-led execution to ' },
+          { text: 'vision-led value creation', bold: true },
+          { text: '.' },
+        ],
+      },
+      { type: 'image', src: '/images/blog2-1.webp', alt: 'AI-powered marketing strategy', width: 988, height: 453 },
+      { type: 'heading', text: "1. Move Strategy 'Upstream'" },
+      {
+        type: 'paragraph',
+        text: "Most marketing teams deploy AI at the execution stage — generating assets for strategies already decided. The breakthrough move is shifting AI upstream, into the discovery and strategy phase itself.",
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Use AI for Discovery: ', text: 'Deploy AI-powered insights during the early discovery phase to unearth the latent potential within your organisation — identifying the unique organising principle that sets you apart from competitors.' },
+          { lead: 'Architect Infrastructure: ', text: 'Move beyond content production and use AI to architect the infrastructure that allows your company to live its most ambitious brand story.' },
+        ],
+      },
+      { type: 'heading', text: '2. Implement Creative Commerce' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'Individual AI assets are meaningless in isolation. The teams building true competitive advantage are those implementing a ' },
+          { text: 'Creative Commerce', bold: true },
+          { text: ' methodology — where every touchpoint, from the brand story to the final checkout, is unified under a single organising principle.' },
+        ],
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Build Ecosystems: ', text: "Don't just build identities — build ecosystems. Ensure your AI-generated creative is interconnected and accelerates your business goals at every stage of the customer journey." },
+          { lead: 'Measurable Advantage: ', text: 'Treat brand as business strategy made tangible. This transforms your most intangible asset into your most measurable advantage — one that drives premium valuations and investor confidence.' },
+        ],
+      },
+      { type: 'heading', text: '3. Prioritize the Human in the Machine' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'In a world saturated with AI-generated content, the ' },
+          { text: 'diversity of thought', bold: true },
+          { text: ' behind the brand is your primary differentiator. AI can optimise, but it cannot replicate emotional intelligence, ethical conviction, or genuine curiosity about the human condition.' },
+        ],
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Emotional and Ethical: ', text: 'Prioritise the emotional and the ethical in your creative strategy. Algorithms can generate; only humans can truly connect.' },
+          { lead: 'Conscious Capitalism: ', text: 'Build a brand that aligns profit with purpose and people. Businesses that operate with genuine conviction build loyalty that no ad spend can replicate.' },
+          { lead: 'Empathy and Intuition: ', text: 'The most powerful creative decisions are still made by people who understand culture, context, and consequence — use AI as a multiplier, not a replacement.' },
+        ],
+      },
+      { type: 'heading', text: '4. Drive Enterprise Value, Not Just Traffic' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'The objective of any marketing strategy must ultimately be ' },
+          { text: 'enterprise value creation', bold: true },
+          { text: ' — not just impressions, clicks, or even conversions. Marketing leaders who make this shift in mindset change how the boardroom views their function.' },
+        ],
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'Premium Valuations: ', text: "Investors don't just buy cash flow — they buy the certainty of future growth that a potent brand signals. Use AI to build the brand story that drives premium valuations during exits or capital raises." },
+          { lead: 'Unified Culture: ', text: 'A brand-led AI strategy aligns diverse teams under a single, potent vision — acting as a North Star that unifies internal culture and external messaging.' },
+        ],
+      },
+      { type: 'heading', text: 'The Verdict: Curiosity is the Cure' },
+      {
+        type: 'paragraph',
+        text: "As marketing teams navigate the AI landscape, the most dangerous trap is mistaking velocity for value. The brands that will define the next decade are not those that moved the fastest — they are those that moved with the most clarity of purpose.",
+      },
+      {
+        type: 'paragraph',
+        parts: [{ text: 'Is your marketing strategy architected for enterprise value, or just efficiency?', bold: true }],
+      },
+      { type: 'blockquote', text: 'Schoolhouse Lane: The Brand-Led Value Creation Agency. Where relentless inquiry meets rigorous strategy.' },
+      { type: 'image', src: '/images/blog2-2.webp', alt: 'Vision-led value creation', width: 988, height: 269 },
+    ],
+    relatedArticles: [
+      { slug: 'ai-creative-revolution', title: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution', excerpt: "Speed is now a commodity. Here are the five strategic actions marketing leaders must take to leverage AI creative production.", thumbnail: '/images/blog3-0.webp' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In the traditional corporate world, brand is often dismissed as a downstream marketing cost.", thumbnail: '/images/blog/blog-related-1.webp' },
+      { slug: 'founders-dilemma-enterprise-value-ai', title: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI", excerpt: "For founders eyeing an exit or Series B, brand is your most measurable advantage.", thumbnail: '/images/blog-8.webp' },
+    ],
+    journalCards: [
+      { slug: 'ai-creative-revolution', title: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution', excerpt: "Speed is now a commodity. For marketing leaders, the challenge is no longer 'how to use AI' but how to use it for enterprise value.", image: '/images/blog-3-gallery.webp' },
+      { slug: 'founders-dilemma-enterprise-value-ai', title: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI", excerpt: "For founders eyeing an exit or Series B, brand is your most measurable advantage. Discover how to use AI to drive enterprise value.", image: '/images/blog-8-0.webp' },
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/seo-hero.webp' },
+    ],
+  },
 ]
 
 // ─── Placeholder stubs ────────────────────────────────────────────────────────
