@@ -528,6 +528,101 @@ export const blogPosts: BlogPost[] = [
   },
 
 
+  // ── Article: AI Paradigm in Creative Strategy ──────────────────────────────
+  {
+    slug: 'ai-paradigm-creative-strategy',
+    title: 'The Shift from Execution to Enterprise: The AI Paradigm in Creative Strategy',
+    category: 'AI & Strategy',
+    heroImage: '/images/blog1-0.webp',
+    listingImage: '/images/blog1-gallery.webp',
+    seoTitle: 'The AI Paradigm in Creative Strategy: From Execution to Enterprise — Schoolhouse Lane',
+    seoDescription: "The marketing industry's real shift isn't about speed — it's about moving from efficiency-led execution to vision-led value creation. Darren McGrath on the AI paradigm redefining creative strategy.",
+    keywords: ['AI creative strategy', 'AI paradigm', 'vision-led value creation', 'creative commerce', 'enterprise value', 'brand strategy', 'AI marketing', 'marketing leadership', 'algorithmic noise', 'Schoolhouse Lane'],
+    publishedAt: '2026-05-13',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        parts: [
+          { text: 'The marketing landscape is currently undergoing its most significant structural shift since the dawn of digital. While the industry is flooded with models focusing on high-volume production and subscription-based "output," a deeper evolution is occurring. At Schoolhouse Lane, we recognize that the real paradigm shift isn\'t just about how fast we can create; it\'s about moving from ' },
+          { text: 'efficiency-led execution ', bold: true },
+          { text: 'to ' },
+          { text: 'vision-led value creation', bold: true },
+          { text: '.' },
+        ],
+      },
+      { type: 'image', src: '/images/blog1-1.webp', alt: 'AI paradigm in creative strategy', width: 988, height: 453 },
+      { type: 'heading', text: 'The Commodity of Speed' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'For years, the industry has chased the "faster, cheaper, better" trifecta. Modern AI-powered creative teams have successfully commoditized the "faster" and "cheaper" aspects. However, when speed becomes a baseline, it creates a new challenge: ' },
+          { text: 'algorithmic noise', bold: true },
+          { text: '.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "If every brand has access to rapid-fire creative production, \"good enough\" becomes the ceiling. At Schoolhouse Lane, we operate at the intersection of relentless inquiry and rigorous strategy to ensure our clients don't just add to the noise, but cut through it with intent.",
+      },
+      { type: 'heading', text: 'Moving "Upstream": Brand as a Strategic Engine' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'The true leaders in this new era are those who treat AI as an ' },
+          { text: 'upstream strategic asset ', bold: true },
+          { text: 'rather than a downstream marketing cost. We are shifting the focus from simple content generation to architecting the infrastructure that allows ambitious companies to thrive.' },
+        ],
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'From Content to Ecosystems: ', text: "We don't just build identities; we build ecosystems where every AI-enhanced touchpoint, from strategy to checkout, accelerates business goals." },
+          { lead: 'From Marketing Tool to Value Lever: ', text: 'We use creative intelligence as a primary lever for accelerating enterprise value creation, especially for Founders and Boards eyeing exits or capital raises.' },
+          { lead: 'From Efficiency to Impact: ', text: 'While others use AI for volume, we use it to unearth latent potential within an organization, aligning profit with purpose.' },
+        ],
+      },
+      { type: 'heading', text: 'Creative Commerce: The Human-AI Hybrid' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'Our methodology, ' },
+          { text: 'Creative Commerce', bold: true },
+          { text: ', is the bridge between imagination and business success. We believe that in an era of automation, ' },
+          { text: 'diversity of thought ', bold: true },
+          { text: 'remains the ultimate competitive advantage.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "By treating brand as business strategy made tangible, we ensure that your most intangible asset — your vision — becomes your most measurable advantage. We prioritize the emotional, the ethical, and the real, proving that there is no cure for curiosity — even in an automated world.",
+      },
+      { type: 'heading', text: 'Leading the New Era' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'The marketing industry is no longer a race of production; it is a race of ' },
+          { text: 'clarity and alignment', bold: true },
+          { text: '. As a human agency with an altruistic view, Schoolhouse Lane is leading this shift by ensuring that the power of AI is always anchored by rigorous strategy and human-centric insight.' },
+        ],
+      },
+      { type: 'blockquote', text: 'Is your agency providing you with more content, or more enterprise value?' },
+      { type: 'image', src: '/images/blog1-2.webp', alt: 'From execution to enterprise value', width: 988, height: 269 },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In the traditional corporate world, brand is often dismissed as a downstream marketing cost.", thumbnail: '/images/blog/blog-related-1.webp' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.webp' },
+      { slug: 'beyond-the-prompt', title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value', excerpt: "Modern marketing teams face a new challenge: using AI for enterprise value, not just efficiency.", thumbnail: '/images/blog-2-gallery.webp' },
+    ],
+    journalCards: [
+      { slug: 'beyond-the-prompt', title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value', excerpt: "Modern marketing teams face a new challenge: using AI for enterprise value, not just efficiency.", image: '/images/blog-2-gallery.webp' },
+      { slug: 'ai-creative-revolution', title: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution', excerpt: "Speed is now a commodity. For marketing leaders, the challenge is no longer 'how to use AI' but how to use it for enterprise value.", image: '/images/blog-3-gallery.webp' },
+      { slug: 'founders-dilemma-enterprise-value-ai', title: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI", excerpt: "For founders eyeing an exit or Series B, brand is your most measurable advantage.", image: '/images/blog-8-0.webp' },
+    ],
+  },
+
   // ── Article: Beyond the Prompt ─────────────────────────────────────────────
   {
     slug: 'beyond-the-prompt',
