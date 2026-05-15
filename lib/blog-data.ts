@@ -528,6 +528,97 @@ export const blogPosts: BlogPost[] = [
   },
 
 
+  // ── Article: The Efficiency Trap ───────────────────────────────────────────
+  {
+    slug: 'the-efficiency-trap',
+    title: 'The Efficiency Trap: Why Scaling Design Without Strategy is Diluting Your Enterprise Value',
+    category: 'Strategy',
+    heroImage: '/images/blog/founders-hero.webp',
+    listingImage: '/images/blog-8-0.webp',
+    seoTitle: 'The Efficiency Trap: Why Scaling Design Without Strategy Dilutes Enterprise Value — Schoolhouse Lane',
+    seoDescription: 'Scaling design output without a strategic organising principle quietly destroys brand value. Darren McGrath on the efficiency trap — and how to build creative infrastructure that compounds.',
+    keywords: ['efficiency trap', 'brand strategy', 'design strategy', 'enterprise value', 'brand equity', 'creative strategy', 'scale design', 'brand coherence', 'organised drift', 'Schoolhouse Lane'],
+    publishedAt: '2026-05-15',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: "There's a version of growth that looks excellent on a dashboard and quietly destroys a brand.",
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: "I've seen it a hundred times. A company reaches scale. The pressure for output intensifies. Design becomes a volume game: more assets, more formats, more iterations, faster turnaround. The machine runs efficiently. The brand slowly loses its mind.",
+      },
+      { type: 'heading', text: 'Efficiency is a Race to the Bottom' },
+      {
+        type: 'paragraph',
+        text: "The efficiency trap isn't about bad design. It's about design divorced from strategy.",
+      },
+      {
+        type: 'paragraph',
+        text: "When the organising principle of your creative output becomes speed rather than meaning, something breaks. The brand becomes inconsistent — not in the obvious visual sense, but in the deeper strategic sense. Every touchpoint says something slightly different about who you are and why you exist.",
+      },
+      {
+        type: 'paragraph',
+        text: "Over time, that incoherence compounds. Customers feel it before they can name it. Investors sense it in due diligence. The brand, which should be your most durable competitive advantage, starts to feel like noise.",
+      },
+      { type: 'heading', text: "The Numbers Brands Don't Track" },
+      {
+        type: 'paragraph',
+        text: "Ask most companies how efficient their design operation is and they can give you an answer. Turnaround time. Assets per week. Cost per deliverable.",
+      },
+      {
+        type: 'paragraph',
+        text: "Ask the same companies how much enterprise value their brand is creating and you'll get silence, or vagueness, or a slide deck that mistakes awareness for equity.",
+      },
+      {
+        type: 'paragraph',
+        text: "The measurement gap isn't accidental. It reflects a deeper assumption: that brand is a cost centre, not a value driver. That assumption is what allows the efficiency trap to set in. Once you're optimising for throughput rather than impact, you've already accepted the wrong premise.",
+      },
+      { type: 'heading', text: 'What Scaling Strategy Looks Like' },
+      {
+        type: 'paragraph',
+        text: "Genuine scale doesn't mean more creative output. It means an organising principle rigorous enough to govern decisions at every level of the business — from the headline on your homepage to the tone of your investor update.",
+      },
+      {
+        type: 'paragraph',
+        text: "When that principle exists and is enforced, your design team works faster because they know what they're making. Your agency partners work better because the brief actually tells them something. Your brand becomes more coherent as it scales, not less.",
+      },
+      {
+        type: 'paragraph',
+        text: "That's leverage. That's what an upstream approach creates.",
+      },
+      { type: 'image', src: '/images/blog/founders-inline-1.webp', alt: 'Strategic brand infrastructure', width: 988, height: 453 },
+      { type: 'heading', text: 'The Uncomfortable Question' },
+      {
+        type: 'paragraph',
+        text: "If your creative operation is efficient but your brand isn't building value, you're not actually efficient. You're spending money accurately and generating little in return.",
+      },
+      {
+        type: 'paragraph',
+        text: "The fix isn't to slow down. It's to anchor the acceleration to something that matters: a clear, differentiated, strategically potent organising principle that makes every subsequent decision more intelligent.",
+      },
+      {
+        type: 'paragraph',
+        text: "At Schoolhouse Lane, we help leadership teams find that principle and build it into the infrastructure of the business. Not as a creative exercise. As a growth engine.",
+      },
+      { type: 'blockquote', text: "Efficiency without strategy isn't productivity. It's organised drift." },
+      { type: 'image', src: '/images/blog/founders-inline-2.webp', alt: 'Brand-led growth strategy', width: 988, height: 269 },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In the traditional corporate world, brand is often dismissed as a downstream marketing cost.", thumbnail: '/images/blog/blog-related-1.webp' },
+      { slug: 'beyond-the-prompt', title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value', excerpt: "Modern marketing teams face a new challenge: using AI for enterprise value, not just efficiency.", thumbnail: '/images/blog-2-gallery.webp' },
+      { slug: 'founders-dilemma-enterprise-value-ai', title: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI", excerpt: "For founders eyeing an exit or Series B, brand is your most measurable advantage.", thumbnail: '/images/blog-8.webp' },
+    ],
+    journalCards: [
+      { slug: 'ai-paradigm-creative-strategy', title: 'The Shift from Execution to Enterprise: The AI Paradigm in Creative Strategy', excerpt: "The real shift isn't about how fast you can create — it's about moving from efficiency-led execution to vision-led value creation.", image: '/images/blog1-gallery.webp' },
+      { slug: 'beyond-the-prompt', title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value', excerpt: "Modern marketing teams face a new challenge: using AI for enterprise value, not just efficiency.", image: '/images/blog-2-gallery.webp' },
+      { slug: 'founders-dilemma-enterprise-value-ai', title: "The Founder's Dilemma: Scaling Enterprise Value in the Age of AI", excerpt: "For founders eyeing an exit or Series B, brand is your most measurable advantage.", image: '/images/blog-8-0.webp' },
+    ],
+  },
+
   // ── Article: AI Paradigm in Creative Strategy ──────────────────────────────
   {
     slug: 'ai-paradigm-creative-strategy',
