@@ -181,8 +181,8 @@ export default function Team() {
               <div
                 key={i}
                 className="flex shrink-0 cursor-pointer"
-                onMouseEnter={() => handleMouseEnter(i)}
-                onMouseLeave={handleMouseLeave}
+                onPointerEnter={(e) => { if (e.pointerType === 'mouse') handleMouseEnter(i) }}
+                onPointerLeave={(e) => { if (e.pointerType === 'mouse') handleMouseLeave() }}
                 onClick={() => handleClick(i)}
               >
                 {/* Photo */}
