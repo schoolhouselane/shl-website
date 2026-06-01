@@ -14,9 +14,11 @@ const plans = [
       'Brand Strategy & Positioning Workshop',
       'Core Visual Identity (Logo, Typography, Color Palette)',
       'Basic Brand Guidelines',
-      'Social media kit & templates',
-      'Pitch deck template (10 slides)',
-      'Custom AI Prompt Library (To help you create on-brand content)',
+      'Sales Presentation (10 Slides)',
+      'LinkedIn or Instagram Posting Kit & Templates',
+      'Lead Gen Sales Video x 3',
+      'eMail Marketing Strategy — 3 Month',
+      'eMail Templates & 5 Sales Email Sequence',
     ],
   },
   {
@@ -29,11 +31,13 @@ const plans = [
     bgStyle: 'linear-gradient(to right, #361f06, #804d14)',
     features: [
       'Dedicated Creative Strategist',
-      'Ongoing design requests, queued and managed',
+      'Marketing design requests, queued and managed',
       'Blog & Newsletter Visuals',
+      'Foundational SEO',
       'Social content and paid ad creative',
-      'Video and motion content production',
-      'Slack integration with your team',
+      'Sales Video and motion content production',
+      'Product Sales Creative',
+      'eMail Templates & 5 Sales Email Sequence',
       'One dedicated project manager throughout',
     ],
   },
@@ -46,10 +50,10 @@ const plans = [
     color: '#f67537',
     bgStyle: 'linear-gradient(to right, #f67639, #ffb38e)',
     features: [
-      'Everything in the SME Kit, plus:',
+      'Everything in the SME Kit, Plus:',
       'Multi-brand creative production and management',
       'Full campaign creative from brief to delivery',
-      'Jira, Asana and Monday.com integration',
+      'Weekly reporting and ROI impact analysis',
       'SOC-2 compliant workflow and file handling',
       'Senior creative director on the account',
     ],
@@ -63,13 +67,13 @@ const plans = [
     color: '#f64343',
     bgStyle: 'linear-gradient(to right, #f64343, #ff8785)',
     features: [
-      'Everything in Brand Essentials, plus:',
+      'Brand Planning & Market Positioning',
       'Full Brand Guidelines (print and digital)',
-      'Website design up to five pages',
+      'Website design — 5 pages',
       'Social media template kit — twelve assets',
-      'Presentation deck template',
-      'Brand strategy and positioning session',
-      'Three rounds of revisions',
+      'Sales Presentation Deck x 2',
+      'Sales Product Videos x 2',
+      'CMO Go To Market Strategy',
     ],
   },
   {
@@ -191,13 +195,9 @@ export default function PricingPlans() {
                 </p>
                 <ul className="flex flex-col">
                   {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-[12px] md:gap-[18px] py-[4px]">
-                      <span className="font-medium text-[24px] md:text-[32px] lg:text-[40px] leading-none mt-[-4px]" style={{ color: plan.color }} aria-hidden="true">
-                        *
-                      </span>
-                      <span className="text-[13px] md:text-[14px] lg:text-[16px] text-[#1e1e20] pt-[2px]">
-                        {feature}
-                      </span>
+                    <li key={j} className="flex flex-row items-center gap-[12px] md:gap-[18px] py-[4px]">
+                      <span className="font-medium text-[24px] md:text-[32px] lg:text-[40px] leading-none shrink-0" style={{ color: plan.color }} aria-hidden="true">*</span>
+                      <span className="text-[13px] md:text-[14px] lg:text-[16px] text-[#1e1e20] -translate-y-[2px]">{feature}</span>
                     </li>
                   ))}
                 </ul>
