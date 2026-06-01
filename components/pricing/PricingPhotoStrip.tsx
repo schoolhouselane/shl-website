@@ -37,6 +37,24 @@ const photos = [
     mdW: 160, mdH: 200,
     crop: null,
   },
+  {
+    src: '/images/pricing/photo-5.png',
+    lgW: 235, lgH: 292,
+    mdW: 160, mdH: 200,
+    crop: null,
+  },
+  {
+    src: '/images/pricing/photo-6.png',
+    lgW: 235, lgH: 292,
+    mdW: 160, mdH: 200,
+    crop: null,
+  },
+  {
+    src: '/images/pricing/photo-7.png',
+    lgW: 235, lgH: 292,
+    mdW: 160, mdH: 200,
+    crop: null,
+  },
 ]
 
 export default function PricingPhotoStrip() {
