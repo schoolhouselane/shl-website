@@ -91,7 +91,7 @@ export default function Footer() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    window.location.href = `mailto:hello@schoolhouselane.co?subject=Get Growth Ideas&body=${encodeURIComponent(`Subscribe: ${email}`)}`
+    window.location.href = `mailto:hello@schoolhouselane.ai?subject=Get Growth Ideas&body=${encodeURIComponent(`Subscribe: ${email}`)}`
     setOpen(false)
   }
 
@@ -138,8 +138,8 @@ export default function Footer() {
                 Ready to Build Something Remarkable?
               </p>
               <div className="border-b border-white py-[10px]">
-                <Link href="mailto:hello@schoolhouselane.co" className="text-[12px] text-white lowercase hover:opacity-70 transition-opacity">
-                  hello@schoolhouselane.co
+                <Link href="mailto:hello@schoolhouselane.ai" className="text-[12px] text-white lowercase hover:opacity-70 transition-opacity">
+                  hello@schoolhouselane.ai
                 </Link>
               </div>
             </div>
@@ -160,8 +160,8 @@ export default function Footer() {
                 Ready to Build Something Remarkable?
               </p>
               <div className="border-b border-white py-[10px]">
-                <Link href="mailto:hello@schoolhouselane.co" className="text-[12px] lg:text-[16px] text-white lowercase hover:opacity-70 transition-opacity whitespace-nowrap">
-                  hello@schoolhouselane.co
+                <Link href="mailto:hello@schoolhouselane.ai" className="text-[12px] lg:text-[16px] text-white lowercase hover:opacity-70 transition-opacity whitespace-nowrap">
+                  hello@schoolhouselane.ai
                 </Link>
               </div>
             </div>
@@ -252,7 +252,7 @@ export default function Footer() {
               <Link href="/code-of-conduct" className="font-bold text-[12px] lg:text-[16px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Code of Conduct</Link>
               <Link href="/terms" className="font-bold text-[12px] lg:text-[16px] text-white whitespace-nowrap underline hover:opacity-70 transition-opacity">Terms &amp; Conditions</Link>
             </div>
-            <p className="font-bold text-[12px] lg:text-[18px] text-white whitespace-nowrap">© 2025 Schoolhouse Lane</p>
+            <p className="font-bold text-[12px] lg:text-[18px] text-white whitespace-nowrap">© 2026 Schoolhouse Lane</p>
           </div>
 
         </div>
