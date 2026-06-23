@@ -841,7 +841,7 @@ export const blogPosts: BlogPost[] = [
     title: 'The Importance of Good to Great',
     category: 'Strategy',
     heroImage: '/images/blog-13-0.png',
-    listingImage: '/images/blog-13-0.png',
+    listingImage: '/images/blog13-gallery.png',
     seoTitle: 'The Importance of Good to Great — Schoolhouse Lane',
     seoDescription: "Twenty-five years after its publication, Jim Collins' Good to Great remains the most vital book for any business leader. Here's why — and how Schoolhouse Lane applies it to unlock exponential value.",
     keywords: ['Good to Great', 'Jim Collins', 'Level 5 Leadership', 'Hedgehog Concept', 'Flywheel Effect', 'Stockdale Paradox', 'brand strategy', 'enterprise value', 'Schoolhouse Lane'],
