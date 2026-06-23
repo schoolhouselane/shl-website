@@ -19,7 +19,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://schoolhouselane.co"),
+  metadataBase: new URL("https://schoolhouselane.ai"),
   title: {
     default: "Schoolhouse Lane | Creative Commerce & Brand Marketing Agency",
     template: "%s | Schoolhouse Lane",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Schoolhouse Lane | Creative Commerce & Brand Marketing Agency",
     description:
       "Schoolhouse Lane is a brand strategy and digital marketing agency that turns creative thinking into commercial results. Identity, campaigns, ecommerce, and AI creative.",
-    url: "https://schoolhouselane.co",
+    url: "https://schoolhouselane.ai",
     siteName: "Schoolhouse Lane",
     type: "website",
     locale: "en_IE",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     images: ["/images/hero-1.webp"],
   },
   alternates: {
-    canonical: "https://schoolhouselane.co",
+    canonical: "https://schoolhouselane.ai",
   },
   robots: {
     index: true,
@@ -63,20 +63,20 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
-  "@id": "https://schoolhouselane.co/#organization",
+  "@id": "https://schoolhouselane.ai/#organization",
   name: "Schoolhouse Lane",
   alternateName: "SHL",
-  url: "https://schoolhouselane.co",
+  url: "https://schoolhouselane.ai",
   logo: {
     "@type": "ImageObject",
-    url: "https://schoolhouselane.co/logo.svg",
+    url: "https://schoolhouselane.ai/logo.svg",
     width: 122,
     height: 48,
   },
-  image: "https://schoolhouselane.co/images/hero-1.webp",
+  image: "https://schoolhouselane.ai/images/hero-1.webp",
   description:
     "Schoolhouse Lane is a Creative Commerce agency existing at the intersection of creativity and revenue growth. We transform brand from a marketing cost into a high-leverage strategic asset.",
-  email: "hello@schoolhouselane.co",
+  email: "hello@schoolhouselane.ai",
   foundingDate: "2019",
   knowsAbout: [
     "Brand Identity",
@@ -116,15 +116,15 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://schoolhouselane.co/#website",
+  "@id": "https://schoolhouselane.ai/#website",
   name: "Schoolhouse Lane",
-  url: "https://schoolhouselane.co",
-  publisher: { "@id": "https://schoolhouselane.co/#organization" },
+  url: "https://schoolhouselane.ai",
+  publisher: { "@id": "https://schoolhouselane.ai/#organization" },
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://schoolhouselane.co/work?q={search_term_string}",
+      urlTemplate: "https://schoolhouselane.ai/work?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },
@@ -156,6 +156,18 @@ export default function RootLayout({
         <Providers>
           {children}
         </Providers>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-35PR0C7C4Y"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-35PR0C7C4Y');
+          `}
+        </Script>
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
       </body>
     </html>
