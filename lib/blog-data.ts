@@ -714,6 +714,370 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 
+  // ── Article 12 — Why Negative Thinking Has No Seat at the SHL Table ────────
+  {
+    slug: 'negative-thinking-no-place-at-shl',
+    title: 'Why Negative Thinking Has No Seat at the Schoolhouse Lane Table',
+    category: 'Culture',
+    heroImage: '/images/blog/blog-hero.webp',
+    listingImage: '/images/blog8-gallery.png',
+    seoTitle: 'Why Negative Thinking Has No Place at Schoolhouse Lane',
+    seoDescription: 'At Schoolhouse Lane, we build a positive workplace culture by choosing critical thinkers, protecting psychological safety, and growing a high-performance creative team.',
+    keywords: ['workplace culture', 'critical thinking', 'negative thinking', 'psychological safety', 'high performance', 'creative team', 'company culture', 'Schoolhouse Lane'],
+    publishedAt: '2026-06-13',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'There is a distinct difference between a critical thinker and a negative thinker.',
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        parts: [
+          { text: 'In the world of ' },
+          { text: 'Creative Commerce', bold: true },
+          { text: ', critical thinking is our oxygen. It is the fuel behind our commitment to ' },
+          { text: 'Relentless Inquiry', bold: true },
+          { text: '. We need people who ask the hard questions, strip away the algorithmic noise, and pressure-test ideas until they are ruthlessly profitable and culturally resonant. We love the skeptics who refuse to "decorate" pre-made decisions.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'But negative thinkers? They are a completely different species. And as we continue our journey to scale Schoolhouse Lane, we are making it explicitly clear: they do not have a place in our agency.',
+      },
+      { type: 'heading', text: 'The Algorithmic Noise of Cynicism' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'We have always maintained that there is ' },
+          { text: 'no cure for curiosity', bold: true },
+          { text: '. Curiosity is inherently optimistic; it is an adventure that believes an elegant solution exists at the intersection of wild imagination and revenue growth.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Negative thinking, however, is the death of discovery. When it comes to critical thinking vs negative thinking, the difference is stark. Where a curious mind sees a complex category shift as an invitation to pioneer, a negative mind sees an impossibility. Cynicism mimics intelligence, but in reality, it is lazy. It is a downstream cost that slows momentum, dilutes energy, and suffocates the exact bravery required to build something remarkable.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We are a human agency with an altruistic view of the world. We believe that profit and purpose are the same thing. To pull that off, you need an environment built on trust, conviction, and an unyielding love for the craft.',
+      },
+      { type: 'blockquote', text: 'You cannot build an upstream engine for enterprise value if the people behind the machine are constantly pulling it downstream.' },
+      { type: 'heading', text: 'Building a Safe Harbor for the Ambitious' },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: "We are well on the road to finding the right people for our fleet. Our mission isn't just to fill desks in Dublin, Pristina, or Lahore; it is to architect a true " },
+          { text: 'community of talented people who love what they do', bold: true },
+          { text: '. That is what building a creative team means to us.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: "True creativity requires vulnerability. To pitch a wild concept that might change a culture or completely redefine a brand's digital infrastructure, you have to feel safe enough to fail. " },
+          { text: 'Psychological safety in the workplace', bold: true },
+          { text: ' is not a buzzword here at Schoolhouse Lane. It is the foundation of everything we build. A negative thinker destroys that psychological safety. They create a toxic workplace culture where people stay small to avoid being shot down.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'We refuse to work that way. We want our team to feel the full, unfiltered joy of what creativity can give us:',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'The Thrill of Discovery: ', text: 'Unearthing that hidden revenue driver or commercial potential that everyone else missed.' },
+          { lead: 'The Pride of Craft: ', text: 'Watching abstract strategy transform into cinematic media, flawless software architecture, or beautifully executed brand identity.' },
+          { lead: 'The Collective Win: ', text: 'Experiencing the shared intelligence of a team that pushes each other higher, compounding value for our partners and fulfilment for ourselves.' },
+        ],
+      },
+      { type: 'heading', text: 'Guarding the Culture as We Scale' },
+      {
+        type: 'paragraph',
+        text: 'As we actively recruit the next wave of thinkers, creators, and engineers to Schoolhouse Lane, our cultural filters are tighter than ever.',
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: "We are looking for the ambitious. The curious. The individuals who want to enjoy the emotional, meaningful, and real outputs of high-leverage creative work. If you look at a blank canvas or a complex commercial problem and your first instinct is to find all the reasons why it won't work, rather than engineering the infrastructure to " },
+          { text: 'make', bold: true },
+          { text: " it work, then our lane isn't your lane." },
+        ],
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: 'A positive workplace culture does not happen by accident. At Schoolhouse Lane, it is ' },
+          { text: 'protected intentionally every single day', bold: true },
+          { text: '. We are building an ecosystem of exceptional talent. We want to protect the energy of the people already here, and ensure that every new person who joins the table brings a spark of curious inquiry, not a wet blanket of cynicism.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "The road ahead is incredibly exciting. We're matching wild imagination with rigorous execution every single day. And we're doing it with a team that loves the ride.",
+      },
+      { type: 'blockquote', text: 'Are you driven by relentless inquiry and an adventurous spirit? Keep an eye on our Jobs page as we continue to grow our human agency.' },
+    ],
+    relatedArticles: [
+      { slug: 'the-efficiency-trap', title: 'The Efficiency Trap: Why Scaling Design Without Strategy is Diluting Your Enterprise Value', excerpt: "There's a version of growth that looks excellent on a dashboard and quietly destroys a brand.", thumbnail: '/images/blog/ceo-blueprint-hero.webp' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.webp' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In the traditional corporate world, brand is often dismissed as a downstream marketing cost.", thumbnail: '/images/blog/blog-related-1.webp' },
+    ],
+    journalCards: [
+      { slug: 'the-efficiency-trap', title: 'The Efficiency Trap: Why Scaling Design Without Strategy is Diluting Your Enterprise Value', excerpt: "There's a version of growth that looks excellent on a dashboard and quietly destroys a brand.", image: '/images/blog/ceo-blueprint-hero.webp' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.webp' },
+      { slug: 'beyond-the-prompt', title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value', excerpt: "Modern marketing teams face a new challenge: using AI for enterprise value, not just efficiency.", image: '/images/blog-2-gallery.webp' },
+    ],
+  },
+
+  // ── Article 13 — The Importance of Good to Great ──────────────────────────
+  {
+    slug: 'good-to-great',
+    title: 'The Importance of Good to Great',
+    category: 'Strategy',
+    heroImage: '/images/blog-13-0.png',
+    listingImage: '/images/blog-13-0.png',
+    seoTitle: 'The Importance of Good to Great — Schoolhouse Lane',
+    seoDescription: "Twenty-five years after its publication, Jim Collins' Good to Great remains the most vital book for any business leader. Here's why — and how Schoolhouse Lane applies it to unlock exponential value.",
+    keywords: ['Good to Great', 'Jim Collins', 'Level 5 Leadership', 'Hedgehog Concept', 'Flywheel Effect', 'Stockdale Paradox', 'brand strategy', 'enterprise value', 'Schoolhouse Lane'],
+    publishedAt: '2026-06-20',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: `As a Creative Strategist who has spent two decades inside the engine rooms of some of the world's most iconic global brands, I've seen every management fad, shiny new framework, and "disruptive" playbook come and go. Most of them evaporate the moment the market shifts.`,
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        parts: [
+          { text: `But there is one piece of text I keep anchored to my desk, and it's the exact text guiding how we architect ` },
+          { text: 'Schoolhouse Lane: ', bold: true },
+          { text: `Jim Collins' Good to Great.` },
+        ],
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: `Twenty-five years after its publication, in a world dominated by AI, hyper-fragmented media, and chaotic macroeconomic shifts, it remains the most vital, foundational book for any business leader. Here is why, analyzed through a pure strategic lens, and exactly how we apply it to unlock exponential value for our clients.`,
+      },
+      { type: 'heading', text: `It Explodes the Myth of the "Genius with a Thousand Helpers"` },
+      {
+        type: 'paragraph',
+        text: `In my years working with global enterprises, the most common structural failure I witnessed was the Genius with a Thousand Helpers model. This occurs when a highly charismatic, brilliant leader drives a company forward through sheer force of will. The moment that the leader steps away or the market outpaces their specific genius, the company collapses back into mediocrity.`,
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: `Collins countered this with the ` },
+          { text: 'Level 5 Leader', bold: true },
+          { text: `, individuals who blend deep personal humility with intense, unyielding professional will.` },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: `At Schoolhouse Lane, we actively reject the old-school agency model built around a singular "creative guru." That model doesn't scale, and it doesn't protect the client. Instead, we look at leadership as an infrastructure. Our goal is to build an autonomous, highly rigorous system where leadership is distributed among elite practitioners. We don't want helpers; we want owners who are obsessed with the craft and driven by relentless inquiry.`,
+      },
+      { type: 'image', src: '/images/blog-13-1.png', alt: 'Leadership and strategy in action', width: 988, height: 462 },
+      { type: 'heading', text: `The Hedgehog Concept: Piercing the Noise of "Shiny Object Syndrome"` },
+      {
+        type: 'paragraph',
+        text: `Modern C-suites are plagued by what I call strategic ADHD. Leaders are constantly dragged downstream by tactical noise, whether it's rushing into a poorly planned pivot because of a new tech trend or over-diversifying their product line to chase short-term revenue.`,
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: `Collins' ` },
+          { text: 'Hedgehog Concept', bold: true },
+          { text: ` is the ultimate strategic filter. It forces an organization to find the absolute intersection of three critical questions: what you are deeply passionate about, what drives your economic engine, and what you can be the best in the world at.` },
+        ],
+      },
+      { type: 'paragraph', text: `If you operate outside that intersection, you are wasting capital and human energy.` },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: `For Schoolhouse Lane, our Hedgehog Concept is entirely dialed in. We don't try to be everything to everyone. We exist precisely at the intersection of ` },
+          { text: 'Wild Imagination and Rigorous Commercial Execution.', bold: true },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: `We know our economic engine is driven by creating undeniable enterprise value for our partners. We know we can be the best in the world at stripping away bureaucratic agency fluff to deliver high-velocity, upstream strategic thinking. By knowing exactly what we don't do, we protect our focus and deliver outsized returns for our clients.`,
+      },
+      { type: 'heading', text: `The Stockdale Paradox: The Fuel for Strategic Stamina` },
+      {
+        type: 'paragraph',
+        text: `As a CSO, I've steered brands through global recessions, supply chain collapses, and massive industry disruptions. The leaders who failed were either blind optimists who ignored reality until it was too late, or cynics who paralyzed their teams with fear.`,
+      },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: `Collins identified the antidote: ` },
+          { text: 'The Stockdale Paradox.', bold: true },
+          { text: ` You must retain unwavering faith that you will prevail in the end, regardless of the difficulties, AND at the same time, confront the most brutal facts of your current reality, whatever they might be.` },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: `This is exactly why we explicitly state that negative thinkers have no place in our agency, while critical thinkers are our oxygen.`,
+      },
+      {
+        type: 'rich-list',
+        items: [
+          { lead: 'Cynicism', text: ' ignores the ultimate victory.' },
+          { lead: 'Blind Optimism', text: ' ignores the brutal facts.' },
+          { lead: 'Strategic Rigor', text: ' accepts both.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: `We look at our clients' data, their market positioning, and their operational bottlenecks with absolute, cold-eyed honesty. We don't sugarcoat the brutal facts of their competitive landscape. But we couple that realism with an adventurous, creative conviction that an elegant, highly profitable solution is entirely within our power to build.`,
+      },
+      { type: 'heading', text: `The Flywheel Effect: Compounding Value Over Time` },
+      {
+        type: 'paragraph',
+        parts: [
+          { text: `The most profound lesson from Good to Great for today's hyper-paced market is the ` },
+          { text: 'Flywheel Effect', bold: true },
+          { text: `. Inexperienced leaders look for the "big breakthrough," the single silver-bullet ad campaign, or the magic software implementation that will instantly transform their business.` },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: `Collins proved that sustainable corporate greatness feels like pushing a massive, heavy flywheel. At first, it takes an immense amount of effort to move it an inch. But with consistent, aligned effort in a single direction, the flywheel gains its own momentum, eventually spinning forward with unstoppable kinetic energy.`,
+      },
+      {
+        type: 'paragraph',
+        text: `This is how we approach client growth and our own agency expansion across Dublin, Pristina, and Lahore. Success is an accumulation of fluid, high-performing components working together:`,
+      },
+      {
+        type: 'blockquote',
+        text: `The Schoolhouse Flywheel: Hire exceptional talent → Protect them from bureaucratic noise → Deploy them directly to solve high-leverage client problems → Create massive enterprise value → Attract even better talent and partners.`,
+      },
+      { type: 'callout', text: `Every turn of the wheel builds upon the last.` },
+    ],
+    relatedArticles: [
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-related-1.webp' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.webp' },
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", thumbnail: '/images/blog/seo-related-1.webp' },
+    ],
+    journalCards: [
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/seo-hero.webp' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.webp' },
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.webp' },
+    ],
+  },
+
+]
+
+// ─── Draft posts (not published) ─────────────────────────────────────────────
+
+const DRAFT_POSTS: BlogPost[] = [
+  // ── Article: Why We Protect the Pack ──────────────────────────────────────
+  {
+    slug: 'why-we-protect-the-pack',
+    title: 'Why We Protect the Pack: Inside the Schoolhouse Lane Sanctuary',
+    category: 'Culture',
+    heroImage: '/images/blog8-0.png',
+    listingImage: '/images/blog8-0.png',
+    seoTitle: 'Why We Protect the Pack: Inside the Schoolhouse Lane Sanctuary — Schoolhouse Lane',
+    seoDescription: 'High performers don\'t burn out from hard work — they burn out from friction. Darren McGrath on why Schoolhouse Lane ruthlessly protects its culture, and why that\'s the right thing to do.',
+    keywords: ['company culture', 'high performance', 'leadership', 'workplace culture', 'team values', 'conscious capitalism', 'Schoolhouse Lane'],
+    publishedAt: '2026-06-13',
+    author: DARREN,
+    body: [
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'There is a quiet tragedy playing out in the modern corporate world, and it happens every single day.',
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'A high performer — a true rockstar who loves what they do — walks into a standard company. They bring energy, innovation, and an innate desire to build something great. But within a few months, the gravity of the corporate machine takes over. They are saddled with the weight of low, self-serving standards. Their efficiency is rewarded with more work, while mediocrity is managed with a shrug. Eventually, that spark goes out. They get tired. They get cynical.',
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'In the typical corporate structure, high performers aren\'t celebrated; they are victimized. They are used as beasts of burden to carry the weight of organizations that have normalized complacency.',
+      },
+      {
+        type: 'paragraph',
+        dark: true,
+        text: 'When we founded Schoolhouse Lane, we decided to draw a line in the sand. We built a community of talented people who come together to achieve happiness by creating a work environment where nobody wins until everyone wins.',
+      },
+      { type: 'image', src: '/images/blog8-0.png', alt: 'Schoolhouse Lane culture and community', width: 988, height: 453 },
+      { type: 'heading', text: 'The Tension of the "Insular" Culture' },
+      {
+        type: 'paragraph',
+        text: 'I know how this looks from the outside. To conventional corporate viewers, our approach can look intense, maybe even exclusive. When you say, "We are a home specifically for high performers," the outside world hears elitism. They wonder why we don\'t just adopt the standard, open-door corporate policies that every other company uses.',
+      },
+      {
+        type: 'paragraph',
+        text: 'But here is the truth: standard corporate policies produce standard corporate politics.',
+      },
+      {
+        type: 'paragraph',
+        text: 'If you want to eliminate stress and create genuine moments of joy, you cannot allow the toxicity of low-effort, self-serving standards to bleed into your environment. Negativity is highly contagious. If we do not actively protect our high performers from it, the environment decays.',
+      },
+      { type: 'blockquote', text: "We aren't being exclusionary for the sake of ego. We are building a sanctuary." },
+      { type: 'heading', text: 'Why High Performance Needs a Shield' },
+      {
+        type: 'paragraph',
+        text: 'High performers don\'t actually burn out from hard work. They burn out from friction. They burn out when they have to spend 50% of their energy navigating bureaucracy, defending their standards against people who just want to do the bare minimum, and absorbing the negativity of a broken system.',
+      },
+      {
+        type: 'paragraph',
+        text: 'At Schoolhouse Lane, we eliminate that friction. When you put a group of rockstars in a room together — people who understand how to collaborate, who respect each other\'s talent, and who genuinely love what they do — something magical happens. Stress evaporates. Joy takes its place.',
+      },
+      {
+        type: 'paragraph',
+        text: 'But that ecosystem only works if everyone is playing by the same rules:',
+      },
+      {
+        type: 'rich-list',
+        dark: true,
+        items: [
+          { lead: 'No Ego: ', text: 'You win when the person next to you wins.' },
+          { lead: 'High Accountability: ', text: 'We hold ourselves to a standard that feels inspiring, not draining.' },
+          { lead: 'A Safe Haven: ', text: 'The outside world can be cynical and chaotic, but inside these walls, your talent is appreciated, not exploited.' },
+          { lead: 'Our Core Belief: ', text: "We aren't changing our standards to fit the world. We are building a microcosm where high performers can finally breathe, create, and be happy." },
+        ],
+      },
+      { type: 'image', src: '/images/blog8-2.png', alt: 'High performance team environment', width: 988, height: 269 },
+      { type: 'heading', text: 'This Is the Right Way Forward' },
+      {
+        type: 'paragraph',
+        text: 'To the skeptics outside looking in, we say this: look at the results. Look at the health, happiness, and output of people who are allowed to run fast without being dragged down by corporate anchor weight.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We are unapologetic about who we are. Schoolhouse Lane is right for us because it treats talent with the reverence it deserves. We will continue to protect this space, protect each other, and ensure that our community remains a place where everyone rises together.',
+      },
+      { type: 'blockquote', text: "Until everyone wins, the work isn't done." },
+    ],
+    relatedArticles: [
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work.", thumbnail: '/images/blog/blog-telephones.webp' },
+      { slug: 'the-efficiency-trap', title: 'The Efficiency Trap: Why Scaling Design Without Strategy is Diluting Your Enterprise Value', excerpt: "There's a version of growth that looks excellent on a dashboard and quietly destroys a brand.", thumbnail: '/images/blog/ceo-blueprint-hero.webp' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "In the traditional corporate world, brand is often dismissed as a downstream marketing cost.", thumbnail: '/images/blog/blog-related-1.webp' },
+    ],
+    journalCards: [
+      { slug: 'remote-working-whatsapp', title: 'Remote Working is Not the Problem, WhatsApp Is', excerpt: "In my twenty five years as an ad man, I've witnessed countless shifts in how we work. Technologies come and go...", image: '/images/blog/blog-telephones.webp' },
+      { slug: 'is-ai-killing-seo', title: "Is AI Killing SEO? Here's What 15 Years in the Trenches Has Taught Me", excerpt: "I've been doing this long enough to have heard the death knell for SEO more times than I care to count.", image: '/images/blog/seo-hero.webp' },
+      { slug: 'brand-measurable-asset', title: 'Why Brand Is Your Most Measurable Asset', excerpt: "The companies that treat brand as strategy not decoration consistently outperform on enterprise value. Here's why.", image: '/images/blog/blog-brand-asset.webp' },
+    ],
+  },
+]
+
+// ─── Published blog posts ─────────────────────────────────────────────────────
+
+const publishedPosts: BlogPost[] = [
   // ── Article: Beyond the Prompt ─────────────────────────────────────────────
   {
     slug: 'beyond-the-prompt',
@@ -1205,7 +1569,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
   },
 ]
 
-export const allBlogPosts: BlogPost[] = [...blogPosts, ...PLACEHOLDER_POSTS].sort((a, b) =>
+export const allBlogPosts: BlogPost[] = [...blogPosts, ...publishedPosts, ...PLACEHOLDER_POSTS].sort((a, b) =>
   new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 )
 
