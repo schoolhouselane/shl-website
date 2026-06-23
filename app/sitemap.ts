@@ -3,8 +3,8 @@ import { projects } from '@/lib/work-data'
 import { allBlogPosts } from '@/lib/blog-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://schoolhouselane.co'
-  const lastMod = new Date('2026-04-24')
+  const base = 'https://schoolhouselane.ai'
+  const lastMod = new Date('2026-06-15')
 
   const caseStudyUrls: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${base}/work/${p.slug}`,
@@ -64,6 +64,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: lastMod,
       changeFrequency: 'yearly',
       priority: 0.7,
+    },
+    {
+      url: `${base}/privacy`,
+      lastModified: lastMod,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${base}/code-of-conduct`,
+      lastModified: lastMod,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${base}/terms`,
+      lastModified: lastMod,
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
   ]
 }

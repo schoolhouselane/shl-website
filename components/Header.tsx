@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import CalendlyButton from '@/components/CalendlyButton'
 
-const LIGHT_BG_ROUTES = ['/services', '/about', '/work', '/blog', '/jobs', '/contact', '/login', '/pricing']
+const LIGHT_BG_ROUTES = ['/services', '/about', '/work', '/blog', '/jobs', '/contact', '/login', '/pricing', '/privacy', '/code-of-conduct', '/terms']
 
 const MOBILE_NAV = [
   { label: 'SERVICES', href: '/services' },
