@@ -211,7 +211,7 @@ export default function Team() {
                   }}
                 >
                   <div
-                    className="h-full flex flex-col justify-start gap-[16px] md:gap-[24px] lg:gap-[32px] px-[14px] md:px-[24px] lg:px-[40px] py-[20px] md:py-[32px] lg:py-[60px]"
+                    className="h-full flex flex-col justify-start gap-[16px] md:gap-[20px] lg:gap-[30px] px-[16px] md:px-[24px] lg:px-[40px] py-[20px] md:py-[32px] lg:py-[60px]"
                     style={{ width: panelW }}
                   >
                     <div className="flex flex-col gap-[6px]">
@@ -222,7 +222,7 @@ export default function Team() {
                         {member.role}
                       </p>
                     </div>
-                    <p className="text-[11px] md:text-[13px] lg:text-[16px] text-[#111] font-semibold italic leading-snug">
+                    <p className="text-[11px] md:text-[14px] lg:text-[16px] text-[#111] font-normal leading-snug">
                       {member.bio}
                     </p>
                   </div>
