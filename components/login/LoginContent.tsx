@@ -25,8 +25,9 @@ export default function LoginContent() {
     setError("We couldn't find an account with that email address.")
   }
 
+  const callbackUrl = searchParams.get('callbackUrl') ?? '/portal'
   const handleGoogle = () => {
-    signIn('google', { callbackUrl: '/portal' })
+    signIn('google', { callbackUrl })
   }
 
   return (
@@ -157,7 +158,7 @@ export default function LoginContent() {
                     {showForgotMsg && (
                       <p className="text-[13px] text-[#353535] text-right">
                         Email{' '}
-                        <a href="mailto:hello@schoolhouselane.co" className="text-[#d07502] underline">hello@schoolhouselane.co</a>
+                        <a href="mailto:hello@schoolhouselane.ai" className="text-[#d07502] underline">hello@schoolhouselane.ai</a>
                         {' '}to reset.
                       </p>
                     )}
@@ -272,7 +273,7 @@ function MobileForm({ email, setEmail, password, setPassword, showPassword, setS
           </button>
           {showForgotMsg && (
             <p className="text-[12px] text-[#353535] text-right">
-              Email <a href="mailto:hello@schoolhouselane.co" className="text-[#d07502] underline">hello@schoolhouselane.co</a> to reset.
+              Email <a href="mailto:hello@schoolhouselane.ai" className="text-[#d07502] underline">hello@schoolhouselane.ai</a> to reset.
             </p>
           )}
         </div>

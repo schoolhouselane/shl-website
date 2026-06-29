@@ -18,6 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // Allowlist of approved client emails — add client emails here
       const ALLOWED_EMAILS: string[] = [
         'selale.memmedli11@gmail.com',
+        'projects@schoolhouselane.co',
       ]
       return ALLOWED_EMAILS.includes(user.email ?? '')
     },
