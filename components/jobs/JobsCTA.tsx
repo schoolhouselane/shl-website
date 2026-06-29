@@ -42,7 +42,7 @@ export default function JobsCTA() {
           <ArrowRight size={22} />
         </Link>
         <p className="font-normal text-[14px] md:text-[16px] text-[#1e1e20] text-center tracking-[0.96px]">
-          careers@schoolhouselane.co
+          careers@schoolhouselane.ai
         </p>
       </div>
     </section>

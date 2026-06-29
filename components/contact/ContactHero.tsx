@@ -71,8 +71,8 @@ export default function ContactHero() {
             <div className="flex flex-col gap-[30px]">
               <div className="flex flex-col gap-[6px]">
                 <div className="border-b border-[#1e1e20] py-[10px]">
-                  <Link href="mailto:hello@schoolhouselane.co" className="font-extrabold text-[20px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
-                    hello@schoolhouselane.co
+                  <Link href="mailto:hello@schoolhouselane.ai" className="font-extrabold text-[20px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                    hello@schoolhouselane.ai
                   </Link>
                 </div>
                 <p className="text-[16px] text-[#111] leading-[1.75]">
@@ -81,8 +81,8 @@ export default function ContactHero() {
               </div>
               <div className="flex flex-col gap-[6px]">
                 <div className="border-b border-[#1e1e20] py-[10px]">
-                  <Link href="mailto:careers@schoolhouselane.co" className="font-black text-[20px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
-                    careers@schoolhouselane.co
+                  <Link href="mailto:careers@schoolhouselane.ai" className="font-black text-[20px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                    careers@schoolhouselane.ai
                   </Link>
                 </div>
                 <p className="text-[16px] text-[#111] leading-[1.75]">
@@ -236,8 +236,8 @@ export default function ContactHero() {
           <div className="flex flex-col gap-[24px]">
             <div className="flex flex-col gap-[6px]">
               <div className="border-b border-[#1e1e20] py-[10px]">
-                <Link href="mailto:hello@schoolhouselane.co" className="font-extrabold text-[16px] md:text-[20px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
-                  hello@schoolhouselane.co
+                <Link href="mailto:hello@schoolhouselane.ai" className="font-extrabold text-[16px] md:text-[20px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                  hello@schoolhouselane.ai
                 </Link>
               </div>
               <p className="text-[13px] md:text-[16px] text-[#111] leading-[1.75]">
@@ -246,8 +246,8 @@ export default function ContactHero() {
             </div>
             <div className="flex flex-col gap-[6px]">
               <div className="border-b border-[#1e1e20] py-[10px]">
-                <Link href="mailto:careers@schoolhouselane.co" className="font-black text-[16px] md:text-[20px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
-                  careers@schoolhouselane.co
+                <Link href="mailto:careers@schoolhouselane.ai" className="font-black text-[16px] md:text-[20px] text-[#1e1e20] lowercase hover:opacity-60 transition-opacity">
+                  careers@schoolhouselane.ai
                 </Link>
               </div>
               <p className="text-[13px] md:text-[16px] text-[#111] leading-[1.75]">

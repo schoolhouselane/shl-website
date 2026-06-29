@@ -4,11 +4,11 @@ import Header from '@/components/Header'
 export const metadata: Metadata = {
   title: 'About Us — Schoolhouse Lane',
   description: 'Senior strategists, creatives, and brand architects operating at the intersection of imagination and commercial rigour. 79+ projects. 5-star rated. 99% client retention.',
-  alternates: { canonical: 'https://schoolhouselane.co/about' },
+  alternates: { canonical: 'https://schoolhouselane.ai/about' },
   openGraph: {
     title: 'About Schoolhouse Lane — Senior Creative Commerce Team',
     description: 'Senior strategists, creatives, and brand architects. 79+ projects, 5-star rated, 99% client retention.',
-    url: 'https://schoolhouselane.co/about',
+    url: 'https://schoolhouselane.ai/about',
     images: [{ url: '/images/about-hero.png', width: 1200, height: 630, alt: 'Schoolhouse Lane Team' }],
   },
   twitter: {

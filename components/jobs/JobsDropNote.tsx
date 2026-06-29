@@ -83,7 +83,7 @@ export default function JobsDropNote() {
                   className="flex-1 bg-transparent font-medium text-[12px] uppercase tracking-[1.2px] text-[#1e1e20] placeholder:text-[#1e1e20]/60 outline-none min-w-0"
                 />
                 <a
-                  href="mailto:careers@schoolhouselane.co"
+                  href="mailto:careers@schoolhouselane.ai"
                   className="absolute right-0 top-0 bottom-0 bg-[#1e1e20] flex items-center gap-[12px] px-[24px] rounded-full text-white font-medium text-[14px] md:text-[16px] uppercase whitespace-nowrap hover:opacity-80 transition-opacity"
                 >
                   Send application
@@ -100,8 +100,8 @@ export default function JobsDropNote() {
             <div className="flex flex-col gap-[12px] md:w-[44%] md:shrink-0 lg:w-full lg:shrink lg:gap-[30px]">
               <div className="flex flex-col gap-[6px] lg:gap-[11px]">
                 <div className="border-b border-[#1e1e20] py-[10px]">
-                  <a href="mailto:hello@schoolhouselane.co" className="font-extrabold text-[16px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-70 transition-opacity">
-                    hello@schoolhouselane.co
+                  <a href="mailto:hello@schoolhouselane.ai" className="font-extrabold text-[16px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-70 transition-opacity">
+                    hello@schoolhouselane.ai
                   </a>
                 </div>
                 <p className="font-normal text-[12px] lg:text-[16px] text-[#111]">
@@ -110,8 +110,8 @@ export default function JobsDropNote() {
               </div>
               <div className="flex flex-col gap-[6px] lg:gap-[11px]">
                 <div className="border-b border-[#1e1e20] py-[10px]">
-                  <a href="mailto:careers@schoolhouselane.co" className="font-black text-[16px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-70 transition-opacity">
-                    careers@schoolhouselane.co
+                  <a href="mailto:careers@schoolhouselane.ai" className="font-black text-[16px] lg:text-[24px] text-[#1e1e20] lowercase hover:opacity-70 transition-opacity">
+                    careers@schoolhouselane.ai
                   </a>
                 </div>
                 <p className="font-normal text-[12px] lg:text-[16px] text-[#111]">

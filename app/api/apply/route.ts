@@ -48,8 +48,8 @@ export async function POST(req: Request) {
   `
 
   const { error } = await resend.emails.send({
-    from: 'Applications <careers@schoolhouselane.co>',
-    to: 'dmg@schoolhouselane.co',
+    from: 'Applications <careers@schoolhouselane.ai>',
+    to: 'dmg@schoolhouselane.ai',
     replyTo: email,
     subject: `New Application: ${role} — ${name}`,
     html,

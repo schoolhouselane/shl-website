@@ -10,7 +10,7 @@ import JobsDropNote from '@/components/jobs/JobsDropNote'
 import JobsCTA from '@/components/jobs/JobsCTA'
 import { jobs, testimonials } from '@/lib/jobs-data'
 
-const BASE_URL = 'https://schoolhouselane.co'
+const BASE_URL = 'https://schoolhouselane.ai'
 
 export const metadata: Metadata = {
   title: 'Jobs — Schoolhouse Lane',

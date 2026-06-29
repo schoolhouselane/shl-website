@@ -4,17 +4,17 @@
 
 Founded: 2018
 Location: International
-Contact: hello@schoolhouselane.co
-Website: https://schoolhouselane.co
+Contact: hello@schoolhouselane.ai
+Website: https://schoolhouselane.ai
 
 ## Services
 
-- [Brand Identity & Positioning](https://schoolhouselane.co/services): We reverse-engineer the emotional triggers and market whitespace that let your brand command a category. Verbal identity, visual identity, positioning strategy, and brand architecture.
-- [Gallery & Videos](https://schoolhouselane.co/services): Cinematic photography and video that converts browsers into buyers and elevates perceived value.
-- [Websites & Digital Experiences](https://schoolhouselane.co/services): Conversion-engineered digital experiences built with performance, accessibility, and brand storytelling at every scroll.
-- [Campaigns & Creative Direction](https://schoolhouselane.co/services): Award-worthy integrated campaign strategy and creative direction that moves the needle on business goals.
-- [AI Creative & Innovation](https://schoolhouselane.co/services): AI-augmented campaign production, generative visual systems, and LLM-powered brand voice tools.
-- [Strategy & Growth Consulting](https://schoolhouselane.co/services): Brand and business growth audits, market positioning, and quarterly growth retainers.
+- [Brand Identity & Positioning](https://schoolhouselane.ai/services): We reverse-engineer the emotional triggers and market whitespace that let your brand command a category. Verbal identity, visual identity, positioning strategy, and brand architecture.
+- [Gallery & Videos](https://schoolhouselane.ai/services): Cinematic photography and video that converts browsers into buyers and elevates perceived value.
+- [Websites & Digital Experiences](https://schoolhouselane.ai/services): Conversion-engineered digital experiences built with performance, accessibility, and brand storytelling at every scroll.
+- [Campaigns & Creative Direction](https://schoolhouselane.ai/services): Award-worthy integrated campaign strategy and creative direction that moves the needle on business goals.
+- [AI Creative & Innovation](https://schoolhouselane.ai/services): AI-augmented campaign production, generative visual systems, and LLM-powered brand voice tools.
+- [Strategy & Growth Consulting](https://schoolhouselane.ai/services): Brand and business growth audits, market positioning, and quarterly growth retainers.
 
 ## Key Team
 
@@ -40,7 +40,7 @@ Website: https://schoolhouselane.co
 
 ## Pages
 
-- [Home](https://schoolhouselane.co)
-- [About](https://schoolhouselane.co/about)
-- [Services](https://schoolhouselane.co/services)
-- [Contact](https://schoolhouselane.co/contact)
+- [Home](https://schoolhouselane.ai)
+- [About](https://schoolhouselane.ai/about)
+- [Services](https://schoolhouselane.ai/services)
+- [Contact](https://schoolhouselane.ai/contact)

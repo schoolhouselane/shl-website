@@ -5,12 +5,12 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Contact — Let\'s Build Something Remarkable',
-  description: 'Get in touch with Schoolhouse Lane. 15 minutes, no sales pitch — just actionable growth ideas tailored to your brand. hello@schoolhouselane.co',
-  alternates: { canonical: 'https://schoolhouselane.co/contact' },
+  description: 'Get in touch with Schoolhouse Lane. 15 minutes, no sales pitch — just actionable growth ideas tailored to your brand. hello@schoolhouselane.ai',
+  alternates: { canonical: 'https://schoolhouselane.ai/contact' },
   openGraph: {
     title: 'Contact Schoolhouse Lane — Let\'s Talk Growth',
     description: '15 minutes, no sales pitch. Just actionable growth ideas tailored to your brand.',
-    url: 'https://schoolhouselane.co/contact',
+    url: 'https://schoolhouselane.ai/contact',
     images: [{ url: '/images/hero-1.png', width: 1200, height: 630, alt: 'Contact Schoolhouse Lane' }],
   },
   twitter: {
@@ -26,12 +26,12 @@ const contactSchema = {
   "@type": "ContactPage",
   "name": "Contact Schoolhouse Lane",
   "description": "Get in touch. 15 minutes, no sales pitch. Just actionable growth ideas tailored to your brand.",
-  "url": "https://schoolhouselane.co/contact",
+  "url": "https://schoolhouselane.ai/contact",
   "mainEntity": {
     "@type": "Organization",
     "name": "Schoolhouse Lane",
-    "email": "hello@schoolhouselane.co",
-    "url": "https://schoolhouselane.co",
+    "email": "hello@schoolhouselane.ai",
+    "url": "https://schoolhouselane.ai",
   },
 }
 

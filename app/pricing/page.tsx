@@ -14,11 +14,11 @@ import PricingCTABanner from '@/components/pricing/PricingCTABanner'
 export const metadata: Metadata = {
   title: 'Pricing — Serious Strategy. Unbeatable Speed.',
   description: 'Simple, transparent pricing for world-class brand strategy and AI-powered creative. From Brand Essentials at 6,500€ to full enterprise creative suites.',
-  alternates: { canonical: 'https://schoolhouselane.co/pricing' },
+  alternates: { canonical: 'https://schoolhouselane.ai/pricing' },
   openGraph: {
     title: 'Pricing — Schoolhouse Lane',
     description: 'Simple, transparent pricing for world-class brand strategy and AI-powered creative.',
-    url: 'https://schoolhouselane.co/pricing',
+    url: 'https://schoolhouselane.ai/pricing',
     images: [{ url: '/images/pricing.png', width: 1200, height: 630, alt: 'Schoolhouse Lane Pricing' }],
   },
   twitter: {

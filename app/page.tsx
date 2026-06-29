@@ -4,11 +4,11 @@ import Header from '@/components/Header'
 export const metadata: Metadata = {
   title: 'Schoolhouse Lane — Creative Commerce Agency',
   description: 'Brand strategy, identity, campaigns, and websites built to drive revenue. 80+ brands transformed across hospitality, fintech, consumer, wellness, and fashion.',
-  alternates: { canonical: 'https://schoolhouselane.co' },
+  alternates: { canonical: 'https://schoolhouselane.ai' },
   openGraph: {
     title: 'Schoolhouse Lane — Creative Commerce Agency',
     description: 'Brand strategy, identity, campaigns, and websites built to drive revenue.',
-    url: 'https://schoolhouselane.co',
+    url: 'https://schoolhouselane.ai',
     images: [{ url: '/images/hero-1.webp', width: 1200, height: 630, alt: 'Schoolhouse Lane' }],
   },
   twitter: {

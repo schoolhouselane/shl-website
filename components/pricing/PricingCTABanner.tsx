@@ -23,10 +23,10 @@ export default function PricingCTABanner() {
             </svg>
           </CalendlyButton>
           <a
-            href="mailto:hello@schoolhouselane.com"
+            href="mailto:hello@schoolhouselane.aim"
             className="text-[14px] md:text-[16px] text-[#1e1e20] tracking-wide hover:underline"
           >
-            hello@schoolhouselane.com
+            hello@schoolhouselane.aim
           </a>
         </div>
       </div>

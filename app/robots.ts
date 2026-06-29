@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/cursor-demo', '/page-2'],
     },
-    sitemap: 'https://schoolhouselane.co/sitemap.xml',
+    sitemap: 'https://schoolhouselane.ai/sitemap.xml',
   }
 }

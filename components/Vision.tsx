@@ -2,12 +2,12 @@
 import { useInView } from '@/hooks/useInView'
 
 const values = [
-  'Be Curious',
-  'Think Inside the BOX',
-  'Be Great',
+  'Happiness',
+  'Curiosity',
   'Discipline',
-  'Communication',
-  'Human Respect',
+  'High Performance',
+  'Respect',
+  'Humility',
 ]
 
 export default function Vision() {

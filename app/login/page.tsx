@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Login — Client Portal',
   description: 'Log in to your Schoolhouse Lane client portal.',
   robots: { index: false, follow: false },
-  alternates: { canonical: 'https://schoolhouselane.co/login' },
+  alternates: { canonical: 'https://schoolhouselane.ai/login' },
 }
 
 export default function LoginPage() {

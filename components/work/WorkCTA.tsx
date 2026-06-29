@@ -52,7 +52,7 @@ export default function WorkCTA() {
             </svg>
           </CalendlyButton>
           <p className="text-[12px] text-[#1e1e20] text-center tracking-wide">
-            hello@schoolhouselane.co
+            hello@schoolhouselane.ai
           </p>
         </div>
       </section>

@@ -63,7 +63,7 @@ export default function PricingFAQ() {
         <p className="text-[14px] md:text-[16px] lg:text-[20px] text-black max-w-[700px] leading-relaxed">
           Everything you need to know before you book a call.{' '}
           If your question isn&apos;t here, email{' '}
-          <a href="mailto:hello@schoolhouselane.com" className="underline">hello@schoolhouselane.com</a>{' '}
+          <a href="mailto:hello@schoolhouselane.aim" className="underline">hello@schoolhouselane.aim</a>{' '}
           and we&apos;ll reply within 24 hours.
         </p>
       </div>

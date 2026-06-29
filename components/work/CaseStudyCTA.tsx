@@ -31,7 +31,7 @@ export default function CaseStudyCTA() {
           </svg>
         </CalendlyButton>
         <p className="w-full text-[10px] md:text-[12px] text-white font-normal tracking-[0.72px] text-center">
-          hello@schoolhouselane.co
+          hello@schoolhouselane.ai
         </p>
       </div>
 

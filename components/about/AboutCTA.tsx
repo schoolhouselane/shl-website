@@ -30,10 +30,10 @@ export default function AboutCTA() {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </CalendlyButton>
         <Link
-          href="mailto:hello@schoolhouselane.co"
+          href="mailto:hello@schoolhouselane.ai"
           className="text-[16px] text-[#1e1e20] tracking-[0.96px] hover:opacity-70 transition-opacity"
         >
-          hello@schoolhouselane.co
+          hello@schoolhouselane.ai
         </Link>
       </div>
 

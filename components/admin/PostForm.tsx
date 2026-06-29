@@ -214,7 +214,7 @@ export default function PostForm({ postId, initialData }: Props) {
     })
   }
 
-  async function save(publish: boolean) {
+  async function save(publish: boolean): Promise<number | null> {
     setSaveStatus('saving')
     setErrorMsg('')
 
@@ -247,6 +247,7 @@ export default function PostForm({ postId, initialData }: Props) {
         if (!res.ok) throw new Error((await res.json()).error)
         setSaveStatus('saved')
         setTimeout(() => setSaveStatus('idle'), 3000)
+        return postId
       } else {
         const res = await fetch('/api/admin/blog', {
           method: 'POST',
@@ -256,11 +257,18 @@ export default function PostForm({ postId, initialData }: Props) {
         if (!res.ok) throw new Error((await res.json()).error)
         const { id } = await res.json()
         startTransition(() => router.push(`/admin/blog/${id}/edit`))
+        return id as number
       }
     } catch (err) {
       setSaveStatus('error')
       setErrorMsg(err instanceof Error ? err.message : 'Save failed')
+      return null
     }
+  }
+
+  async function saveAndPreview() {
+    const id = await save(false)
+    if (id) window.open(`/admin/preview/${id}`, '_blank')
   }
 
   const isEditing = !!postId
@@ -317,22 +325,28 @@ export default function PostForm({ postId, initialData }: Props) {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label className="text-xs uppercase tracking-wide text-[#888]">Hero Image URL *</label>
-          <input
-            className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
-            value={meta.heroImage}
-            onChange={e => setMf('heroImage', e.target.value)}
-            placeholder="/images/blog/my-image.jpg or https://..."
-          />
+          <label className="text-xs uppercase tracking-wide text-[#888]">Hero Image *</label>
+          <div className="flex gap-2">
+            <input
+              className="flex-1 border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+              value={meta.heroImage}
+              onChange={e => setMf('heroImage', e.target.value)}
+              placeholder="URL or upload →"
+            />
+            <UploadButton onUploaded={url => setMf('heroImage', url)} />
+          </div>
         </div>
         <div className="flex flex-col gap-1">
-          <label className="text-xs uppercase tracking-wide text-[#888]">Listing / Gallery Image URL</label>
-          <input
-            className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
-            value={meta.listingImage}
-            onChange={e => setMf('listingImage', e.target.value)}
-            placeholder="Optional — used on /blog listing page"
-          />
+          <label className="text-xs uppercase tracking-wide text-[#888]">Listing / Gallery Image</label>
+          <div className="flex gap-2">
+            <input
+              className="flex-1 border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+              value={meta.listingImage}
+              onChange={e => setMf('listingImage', e.target.value)}
+              placeholder="Optional — used on /blog listing page"
+            />
+            <UploadButton onUploaded={url => setMf('listingImage', url)} />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -467,6 +481,14 @@ export default function PostForm({ postId, initialData }: Props) {
           {postId && (
             <DeleteButton postId={postId} />
           )}
+          <button
+            type="button"
+            disabled={saveStatus === 'saving' || isPending}
+            onClick={saveAndPreview}
+            className="border border-[#d9d9d9] px-5 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:border-[#1e1e20] transition-colors disabled:opacity-50 text-[#888]"
+          >
+            Preview
+          </button>
           <button
             type="button"
             disabled={saveStatus === 'saving' || isPending}
@@ -660,8 +682,11 @@ function BlockFields({ block, onUpdate }: { block: EditorBlock; onUpdate: (patch
 
   if (block.type === 'image') return (
     <div>
-      <label className={lbl}>Image URL</label>
-      <input className={inp} value={block.src} placeholder="/images/blog/filename.jpg" onChange={e => onUpdate({ src: e.target.value } as Partial<typeof block>)} />
+      <label className={lbl}>Image</label>
+      <div className="flex gap-2 mt-3">
+        <input className="flex-1 border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]" value={block.src} placeholder="URL or upload →" onChange={e => onUpdate({ src: e.target.value } as Partial<typeof block>)} />
+        <UploadButton onUploaded={url => onUpdate({ src: url } as Partial<typeof block>)} />
+      </div>
       <label className={lbl}>Alt text</label>
       <input className={inp} value={block.alt} placeholder="Describe the image" onChange={e => onUpdate({ alt: e.target.value } as Partial<typeof block>)} />
       <div className="grid grid-cols-2 gap-3">
@@ -681,14 +706,20 @@ function BlockFields({ block, onUpdate }: { block: EditorBlock; onUpdate: (patch
     <div>
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className={lbl}>Image 1 URL</label>
-          <input className={inp} value={block.src1} onChange={e => onUpdate({ src1: e.target.value } as Partial<typeof block>)} />
+          <label className={lbl}>Image 1</label>
+          <div className="flex gap-2 mt-3">
+            <input className="flex-1 border border-[#d9d9d9] rounded-lg px-3 py-2 text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]" value={block.src1} placeholder="URL or upload →" onChange={e => onUpdate({ src1: e.target.value } as Partial<typeof block>)} />
+            <UploadButton onUploaded={url => onUpdate({ src1: url } as Partial<typeof block>)} />
+          </div>
           <label className={lbl}>Alt 1</label>
           <input className={inp} value={block.alt1} onChange={e => onUpdate({ alt1: e.target.value } as Partial<typeof block>)} />
         </div>
         <div>
-          <label className={lbl}>Image 2 URL</label>
-          <input className={inp} value={block.src2} onChange={e => onUpdate({ src2: e.target.value } as Partial<typeof block>)} />
+          <label className={lbl}>Image 2</label>
+          <div className="flex gap-2 mt-3">
+            <input className="flex-1 border border-[#d9d9d9] rounded-lg px-3 py-2 text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]" value={block.src2} placeholder="URL or upload →" onChange={e => onUpdate({ src2: e.target.value } as Partial<typeof block>)} />
+            <UploadButton onUploaded={url => onUpdate({ src2: url } as Partial<typeof block>)} />
+          </div>
           <label className={lbl}>Alt 2</label>
           <input className={inp} value={block.alt2} onChange={e => onUpdate({ alt2: e.target.value } as Partial<typeof block>)} />
         </div>
@@ -698,8 +729,11 @@ function BlockFields({ block, onUpdate }: { block: EditorBlock; onUpdate: (patch
 
   if (block.type === 'quote-banner') return (
     <div>
-      <label className={lbl}>Background Image URL</label>
-      <input className={inp} value={block.src} onChange={e => onUpdate({ src: e.target.value } as Partial<typeof block>)} />
+      <label className={lbl}>Background Image</label>
+      <div className="flex gap-2 mt-3">
+        <input className="flex-1 border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]" value={block.src} placeholder="URL or upload →" onChange={e => onUpdate({ src: e.target.value } as Partial<typeof block>)} />
+        <UploadButton onUploaded={url => onUpdate({ src: url } as Partial<typeof block>)} />
+      </div>
       <label className={lbl}>Quote text</label>
       <textarea className={`${inp} resize-none`} rows={3} value={block.content} onChange={e => onUpdate({ content: e.target.value } as Partial<typeof block>)} />
     </div>
@@ -767,4 +801,40 @@ function BlockFields({ block, onUpdate }: { block: EditorBlock; onUpdate: (patch
   }
 
   return null
+}
+
+// ─── Upload button ────────────────────────────────────────────────────────────
+
+function UploadButton({ onUploaded }: { onUploaded: (url: string) => void }) {
+  const [uploading, setUploading] = useState(false)
+
+  async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploading(true)
+    const form = new FormData()
+    form.append('file', file)
+    try {
+      const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
+      const { url } = await res.json()
+      onUploaded(url)
+    } finally {
+      setUploading(false)
+      e.target.value = ''
+    }
+  }
+
+  return (
+    <label className="cursor-pointer shrink-0 flex items-center gap-1.5 border border-[#d9d9d9] rounded-lg px-3 py-2.5 text-xs font-medium text-[#888] hover:border-[#1e1e20] hover:text-[#1e1e20] transition-colors whitespace-nowrap">
+      {uploading ? (
+        <span>Uploading…</span>
+      ) : (
+        <>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Upload
+        </>
+      )}
+      <input type="file" accept="image/*" className="hidden" onChange={handleChange} disabled={uploading} />
+    </label>
+  )
 }

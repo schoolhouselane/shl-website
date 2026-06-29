@@ -1,12 +1,27 @@
+export type JobSection = {
+  heading: string
+  items: string[]
+}
+
+export type JobDetails = {
+  intro: string
+  role: string
+  sections: JobSection[]
+  why: string
+  howToApply: string
+}
+
 export type Job = {
   id: string
   number: string
   title: string
   category: string
   location: string
+  workMode?: string
   type: string
   description: string
   boldWord: string
+  details?: JobDetails
 }
 
 export type Testimonial = {
@@ -65,6 +80,56 @@ export const jobs: Job[] = [
     type: 'FULL-TIME',
     description: ' who takes pride in the invisible work — the performance, the precision, the code nobody applauds but everyone notices when it\'s wrong. You bridge design and reality without cutting corners.',
     boldWord: 'Developer',
+  },
+  {
+    id: 'business-development-manager-kosovo',
+    number: '06',
+    title: 'Business Development Manager',
+    category: 'Business Dev',
+    location: 'Pristina, Kosovo',
+    workMode: 'Hybrid',
+    type: 'FULL-TIME',
+    description: ' who opens doors, builds pipeline, and turns Kosovo\'s most ambitious founders and marketing leaders into long-term partners — as the first impression of Schoolhouse Lane in an entire market.',
+    boldWord: 'Business Development Manager',
+    details: {
+      intro: 'We exist at the intersection of creativity and revenue growth. Schoolhouse Lane is a Creative Commerce agency. We\'ve transformed 80+ brands across hospitality, fintech, consumer, wellness, and fashion — building brand strategy, identity, campaigns, and websites that don\'t just look good, but move enterprise value. We pair human craft with AI-powered creative, design, and development to work faster and push further, and we treat brand as an upstream strategic asset, not a downstream cost. Now we\'re expanding in Kosovo, and we\'re looking for a Business Development Manager to open doors, build pipeline, and turn the region\'s most ambitious companies into long-term partners.',
+      role: 'This is a hunter role. You\'ll own the top of our funnel in Kosovo — identifying the right founders, marketing leaders, and CEOs, starting conversations that matter, and bringing qualified opportunities to the table. You\'ll be the first impression of Schoolhouse Lane for an entire market, so you\'ll need equal parts commercial instinct and genuine curiosity about the businesses you approach.',
+      sections: [
+        {
+          heading: 'What you\'ll do',
+          items: [
+            'Research and map the Kosovo market — sectors, companies, and decision-makers worth pursuing',
+            'Build and run outbound prospecting across LinkedIn, email, events, and your own network',
+            'Qualify leads and book discovery calls and demos for the senior team',
+            'Develop relationships with founders, marketing teams, and investors, understanding their growth challenges before pitching anything',
+            'Represent Schoolhouse Lane at local events, meetups, and industry gatherings',
+            'Keep a clean, disciplined pipeline in our CRM and report on activity and conversion',
+            'Work closely with our strategists and client services team to shape proposals that win',
+          ],
+        },
+        {
+          heading: 'What you bring',
+          items: [
+            '2+ years in business development, sales, or partnerships — ideally in marketing, creative, digital, or B2B services',
+            'Deep knowledge of the Kosovo business landscape and a real network (or the drive to build one fast)',
+            'Fluent Albanian and strong English; written and spoken',
+            'A consultative approach — you listen first and sell second',
+            'Comfort with outbound and rejection; you treat "no" as data, not defeat',
+            'Organised, self-directed, and accountable to your numbers',
+          ],
+        },
+        {
+          heading: 'Bonus points',
+          items: [
+            'Existing relationships with founders, agencies, or marketing leaders in the region',
+            'Experience selling creative, branding, or AI-driven services',
+            'A point of view on where Kosovo\'s brands are heading',
+          ],
+        },
+      ],
+      why: 'You\'ll join a senior, international team (Dublin, Pristina, Lahore, São Paulo) of strategists, creatives, and brand architects who genuinely care about the work. We operate by clear principles — Be Curious, Be Great, Discipline, Communication, Human Respect — and we mean them. You\'ll have the autonomy to build something from the ground up and the support of a team that\'s done it before. There\'s no cure for curiosity here, and we like it that way.',
+      howToApply: 'Send a short note on why this role fits you, plus your CV or LinkedIn, to hello@schoolhouselane.ai. Tell us about one company in Kosovo you think we should be talking to, and why.',
+    },
   },
 ]
 

@@ -5,11 +5,11 @@ import Header from '@/components/Header'
 export const metadata: Metadata = {
   title: 'Services — Brand Strategy, Identity & Creative Commerce',
   description: 'Brand Identity, Campaigns, Websites, AI Creative, and Growth Consulting. We transform brand from a cost centre into a measurable engine for enterprise value creation.',
-  alternates: { canonical: 'https://schoolhouselane.co/services' },
+  alternates: { canonical: 'https://schoolhouselane.ai/services' },
   openGraph: {
     title: 'Services — Schoolhouse Lane Brand Strategy & Creative',
     description: 'Brand Identity, Campaigns, Websites, AI Creative, and Growth Consulting.',
-    url: 'https://schoolhouselane.co/services',
+    url: 'https://schoolhouselane.ai/services',
     images: [{ url: '/images/services-hero.webp', width: 1200, height: 630, alt: 'Schoolhouse Lane Services' }],
   },
   twitter: {
@@ -31,11 +31,11 @@ const servicesSchema = {
   "@type": "ItemList",
   "name": "Schoolhouse Lane Services",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Strategy & Growth Consulting", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.co/services" } },
-    { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "Brand Identity & Positioning", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.co/services" } },
-    { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "AI Creative & Innovation", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.co/services" } },
-    { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Campaigns & Creative Direction", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.co/services" } },
-    { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Websites & Digital Experiences", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.co/services" } },
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Strategy & Growth Consulting", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.ai/services" } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "Brand Identity & Positioning", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.ai/services" } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "AI Creative & Innovation", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.ai/services" } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Campaigns & Creative Direction", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.ai/services" } },
+    { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Websites & Digital Experiences", "provider": { "@type": "Organization", "name": "Schoolhouse Lane" }, "url": "https://schoolhouselane.ai/services" } },
   ],
 }
 
