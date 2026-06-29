@@ -2,7 +2,10 @@ import postgres from 'postgres'
 
 const globalForSql = global as typeof global & { _sql?: ReturnType<typeof postgres> }
 
-const sql = globalForSql._sql ?? postgres(process.env.DATABASE_URL!, {
+// Vercel Postgres uses POSTGRES_URL; fallback to DATABASE_URL for local dev
+const connectionString = process.env.POSTGRES_URL ?? process.env.DATABASE_URL!
+
+const sql = globalForSql._sql ?? postgres(connectionString, {
   ssl: 'require',
   max: 5,
   idle_timeout: 20,
