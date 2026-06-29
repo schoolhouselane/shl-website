@@ -7,12 +7,14 @@ import BlogArticle from '@/components/blog/BlogArticle'
 import BlogMoreJournal from '@/components/blog/BlogMoreJournal'
 import BlogNewsletter from '@/components/blog/BlogNewsletter'
 import CaseStudyCTA from '@/components/work/CaseStudyCTA'
-import { getBlogPost, allBlogPosts, type JournalCard } from '@/lib/blog-data'
+import { allBlogPosts, type JournalCard } from '@/lib/blog-data'
+import { getPostBySlug, getAllSlugs } from '@/lib/cms-blog'
 
-const BASE_URL = 'https://schoolhouselane.co'
+const BASE_URL = 'https://schoolhouselane.ai'
 
-export function generateStaticParams() {
-  return allBlogPosts.map((p) => ({ slug: p.slug }))
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({
@@ -21,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const post = getBlogPost(slug)
+  const post = await getPostBySlug(slug)
   if (!post) return {}
 
   const title = post.seoTitle ?? post.title
@@ -62,7 +64,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = getBlogPost(slug)
+  const post = await getPostBySlug(slug)
   if (!post) notFound()
 
   const url = `${BASE_URL}/blog/${slug}`

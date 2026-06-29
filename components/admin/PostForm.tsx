@@ -1,0 +1,770 @@
+'use client'
+
+import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
+import type { ContentBlock } from '@/lib/blog-data'
+
+// ─── Editor block types ───────────────────────────────────────────────────────
+
+type ListItem = { lead: string; text: string }
+
+type EditorBlock =
+  | { id: string; type: 'paragraph'; content: string; dark: boolean }
+  | { id: string; type: 'heading'; content: string }
+  | { id: string; type: 'blockquote'; content: string }
+  | { id: string; type: 'image'; src: string; alt: string; width: string; height: string }
+  | { id: string; type: 'image-pair'; src1: string; alt1: string; src2: string; alt2: string }
+  | { id: string; type: 'callout'; content: string }
+  | { id: string; type: 'rich-list'; items: ListItem[]; dark: boolean }
+  | { id: string; type: 'ordered-list'; items: ListItem[] }
+  | { id: string; type: 'quote-banner'; src: string; content: string }
+
+function uid() { return Math.random().toString(36).slice(2, 9) }
+
+// ─── Convert editor block → ContentBlock ─────────────────────────────────────
+
+function toContentBlock(b: EditorBlock): ContentBlock {
+  if (b.type === 'paragraph') {
+    if (!b.content.includes('**')) {
+      return { type: 'paragraph', ...(b.dark ? { dark: true } : {}), text: b.content }
+    }
+    const parts: Array<{ text: string; bold?: boolean }> = []
+    const re = /\*\*([^*]+)\*\*/g
+    let last = 0, m
+    while ((m = re.exec(b.content)) !== null) {
+      if (m.index > last) parts.push({ text: b.content.slice(last, m.index) })
+      parts.push({ text: m[1], bold: true })
+      last = m.index + m[0].length
+    }
+    if (last < b.content.length) parts.push({ text: b.content.slice(last) })
+    return { type: 'paragraph', ...(b.dark ? { dark: true } : {}), parts }
+  }
+  if (b.type === 'heading') return { type: 'heading', text: b.content }
+  if (b.type === 'blockquote') return { type: 'blockquote', text: b.content }
+  if (b.type === 'image') return {
+    type: 'image', src: b.src, alt: b.alt,
+    ...(b.width ? { width: parseInt(b.width) } : {}),
+    ...(b.height ? { height: parseInt(b.height) } : {}),
+  }
+  if (b.type === 'image-pair') return { type: 'image-pair', src1: b.src1, alt1: b.alt1, src2: b.src2, alt2: b.alt2 }
+  if (b.type === 'callout') return { type: 'callout', text: b.content }
+  if (b.type === 'rich-list') return { type: 'rich-list', ...(b.dark ? { dark: true } : {}), items: b.items }
+  if (b.type === 'ordered-list') return { type: 'ordered-list', items: b.items }
+  return { type: 'quote-banner', src: b.src, text: b.content }
+}
+
+// ─── Convert ContentBlock → editor block ─────────────────────────────────────
+
+function fromContentBlock(cb: ContentBlock): EditorBlock {
+  const id = uid()
+  if (cb.type === 'paragraph') {
+    const content = cb.parts
+      ? cb.parts.map(p => p.bold ? `**${p.text}**` : p.text).join('')
+      : (cb.text ?? '')
+    return { id, type: 'paragraph', content, dark: !!(cb.dark) }
+  }
+  if (cb.type === 'heading') return { id, type: 'heading', content: cb.text }
+  if (cb.type === 'blockquote') return { id, type: 'blockquote', content: cb.text }
+  if (cb.type === 'image') return { id, type: 'image', src: cb.src, alt: cb.alt, width: String(cb.width ?? ''), height: String(cb.height ?? '') }
+  if (cb.type === 'image-pair') return { id, type: 'image-pair', src1: cb.src1, alt1: cb.alt1, src2: cb.src2, alt2: cb.alt2 }
+  if (cb.type === 'callout') return { id, type: 'callout', content: cb.text }
+  if (cb.type === 'rich-list') return { id, type: 'rich-list', items: cb.items, dark: !!(cb.dark) }
+  if (cb.type === 'ordered-list') return { id, type: 'ordered-list', items: cb.items }
+  return { id, type: 'quote-banner', src: cb.src, content: cb.text }
+}
+
+// ─── Default new blocks ───────────────────────────────────────────────────────
+
+function newBlock(type: EditorBlock['type']): EditorBlock {
+  const id = uid()
+  if (type === 'paragraph') return { id, type, content: '', dark: false }
+  if (type === 'heading') return { id, type, content: '' }
+  if (type === 'blockquote') return { id, type, content: '' }
+  if (type === 'image') return { id, type, src: '', alt: '', width: '', height: '' }
+  if (type === 'image-pair') return { id, type, src1: '', alt1: '', src2: '', alt2: '' }
+  if (type === 'callout') return { id, type, content: '' }
+  if (type === 'rich-list') return { id, type, items: [{ lead: '', text: '' }], dark: false }
+  if (type === 'ordered-list') return { id, type, items: [{ lead: '', text: '' }] }
+  return { id, type: 'quote-banner', src: '', content: '' }
+}
+
+// ─── Helper: slug from title ──────────────────────────────────────────────────
+
+function toSlug(title: string) {
+  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim()
+}
+
+// ─── Form data ────────────────────────────────────────────────────────────────
+
+export interface PostFormData {
+  title: string
+  slug: string
+  category: string
+  heroImage: string
+  listingImage: string
+  seoTitle: string
+  seoDescription: string
+  keywords: string
+  publishedAt: string
+  authorName: string
+  authorRole: string
+  authorBio: string
+  authorImage: string
+  body: ContentBlock[]
+  isPublished: boolean
+}
+
+interface Props {
+  postId?: number
+  initialData?: PostFormData
+}
+
+// ─── Block type colours ───────────────────────────────────────────────────────
+
+const BLOCK_COLORS: Record<string, string> = {
+  paragraph: 'bg-[#e8f4e8] text-[#2a6b2a]',
+  heading: 'bg-[#e8eaf4] text-[#3a4dbf]',
+  blockquote: 'bg-[#f4e8e8] text-[#b04040]',
+  image: 'bg-[#f4f0e8] text-[#8a6430]',
+  'image-pair': 'bg-[#f4f0e8] text-[#8a6430]',
+  callout: 'bg-[#1e1e20] text-white',
+  'rich-list': 'bg-[#e8f4f0] text-[#2a7060]',
+  'ordered-list': 'bg-[#e8f4f0] text-[#2a7060]',
+  'quote-banner': 'bg-[#f4e8f4] text-[#7a3a8a]',
+}
+
+const BLOCK_LABELS: Record<string, string> = {
+  paragraph: 'Paragraph',
+  heading: 'Heading',
+  blockquote: 'Blockquote',
+  image: 'Image',
+  'image-pair': 'Image Pair',
+  callout: 'Callout',
+  'rich-list': 'Rich List',
+  'ordered-list': 'Ordered List',
+  'quote-banner': 'Quote Banner',
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export default function PostForm({ postId, initialData }: Props) {
+  const router = useRouter()
+  const [isPending, startTransition] = useTransition()
+
+  const today = new Date().toISOString().slice(0, 10)
+
+  const [meta, setMeta] = useState({
+    title: initialData?.title ?? '',
+    slug: initialData?.slug ?? '',
+    category: initialData?.category ?? 'Strategy',
+    heroImage: initialData?.heroImage ?? '',
+    listingImage: initialData?.listingImage ?? '',
+    seoTitle: initialData?.seoTitle ?? '',
+    seoDescription: initialData?.seoDescription ?? '',
+    keywords: initialData?.keywords ?? '',
+    publishedAt: initialData?.publishedAt ?? today,
+    authorName: initialData?.authorName ?? 'Darren McGrath',
+    authorRole: initialData?.authorRole ?? 'Partner',
+    authorBio: initialData?.authorBio ?? 'A Cannes Lion-winning creative strategist with 25 years of experience.',
+    authorImage: initialData?.authorImage ?? '/images/blog/blog-author.webp',
+  })
+
+  const [blocks, setBlocks] = useState<EditorBlock[]>(
+    () => (initialData?.body ?? []).map(fromContentBlock)
+  )
+  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [showAddMenu, setShowAddMenu] = useState(false)
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [showAuthor, setShowAuthor] = useState(false)
+
+  function setMf(key: keyof typeof meta, val: string) {
+    setMeta(m => ({ ...m, [key]: val }))
+  }
+
+  function onTitleChange(val: string) {
+    setMeta(m => ({ ...m, title: val, slug: m.slug || toSlug(val) }))
+  }
+
+  function updateBlock<T extends EditorBlock>(id: string, patch: Partial<T>) {
+    setBlocks(bs => bs.map(b => b.id === id ? ({ ...b, ...patch } as EditorBlock) : b))
+  }
+
+  function addBlock(type: EditorBlock['type']) {
+    const b = newBlock(type)
+    setBlocks(bs => [...bs, b])
+    setExpandedId(b.id)
+    setShowAddMenu(false)
+  }
+
+  function removeBlock(id: string) {
+    setBlocks(bs => bs.filter(b => b.id !== id))
+    if (expandedId === id) setExpandedId(null)
+  }
+
+  function moveBlock(id: string, dir: 'up' | 'down') {
+    setBlocks(bs => {
+      const i = bs.findIndex(b => b.id === id)
+      if (i < 0) return bs
+      const j = dir === 'up' ? i - 1 : i + 1
+      if (j < 0 || j >= bs.length) return bs
+      const next = [...bs]
+      ;[next[i], next[j]] = [next[j], next[i]]
+      return next
+    })
+  }
+
+  async function save(publish: boolean) {
+    setSaveStatus('saving')
+    setErrorMsg('')
+
+    const body = blocks.map(toContentBlock)
+    const payload = {
+      slug: meta.slug,
+      title: meta.title,
+      category: meta.category,
+      heroImage: meta.heroImage,
+      listingImage: meta.listingImage,
+      seoTitle: meta.seoTitle,
+      seoDescription: meta.seoDescription,
+      keywords: meta.keywords.split(',').map(k => k.trim()).filter(Boolean),
+      publishedAt: meta.publishedAt,
+      authorName: meta.authorName,
+      authorRole: meta.authorRole,
+      authorBio: meta.authorBio,
+      authorImage: meta.authorImage,
+      body,
+      isPublished: publish,
+    }
+
+    try {
+      if (postId) {
+        const res = await fetch(`/api/admin/blog/${postId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+        if (!res.ok) throw new Error((await res.json()).error)
+        setSaveStatus('saved')
+        setTimeout(() => setSaveStatus('idle'), 3000)
+      } else {
+        const res = await fetch('/api/admin/blog', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+        if (!res.ok) throw new Error((await res.json()).error)
+        const { id } = await res.json()
+        startTransition(() => router.push(`/admin/blog/${id}/edit`))
+      }
+    } catch (err) {
+      setSaveStatus('error')
+      setErrorMsg(err instanceof Error ? err.message : 'Save failed')
+    }
+  }
+
+  const isEditing = !!postId
+
+  // ─── Render ─────────────────────────────────────────────────────────────────
+
+  return (
+    <div className="flex flex-col gap-8">
+
+      {/* Meta section */}
+      <section className="bg-white border border-[#e8e4df] rounded-lg p-6 flex flex-col gap-5">
+        <h2 className="font-black text-sm uppercase tracking-widest text-[#999]">Post Details</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1">
+            <label className="text-xs uppercase tracking-wide text-[#888]">Title *</label>
+            <input
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+              value={meta.title}
+              onChange={e => onTitleChange(e.target.value)}
+              placeholder="Post title"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-xs uppercase tracking-wide text-[#888]">Slug *</label>
+            <input
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] font-mono text-sm focus:outline-none focus:border-[#1e1e20]"
+              value={meta.slug}
+              onChange={e => setMf('slug', e.target.value)}
+              placeholder="url-slug"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-xs uppercase tracking-wide text-[#888]">Category</label>
+            <select
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] bg-white focus:outline-none focus:border-[#1e1e20]"
+              value={meta.category}
+              onChange={e => setMf('category', e.target.value)}
+            >
+              {['Strategy', 'Leadership', 'Branding', 'Digital', 'Culture', 'Creative'].map(c => (
+                <option key={c}>{c}</option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-xs uppercase tracking-wide text-[#888]">Published Date</label>
+            <input
+              type="date"
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+              value={meta.publishedAt}
+              onChange={e => setMf('publishedAt', e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-xs uppercase tracking-wide text-[#888]">Hero Image URL *</label>
+          <input
+            className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+            value={meta.heroImage}
+            onChange={e => setMf('heroImage', e.target.value)}
+            placeholder="/images/blog/my-image.jpg or https://..."
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label className="text-xs uppercase tracking-wide text-[#888]">Listing / Gallery Image URL</label>
+          <input
+            className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+            value={meta.listingImage}
+            onChange={e => setMf('listingImage', e.target.value)}
+            placeholder="Optional — used on /blog listing page"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1">
+            <label className="text-xs uppercase tracking-wide text-[#888]">SEO Title</label>
+            <input
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+              value={meta.seoTitle}
+              onChange={e => setMf('seoTitle', e.target.value)}
+              placeholder="Defaults to title if empty"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-xs uppercase tracking-wide text-[#888]">Keywords (comma-separated)</label>
+            <input
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+              value={meta.keywords}
+              onChange={e => setMf('keywords', e.target.value)}
+              placeholder="brand strategy, leadership, Schoolhouse Lane"
+            />
+          </div>
+        </div>
+        <div className="flex flex-col gap-1">
+          <label className="text-xs uppercase tracking-wide text-[#888]">SEO Description</label>
+          <textarea
+            className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] resize-none focus:outline-none focus:border-[#1e1e20]"
+            rows={2}
+            value={meta.seoDescription}
+            onChange={e => setMf('seoDescription', e.target.value)}
+            placeholder="One sentence for search engines and social previews"
+          />
+        </div>
+
+        {/* Author (collapsed by default) */}
+        <div className="border border-[#e8e4df] rounded-lg overflow-hidden">
+          <button
+            type="button"
+            className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#888] hover:text-[#1e1e20] transition-colors"
+            onClick={() => setShowAuthor(v => !v)}
+          >
+            <span className="uppercase tracking-wide text-xs">Author Details</span>
+            <span>{showAuthor ? '▲' : '▼'}</span>
+          </button>
+          {showAuthor && (
+            <div className="px-4 pb-4 flex flex-col gap-3 border-t border-[#e8e4df]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-3">
+                <div className="flex flex-col gap-1">
+                  <label className="text-xs uppercase tracking-wide text-[#888]">Name</label>
+                  <input className="border border-[#d9d9d9] rounded-lg px-3 py-2 text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]" value={meta.authorName} onChange={e => setMf('authorName', e.target.value)} />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-xs uppercase tracking-wide text-[#888]">Role</label>
+                  <input className="border border-[#d9d9d9] rounded-lg px-3 py-2 text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]" value={meta.authorRole} onChange={e => setMf('authorRole', e.target.value)} />
+                </div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="text-xs uppercase tracking-wide text-[#888]">Author Image URL</label>
+                <input className="border border-[#d9d9d9] rounded-lg px-3 py-2 text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]" value={meta.authorImage} onChange={e => setMf('authorImage', e.target.value)} />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="text-xs uppercase tracking-wide text-[#888]">Bio</label>
+                <textarea className="border border-[#d9d9d9] rounded-lg px-3 py-2 text-[#1e1e20] text-sm resize-none focus:outline-none focus:border-[#1e1e20]" rows={2} value={meta.authorBio} onChange={e => setMf('authorBio', e.target.value)} />
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Block editor */}
+      <section className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <h2 className="font-black text-sm uppercase tracking-widest text-[#999]">
+            Content Blocks ({blocks.length})
+          </h2>
+          <p className="text-xs text-[#bbb]">Use **bold** for bold text in paragraphs</p>
+        </div>
+
+        {blocks.map((block, i) => (
+          <BlockCard
+            key={block.id}
+            block={block}
+            index={i}
+            total={blocks.length}
+            expanded={expandedId === block.id}
+            onToggle={() => setExpandedId(id => id === block.id ? null : block.id)}
+            onMove={dir => moveBlock(block.id, dir)}
+            onRemove={() => removeBlock(block.id)}
+            onUpdate={patch => updateBlock(block.id, patch)}
+          />
+        ))}
+
+        {/* Add block */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setShowAddMenu(v => !v)}
+            className="w-full border-2 border-dashed border-[#d9d9d9] rounded-lg py-4 text-[#999] hover:border-[#1e1e20] hover:text-[#1e1e20] transition-colors text-sm uppercase tracking-wide font-medium"
+          >
+            + Add Block
+          </button>
+          {showAddMenu && (
+            <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-[#e8e4df] rounded-lg shadow-lg p-3 z-10 grid grid-cols-3 gap-2">
+              {(['paragraph', 'heading', 'blockquote', 'image', 'image-pair', 'callout', 'rich-list', 'ordered-list', 'quote-banner'] as const).map(t => (
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => addBlock(t)}
+                  className={`text-xs px-3 py-2 rounded-md font-medium uppercase tracking-wide ${BLOCK_COLORS[t]} hover:opacity-80 transition-opacity`}
+                >
+                  {BLOCK_LABELS[t]}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Save bar */}
+      <div className="sticky bottom-0 bg-white border-t border-[#e8e4df] py-4 flex items-center justify-between gap-4">
+        {saveStatus === 'saved' && (
+          <span className="text-[#2d7d2d] text-sm font-medium">✓ Saved</span>
+        )}
+        {saveStatus === 'error' && (
+          <span className="text-[#b04040] text-sm">{errorMsg}</span>
+        )}
+        {(saveStatus === 'idle' || saveStatus === 'saving') && (
+          <span className="text-[#bbb] text-sm">
+            {isPending || saveStatus === 'saving' ? 'Saving…' : isEditing ? 'Unsaved changes' : 'New post'}
+          </span>
+        )}
+        <div className="flex items-center gap-3">
+          {postId && (
+            <DeleteButton postId={postId} />
+          )}
+          <button
+            type="button"
+            disabled={saveStatus === 'saving' || isPending}
+            onClick={() => save(false)}
+            className="border border-[#1e1e20] px-6 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#f0efed] transition-colors disabled:opacity-50"
+          >
+            Save Draft
+          </button>
+          <button
+            type="button"
+            disabled={saveStatus === 'saving' || isPending}
+            onClick={() => save(true)}
+            className="bg-[#1e1e20] text-white px-6 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#333] transition-colors disabled:opacity-50"
+          >
+            Publish
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Delete button (separate client component for the confirm flow) ───────────
+
+function DeleteButton({ postId }: { postId: number }) {
+  const router = useRouter()
+  const [confirming, setConfirming] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  async function handleDelete() {
+    setLoading(true)
+    await fetch(`/api/admin/blog/${postId}`, { method: 'DELETE' })
+    router.push('/admin/blog')
+  }
+
+  if (confirming) {
+    return (
+      <div className="flex items-center gap-2">
+        <span className="text-sm text-[#888]">Delete?</span>
+        <button
+          type="button"
+          onClick={handleDelete}
+          disabled={loading}
+          className="text-sm text-[#b04040] font-medium hover:underline disabled:opacity-50"
+        >
+          Yes
+        </button>
+        <button
+          type="button"
+          onClick={() => setConfirming(false)}
+          className="text-sm text-[#888] hover:underline"
+        >
+          No
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setConfirming(true)}
+      className="text-sm text-[#ccc] hover:text-[#b04040] transition-colors"
+    >
+      Delete
+    </button>
+  )
+}
+
+// ─── Block card ───────────────────────────────────────────────────────────────
+
+interface BlockCardProps {
+  block: EditorBlock
+  index: number
+  total: number
+  expanded: boolean
+  onToggle: () => void
+  onMove: (dir: 'up' | 'down') => void
+  onRemove: () => void
+  onUpdate: (patch: Partial<EditorBlock>) => void
+}
+
+function BlockCard({ block, index, total, expanded, onToggle, onMove, onRemove, onUpdate }: BlockCardProps) {
+  const preview = getPreview(block)
+
+  return (
+    <div className={`bg-white border rounded-lg overflow-hidden transition-all ${expanded ? 'border-[#1e1e20]' : 'border-[#e8e4df]'}`}>
+      {/* Header */}
+      <div
+        className="flex items-center gap-3 px-4 py-3 cursor-pointer select-none"
+        onClick={onToggle}
+      >
+        <span className={`text-xs font-medium px-2 py-0.5 rounded uppercase tracking-wide shrink-0 ${BLOCK_COLORS[block.type]}`}>
+          {BLOCK_LABELS[block.type]}
+        </span>
+        <span className="flex-1 text-sm text-[#888] truncate">{preview}</span>
+        <div className="flex items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
+          <button
+            type="button"
+            disabled={index === 0}
+            onClick={() => onMove('up')}
+            className="p-1.5 text-[#bbb] hover:text-[#1e1e20] disabled:opacity-20 transition-colors"
+          >
+            ↑
+          </button>
+          <button
+            type="button"
+            disabled={index === total - 1}
+            onClick={() => onMove('down')}
+            className="p-1.5 text-[#bbb] hover:text-[#1e1e20] disabled:opacity-20 transition-colors"
+          >
+            ↓
+          </button>
+          <button
+            type="button"
+            onClick={onRemove}
+            className="p-1.5 text-[#bbb] hover:text-[#b04040] transition-colors ml-1"
+          >
+            ×
+          </button>
+        </div>
+      </div>
+
+      {/* Fields */}
+      {expanded && (
+        <div className="px-4 pb-4 border-t border-[#e8e4df]">
+          <BlockFields block={block} onUpdate={onUpdate} />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function getPreview(b: EditorBlock): string {
+  if (b.type === 'paragraph' || b.type === 'heading' || b.type === 'blockquote' || b.type === 'callout') {
+    return b.content.slice(0, 80) || '(empty)'
+  }
+  if (b.type === 'image') return b.src || '(no URL)'
+  if (b.type === 'image-pair') return `${b.src1 || '—'} + ${b.src2 || '—'}`
+  if (b.type === 'rich-list' || b.type === 'ordered-list') return `${b.items.length} item(s)`
+  if (b.type === 'quote-banner') return b.content.slice(0, 80) || '(empty)'
+  return ''
+}
+
+// ─── Block-specific fields ────────────────────────────────────────────────────
+
+function BlockFields({ block, onUpdate }: { block: EditorBlock; onUpdate: (patch: Partial<EditorBlock>) => void }) {
+  const inp = 'mt-3 border border-[#d9d9d9] rounded-lg px-4 py-2.5 w-full text-[#1e1e20] text-sm focus:outline-none focus:border-[#1e1e20]'
+  const lbl = 'text-xs uppercase tracking-wide text-[#888] mt-3 block'
+
+  if (block.type === 'paragraph') return (
+    <div>
+      <label className={lbl}>Text — use **bold** for bold</label>
+      <textarea
+        className={`${inp} resize-none`}
+        rows={5}
+        value={block.content}
+        onChange={e => onUpdate({ content: e.target.value } as Partial<typeof block>)}
+      />
+      <label className="flex items-center gap-2 mt-3 cursor-pointer">
+        <input
+          type="checkbox"
+          checked={block.dark}
+          onChange={e => onUpdate({ dark: e.target.checked } as Partial<typeof block>)}
+        />
+        <span className="text-sm text-[#888]">Intro/dark style (heavier weight, opener)</span>
+      </label>
+    </div>
+  )
+
+  if (block.type === 'heading') return (
+    <div>
+      <label className={lbl}>Heading text</label>
+      <input className={inp} value={block.content} onChange={e => onUpdate({ content: e.target.value } as Partial<typeof block>)} />
+    </div>
+  )
+
+  if (block.type === 'blockquote') return (
+    <div>
+      <label className={lbl}>Quote text</label>
+      <textarea className={`${inp} resize-none`} rows={3} value={block.content} onChange={e => onUpdate({ content: e.target.value } as Partial<typeof block>)} />
+    </div>
+  )
+
+  if (block.type === 'callout') return (
+    <div>
+      <label className={lbl}>Callout text (shown in dark box)</label>
+      <textarea className={`${inp} resize-none`} rows={3} value={block.content} onChange={e => onUpdate({ content: e.target.value } as Partial<typeof block>)} />
+    </div>
+  )
+
+  if (block.type === 'image') return (
+    <div>
+      <label className={lbl}>Image URL</label>
+      <input className={inp} value={block.src} placeholder="/images/blog/filename.jpg" onChange={e => onUpdate({ src: e.target.value } as Partial<typeof block>)} />
+      <label className={lbl}>Alt text</label>
+      <input className={inp} value={block.alt} placeholder="Describe the image" onChange={e => onUpdate({ alt: e.target.value } as Partial<typeof block>)} />
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={lbl}>Width (px)</label>
+          <input className={inp} value={block.width} placeholder="988" onChange={e => onUpdate({ width: e.target.value } as Partial<typeof block>)} />
+        </div>
+        <div>
+          <label className={lbl}>Height (px)</label>
+          <input className={inp} value={block.height} placeholder="462" onChange={e => onUpdate({ height: e.target.value } as Partial<typeof block>)} />
+        </div>
+      </div>
+    </div>
+  )
+
+  if (block.type === 'image-pair') return (
+    <div>
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={lbl}>Image 1 URL</label>
+          <input className={inp} value={block.src1} onChange={e => onUpdate({ src1: e.target.value } as Partial<typeof block>)} />
+          <label className={lbl}>Alt 1</label>
+          <input className={inp} value={block.alt1} onChange={e => onUpdate({ alt1: e.target.value } as Partial<typeof block>)} />
+        </div>
+        <div>
+          <label className={lbl}>Image 2 URL</label>
+          <input className={inp} value={block.src2} onChange={e => onUpdate({ src2: e.target.value } as Partial<typeof block>)} />
+          <label className={lbl}>Alt 2</label>
+          <input className={inp} value={block.alt2} onChange={e => onUpdate({ alt2: e.target.value } as Partial<typeof block>)} />
+        </div>
+      </div>
+    </div>
+  )
+
+  if (block.type === 'quote-banner') return (
+    <div>
+      <label className={lbl}>Background Image URL</label>
+      <input className={inp} value={block.src} onChange={e => onUpdate({ src: e.target.value } as Partial<typeof block>)} />
+      <label className={lbl}>Quote text</label>
+      <textarea className={`${inp} resize-none`} rows={3} value={block.content} onChange={e => onUpdate({ content: e.target.value } as Partial<typeof block>)} />
+    </div>
+  )
+
+  if (block.type === 'rich-list' || block.type === 'ordered-list') {
+    const isRich = block.type === 'rich-list'
+    return (
+      <div>
+        {isRich && (
+          <label className="flex items-center gap-2 mt-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={(block as { dark: boolean }).dark}
+              onChange={e => onUpdate({ dark: e.target.checked } as Partial<typeof block>)}
+            />
+            <span className="text-sm text-[#888]">Dark background</span>
+          </label>
+        )}
+        {block.items.map((item, i) => (
+          <div key={i} className="mt-3 flex gap-3 items-start">
+            <div className="flex-1 grid grid-cols-2 gap-2">
+              <input
+                className={inp + ' !mt-0'}
+                value={item.lead}
+                placeholder="Bold lead (e.g. Cynicism)"
+                onChange={e => {
+                  const items = [...block.items]
+                  items[i] = { ...items[i], lead: e.target.value }
+                  onUpdate({ items } as Partial<typeof block>)
+                }}
+              />
+              <input
+                className={inp + ' !mt-0'}
+                value={item.text}
+                placeholder="Rest of text"
+                onChange={e => {
+                  const items = [...block.items]
+                  items[i] = { ...items[i], text: e.target.value }
+                  onUpdate({ items } as Partial<typeof block>)
+                }}
+              />
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                const items = block.items.filter((_, j) => j !== i)
+                onUpdate({ items } as Partial<typeof block>)
+              }}
+              className="text-[#ccc] hover:text-[#b04040] mt-0.5 text-lg shrink-0"
+            >
+              ×
+            </button>
+          </div>
+        ))}
+        <button
+          type="button"
+          onClick={() => onUpdate({ items: [...block.items, { lead: '', text: '' }] } as Partial<typeof block>)}
+          className="mt-3 text-xs border border-[#d9d9d9] rounded-full px-4 py-1.5 text-[#888] hover:border-[#1e1e20] hover:text-[#1e1e20] transition-colors"
+        >
+          + Add item
+        </button>
+      </div>
+    )
+  }
+
+  return null
+}

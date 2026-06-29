@@ -21,7 +21,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       ]
       return ALLOWED_EMAILS.includes(user.email ?? '')
     },
-    async redirect({ baseUrl }) {
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith('/')) return `${baseUrl}${url}`
+      if (url.startsWith(baseUrl)) return url
       return `${baseUrl}/portal`
     },
   },

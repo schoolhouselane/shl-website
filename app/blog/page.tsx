@@ -3,9 +3,9 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BlogList from '@/components/blog/BlogList'
 import BlogNewsletter from '@/components/blog/BlogNewsletter'
-import { allBlogPosts } from '@/lib/blog-data'
+import { getAllPostsMerged } from '@/lib/cms-blog'
 
-const BASE_URL = 'https://schoolhouselane.co'
+const BASE_URL = 'https://schoolhouselane.ai'
 
 export const metadata: Metadata = {
   title: 'The Journal — Schoolhouse Lane',
@@ -22,12 +22,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getAllPostsMerged()
   return (
     <>
       <Header />
       <main>
-        <BlogList posts={allBlogPosts} />
+        <BlogList posts={posts} />
         <BlogNewsletter />
       </main>
       <Footer />
