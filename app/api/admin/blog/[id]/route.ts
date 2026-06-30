@@ -1,11 +1,13 @@
-import { auth } from '@/auth'
+import { cookies } from 'next/headers'
 import { updatePost, deletePost, type PostInput } from '@/lib/cms-blog'
 import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
-  const session = await auth()
-  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const jar = await cookies()
+  if (jar.get('admin_auth')?.value !== '1') {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
 
   try {
     const { id } = await params
@@ -23,8 +25,10 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 }
 
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
-  const session = await auth()
-  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const jar = await cookies()
+  if (jar.get('admin_auth')?.value !== '1') {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
 
   try {
     const { id } = await params

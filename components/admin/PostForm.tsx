@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import type { ContentBlock } from '@/lib/blog-data'
+import LivePreview from './LivePreview'
 
 // ─── Editor block types ───────────────────────────────────────────────────────
 
@@ -112,6 +113,18 @@ export interface PostFormData {
   authorImage: string
   body: ContentBlock[]
   isPublished: boolean
+  scheduledAt?: string
+}
+
+function formatScheduled(iso: string) {
+  return new Date(iso).toLocaleString('en-GB', {
+    day: 'numeric', month: 'short', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+  })
+}
+
+function toDatetimeLocal(iso: string) {
+  return iso.slice(0, 16)
 }
 
 interface Props {
@@ -177,6 +190,9 @@ export default function PostForm({ postId, initialData }: Props) {
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const [showAuthor, setShowAuthor] = useState(false)
+  const [scheduledAt, setScheduledAt] = useState(initialData?.scheduledAt ?? '')
+  const [scheduleInput, setScheduleInput] = useState('')
+  const [showScheduler, setShowScheduler] = useState(false)
 
   function setMf(key: keyof typeof meta, val: string) {
     setMeta(m => ({ ...m, [key]: val }))
@@ -214,9 +230,11 @@ export default function PostForm({ postId, initialData }: Props) {
     })
   }
 
-  async function save(publish: boolean): Promise<number | null> {
+  async function save(publish: boolean, scheduleOverride?: string | null): Promise<number | null> {
     setSaveStatus('saving')
     setErrorMsg('')
+
+    const finalScheduled = publish ? null : (scheduleOverride !== undefined ? scheduleOverride : (scheduledAt || null))
 
     const body = blocks.map(toContentBlock)
     const payload = {
@@ -235,6 +253,7 @@ export default function PostForm({ postId, initialData }: Props) {
       authorImage: meta.authorImage,
       body,
       isPublished: publish,
+      scheduledAt: finalScheduled,
     }
 
     try {
@@ -247,6 +266,7 @@ export default function PostForm({ postId, initialData }: Props) {
         if (!res.ok) throw new Error((await res.json()).error)
         setSaveStatus('saved')
         setTimeout(() => setSaveStatus('idle'), 3000)
+        setScheduledAt(finalScheduled ?? '')
         return postId
       } else {
         const res = await fetch('/api/admin/blog', {
@@ -256,6 +276,7 @@ export default function PostForm({ postId, initialData }: Props) {
         })
         if (!res.ok) throw new Error((await res.json()).error)
         const { id } = await res.json()
+        setScheduledAt(finalScheduled ?? '')
         startTransition(() => router.push(`/admin/blog/${id}/edit`))
         return id as number
       }
@@ -266,6 +287,14 @@ export default function PostForm({ postId, initialData }: Props) {
     }
   }
 
+  async function saveScheduled() {
+    if (!scheduleInput) return
+    const iso = new Date(scheduleInput).toISOString()
+    await save(false, iso)
+    setShowScheduler(false)
+    setScheduleInput('')
+  }
+
   async function saveAndPreview() {
     const id = await save(false)
     if (id) window.open(`/admin/preview/${id}`, '_blank')
@@ -273,10 +302,28 @@ export default function PostForm({ postId, initialData }: Props) {
 
   const isEditing = !!postId
 
+  // ─── Live preview data ───────────────────────────────────────────────────────
+
+  const previewData = {
+    title: meta.title,
+    category: meta.category,
+    heroImage: meta.heroImage,
+    publishedAt: meta.publishedAt,
+    authorName: meta.authorName,
+    authorRole: meta.authorRole,
+    authorBio: meta.authorBio,
+    authorImage: meta.authorImage,
+    body: blocks.map(toContentBlock),
+  }
+
   // ─── Render ─────────────────────────────────────────────────────────────────
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex h-full">
+
+      {/* ── Left: editor form ── */}
+      <div className="flex-1 min-w-0 overflow-y-auto flex flex-col bg-[#f5f3ef]">
+        <div className="flex flex-col gap-6 px-6 pt-6 pb-24 flex-1">
 
       {/* Meta section */}
       <section className="bg-white border border-[#e8e4df] rounded-lg p-6 flex flex-col gap-5">
@@ -464,49 +511,125 @@ export default function PostForm({ postId, initialData }: Props) {
         </div>
       </section>
 
-      {/* Save bar */}
-      <div className="sticky bottom-0 bg-white border-t border-[#e8e4df] py-4 flex items-center justify-between gap-4">
-        {saveStatus === 'saved' && (
-          <span className="text-[#2d7d2d] text-sm font-medium">✓ Saved</span>
-        )}
-        {saveStatus === 'error' && (
-          <span className="text-[#b04040] text-sm">{errorMsg}</span>
-        )}
-        {(saveStatus === 'idle' || saveStatus === 'saving') && (
-          <span className="text-[#bbb] text-sm">
-            {isPending || saveStatus === 'saving' ? 'Saving…' : isEditing ? 'Unsaved changes' : 'New post'}
-          </span>
-        )}
-        <div className="flex items-center gap-3">
-          {postId && (
-            <DeleteButton postId={postId} />
+        </div>{/* end flex flex-col gap-6 */}
+
+        {/* Save bar */}
+        <div className="sticky bottom-0 bg-white border-t border-[#e8e4df] shrink-0">
+          {/* Schedule picker row */}
+          {showScheduler && (
+            <div className="px-6 py-3 border-b border-[#e8e4df] flex items-center gap-3 bg-[#fffbf5]">
+              <span className="text-xs uppercase tracking-wide text-[#888] shrink-0">Publish at</span>
+              <input
+                type="datetime-local"
+                value={scheduleInput}
+                onChange={e => setScheduleInput(e.target.value)}
+                className="border border-[#d9d9d9] rounded-lg px-3 py-2 text-sm text-[#1e1e20] focus:outline-none focus:border-[#8a6430]"
+              />
+              <button
+                type="button"
+                disabled={!scheduleInput || saveStatus === 'saving' || isPending}
+                onClick={saveScheduled}
+                className="bg-[#8a6430] text-white px-5 py-2 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#7a5420] transition-colors disabled:opacity-50"
+              >
+                Confirm
+              </button>
+              <button
+                type="button"
+                onClick={() => { setShowScheduler(false); setScheduleInput('') }}
+                className="text-[#bbb] hover:text-[#1e1e20] text-xl leading-none"
+              >
+                ✕
+              </button>
+            </div>
           )}
-          <button
-            type="button"
-            disabled={saveStatus === 'saving' || isPending}
-            onClick={saveAndPreview}
-            className="border border-[#d9d9d9] px-5 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:border-[#1e1e20] transition-colors disabled:opacity-50 text-[#888]"
-          >
-            Preview
-          </button>
-          <button
-            type="button"
-            disabled={saveStatus === 'saving' || isPending}
-            onClick={() => save(false)}
-            className="border border-[#1e1e20] px-6 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#f0efed] transition-colors disabled:opacity-50"
-          >
-            Save Draft
-          </button>
-          <button
-            type="button"
-            disabled={saveStatus === 'saving' || isPending}
-            onClick={() => save(true)}
-            className="bg-[#1e1e20] text-white px-6 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#333] transition-colors disabled:opacity-50"
-          >
-            Publish
-          </button>
+
+          {/* Main bar */}
+          <div className="px-6 py-4 flex items-center justify-between gap-4">
+            {/* Left: status */}
+            <div className="flex items-center gap-3 min-w-0">
+              {saveStatus === 'saved' && (
+                <span className="text-[#2d7d2d] text-sm font-medium">✓ Saved</span>
+              )}
+              {saveStatus === 'error' && (
+                <span className="text-[#b04040] text-sm truncate">{errorMsg}</span>
+              )}
+              {(saveStatus === 'idle' || saveStatus === 'saving') && (
+                <span className="text-[#bbb] text-sm">
+                  {isPending || saveStatus === 'saving' ? 'Saving…' : isEditing ? 'Unsaved changes' : 'New post'}
+                </span>
+              )}
+              {scheduledAt && (
+                <span className="flex items-center gap-1.5 text-xs bg-[#fef3c7] text-[#8a6430] px-3 py-1 rounded-full font-medium">
+                  <span>⏰</span>
+                  <span>{formatScheduled(scheduledAt)}</span>
+                  <button
+                    type="button"
+                    onClick={() => save(false, null)}
+                    className="text-[#c09050] hover:text-[#b04040] text-sm leading-none ml-0.5"
+                    title="Cancel schedule"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+            </div>
+
+            {/* Right: actions */}
+            <div className="flex items-center gap-2 shrink-0">
+              {postId && <DeleteButton postId={postId} />}
+              <button
+                type="button"
+                disabled={saveStatus === 'saving' || isPending}
+                onClick={saveAndPreview}
+                className="border border-[#d9d9d9] px-5 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:border-[#1e1e20] transition-colors disabled:opacity-50 text-[#888]"
+              >
+                Full Preview
+              </button>
+              <button
+                type="button"
+                disabled={saveStatus === 'saving' || isPending}
+                onClick={() => save(false)}
+                className="border border-[#1e1e20] px-6 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#f0efed] transition-colors disabled:opacity-50"
+              >
+                Save Draft
+              </button>
+              <button
+                type="button"
+                disabled={saveStatus === 'saving' || isPending}
+                onClick={() => {
+                  setShowScheduler(v => !v)
+                  if (!showScheduler && scheduledAt) setScheduleInput(toDatetimeLocal(scheduledAt))
+                }}
+                className={`border px-5 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium transition-colors disabled:opacity-50 ${
+                  scheduledAt
+                    ? 'border-[#8a6430] text-[#8a6430] hover:bg-[#fef3c7]'
+                    : 'border-[#d9d9d9] text-[#888] hover:border-[#8a6430] hover:text-[#8a6430]'
+                }`}
+              >
+                ⏰ Schedule
+              </button>
+              <button
+                type="button"
+                disabled={saveStatus === 'saving' || isPending}
+                onClick={() => save(true)}
+                className="bg-[#1e1e20] text-white px-6 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#333] transition-colors disabled:opacity-50"
+              >
+                Publish
+              </button>
+            </div>
+          </div>
         </div>
+      </div>{/* end left panel */}
+
+      {/* ── Right: live preview ── */}
+      <div className="w-[420px] xl:w-[480px] shrink-0 border-l-2 border-[#e8e4df] overflow-y-auto bg-white">
+        <div className="bg-[#1e1e20] px-4 py-2 flex items-center gap-2 sticky top-0 z-10">
+          <div className="w-2 h-2 rounded-full bg-[#4ade80]" />
+          <span className="text-[10px] font-bold text-[#888] uppercase tracking-[1.5px]">Live Preview</span>
+        </div>
+        <LivePreview data={previewData} />
       </div>
+
     </div>
   )
 }

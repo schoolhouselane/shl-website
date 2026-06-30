@@ -1,11 +1,13 @@
-import { auth } from '@/auth'
+import { cookies } from 'next/headers'
 import { createPost, type PostInput } from '@/lib/cms-blog'
 import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
-  const session = await auth()
-  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const jar = await cookies()
+  if (jar.get('admin_auth')?.value !== '1') {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
 
   try {
     const data: PostInput = await req.json()

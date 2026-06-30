@@ -20,6 +20,7 @@ export interface CmsRow {
   author_image: string
   body: ContentBlock[]
   is_published: boolean
+  scheduled_at: Date | null
   created_at: Date
   updated_at: Date
 }
@@ -42,6 +43,7 @@ export interface PostInput {
   authorImage: string
   body: ContentBlock[]
   isPublished: boolean
+  scheduledAt?: string | null
 }
 
 export async function createPost(data: PostInput): Promise<number> {
@@ -50,14 +52,15 @@ export async function createPost(data: PostInput): Promise<number> {
       slug, title, category, hero_image, listing_image,
       seo_title, seo_description, keywords, published_at,
       author_name, author_role, author_bio, author_image,
-      body, is_published
+      body, is_published, scheduled_at
     ) VALUES (
       ${data.slug}, ${data.title}, ${data.category},
       ${data.heroImage}, ${data.listingImage || null},
       ${data.seoTitle || null}, ${data.seoDescription || null},
       ${data.keywords}, ${data.publishedAt},
       ${data.authorName}, ${data.authorRole}, ${data.authorBio}, ${data.authorImage},
-      ${JSON.stringify(data.body)}::jsonb, ${data.isPublished}
+      ${JSON.stringify(data.body)}::jsonb, ${data.isPublished},
+      ${data.scheduledAt ?? null}
     )
     RETURNING id
   `
@@ -81,9 +84,22 @@ export async function updatePost(id: number, data: PostInput): Promise<void> {
       author_bio = ${data.authorBio},
       author_image = ${data.authorImage},
       body = ${JSON.stringify(data.body)}::jsonb,
-      is_published = ${data.isPublished}
+      is_published = ${data.isPublished},
+      scheduled_at = ${data.scheduledAt ?? null}
     WHERE id = ${id}
   `
+}
+
+export async function publishDueScheduled(): Promise<string[]> {
+  const rows = await sql<{ slug: string }[]>`
+    UPDATE cms_posts
+    SET is_published = true, updated_at = NOW()
+    WHERE is_published = false
+      AND scheduled_at IS NOT NULL
+      AND scheduled_at <= NOW()
+    RETURNING slug
+  `
+  return rows.map(r => r.slug)
 }
 
 export async function deletePost(id: number): Promise<void> {
