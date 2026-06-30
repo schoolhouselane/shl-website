@@ -193,6 +193,11 @@ export default function PostForm({ postId, initialData }: Props) {
   const [scheduledAt, setScheduledAt] = useState(initialData?.scheduledAt ?? '')
   const [scheduleInput, setScheduleInput] = useState('')
   const [showScheduler, setShowScheduler] = useState(false)
+  const [showAiPanel, setShowAiPanel] = useState(false)
+  const [aiContent, setAiContent] = useState('')
+  const [aiImages, setAiImages] = useState<string[]>([])
+  const [aiStatus, setAiStatus] = useState<'idle' | 'generating' | 'done' | 'error'>('idle')
+  const [aiError, setAiError] = useState('')
 
   function setMf(key: keyof typeof meta, val: string) {
     setMeta(m => ({ ...m, [key]: val }))
@@ -293,6 +298,30 @@ export default function PostForm({ postId, initialData }: Props) {
     await save(false, iso)
     setShowScheduler(false)
     setScheduleInput('')
+  }
+
+  async function generateBlocks() {
+    if (!aiContent.trim()) return
+    setAiStatus('generating')
+    setAiError('')
+    try {
+      const res = await fetch('/api/admin/blog/generate-blocks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: aiContent, images: aiImages.filter(Boolean) }),
+      })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error ?? 'Failed')
+      const newBlocks: EditorBlock[] = json.blocks.map((cb: Parameters<typeof fromContentBlock>[0]) => fromContentBlock(cb))
+      setBlocks(newBlocks)
+      setAiStatus('done')
+      setShowAiPanel(false)
+      setAiContent('')
+      setAiImages([])
+    } catch (err) {
+      setAiStatus('error')
+      setAiError(err instanceof Error ? err.message : 'Error')
+    }
   }
 
   async function saveAndPreview() {
@@ -468,8 +497,80 @@ export default function PostForm({ postId, initialData }: Props) {
           <h2 className="font-black text-sm uppercase tracking-widest text-[#999]">
             Content Blocks ({blocks.length})
           </h2>
-          <p className="text-xs text-[#bbb]">Use **bold** for bold text in paragraphs</p>
+          <button
+            type="button"
+            onClick={() => setShowAiPanel(v => !v)}
+            className="flex items-center gap-1.5 bg-[#1e1e20] text-white px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wide hover:bg-[#333] transition-colors"
+          >
+            ✦ AI Generate
+          </button>
         </div>
+
+        {/* AI panel */}
+        {showAiPanel && (
+          <div className="bg-[#1e1e20] rounded-xl p-5 flex flex-col gap-4">
+            <p className="text-xs text-[#999] uppercase tracking-widest font-medium">AI Block Generator</p>
+            <div className="flex flex-col gap-2">
+              <label className="text-xs text-[#888] uppercase tracking-wide">Blog Content (raw text)</label>
+              <textarea
+                className="bg-[#2a2a2c] border border-[#3a3a3c] rounded-lg px-4 py-3 text-white text-sm resize-none focus:outline-none focus:border-[#666] placeholder:text-[#555]"
+                rows={10}
+                value={aiContent}
+                onChange={e => setAiContent(e.target.value)}
+                placeholder="Paste your full blog post text here. AI will structure it into headings, paragraphs, callouts, lists and more..."
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-xs text-[#888] uppercase tracking-wide">Images (upload first, paste URLs here)</label>
+              {aiImages.map((url, i) => (
+                <div key={i} className="flex gap-2">
+                  <input
+                    className="flex-1 bg-[#2a2a2c] border border-[#3a3a3c] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#666]"
+                    value={url}
+                    placeholder={`Image ${i + 1} URL`}
+                    onChange={e => {
+                      const imgs = [...aiImages]
+                      imgs[i] = e.target.value
+                      setAiImages(imgs)
+                    }}
+                  />
+                  <UploadButton onUploaded={url => {
+                    const imgs = [...aiImages]
+                    imgs[i] = url
+                    setAiImages(imgs)
+                  }} />
+                  <button type="button" onClick={() => setAiImages(imgs => imgs.filter((_, j) => j !== i))} className="text-[#555] hover:text-[#b04040] text-xl">×</button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => setAiImages(imgs => [...imgs, ''])}
+                className="text-xs border border-[#3a3a3c] rounded-full px-4 py-1.5 text-[#666] hover:border-[#666] hover:text-[#999] transition-colors w-fit"
+              >
+                + Add image
+              </button>
+            </div>
+            {aiError && <p className="text-[#b04040] text-sm">{aiError}</p>}
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                disabled={!aiContent.trim() || aiStatus === 'generating'}
+                onClick={generateBlocks}
+                className="bg-white text-[#1e1e20] px-6 py-2.5 rounded-full text-sm uppercase tracking-wide font-medium hover:bg-[#f0efed] transition-colors disabled:opacity-40"
+              >
+                {aiStatus === 'generating' ? 'Generating…' : '✦ Generate Blocks'}
+              </button>
+              <button
+                type="button"
+                onClick={() => { setShowAiPanel(false); setAiContent(''); setAiImages([]); setAiStatus('idle') }}
+                className="text-[#666] hover:text-[#999] text-sm"
+              >
+                Cancel
+              </button>
+              {aiStatus === 'generating' && <span className="text-[#666] text-xs">Usually takes 5–10 seconds…</span>}
+            </div>
+          </div>
+        )}
 
         {blocks.map((block, i) => (
           <BlockCard

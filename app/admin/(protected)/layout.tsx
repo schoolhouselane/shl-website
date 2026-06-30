@@ -9,8 +9,8 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   if (jar.get('admin_auth')?.value !== '1') redirect('/admin/login')
 
   return (
-    <div className="min-h-screen bg-[#f5f3ef]">
-      <nav className="bg-[#1e1e20] px-6 py-4 flex items-center justify-between">
+    <div className="h-screen flex flex-col bg-[#f5f3ef] overflow-hidden">
+      <nav className="bg-[#1e1e20] px-6 py-4 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-6">
           <Link href="/" className="text-white font-black text-lg tracking-tight uppercase">SHL</Link>
           <span className="text-[#555] text-sm">|</span>
@@ -20,7 +20,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
         </div>
         <AdminLogout />
       </nav>
-      <main className="max-w-5xl mx-auto px-6 py-10">{children}</main>
+      <main className="flex-1 min-h-0">{children}</main>
     </div>
   )
 }

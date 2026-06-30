@@ -5,7 +5,8 @@ export default async function AdminBlogPage() {
   const posts = await getAllCmsRows()
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="h-full overflow-y-auto">
+    <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col gap-8">
 
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -73,6 +74,7 @@ export default async function AdminBlogPage() {
         )}
       </div>
 
+    </div>
     </div>
   )
 }

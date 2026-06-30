@@ -10,6 +10,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.107.0",
     "@react-email/render": "^2.0.8",
     "@vercel/blob": "^2.5.0",
     "next": "^16.2.4",
