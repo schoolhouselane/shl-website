@@ -24,7 +24,7 @@
     { "source": "/contact-old/", "destination": "/contact", "permanent": true }
   ],
   "crons": [
-    { "path": "/api/cron/publish-scheduled", "schedule": "* * * * *" }
+    { "path": "/api/cron/publish-scheduled", "schedule": "0 0 * * *" }
   ],
   "headers": [
     {
