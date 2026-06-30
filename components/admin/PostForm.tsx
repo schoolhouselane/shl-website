@@ -939,8 +939,11 @@ function UploadButton({ onUploaded }: { onUploaded: (url: string) => void }) {
     form.append('file', file)
     try {
       const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
-      const { url } = await res.json()
-      onUploaded(url)
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error ?? `HTTP ${res.status}`)
+      onUploaded(json.url)
+    } catch (err) {
+      alert('Upload failed: ' + (err instanceof Error ? err.message : String(err)))
     } finally {
       setUploading(false)
       e.target.value = ''
