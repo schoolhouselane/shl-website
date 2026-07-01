@@ -146,7 +146,14 @@ Rules:
 4. Pull quotes, short statements → blockquote
 5. 3+ related points with lead phrase → rich-list
 6. Split long paragraphs (>4 sentences) into multiple
-7. Return ONLY valid JSON object, no markdown fences, no explanation.`,
+7. Return ONLY valid JSON object, no markdown fences, no explanation.
+
+Text cleanup (MANDATORY):
+- Fix all spacing errors: sentences joined without a space ("word.Next" → "word. Next")
+- Fix double spaces, missing punctuation, broken line breaks
+- Remove ALL AI footprint phrases: "In conclusion", "It's worth noting", "It is important to note", "Delve into", "As we navigate", "In today's fast-paced", "Having said that", "At the end of the day", "Needless to say", "In summary", "To summarize", "Overall,", "Ultimately,", "It goes without saying", "Let's explore", "In this article", "I hope this", "As an AI", "Leverage", "Utilise/Utilize" (replace with "use"), "Synergy/Synergies", "Paradigm shift", "Game-changer", "Cutting-edge", "Unlock", "Empower", "Revolutionize", "Streamline", "Robust", "Scalable", "Seamless", "Deep dive", "Circle back", "Move the needle", "Low-hanging fruit", "Holistic approach"
+- Replace AI-sounding phrases with direct, confident, human language
+- The tone should be sharp, direct, authoritative — like a senior strategist writing, not an AI assistant`,
     messages: [{
       role: 'user',
       content: `Structure this blog post:\n\n${content}${imageContext}`,
