@@ -25,6 +25,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
     body: row.body,
     isPublished: row.is_published,
     scheduledAt: row.scheduled_at ? row.scheduled_at.toISOString() : '',
+    updatedAt: row.updated_at.toISOString(),
   }
 
   return (
@@ -35,6 +36,9 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
         </Link>
         <span className="text-[#d9d9d9]">/</span>
         <h1 className="font-black text-sm uppercase text-[#1e1e20] tracking-tight truncate flex-1">{row.title}</h1>
+        <span className="text-xs text-[#bbb] shrink-0">
+          Edited {new Date(row.updated_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+        </span>
         {row.is_published && (
           <Link
             href={`/blog/${row.slug}`}

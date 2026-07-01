@@ -34,7 +34,7 @@ export default async function AdminBlogPage() {
             <div className="flex-1 min-w-0">
               <p className="font-bold text-[#1e1e20] truncate">{post.title}</p>
               <p className="text-sm text-[#999] mt-0.5">
-                {post.slug} · {post.category} · {post.published_at}
+                {post.category} · {post.published_at} · edited {new Date(post.updated_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
               </p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
@@ -42,10 +42,12 @@ export default async function AdminBlogPage() {
                 className={`text-xs px-3 py-1 rounded-full font-medium ${
                   post.is_published
                     ? 'bg-[#dcf5dc] text-[#2d7d2d]'
+                    : post.scheduled_at
+                    ? 'bg-[#fef3c7] text-[#8a6430]'
                     : 'bg-[#f0efed] text-[#888]'
                 }`}
               >
-                {post.is_published ? 'Published' : 'Draft'}
+                {post.is_published ? 'Published' : post.scheduled_at ? `⏰ ${new Date(post.scheduled_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}` : 'Draft'}
               </span>
               {post.is_published && (
                 <Link

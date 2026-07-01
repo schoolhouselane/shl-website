@@ -114,6 +114,7 @@ export interface PostFormData {
   body: ContentBlock[]
   isPublished: boolean
   scheduledAt?: string
+  updatedAt?: string
 }
 
 function formatScheduled(iso: string) {
@@ -269,9 +270,13 @@ export default function PostForm({ postId, initialData }: Props) {
           body: JSON.stringify(payload),
         })
         if (!res.ok) throw new Error((await res.json()).error)
-        setSaveStatus('saved')
-        setTimeout(() => setSaveStatus('idle'), 3000)
         setScheduledAt(finalScheduled ?? '')
+        if (publish) {
+          startTransition(() => router.push(`/blog/${meta.slug}`))
+        } else {
+          setSaveStatus('saved')
+          setTimeout(() => setSaveStatus('idle'), 3000)
+        }
         return postId
       } else {
         const res = await fetch('/api/admin/blog', {
@@ -282,7 +287,11 @@ export default function PostForm({ postId, initialData }: Props) {
         if (!res.ok) throw new Error((await res.json()).error)
         const { id } = await res.json()
         setScheduledAt(finalScheduled ?? '')
-        startTransition(() => router.push(`/admin/blog/${id}/edit`))
+        if (publish) {
+          startTransition(() => router.push(`/blog/${meta.slug}`))
+        } else {
+          startTransition(() => router.push(`/admin/blog/${id}/edit`))
+        }
         return id as number
       }
     } catch (err) {
