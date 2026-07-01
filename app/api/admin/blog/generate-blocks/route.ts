@@ -105,7 +105,13 @@ function parseBlocks(content: string, images: string[]): ContentBlock[] {
 
 // ─── AI parser (requires ANTHROPIC_API_KEY) ───────────────────────────────────
 
-async function parseBlocksAI(content: string, images: string[]): Promise<ContentBlock[]> {
+interface AIResult {
+  blocks: ContentBlock[]
+  seoTitle: string
+  seoDescription: string
+}
+
+async function parseBlocksAI(content: string, images: string[]): Promise<AIResult> {
   const Anthropic = (await import('@anthropic-ai/sdk')).default
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -117,9 +123,14 @@ async function parseBlocksAI(content: string, images: string[]): Promise<Content
     model: 'claude-sonnet-4-6',
     max_tokens: 4096,
     system: `You are a blog content structurer for Schoolhouse Lane, a premium B2B creative strategy agency.
-Convert raw blog text into a JSON array of ContentBlock objects matching the site design.
+Convert raw blog text into a JSON object with this exact shape:
+{
+  "seoTitle": "string — concise SEO title under 60 chars",
+  "seoDescription": "string — one sentence meta description under 155 chars, compelling for search results",
+  "blocks": [ ...ContentBlock array... ]
+}
 
-Types:
+ContentBlock types:
 - { type:"paragraph", text:string, dark?:true } — dark:true for FIRST/intro paragraph only
 - { type:"heading", text:string } — section headings
 - { type:"blockquote", text:string } — short punchy quote or memorable statement
@@ -131,21 +142,26 @@ Types:
 Rules:
 1. First paragraph always dark:true
 2. Numbered sections (1. The X, 2. The Y) → headings
-3. "Commercial Lesson" boxes → callout
+3. "Commercial Lesson" / "Key Takeaway" boxes → callout
 4. Pull quotes, short statements → blockquote
 5. 3+ related points with lead phrase → rich-list
 6. Split long paragraphs (>4 sentences) into multiple
-7. Return ONLY valid JSON array, no explanation, no markdown fences.`,
+7. Return ONLY valid JSON object, no markdown fences, no explanation.`,
     messages: [{
       role: 'user',
       content: `Structure this blog post:\n\n${content}${imageContext}`,
     }],
   })
 
-  const raw = message.content[0].type === 'text' ? message.content[0].text : '[]'
-  const match = raw.match(/\[[\s\S]*\]/)
+  const raw = message.content[0].type === 'text' ? message.content[0].text : '{}'
+  const match = raw.match(/\{[\s\S]*\}/)
   if (!match) throw new Error('Invalid AI response')
-  return JSON.parse(match[0])
+  const parsed = JSON.parse(match[0])
+  return {
+    blocks: parsed.blocks ?? [],
+    seoTitle: parsed.seoTitle ?? '',
+    seoDescription: parsed.seoDescription ?? '',
+  }
 }
 
 // ─── Route ────────────────────────────────────────────────────────────────────
@@ -162,13 +178,13 @@ export async function POST(req: Request) {
   // Use AI if key available, otherwise rule-based
   if (process.env.ANTHROPIC_API_KEY) {
     try {
-      const blocks = await parseBlocksAI(content, validImages)
-      return NextResponse.json({ blocks, mode: 'ai' })
+      const result = await parseBlocksAI(content, validImages)
+      return NextResponse.json({ ...result, mode: 'ai' })
     } catch {
       // Fall through to rule-based
     }
   }
 
   const blocks = parseBlocks(content, validImages)
-  return NextResponse.json({ blocks, mode: 'rules' })
+  return NextResponse.json({ blocks, seoTitle: '', seoDescription: '', mode: 'rules' })
 }

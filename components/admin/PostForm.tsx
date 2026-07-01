@@ -323,8 +323,9 @@ export default function PostForm({ postId, initialData }: Props) {
       if (!res.ok) throw new Error(json.error ?? 'Failed')
       const newBlocks: EditorBlock[] = json.blocks.map((cb: Parameters<typeof fromContentBlock>[0]) => fromContentBlock(cb))
       setBlocks(newBlocks)
+      if (json.seoTitle) setMeta(m => ({ ...m, seoTitle: json.seoTitle }))
+      if (json.seoDescription) setMeta(m => ({ ...m, seoDescription: json.seoDescription }))
       setAiStatus('done')
-      setShowAiPanel(false)
       setAiContent('')
       setAiImages([])
     } catch (err) {
@@ -434,34 +435,13 @@ export default function PostForm({ postId, initialData }: Props) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-1">
-            <label className="text-xs uppercase tracking-wide text-[#888]">SEO Title</label>
-            <input
-              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
-              value={meta.seoTitle}
-              onChange={e => setMf('seoTitle', e.target.value)}
-              placeholder="Defaults to title if empty"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label className="text-xs uppercase tracking-wide text-[#888]">Keywords (comma-separated)</label>
-            <input
-              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
-              value={meta.keywords}
-              onChange={e => setMf('keywords', e.target.value)}
-              placeholder="brand strategy, leadership, Schoolhouse Lane"
-            />
-          </div>
-        </div>
         <div className="flex flex-col gap-1">
-          <label className="text-xs uppercase tracking-wide text-[#888]">SEO Description</label>
-          <textarea
-            className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] resize-none focus:outline-none focus:border-[#1e1e20]"
-            rows={2}
-            value={meta.seoDescription}
-            onChange={e => setMf('seoDescription', e.target.value)}
-            placeholder="One sentence for search engines and social previews"
+          <label className="text-xs uppercase tracking-wide text-[#888]">Keywords (comma-separated)</label>
+          <input
+            className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+            value={meta.keywords}
+            onChange={e => setMf('keywords', e.target.value)}
+            placeholder="brand strategy, leadership, Schoolhouse Lane"
           />
         </div>
 
@@ -506,17 +486,10 @@ export default function PostForm({ postId, initialData }: Props) {
           <h2 className="font-black text-sm uppercase tracking-widest text-[#999]">
             Content Blocks ({blocks.length})
           </h2>
-          <button
-            type="button"
-            onClick={() => setShowAiPanel(v => !v)}
-            className="flex items-center gap-1.5 bg-[#1e1e20] text-white px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wide hover:bg-[#333] transition-colors"
-          >
-            ✦ AI Generate
-          </button>
         </div>
 
-        {/* AI panel */}
-        {showAiPanel && (
+        {/* AI panel — always visible */}
+        {(
           <div className="bg-[#1e1e20] rounded-xl p-5 flex flex-col gap-4">
             <p className="text-xs text-[#999] uppercase tracking-widest font-medium">AI Block Generator</p>
             <div className="flex flex-col gap-2">
@@ -571,10 +544,10 @@ export default function PostForm({ postId, initialData }: Props) {
               </button>
               <button
                 type="button"
-                onClick={() => { setShowAiPanel(false); setAiContent(''); setAiImages([]); setAiStatus('idle') }}
+                onClick={() => { setAiContent(''); setAiImages([]); setAiStatus('idle') }}
                 className="text-[#666] hover:text-[#999] text-sm"
               >
-                Cancel
+                Clear
               </button>
               {aiStatus === 'generating' && <span className="text-[#666] text-xs">Usually takes 5–10 seconds…</span>}
             </div>
