@@ -183,7 +183,7 @@ export default function PostForm({ postId, initialData }: Props) {
   })
 
   const [blocks, setBlocks] = useState<EditorBlock[]>(
-    () => (initialData?.body ?? []).map(fromContentBlock)
+    () => (Array.isArray(initialData?.body) ? initialData.body : []).map(fromContentBlock)
   )
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [showAddMenu, setShowAddMenu] = useState(false)

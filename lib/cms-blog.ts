@@ -59,7 +59,7 @@ export async function createPost(data: PostInput): Promise<number> {
       ${data.seoTitle || null}, ${data.seoDescription || null},
       ${data.keywords}, ${data.publishedAt},
       ${data.authorName}, ${data.authorRole}, ${data.authorBio}, ${data.authorImage},
-      ${JSON.stringify(data.body)}::jsonb, ${data.isPublished},
+      ${sql.json(data.body)}, ${data.isPublished},
       ${data.scheduledAt ?? null}
     )
     RETURNING id
@@ -83,7 +83,7 @@ export async function updatePost(id: number, data: PostInput): Promise<void> {
       author_role = ${data.authorRole},
       author_bio = ${data.authorBio},
       author_image = ${data.authorImage},
-      body = ${JSON.stringify(data.body)}::jsonb,
+      body = ${sql.json(data.body)},
       is_published = ${data.isPublished},
       scheduled_at = ${data.scheduledAt ?? null}
     WHERE id = ${id}
