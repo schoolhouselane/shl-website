@@ -80,15 +80,13 @@ function renderBlock(block: ContentBlock, idx: number) {
         )
       }
       return (
-        <div key={idx} className="relative w-full aspect-[988/269] overflow-hidden">
-          <Image
-            src={block.src}
-            alt={block.alt}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 629px, 988px"
-          />
-        </div>
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={idx}
+          src={block.src}
+          alt={block.alt}
+          className="w-full h-auto"
+        />
       )
 
     case 'callout':
