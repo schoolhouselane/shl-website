@@ -187,7 +187,7 @@ export default function LoginContent() {
     e.preventDefault(); setLoading(true); setError('')
     try {
       const data = await hubPost('login', { email, password })
-      window.location.href = `${HUB_URL}?token=${encodeURIComponent(data.token)}&role=${tab}`
+      window.location.href = `${HUB_URL}/auth/sso?token=${encodeURIComponent(data.token)}&role=${tab}`
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Something went wrong.')
     } finally { setLoading(false) }
@@ -327,7 +327,7 @@ export default function LoginContent() {
       <>
         <div className="flex flex-col items-center text-center gap-[8px]">
           <h1 className="font-black text-[28px] uppercase text-[#1e1e20] leading-none tracking-[0.28px]">WELCOME</h1>
-          <p className="text-[16px] text-[#1e1e20] leading-[24px]">Break the ice! Let us help you out</p>
+          <p className="text-[16px] text-[#1e1e20] leading-[24px]">Log in to your account.</p>
         </div>
 
         <TabSwitcher tab={tab} onSwitch={switchTab} />
@@ -348,7 +348,7 @@ export default function LoginContent() {
       <>
         <div className="flex flex-col items-center gap-[4px] text-center">
           <h1 className="font-black text-[24px] uppercase tracking-[0.24px] text-[#1e1e20] leading-none">WELCOME</h1>
-          <p className="text-[14px] text-[#1e1e20]">Break the ice! Let us help you out</p>
+          <p className="text-[14px] text-[#1e1e20]">Log in to your account.</p>
         </div>
         <TabSwitcher tab={tab} onSwitch={switchTab} />
         {loginForm(false)}
