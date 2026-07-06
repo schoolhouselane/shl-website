@@ -152,7 +152,7 @@ export default function RootLayout({
         <link rel="preload" as="style" href="https://assets.calendly.com/assets/external/widget.css" />
         <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
       </head>
-      <body className="font-[var(--font-inter)]">
+      <body className="font-[var(--font-inter)]" suppressHydrationWarning>
         <Providers>
           {children}
         </Providers>
