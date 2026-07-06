@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const HUB_API = process.env.HUB_API_URL ?? 'https://creative-hub-backend.up.railway.app'
+const HUB_API = process.env.HUB_API_URL ?? 'https://backend-production-e0fa.up.railway.app'
 
 type Action = 'login' | 'signup-request' | 'forgot-password' | 'verify-otp' | 'reset-password'
 

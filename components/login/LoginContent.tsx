@@ -326,7 +326,7 @@ export default function LoginContent() {
     desktopCard = (
       <>
         <div className="flex flex-col items-center text-center gap-[8px]">
-          <h1 className="font-black text-[28px] uppercase text-[#1e1e20] leading-none tracking-[0.28px]">WELCOME</h1>
+          <h1 className="font-black text-[28px] uppercase text-[#1e1e20] leading-none tracking-[0.28px]">WELCOME BACK!</h1>
           <p className="text-[16px] text-[#1e1e20] leading-[24px]">Log in to your account.</p>
         </div>
 
@@ -347,7 +347,7 @@ export default function LoginContent() {
     mobileCard = (
       <>
         <div className="flex flex-col items-center gap-[4px] text-center">
-          <h1 className="font-black text-[24px] uppercase tracking-[0.24px] text-[#1e1e20] leading-none">WELCOME</h1>
+          <h1 className="font-black text-[24px] uppercase tracking-[0.24px] text-[#1e1e20] leading-none">WELCOME BACK!</h1>
           <p className="text-[14px] text-[#1e1e20]">Log in to your account.</p>
         </div>
         <TabSwitcher tab={tab} onSwitch={switchTab} />
