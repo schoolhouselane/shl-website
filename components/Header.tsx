@@ -72,9 +72,9 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
             <CalendlyButton className={`btn-cta flex items-center justify-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'bg-[#1e1e20] border-[#1e1e20] text-white' : 'bg-white border-white text-[#1e1e20]'}`}>
               Book a Demo
             </CalendlyButton>
-            <Link href="/login" className={`btn-cta flex items-center justify-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'border-[#1e1e20] text-[#1e1e20]' : 'border-white text-white'}`}>
+            <a href="https://hub.schoolhouselane.ai/signin" className={`btn-cta flex items-center justify-center border rounded-full px-[24px] py-[8px] text-[16px] font-medium uppercase whitespace-nowrap hover:opacity-80 transition-all duration-300 ${isDark ? 'border-[#1e1e20] text-[#1e1e20]' : 'border-white text-white'}`}>
               Sign In
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -153,13 +153,13 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               <CalendlyButton className="w-full h-[58px] bg-[#1e1e20] rounded-[50px] flex items-center justify-center text-[16px] font-bold text-white">
                 Book a Demo
               </CalendlyButton>
-              <Link
-                href="/login"
+              <a
+                href="https://hub.schoolhouselane.ai/signin"
                 onClick={() => setOpen(false)}
                 className="w-full h-[44px] border border-[#1e1e20] rounded-[50px] flex items-center justify-center text-[16px] font-bold text-[#1e1e20]"
               >
                 Sign In
-              </Link>
+              </a>
             </div>
 
           </div>
