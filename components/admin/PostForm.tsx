@@ -253,6 +253,11 @@ export default function PostForm({ postId, initialData }: Props) {
   }
 
   async function save(publish: boolean, scheduleOverride?: string | null): Promise<number | null> {
+    if (!meta.listingImage.trim()) {
+      setSaveStatus('error')
+      setErrorMsg('Listing / Gallery image is required')
+      return null
+    }
     setSaveStatus('saving')
     setErrorMsg('')
 
@@ -438,13 +443,13 @@ export default function PostForm({ postId, initialData }: Props) {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <label className="text-xs uppercase tracking-wide text-[#888]">Listing / Gallery Image</label>
+          <label className="text-xs uppercase tracking-wide text-[#888]">Listing / Gallery Image *</label>
           <div className="flex gap-2">
             <input
               className="flex-1 border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
               value={meta.listingImage}
               onChange={e => setMf('listingImage', e.target.value)}
-              placeholder="Optional — used on /blog listing page"
+              placeholder="Required — used on /blog listing page"
             />
             <UploadButton onUploaded={url => setMf('listingImage', url)} />
           </div>
