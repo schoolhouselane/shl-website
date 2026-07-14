@@ -287,12 +287,8 @@ export default function PostForm({ postId, initialData }: Props) {
         })
         if (!res.ok) throw new Error((await res.json()).error)
         setScheduledAt(finalScheduled ?? '')
-        if (publish) {
-          startTransition(() => router.push(`/blog/${meta.slug}`))
-        } else {
-          setSaveStatus('saved')
-          setTimeout(() => setSaveStatus('idle'), 3000)
-        }
+        setSaveStatus('saved')
+        setTimeout(() => setSaveStatus('idle'), 3000)
         return postId
       } else {
         const res = await fetch('/api/admin/blog', {
@@ -303,11 +299,9 @@ export default function PostForm({ postId, initialData }: Props) {
         if (!res.ok) throw new Error((await res.json()).error)
         const { id } = await res.json()
         setScheduledAt(finalScheduled ?? '')
-        if (publish) {
-          startTransition(() => router.push(`/blog/${meta.slug}`))
-        } else {
-          startTransition(() => router.push(`/admin/blog/${id}/edit`))
-        }
+        // Go to the edit page so the new post has an id (avoids duplicate
+        // inserts on re-save) — never redirect to the public blog page.
+        startTransition(() => router.push(`/admin/blog/${id}/edit`))
         return id as number
       }
     } catch (err) {
