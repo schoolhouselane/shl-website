@@ -258,6 +258,16 @@ export default function PostForm({ postId, initialData }: Props) {
       setErrorMsg('Listing / Gallery image is required')
       return null
     }
+    if (!meta.seoTitle.trim()) {
+      setSaveStatus('error')
+      setErrorMsg('Meta title is required')
+      return null
+    }
+    if (!meta.seoDescription.trim()) {
+      setSaveStatus('error')
+      setErrorMsg('Meta description is required')
+      return null
+    }
     setSaveStatus('saving')
     setErrorMsg('')
 
@@ -470,19 +480,19 @@ export default function PostForm({ postId, initialData }: Props) {
           <p className="font-black text-xs uppercase tracking-widest text-[#999]">Meta Tags (SEO)</p>
           <div className="flex flex-col gap-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs uppercase tracking-wide text-[#888]">Meta Title</label>
+              <label className="text-xs uppercase tracking-wide text-[#888]">Meta Title *</label>
               <span className={`text-[11px] ${meta.seoTitle.length > 60 ? 'text-[#b04040]' : 'text-[#bbb]'}`}>{meta.seoTitle.length}/60</span>
             </div>
             <input
               className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
               value={meta.seoTitle}
               onChange={e => setMf('seoTitle', e.target.value)}
-              placeholder="Falls back to post title if left empty"
+              placeholder="Title shown in search results & browser tab (~55 chars)"
             />
           </div>
           <div className="flex flex-col gap-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs uppercase tracking-wide text-[#888]">Meta Description</label>
+              <label className="text-xs uppercase tracking-wide text-[#888]">Meta Description *</label>
               <span className={`text-[11px] ${meta.seoDescription.length > 160 ? 'text-[#b04040]' : 'text-[#bbb]'}`}>{meta.seoDescription.length}/160</span>
             </div>
             <textarea
