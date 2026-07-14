@@ -1,8 +1,24 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import type { BlogPost, ContentBlock } from '@/lib/blog-data'
 import { allBlogPosts } from '@/lib/blog-data'
+
+type InlinePart = { text: string; bold?: boolean; href?: string }
+
+// Render a paragraph inline part: link, bold, or plain text.
+function renderPart(p: InlinePart, i: number) {
+  if (p.href) {
+    const inner = p.bold ? <strong>{p.text}</strong> : p.text
+    const isInternal = p.href.startsWith('/')
+    const cls = 'text-[#111] underline decoration-[#111]/40 underline-offset-2 hover:decoration-[#111] transition-colors'
+    return isInternal
+      ? <Link key={i} href={p.href} className={cls}>{inner}</Link>
+      : <a key={i} href={p.href} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>
+  }
+  return p.bold ? <strong key={i}>{p.text}</strong> : <span key={i}>{p.text}</span>
+}
 
 function ArrowUpRight({ size = 24 }: { size?: number }) {
   return (
@@ -40,7 +56,7 @@ function renderBlock(block: ContentBlock, idx: number) {
       return (
         <p key={idx} className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#111]">
           {block.parts
-            ? block.parts.map((p, i) => p.bold ? <strong key={i}>{p.text}</strong> : <span key={i}>{p.text}</span>)
+            ? block.parts.map((p, i) => renderPart(p, i))
             : block.text}
         </p>
       )

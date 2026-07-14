@@ -2,6 +2,20 @@
 
 import type { ContentBlock } from '@/lib/blog-data'
 
+type InlinePart = { text: string; bold?: boolean; href?: string }
+
+function renderPart(p: InlinePart, i: number) {
+  if (p.href) {
+    const inner = p.bold ? <strong>{p.text}</strong> : p.text
+    return (
+      <a key={i} href={p.href} className="text-[#111] underline decoration-[#111]/40 underline-offset-2">
+        {inner}
+      </a>
+    )
+  }
+  return p.bold ? <strong key={i}>{p.text}</strong> : <span key={i}>{p.text}</span>
+}
+
 export interface PreviewData {
   title: string
   category: string
@@ -20,14 +34,14 @@ function renderBlock(block: ContentBlock, idx: number) {
       if (block.dark) return (
         <p key={idx} className="text-[16px] leading-relaxed text-[#111] font-semibold">
           {block.parts
-            ? block.parts.map((p, i) => p.bold ? <strong key={i}>{p.text}</strong> : <span key={i}>{p.text}</span>)
+            ? block.parts.map((p, i) => renderPart(p, i))
             : block.text}
         </p>
       )
       return (
         <p key={idx} className="text-[15px] leading-relaxed text-[#111]">
           {block.parts
-            ? block.parts.map((p, i) => p.bold ? <strong key={i}>{p.text}</strong> : <span key={i}>{p.text}</span>)
+            ? block.parts.map((p, i) => renderPart(p, i))
             : block.text}
         </p>
       )

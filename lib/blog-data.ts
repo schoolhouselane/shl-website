@@ -1,7 +1,7 @@
 // ─── Content model ────────────────────────────────────────────────────────────
 
 export type ContentBlock =
-  | { type: 'paragraph'; text?: string; parts?: Array<{ text: string; bold?: boolean }>; dark?: boolean }
+  | { type: 'paragraph'; text?: string; parts?: Array<{ text: string; bold?: boolean; href?: string }>; dark?: boolean }
   | { type: 'heading'; text: string }
   | { type: 'blockquote'; text: string }
   | { type: 'image'; src: string; alt: string; width?: number; height?: number }

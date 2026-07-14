@@ -22,22 +22,40 @@ type EditorBlock =
 
 function uid() { return Math.random().toString(36).slice(2, 9) }
 
+// ─── Inline markdown parsing ─────────────────────────────────────────────────
+// Supports **bold** and [text](href) for internal/external links.
+
+type InlinePart = { text: string; bold?: boolean; href?: string }
+
+function parseInline(content: string): InlinePart[] {
+  const parts: InlinePart[] = []
+  const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)]+)\)/g
+  let last = 0, m
+  while ((m = re.exec(content)) !== null) {
+    if (m.index > last) parts.push({ text: content.slice(last, m.index) })
+    if (m[1] !== undefined) parts.push({ text: m[1], bold: true })
+    else parts.push({ text: m[2], href: m[3].trim() })
+    last = m.index + m[0].length
+  }
+  if (last < content.length) parts.push({ text: content.slice(last) })
+  return parts
+}
+
+function serializeInline(parts: InlinePart[]): string {
+  return parts
+    .map(p => p.href ? `[${p.text}](${p.href})` : p.bold ? `**${p.text}**` : p.text)
+    .join('')
+}
+
 // ─── Convert editor block → ContentBlock ─────────────────────────────────────
 
 function toContentBlock(b: EditorBlock): ContentBlock {
   if (b.type === 'paragraph') {
-    if (!b.content.includes('**')) {
+    const parts = parseInline(b.content)
+    // Plain single-run text: store as `text` for cleaner output
+    if (parts.length <= 1 && !parts[0]?.bold && !parts[0]?.href) {
       return { type: 'paragraph', ...(b.dark ? { dark: true } : {}), text: b.content }
     }
-    const parts: Array<{ text: string; bold?: boolean }> = []
-    const re = /\*\*([^*]+)\*\*/g
-    let last = 0, m
-    while ((m = re.exec(b.content)) !== null) {
-      if (m.index > last) parts.push({ text: b.content.slice(last, m.index) })
-      parts.push({ text: m[1], bold: true })
-      last = m.index + m[0].length
-    }
-    if (last < b.content.length) parts.push({ text: b.content.slice(last) })
     return { type: 'paragraph', ...(b.dark ? { dark: true } : {}), parts }
   }
   if (b.type === 'heading') return { type: 'heading', text: b.content }
@@ -59,9 +77,7 @@ function toContentBlock(b: EditorBlock): ContentBlock {
 function fromContentBlock(cb: ContentBlock): EditorBlock {
   const id = uid()
   if (cb.type === 'paragraph') {
-    const content = cb.parts
-      ? cb.parts.map(p => p.bold ? `**${p.text}**` : p.text).join('')
-      : (cb.text ?? '')
+    const content = cb.parts ? serializeInline(cb.parts) : (cb.text ?? '')
     return { id, type: 'paragraph', content, dark: !!(cb.dark) }
   }
   if (cb.type === 'heading') return { id, type: 'heading', content: cb.text }
@@ -323,8 +339,13 @@ export default function PostForm({ postId, initialData }: Props) {
       if (!res.ok) throw new Error(json.error ?? 'Failed')
       const newBlocks: EditorBlock[] = json.blocks.map((cb: Parameters<typeof fromContentBlock>[0]) => fromContentBlock(cb))
       setBlocks(newBlocks)
-      if (json.seoTitle) setMeta(m => ({ ...m, seoTitle: json.seoTitle }))
-      if (json.seoDescription) setMeta(m => ({ ...m, seoDescription: json.seoDescription }))
+      // Only fill SEO fields from AI when the editor left them blank — never
+      // overwrite meta tags an SEO expert has already written by hand.
+      setMeta(m => ({
+        ...m,
+        seoTitle: m.seoTitle.trim() ? m.seoTitle : (json.seoTitle ?? m.seoTitle),
+        seoDescription: m.seoDescription.trim() ? m.seoDescription : (json.seoDescription ?? m.seoDescription),
+      }))
       setAiStatus('done')
       setAiContent('')
       setAiImages([])
@@ -443,6 +464,36 @@ export default function PostForm({ postId, initialData }: Props) {
             onChange={e => setMf('keywords', e.target.value)}
             placeholder="brand strategy, leadership, Schoolhouse Lane"
           />
+        </div>
+
+        {/* SEO / meta tags */}
+        <div className="border-t border-[#e8e4df] pt-5 flex flex-col gap-4">
+          <p className="font-black text-xs uppercase tracking-widest text-[#999]">Meta Tags (SEO)</p>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+              <label className="text-xs uppercase tracking-wide text-[#888]">Meta Title</label>
+              <span className={`text-[11px] ${meta.seoTitle.length > 60 ? 'text-[#b04040]' : 'text-[#bbb]'}`}>{meta.seoTitle.length}/60</span>
+            </div>
+            <input
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] focus:outline-none focus:border-[#1e1e20]"
+              value={meta.seoTitle}
+              onChange={e => setMf('seoTitle', e.target.value)}
+              placeholder="Falls back to post title if left empty"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+              <label className="text-xs uppercase tracking-wide text-[#888]">Meta Description</label>
+              <span className={`text-[11px] ${meta.seoDescription.length > 160 ? 'text-[#b04040]' : 'text-[#bbb]'}`}>{meta.seoDescription.length}/160</span>
+            </div>
+            <textarea
+              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] resize-none focus:outline-none focus:border-[#1e1e20]"
+              rows={3}
+              value={meta.seoDescription}
+              onChange={e => setMf('seoDescription', e.target.value)}
+              placeholder="Shown in search results and social previews (~155 chars)"
+            />
+          </div>
         </div>
 
         {/* Author (collapsed by default) */}
@@ -847,7 +898,7 @@ function BlockFields({ block, onUpdate }: { block: EditorBlock; onUpdate: (patch
 
   if (block.type === 'paragraph') return (
     <div>
-      <label className={lbl}>Text — use **bold** for bold</label>
+      <label className={lbl}>Text — use **bold** for bold, [text](/blog/slug) for links</label>
       <textarea
         className={`${inp} resize-none`}
         rows={5}
