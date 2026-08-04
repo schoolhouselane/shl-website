@@ -26,7 +26,11 @@ export async function generateMetadata({
   const post = await getPostBySlug(slug)
   if (!post) return {}
 
-  const title = post.seoTitle ?? post.title
+  // Authored titles often already end in "— Schoolhouse Lane", and the root layout
+  // template appends "| Schoolhouse Lane" — strip the suffix so it isn't doubled.
+  const title = (post.seoTitle ?? post.title).replace(/\s*[—–|-]\s*Schoolhouse Lane\s*$/, '').trim()
+  // openGraph/twitter titles don't inherit the template, so brand them explicitly.
+  const brandedTitle = `${title} | Schoolhouse Lane`
   const description = post.seoDescription ?? ''
   const url = `${BASE_URL}/blog/${slug}`
   const imageUrl = post.heroImage.startsWith('http') ? post.heroImage : `${BASE_URL}${post.heroImage}`
@@ -39,7 +43,7 @@ export async function generateMetadata({
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
     openGraph: {
       type: 'article',
-      title,
+      title: brandedTitle,
       description,
       url,
       siteName: 'Schoolhouse Lane',
@@ -51,7 +55,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: brandedTitle,
       description,
       images: [imageUrl],
     },

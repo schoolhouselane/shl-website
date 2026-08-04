@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 
 export const metadata: Metadata = {
-  title: 'About Us — Schoolhouse Lane',
+  title: 'About Us',
   description: 'Senior strategists, creatives, and brand architects operating at the intersection of imagination and commercial rigour. 79+ projects. 5-star rated. 99% client retention.',
   alternates: { canonical: 'https://schoolhouselane.ai/about' },
   openGraph: {

@@ -13,7 +13,7 @@ import { jobs, testimonials } from '@/lib/jobs-data'
 const BASE_URL = 'https://schoolhouselane.ai'
 
 export const metadata: Metadata = {
-  title: 'Jobs — Schoolhouse Lane',
+  title: 'Jobs',
   description: 'We\'re always on the search for curious minds who want to build brands that actually make money. Explore open roles at Schoolhouse Lane.',
   alternates: { canonical: `${BASE_URL}/jobs` },
   robots: { index: true, follow: true },

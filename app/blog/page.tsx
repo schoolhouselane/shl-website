@@ -8,7 +8,7 @@ import { getAllPostsMerged } from '@/lib/cms-blog'
 const BASE_URL = 'https://schoolhouselane.ai'
 
 export const metadata: Metadata = {
-  title: 'The Journal — Schoolhouse Lane',
+  title: 'The Journal',
   description: 'Strategy, branding, and digital thinking from the Schoolhouse Lane team.',
   alternates: { canonical: `${BASE_URL}/blog` },
   robots: { index: true, follow: true },

@@ -47,10 +47,13 @@ function FeaturedCard({ post }: { post: BlogPost }) {
   )
 }
 
-function RegularCard({ post }: { post: BlogPost }) {
+function RegularCard({ post, collapsed = false }: { post: BlogPost; collapsed?: boolean }) {
   const img = post.listingImage ?? post.heroImage
   return (
-    <Link href={`/blog/${post.slug}`} className="flex flex-col group overflow-hidden h-full">
+    // `collapsed` swaps display instead of unmounting, so every post stays in the
+    // server-rendered HTML for crawlers that don't run JS. Never combine with `flex`
+    // — Tailwind's display utilities would fight over specificity.
+    <Link href={`/blog/${post.slug}`} className={`${collapsed ? 'hidden' : 'flex'} flex-col group overflow-hidden h-full`}>
       <div className="relative w-full h-[180px] md:h-[211px] lg:hidden overflow-hidden">
         <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 50vw" />
       </div>
@@ -83,7 +86,8 @@ export default function BlogList({ posts }: Props) {
   const featured = posts[0]
   const side    = posts.slice(1, 3)   // blog 2 + 3 → right column in row 1
   const gallery = posts.slice(3)      // blog 4+ → 3-col gallery rows
-  const visibleGallery = showAll ? gallery : gallery.slice(0, 3)
+  const COLLAPSED_COUNT = 3           // how many gallery posts show before "Load more"
+  const isCollapsed = (i: number) => !showAll && i >= COLLAPSED_COUNT
 
   if (!featured) return null
 
@@ -103,12 +107,14 @@ export default function BlogList({ posts }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
           {side.map(post => <RegularCard key={post.slug} post={post} />)}
         </div>
-        {visibleGallery.length > 0 && (
+        {gallery.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
-            {visibleGallery.map(post => <RegularCard key={post.slug} post={post} />)}
+            {gallery.map((post, i) => (
+              <RegularCard key={post.slug} post={post} collapsed={isCollapsed(i)} />
+            ))}
           </div>
         )}
-        {!showAll && gallery.length > 3 && (
+        {!showAll && gallery.length > COLLAPSED_COUNT && (
           <div className="flex justify-end">
             <button
               onClick={() => setShowAll(true)}
@@ -137,16 +143,16 @@ export default function BlogList({ posts }: Props) {
       </div>
 
       {/* Row 2+: 3-col gallery */}
-      {visibleGallery.length > 0 && (
+      {gallery.length > 0 && (
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-[20px]">
-          {visibleGallery.map(post => (
-            <RegularCard key={post.slug} post={post} />
+          {gallery.map((post, i) => (
+            <RegularCard key={post.slug} post={post} collapsed={isCollapsed(i)} />
           ))}
         </div>
       )}
 
       {/* Load more */}
-      {!showAll && gallery.length > 3 && (
+      {!showAll && gallery.length > COLLAPSED_COUNT && (
         <div className="hidden lg:flex justify-end">
           <button
             onClick={() => setShowAll(true)}

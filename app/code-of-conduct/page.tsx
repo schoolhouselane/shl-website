@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 import CodeOfConduct from '@/components/legal/CodeOfConduct'
 
 export const metadata: Metadata = {
-  title: 'Code of Conduct — Schoolhouse Lane',
+  title: 'Code of Conduct',
   description: 'Our Code of Conduct sets out the standards we expect from everyone who interacts with Schoolhouse Lane.',
   alternates: { canonical: 'https://schoolhouselane.ai/code-of-conduct' },
   openGraph: {

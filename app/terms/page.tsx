@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 import TermsConditions from '@/components/legal/TermsConditions'
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions — Schoolhouse Lane',
+  title: 'Terms & Conditions',
   description: 'Read the terms and conditions governing your use of the Schoolhouse Lane website.',
   alternates: { canonical: 'https://schoolhouselane.ai/terms' },
   openGraph: {
