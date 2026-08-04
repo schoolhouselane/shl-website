@@ -97,7 +97,8 @@ export default async function BlogPostPage({
     description: post.seoDescription,
     image: imageUrl,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    // Real edit time for CMS posts, so an updated article reads as updated.
+    dateModified: post.updatedAt ?? post.publishedAt,
     url,
     inLanguage: 'en-IE',
     keywords: post.keywords?.join(', '),
@@ -118,11 +119,27 @@ export default async function BlogPostPage({
     isPartOf: { '@type': 'Blog', name: 'The Journal', url: `${BASE_URL}/blog` },
   }
 
+  // Spells out Home > The Journal > this post, which is how AI assistants and
+  // Google work out where a page sits in the site.
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'The Journal', item: `${BASE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: url },
+    ],
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Header />
       <main>

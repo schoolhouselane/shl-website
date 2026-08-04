@@ -16,6 +16,9 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
     revalidatePath('/blog')
     revalidatePath(`/blog/${data.slug}`)
+    // Keep the crawler-facing indexes in step with the edit (dates change too).
+    revalidatePath('/sitemap.xml')
+    revalidatePath('/llms.txt')
 
     return NextResponse.json({ ok: true })
   } catch (err) {
@@ -34,6 +37,10 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     const { id } = await params
     await deletePost(parseInt(id, 10))
     revalidatePath('/blog')
+    // A deleted post must also leave the sitemap and llms.txt, or crawlers keep
+    // being pointed at a 404.
+    revalidatePath('/sitemap.xml')
+    revalidatePath('/llms.txt')
     return NextResponse.json({ ok: true })
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error'

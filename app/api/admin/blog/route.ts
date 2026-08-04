@@ -16,6 +16,10 @@ export async function POST(req: Request) {
     if (data.isPublished) {
       revalidatePath('/blog')
       revalidatePath(`/blog/${data.slug}`)
+      // Crawler-facing indexes: without these a new post is invisible to search
+      // and AI tools until the next deploy.
+      revalidatePath('/sitemap.xml')
+      revalidatePath('/llms.txt')
     }
 
     return NextResponse.json({ id })

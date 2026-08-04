@@ -188,6 +188,7 @@ export function rowToBlogPost(row: CmsRow): BlogPost {
     seoDescription: row.seo_description ?? undefined,
     keywords: row.keywords,
     publishedAt: row.published_at,
+    updatedAt: row.updated_at ? new Date(row.updated_at).toISOString() : undefined,
     author: {
       name: row.author_name,
       role: row.author_role,

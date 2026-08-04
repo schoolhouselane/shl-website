@@ -44,6 +44,8 @@ export interface BlogPost {
   seoDescription?: string
   keywords?: string[]
   publishedAt: string
+  /** Last edit time, CMS posts only. Feeds schema.org dateModified and sitemap lastmod. */
+  updatedAt?: string
   author: BlogAuthor
   body?: ContentBlock[]
   relatedArticles: RelatedArticle[]

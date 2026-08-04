@@ -17,6 +17,8 @@ export async function GET(req: Request) {
   }
   if (slugs.length > 0) {
     revalidatePath('/blog')
+    revalidatePath('/sitemap.xml')
+    revalidatePath('/llms.txt')
   }
 
   return NextResponse.json({ published: slugs, count: slugs.length })
