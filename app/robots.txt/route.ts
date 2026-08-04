@@ -6,8 +6,6 @@ const BASE_URL = 'https://schoolhouselane.ai'
 // so the Llms line is safe for conventional bots.
 const BODY = `User-Agent: *
 Allow: /
-Disallow: /cursor-demo
-Disallow: /page-2
 
 Sitemap: ${BASE_URL}/sitemap.xml
 
