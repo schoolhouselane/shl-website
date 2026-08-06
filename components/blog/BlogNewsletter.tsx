@@ -36,18 +36,20 @@ export default function BlogNewsletter() {
           {submitted ? (
             <p className="text-[16px] font-medium text-[#1e1e20]">You&apos;re in. Talk soon.</p>
           ) : (
-            <form onSubmit={handleSubmit} className="relative flex items-center">
+            // Below sm the button stacks under the input: inline, the Subscribe
+            // button is ~156px wide and would sit on top of the typed text.
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[12px] sm:relative sm:flex-row sm:items-center sm:gap-0">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="YOUR@EMAIL.COM"
                 required
-                className="w-full border border-[#1e1e20] rounded-full px-[24px] py-[10px] pr-[150px] text-[14px] lg:text-[16px] text-[#1e1e20] bg-transparent placeholder:text-[#1e1e20]/50 outline-none focus:ring-2 focus:ring-[#1e1e20]/20"
+                className="w-full border border-[#1e1e20] rounded-full px-[24px] py-[12px] sm:pr-[172px] text-[14px] lg:text-[16px] text-[#1e1e20] bg-transparent placeholder:text-[#1e1e20]/50 outline-none focus:ring-2 focus:ring-[#1e1e20]/20"
               />
               <button
                 type="submit"
-                className="absolute right-0 flex items-center gap-[10px] bg-[#1e1e20] text-white rounded-full px-[24px] py-[10px] text-[14px] lg:text-[16px] font-medium uppercase tracking-wide hover:opacity-80 transition-opacity cursor-pointer"
+                className="flex items-center justify-center gap-[10px] bg-[#1e1e20] text-white rounded-full px-[24px] py-[12px] text-[14px] lg:text-[16px] font-medium uppercase tracking-wide hover:opacity-80 transition-opacity cursor-pointer sm:absolute sm:right-0"
               >
                 Subscribe
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

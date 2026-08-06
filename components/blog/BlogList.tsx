@@ -29,7 +29,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
         <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1280px) 100vw, 66vw" priority />
       </div>
       {/* Mobile + Tablet image */}
-      <div className="relative w-full h-[220px] md:h-[266px] lg:hidden overflow-hidden">
+      <div className="relative w-full aspect-[4/3] lg:hidden overflow-hidden">
         <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="100vw" priority />
       </div>
       <div className="bg-[#1e1e20] px-[13px] lg:px-[24px] py-[24px] lg:py-[30px] flex flex-col gap-[12px] lg:gap-[20px] lg:shrink-0">
@@ -54,10 +54,10 @@ function RegularCard({ post, collapsed = false }: { post: BlogPost; collapsed?: 
     // server-rendered HTML for crawlers that don't run JS. Never combine with `flex`
     // — Tailwind's display utilities would fight over specificity.
     <Link href={`/blog/${post.slug}`} className={`${collapsed ? 'hidden' : 'flex'} flex-col group overflow-hidden h-full`}>
-      <div className="relative w-full h-[180px] md:h-[211px] lg:hidden overflow-hidden">
+      <div className="relative w-full aspect-[4/3] lg:hidden overflow-hidden">
         <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 50vw" />
       </div>
-      <div className="hidden lg:block relative w-full overflow-hidden" style={{ height: '445px' }}>
+      <div className="hidden lg:block relative w-full aspect-[4/3] overflow-hidden">
         <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="33vw" />
       </div>
       <div className="bg-[#1e1e20] px-[13px] py-[24px] lg:pt-[26px] lg:pb-[30px] flex flex-col gap-[12px] lg:gap-[20px] flex-1">

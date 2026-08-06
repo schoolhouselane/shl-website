@@ -91,7 +91,7 @@ function renderBlock(block: ContentBlock, idx: number) {
             width={block.width}
             height={block.height}
             className="w-full h-auto"
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 629px, 988px"
+            sizes="(max-width: 1280px) 100vw, 988px"
           />
         )
       }
@@ -156,10 +156,10 @@ function renderBlock(block: ContentBlock, idx: number) {
       return (
         <div key={idx} className="flex flex-col md:flex-row gap-[16px] md:gap-[40px]">
           <div className="relative w-full md:w-1/2 aspect-[451/269] overflow-hidden">
-            <Image src={block.src1} alt={block.alt1} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 294px, 474px" />
+            <Image src={block.src1} alt={block.alt1} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 474px" />
           </div>
           <div className="relative w-full md:w-1/2 aspect-[451/269] overflow-hidden">
-            <Image src={block.src2} alt={block.alt2} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 294px, 474px" />
+            <Image src={block.src2} alt={block.alt2} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 474px" />
           </div>
         </div>
       )
@@ -168,9 +168,12 @@ function renderBlock(block: ContentBlock, idx: number) {
       return (
         <div
           key={idx}
-          className="relative w-full overflow-hidden aspect-[988/269] flex items-center px-[16px] md:px-[24px] lg:px-[30px]"
+          // Below md the 3.67:1 ratio box is too short for the quote (measured 90px
+          // of text in a 78px box at 320px), so mobile gets content height + padding
+          // and the ratio only kicks in from md up.
+          className="relative w-full overflow-hidden py-[20px] md:py-0 md:aspect-[988/269] flex items-center px-[16px] md:px-[24px] lg:px-[30px]"
         >
-          <Image src={block.src} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 629px, 988px" />
+          <Image src={block.src} alt="" fill className="object-cover" sizes="(max-width: 1280px) 100vw, 988px" />
           <div className="relative z-10 flex items-start gap-[16px] md:gap-[40px] lg:gap-[100px] w-full">
             <div className="relative h-[20px] md:h-[26px] lg:h-[34px] w-[50px] md:w-[64px] lg:w-[86px] shrink-0">
               <Image src="/logo-white.svg" alt="SHL" fill className="object-contain object-left" sizes="86px" />
@@ -217,7 +220,7 @@ export default function BlogArticle({ post }: Props) {
       {/* ── Title row ─────────────────────────────────────────────────────────── */}
       <div className="pb-[24px] md:pb-[40px] lg:pb-[60px]">
         {/* Mobile: byline above title */}
-        <p className="md:hidden text-[11px] font-normal uppercase text-[#777] tracking-wide mb-[8px]">
+        <p className="md:hidden text-[12px] font-normal uppercase text-[#777] tracking-wide mb-[8px]">
           by {post.author.name}
         </p>
         <div className="flex items-start justify-between gap-[16px] md:gap-[24px]">
@@ -233,11 +236,15 @@ export default function BlogArticle({ post }: Props) {
         </div>
       </div>
 
-      {/* ── Two-column layout ─────────────────────────────────────────────────── */}
-      <div className="flex flex-col md:flex-row md:gap-[28px] lg:gap-0 items-start">
+      {/* ── Two-column layout ─────────────────────────────────────────────────────
+          The row only starts at lg (1280px). Between 768–1279px the 629px content
+          column plus the sidebar's min-content width exceeded the container and
+          scrolled the page sideways, so tablets stay single-column and use the
+          stacked block below. */}
+      <div className="flex flex-col lg:flex-row items-start">
 
         {/* Main content */}
-        <div className="flex flex-col gap-[28px] md:gap-[32px] lg:gap-[40px] w-full md:max-w-[629px] lg:max-w-[988px] shrink-0">
+        <div className="flex flex-col gap-[28px] md:gap-[32px] lg:gap-[40px] w-full lg:max-w-[988px]">
           {groups.map((group, gi) => {
             const isSolo = group.length === 1 && (group[0].type === 'image' || group[0].type === 'quote-banner' || group[0].type === 'image-pair')
             if (isSolo) return renderBlock(group[0], gi)
@@ -249,12 +256,15 @@ export default function BlogArticle({ post }: Props) {
           })}
         </div>
 
-        {/* ── Sidebar — hidden on mobile ─────────────────────────────────────── */}
-        <aside className="hidden md:flex flex-col gap-[40px] flex-1 border-l border-[#d0d0d0] pl-[16px] lg:pl-[29px] mt-0">
+        {/* ── Sidebar — desktop only (≥1280px) ───────────────────────────────── */}
+        {/* min-w-[280px] is the sidebar's real content width (114px thumb + 12px gap
+            + text). Without it, at exactly 1280px the flex row only left it 112px and
+            the related-article text pushed the page 79px sideways. */}
+        <aside className="hidden lg:flex flex-col gap-[40px] flex-1 lg:min-w-[280px] border-l border-[#d0d0d0] pl-[29px] mt-0">
 
           {/* Share */}
           <div className="flex flex-col gap-[8px]">
-            <p className="text-[9px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
+            <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
               Share this article
             </p>
             <a
@@ -263,7 +273,7 @@ export default function BlogArticle({ post }: Props) {
               rel="noopener noreferrer"
               className="border-b border-black flex items-center gap-[4px] py-[8px] hover:opacity-60 transition-opacity"
             >
-              <span className="text-[14px] lg:text-[16px] text-[#1e1e20] whitespace-nowrap">Share on LinkedIn</span>
+              <span className="text-[14px] lg:text-[16px] text-[#1e1e20]">Share on LinkedIn</span>
               <ArrowUpRight size={18} />
             </a>
             <a
@@ -272,14 +282,14 @@ export default function BlogArticle({ post }: Props) {
               rel="noopener noreferrer"
               className="border-b border-black flex items-center gap-[4px] py-[8px] w-fit hover:opacity-60 transition-opacity"
             >
-              <span className="text-[14px] lg:text-[16px] text-[#1e1e20] whitespace-nowrap">Share on X</span>
+              <span className="text-[14px] lg:text-[16px] text-[#1e1e20]">Share on X</span>
               <ArrowUpRight size={18} />
             </a>
             <button
               onClick={copyLink}
               className="border-b border-black flex items-center gap-[4px] py-[8px] w-fit hover:opacity-60 transition-opacity cursor-pointer"
             >
-              <span className="text-[14px] lg:text-[16px] text-[#1e1e20] whitespace-nowrap">
+              <span className="text-[14px] lg:text-[16px] text-[#1e1e20]">
                 {copied ? 'Copied!' : 'Copy link'}
               </span>
               <ArrowUpRight size={18} />
@@ -289,7 +299,7 @@ export default function BlogArticle({ post }: Props) {
           {/* Related articles */}
           {post.relatedArticles.length > 0 && (
             <div className="flex flex-col gap-[18px]">
-              <p className="text-[9px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
+              <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
                 Related Articles
               </p>
               <div className="flex flex-col gap-[24px]">
@@ -299,16 +309,16 @@ export default function BlogArticle({ post }: Props) {
                   return (
                   <div key={article.slug}>
                     <a href={`/blog/${article.slug}`} className="flex gap-[12px] items-center group">
-                      <div className="relative shrink-0 w-[80px] h-[80px] lg:w-[114px] lg:h-[114px] overflow-hidden">
+                      <div className="relative shrink-0 w-[114px] aspect-[4/3] overflow-hidden">
                         <Image
                           src={img}
                           alt={article.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          sizes="(max-width: 1280px) 80px, 114px"
+                          sizes="114px"
                         />
                       </div>
-                      <div className="flex flex-col gap-[6px] lg:gap-[12px] flex-1">
+                      <div className="flex flex-col gap-[6px] lg:gap-[12px] flex-1 min-w-0">
                         <p className="font-black text-[13px] lg:text-[18px] text-[#111] leading-[1.1] tracking-[-0.3px]">
                           {article.title}
                         </p>
@@ -329,7 +339,7 @@ export default function BlogArticle({ post }: Props) {
 
           {/* About the writer */}
           <div className="flex flex-col gap-[18px]">
-            <p className="text-[9px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
+            <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
               About the Writer
             </p>
             <div className="flex gap-[12px] items-start">
@@ -339,15 +349,15 @@ export default function BlogArticle({ post }: Props) {
                   alt={post.author.name}
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 1280px) 80px, 115px"
+                  sizes="115px"
                 />
               </div>
-              <div className="flex flex-col gap-[6px] lg:gap-[12px] flex-1">
+              <div className="flex flex-col gap-[6px] lg:gap-[12px] flex-1 min-w-0">
                 <div className="flex flex-col gap-[4px]">
                   <p className="font-bold text-[14px] lg:text-[18px] text-[#111] leading-[1.1] tracking-[-0.36px]">
                     {post.author.name}
                   </p>
-                  <p className="text-[9px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
+                  <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
                     {post.author.role}
                   </p>
                 </div>
@@ -361,12 +371,12 @@ export default function BlogArticle({ post }: Props) {
         </aside>
       </div>
 
-      {/* ── Mobile sidebar accordion ──────────────────────────────────────────── */}
-      <div className="md:hidden mt-[40px] pt-[32px] border-t border-[#d0d0d0] flex flex-col gap-[32px]">
+      {/* ── Stacked sidebar — everything below 1280px ──────────────────────────── */}
+      <div className="lg:hidden mt-[40px] pt-[32px] border-t border-[#d0d0d0] flex flex-col gap-[32px]">
 
         {/* Share */}
         <div className="flex flex-col gap-[8px]">
-          <p className="text-[9px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase mb-[4px]">
+          <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase mb-[4px]">
             Share this article
           </p>
           <a href={linkedInShare} target="_blank" rel="noopener noreferrer"
@@ -386,9 +396,46 @@ export default function BlogArticle({ post }: Props) {
           </button>
         </div>
 
+        {/* Related articles — kept here too so tablets (768–1279px) still get them
+            now that the desktop sidebar starts at lg instead of md. */}
+        {post.relatedArticles.length > 0 && (
+          <div className="flex flex-col gap-[16px]">
+            <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
+              Related Articles
+            </p>
+            <div className="flex flex-col gap-[20px] md:grid md:grid-cols-2 md:gap-[24px]">
+              {post.relatedArticles.map((article) => {
+                const linked = allBlogPosts.find(p => p.slug === article.slug)
+                const img = linked?.listingImage ?? linked?.heroImage ?? article.thumbnail
+                return (
+                  <a key={article.slug} href={`/blog/${article.slug}`} className="flex gap-[12px] items-center group">
+                    <div className="relative shrink-0 w-[80px] aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={img}
+                        alt={article.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="80px"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-[6px] flex-1 min-w-0">
+                      <p className="font-black text-[13px] md:text-[15px] text-[#111] leading-[1.1] tracking-[-0.3px]">
+                        {article.title}
+                      </p>
+                      <p className="text-[12px] text-[#595959] leading-relaxed line-clamp-2">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
         {/* About the writer */}
         <div className="flex flex-col gap-[12px]">
-          <p className="text-[9px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
+          <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">
             About the Writer
           </p>
           <div className="flex gap-[12px] items-start">
@@ -397,7 +444,7 @@ export default function BlogArticle({ post }: Props) {
             </div>
             <div className="flex flex-col gap-[4px] flex-1">
               <p className="font-bold text-[14px] text-[#111]">{post.author.name}</p>
-              <p className="text-[9px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">{post.author.role}</p>
+              <p className="text-[11px] font-extrabold text-[#ababab] tracking-[1.44px] uppercase">{post.author.role}</p>
               <p className="text-[12px] text-[#595959] leading-relaxed mt-[4px]">{post.author.bio}</p>
             </div>
           </div>

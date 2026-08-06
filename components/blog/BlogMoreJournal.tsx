@@ -34,8 +34,8 @@ export default function BlogMoreJournal({ cards }: Props) {
       style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] uppercase text-[#111] leading-none">
+      <div className="flex items-center justify-between gap-[16px]">
+        <h2 className="font-black text-[24px] md:text-[32px] lg:text-[64px] uppercase text-[#111] leading-none min-w-0">
           MORE FROM THE JOURNAL
         </h2>
         <Link
@@ -48,15 +48,20 @@ export default function BlogMoreJournal({ cards }: Props) {
       </div>
 
       {/* Cards — 2 col mobile+tablet, 3 col desktop */}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-[12px] md:gap-[16px] lg:gap-[20px] items-stretch">
+      {/* max-sm (not sm:grid-cols-2) because this project moves lg to 1280px, which
+          puts lg: BEFORE sm:/md: in the generated CSS — a sm:grid-cols-2 would win
+          over lg:grid-cols-3 at 1280px and break the 3-col desktop grid. max-sm's
+          media query can never overlap lg's, so cascade order is irrelevant. */}
+      <div className="grid grid-cols-2 max-sm:grid-cols-1 lg:grid-cols-3 gap-[12px] md:gap-[16px] lg:gap-[20px] items-stretch">
         {cards.map((card, i) => (
           <Link
             key={card.slug}
             href={`/blog/${card.slug}`}
             className={`flex flex-col group overflow-hidden${i === 2 ? ' hidden lg:flex' : ''}`}
           >
-            {/* Image */}
-            <div className="relative w-full aspect-[500/450] overflow-hidden">
+            {/* Image — 4:3 to match the source photos (22 of 28 are exactly 4:3).
+                The old 500/450 (1.111) Figma ratio cropped 16.7% off every card. */}
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
               {card.image && (
                 <Image
                   src={card.image}
@@ -69,8 +74,8 @@ export default function BlogMoreJournal({ cards }: Props) {
             </div>
             {/* Dark caption bar */}
             <div className="bg-[#1e1e20] px-[12px] md:px-[16px] lg:px-[13px] pt-[20px] md:pt-[22px] lg:pt-[26px] pb-[24px] md:pb-[26px] lg:pb-[30px] flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px] flex-1">
-              <div className="flex items-end justify-between">
-                <p className="font-semibold text-[18px] md:text-[20px] lg:text-[24px] text-white leading-tight flex-1 pr-[12px]">
+              <div className="flex items-start justify-between">
+                <p className="font-semibold text-[18px] md:text-[20px] lg:text-[24px] text-white leading-tight flex-1 min-w-0 pr-[12px]">
                   {card.title}
                 </p>
                 <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] md:w-[44px] md:h-[44px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
