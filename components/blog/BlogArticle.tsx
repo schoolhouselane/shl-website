@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import type { BlogPost, ContentBlock } from '@/lib/blog-data'
 import { allBlogPosts } from '@/lib/blog-data'
+import CategoryTag from './CategoryTag'
 
 type InlinePart = { text: string; bold?: boolean; href?: string }
 
@@ -219,16 +220,20 @@ export default function BlogArticle({ post }: Props) {
 
       {/* ── Title row ─────────────────────────────────────────────────────────── */}
       <div className="pb-[24px] md:pb-[40px] lg:pb-[60px]">
-        {/* Mobile: byline above title */}
-        <p className="md:hidden text-[12px] font-normal uppercase text-[#777] tracking-wide mb-[8px]">
-          by {post.author.name}
-        </p>
+        {/* Mobile: category + byline above title */}
+        <div className="md:hidden flex flex-col gap-[4px] mb-[8px]">
+          <CategoryTag category={post.category} variant="article" />
+          <p className="text-[12px] font-normal uppercase text-[#777] tracking-wide">
+            by {post.author.name}
+          </p>
+        </div>
         <div className="flex items-start justify-between gap-[16px] md:gap-[24px]">
           <h1 className="font-black text-[28px] md:text-[40px] lg:text-[64px] uppercase text-[#1e1e20] leading-none">
             {post.title}
           </h1>
-          {/* Tablet + desktop: byline right, border-right per Figma */}
-          <div className="hidden md:flex border-r border-[#1e1e20] items-start pt-[4px] pr-[16px] lg:pr-[20px] shrink-0">
+          {/* Tablet + desktop: category over byline, right-aligned, border-right per Figma */}
+          <div className="hidden md:flex flex-col items-end gap-[6px] lg:gap-[8px] border-r border-[#1e1e20] pt-[4px] pr-[16px] lg:pr-[20px] shrink-0">
+            <CategoryTag category={post.category} variant="article" className="text-right" />
             <p className="font-normal text-[13px] md:text-[16px] lg:text-[24px] uppercase text-[#1e1e20] whitespace-nowrap">
               by {post.author.name}
             </p>

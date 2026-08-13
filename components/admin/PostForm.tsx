@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import type { ContentBlock } from '@/lib/blog-data'
+import { BLOG_CATEGORIES, normalizeCategory } from '@/lib/blog-categories'
 import LivePreview from './LivePreview'
 
 // ─── Editor block types ───────────────────────────────────────────────────────
@@ -186,7 +187,9 @@ export default function PostForm({ postId, initialData }: Props) {
   const [meta, setMeta] = useState({
     title: initialData?.title ?? '',
     slug: initialData?.slug ?? '',
-    category: initialData?.category ?? 'Strategy',
+    // Normalized so a legacy value (e.g. 'Branding') maps onto a real <option>
+    // instead of leaving the select blank and silently rewriting on save.
+    category: normalizeCategory(initialData?.category),
     heroImage: initialData?.heroImage ?? '',
     listingImage: initialData?.listingImage ?? '',
     seoTitle: initialData?.seoTitle ?? '',
@@ -424,7 +427,7 @@ export default function PostForm({ postId, initialData }: Props) {
               value={meta.category}
               onChange={e => setMf('category', e.target.value)}
             >
-              {['Strategy', 'Leadership', 'Branding', 'Digital', 'Culture', 'Creative'].map(c => (
+              {BLOG_CATEGORIES.map(c => (
                 <option key={c}>{c}</option>
               ))}
             </select>

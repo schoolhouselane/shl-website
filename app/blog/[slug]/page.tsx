@@ -9,6 +9,7 @@ import BlogNewsletter from '@/components/blog/BlogNewsletter'
 import CaseStudyCTA from '@/components/work/CaseStudyCTA'
 import { allBlogPosts, type JournalCard } from '@/lib/blog-data'
 import { getPostBySlug, getAllSlugs } from '@/lib/cms-blog'
+import { normalizeCategory } from '@/lib/blog-categories'
 
 const BASE_URL = 'https://schoolhouselane.ai'
 
@@ -115,7 +116,7 @@ export default async function BlogPostPage({
       logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo-white.svg` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    articleSection: post.category,
+    articleSection: normalizeCategory(post.category),
     isPartOf: { '@type': 'Blog', name: 'The Journal', url: `${BASE_URL}/blog` },
   }
 

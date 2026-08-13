@@ -154,9 +154,9 @@ export default function LivePreview({ data }: { data: PreviewData }) {
   return (
     <div className="bg-white min-h-full font-sans">
 
-      {/* Category strip */}
+      {/* Category strip — matches the plain uppercase label above the article byline */}
       <div className="bg-[#f5f3ef] px-5 py-2 flex items-center gap-3">
-        <span className="text-[10px] font-extrabold text-[#ababab] tracking-[1.4px] uppercase">
+        <span className="text-[10px] font-normal text-[#777] uppercase">
           {data.category || 'Category'}
         </span>
       </div>

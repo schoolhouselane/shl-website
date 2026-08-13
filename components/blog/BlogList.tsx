@@ -1,9 +1,14 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useInView } from '@/hooks/useInView'
 import type { BlogPost } from '@/lib/blog-data'
+import { BLOG_CATEGORIES, normalizeCategory } from '@/lib/blog-categories'
+import CategoryTag from './CategoryTag'
+
+const PER_PAGE = 9 // 3 × 3 grid, matching the Figma page
+const ALL = 'All'
 
 function ArrowUpRight() {
   return (
@@ -21,48 +26,32 @@ function ArrowRight({ size = 24 }: { size?: number }) {
   )
 }
 
-function FeaturedCard({ post }: { post: BlogPost }) {
+function Card({ post, hidden = false }: { post: BlogPost; hidden?: boolean }) {
   const img = post.listingImage ?? post.heroImage
   return (
-    <Link href={`/blog/${post.slug}`} className="flex flex-col group overflow-hidden h-full">
-      <div className="hidden lg:block relative w-full flex-1 overflow-hidden">
-        <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1280px) 100vw, 66vw" priority />
-      </div>
-      {/* Mobile + Tablet image */}
-      <div className="relative w-full aspect-[4/3] lg:hidden overflow-hidden">
-        <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="100vw" priority />
-      </div>
-      <div className="bg-[#1e1e20] px-[13px] lg:px-[24px] py-[24px] lg:py-[30px] flex flex-col gap-[12px] lg:gap-[20px] lg:shrink-0">
-        <div className="flex items-start justify-between gap-[12px]">
-          <p className="font-black text-[20px] md:text-[24px] lg:text-[28px] text-white leading-tight flex-1">{post.title}</p>
-          <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
-            <ArrowUpRight />
-          </div>
-        </div>
-        {post.seoDescription && (
-          <p className="text-[14px] md:text-[16px] text-white leading-relaxed">{post.seoDescription}</p>
-        )}
-      </div>
-    </Link>
-  )
-}
-
-function RegularCard({ post, collapsed = false }: { post: BlogPost; collapsed?: boolean }) {
-  const img = post.listingImage ?? post.heroImage
-  return (
-    // `collapsed` swaps display instead of unmounting, so every post stays in the
-    // server-rendered HTML for crawlers that don't run JS. Never combine with `flex`
-    // — Tailwind's display utilities would fight over specificity.
-    <Link href={`/blog/${post.slug}`} className={`${collapsed ? 'hidden' : 'flex'} flex-col group overflow-hidden h-full`}>
-      <div className="relative w-full aspect-[4/3] lg:hidden overflow-hidden">
-        <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 50vw" />
-      </div>
-      <div className="hidden lg:block relative w-full aspect-[4/3] overflow-hidden">
-        <Image src={img} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="33vw" />
+    // `hidden` swaps display instead of unmounting, so every post stays in the
+    // server-rendered HTML for crawlers that don't run JS — filtering and paging
+    // are presentational only. Never combine with `flex`: Tailwind's display
+    // utilities would fight over specificity.
+    <Link
+      href={`/blog/${post.slug}`}
+      className={`${hidden ? 'hidden' : 'flex'} flex-col group overflow-hidden h-full`}
+    >
+      <div className="relative w-full aspect-[4/3] overflow-hidden">
+        <Image
+          src={img}
+          alt={post.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+        />
       </div>
       <div className="bg-[#1e1e20] px-[13px] py-[24px] lg:pt-[26px] lg:pb-[30px] flex flex-col gap-[12px] lg:gap-[20px] flex-1">
         <div className="flex items-start justify-between gap-[12px]">
-          <p className="font-black text-[16px] md:text-[24px] text-white leading-tight flex-1">{post.title}</p>
+          <div className="flex flex-col gap-[10px] lg:gap-[15px] flex-1">
+            <CategoryTag category={post.category} />
+            <p className="font-black text-[16px] md:text-[20px] text-white leading-tight">{post.title}</p>
+          </div>
           <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
             <ArrowUpRight />
           </div>
@@ -81,15 +70,44 @@ interface Props {
 
 export default function BlogList({ posts }: Props) {
   const [ref, inView] = useInView(0.05)
-  const [showAll, setShowAll] = useState(false)
+  const [active, setActive] = useState<string>(ALL)
+  const [page, setPage] = useState(0)
 
-  const featured = posts[0]
-  const side    = posts.slice(1, 3)   // blog 2 + 3 → right column in row 1
-  const gallery = posts.slice(3)      // blog 4+ → 3-col gallery rows
-  const COLLAPSED_COUNT = 3           // how many gallery posts show before "Load more"
-  const isCollapsed = (i: number) => !showAll && i >= COLLAPSED_COUNT
+  // Categories that actually have posts, in the canonical BLOG_CATEGORIES order.
+  const categories = useMemo(() => {
+    const present = new Set(posts.map(p => normalizeCategory(p.category)))
+    return BLOG_CATEGORIES.filter(c => present.has(c))
+  }, [posts])
 
-  if (!featured) return null
+  // Deep links like /blog?category=Marketing. Read on mount rather than through
+  // useSearchParams so the page keeps its current rendering mode and needs no
+  // Suspense boundary — the server HTML is always the unfiltered list.
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get('category')
+    if (!raw) return
+    const match = BLOG_CATEGORIES.find(c => c.toLowerCase() === raw.toLowerCase())
+    if (match) setActive(match)
+  }, [])
+
+  const visible = useMemo(
+    () => (active === ALL ? posts : posts.filter(p => normalizeCategory(p.category) === active)),
+    [posts, active],
+  )
+
+  const pageCount = Math.max(1, Math.ceil(visible.length / PER_PAGE))
+  const current = Math.min(page, pageCount - 1)
+
+  function selectCategory(next: string) {
+    setActive(next)
+    setPage(0)
+    // Keep the URL shareable without a navigation/re-render.
+    const url = new URL(window.location.href)
+    if (next === ALL) url.searchParams.delete('category')
+    else url.searchParams.set('category', next)
+    window.history.replaceState(null, '', url)
+  }
+
+  if (!posts.length) return null
 
   return (
     <section
@@ -97,68 +115,85 @@ export default function BlogList({ posts }: Props) {
       className="bg-[#f5f3ef] px-4 md:px-6 lg:px-[90px] pt-[48px] md:pt-[32px] lg:pt-[120px] pb-[60px] md:pb-[80px] lg:pb-[120px] flex flex-col gap-[24px] md:gap-[32px] lg:gap-[40px] transition-all duration-700"
       style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
     >
-      <h1 className="font-black text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-none tracking-[-1px] lg:tracking-[-1.5px]">
-        LATEST IDEAS AND RESEARCH
-      </h1>
-
-      {/* ── Mobile + Tablet ── */}
-      <div className="lg:hidden flex flex-col gap-[16px] md:gap-[20px]">
-        <FeaturedCard post={featured} />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
-          {side.map(post => <RegularCard key={post.slug} post={post} />)}
-        </div>
-        {gallery.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
-            {gallery.map((post, i) => (
-              <RegularCard key={post.slug} post={post} collapsed={isCollapsed(i)} />
-            ))}
-          </div>
-        )}
-        {!showAll && gallery.length > COLLAPSED_COUNT && (
-          <div className="flex justify-end">
-            <button
-              onClick={() => setShowAll(true)}
-              className="bg-[#1e1e20] flex items-center gap-[10px] px-[20px] py-[12px] rounded-[50px] text-white font-medium text-[14px] md:text-[16px] uppercase hover:opacity-80 transition-opacity"
-            >
-              Load more blogs <ArrowRight size={16} />
-            </button>
-          </div>
-        )}
+      <div className="flex flex-col gap-[16px] lg:gap-[24px]">
+        <h1 className="font-black text-[32px] lg:text-[64px] uppercase text-[#1e1e20] leading-none tracking-[-1px] lg:tracking-[-1.5px]">
+          LATEST IDEAS AND RESEARCH
+        </h1>
+        <p className="text-[16px] lg:text-[20px] text-[#111] leading-normal lg:max-w-[981px]">
+          If you&rsquo;re thinking about how AI is reshaping brand, creative strategy, and enterprise
+          value this is one of the better collections out there right now.
+        </p>
       </div>
 
-      {/* ── Desktop ── */}
-      {/* Row 1: [Featured col-span-2 row-span-2] [Blog 2] [Blog 3] */}
-      <div
-        className="hidden lg:grid lg:gap-[20px]"
-        style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
-      >
-        {/* Featured — spans 2 cols × 2 rows */}
-        <div style={{ gridColumn: '1 / 3', gridRow: '1 / 3' }}>
-          <FeaturedCard post={featured} />
+      {/* ── Category filter ── */}
+      <div className="flex flex-col gap-[16px] lg:gap-[24px]">
+        <div className="flex flex-wrap items-center gap-[12px] lg:gap-[20px]">
+          {[ALL, ...categories].map(cat => {
+            const isActive = cat === active
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => selectCategory(cat)}
+                aria-pressed={isActive}
+                className={`flex items-center justify-center gap-[8px] lg:gap-[12px] px-[16px] lg:px-[24px] py-[8px] lg:py-[12px] rounded-[50px] border font-medium text-[13px] lg:text-[16px] uppercase whitespace-nowrap transition-colors ${
+                  isActive
+                    ? 'bg-[#1e1e20] border-[#1e1e20] text-white'
+                    : 'border-[#1e1e20] text-[#1e1e20] hover:bg-[#1e1e20]/5'
+                }`}
+              >
+                {cat === ALL ? 'All blogs' : cat}
+                <ArrowRight size={18} />
+              </button>
+            )
+          })}
         </div>
-        {/* Blog 2 + Blog 3 in col 3 */}
-        {side.map(post => (
-          <RegularCard key={post.slug} post={post} />
-        ))}
+
+        <div className="flex items-start justify-between gap-[16px] text-[11px] lg:text-[12px] uppercase text-[#777] leading-normal">
+          <p>
+            {active === ALL ? 'Blogs' : `${active} blogs`} are categorised by the latest post
+          </p>
+          <p className="whitespace-nowrap">
+            {visible.length} {visible.length === 1 ? 'blog' : 'blogs'} showing
+          </p>
+        </div>
       </div>
 
-      {/* Row 2+: 3-col gallery */}
-      {gallery.length > 0 && (
-        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-[20px]">
-          {gallery.map((post, i) => (
-            <RegularCard key={post.slug} post={post} collapsed={isCollapsed(i)} />
+      {/* ── Grid ── */}
+      {visible.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[20px]">
+          {visible.map((post, i) => (
+            <Card
+              key={post.slug}
+              post={post}
+              hidden={i < current * PER_PAGE || i >= (current + 1) * PER_PAGE}
+            />
           ))}
         </div>
+      ) : (
+        <p className="text-[16px] text-[#777] py-[40px]">No blogs in this category yet.</p>
       )}
 
-      {/* Load more */}
-      {!showAll && gallery.length > COLLAPSED_COUNT && (
-        <div className="hidden lg:flex justify-end">
+      {/* ── Pagination ── */}
+      {pageCount > 1 && (
+        <div className="flex items-center justify-end gap-[12px] lg:gap-[16px]">
           <button
-            onClick={() => setShowAll(true)}
-            className="bg-[#1e1e20] flex items-center gap-[12px] px-[24px] py-[20px] rounded-[50px] text-white font-medium text-[20px] uppercase hover:opacity-80 transition-opacity whitespace-nowrap"
+            type="button"
+            onClick={() => setPage(current - 1)}
+            disabled={current === 0}
+            aria-label="Previous page"
+            className="flex items-center justify-center rounded-full w-[55px] h-[55px] lg:w-[82px] lg:h-[82px] transition-opacity disabled:opacity-40 disabled:cursor-not-allowed bg-[#1e1e20]/10 text-[#1e1e20] enabled:hover:bg-[#1e1e20]/20"
           >
-            Load more blogs <ArrowRight size={24} />
+            <span className="rotate-180 flex"><ArrowRight size={24} /></span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setPage(current + 1)}
+            disabled={current >= pageCount - 1}
+            aria-label="Next page"
+            className="flex items-center justify-center rounded-full w-[55px] h-[55px] lg:w-[82px] lg:h-[82px] bg-[#1e1e20] text-white transition-opacity disabled:opacity-40 disabled:cursor-not-allowed enabled:hover:opacity-80"
+          >
+            <ArrowRight size={24} />
           </button>
         </div>
       )}

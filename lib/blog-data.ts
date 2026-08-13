@@ -308,7 +308,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'ceos-blueprint-ai-marketing',
     title: "The CEO's Blueprint: 5 Strategic Mandates for Integrating AI into Marketing",
-    category: 'AI Strategy',
+    category: 'AI',
     heroImage: '/images/blog/ceo-blueprint-hero.webp',
     listingImage: '/images/blog/ceo-blueprint-hero.webp',
     seoTitle: "The CEO's Blueprint: 5 Strategic Mandates for Integrating AI into Marketing — Schoolhouse Lane",
@@ -412,7 +412,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'ai-for-the-ambitious-sme',
     title: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants',
-    category: 'AI Strategy',
+    category: 'AI',
     heroImage: '/images/blog/blog5-hero-v2.webp',
     listingImage: '/images/blog/blog5-listing.webp',
     seoTitle: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants — Schoolhouse Lane',
@@ -625,7 +625,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'ai-paradigm-creative-strategy',
     title: 'The Shift from Execution to Enterprise: The AI Paradigm in Creative Strategy',
-    category: 'AI & Strategy',
+    category: 'AI',
     heroImage: '/images/blog1-0.webp',
     listingImage: '/images/blog1-gallery.webp',
     seoTitle: 'The AI Paradigm in Creative Strategy: From Execution to Enterprise — Schoolhouse Lane',
@@ -1084,7 +1084,7 @@ const publishedPosts: BlogPost[] = [
   {
     slug: 'beyond-the-prompt',
     title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value',
-    category: 'AI & Strategy',
+    category: 'AI',
     heroImage: '/images/blog2-0.webp',
     listingImage: '/images/blog-2-gallery.webp',
     seoTitle: 'Beyond the Prompt: How Marketing Teams Drive Enterprise Value with AI — Schoolhouse Lane',
@@ -1204,7 +1204,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
   {
     slug: 'brand-measurable-asset',
     title: 'Why Brand Is Your Most Measurable Asset',
-    category: 'Branding',
+    category: 'Marketing',
     heroImage: '/images/blog-1.webp',
     listingImage: '/images/blog-1.webp',
     seoTitle: 'Why Brand Is Your Most Measurable Asset — Schoolhouse Lane',
@@ -1279,7 +1279,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
   {
     slug: 'creative-commerce',
     title: 'Creative Commerce: Where Imagination Meets Revenue',
-    category: 'Strategy',
+    category: 'Creative',
     heroImage: '/images/blog-creative.png',
     listingImage: '/images/blog/blog-creative-listing.webp',
     seoTitle: 'Creative Commerce: Where Imagination Meets Revenue — Schoolhouse Lane',
@@ -1459,7 +1459,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
   {
     slug: 'ai-creative-revolution',
     title: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution',
-    category: 'AI & Strategy',
+    category: 'AI',
     heroImage: '/images/blog3-0.webp',
     listingImage: '/images/blog-3-gallery.webp',
     seoTitle: 'AI Creative Revolution: 5 Strategic Actions for Marketing Leaders — Schoolhouse Lane',

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getAllCmsRows } from '@/lib/cms-blog'
+import { normalizeCategory } from '@/lib/blog-categories'
 
 export default async function AdminBlogPage() {
   const posts = await getAllCmsRows()
@@ -34,7 +35,7 @@ export default async function AdminBlogPage() {
             <div className="flex-1 min-w-0">
               <p className="font-bold text-[#1e1e20] truncate">{post.title}</p>
               <p className="text-sm text-[#999] mt-0.5">
-                {post.category} · {post.published_at} · edited {new Date(post.updated_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                {normalizeCategory(post.category)} · {post.published_at} · edited {new Date(post.updated_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
               </p>
             </div>
             <div className="flex items-center gap-3 shrink-0">

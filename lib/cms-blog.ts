@@ -1,5 +1,6 @@
 import sql from './db'
 import { allBlogPosts, type BlogPost, type ContentBlock } from './blog-data'
+import { normalizeCategory } from './blog-categories'
 
 // ─── DB row type ─────────────────────────────────────────────────────────────
 
@@ -181,7 +182,7 @@ export function rowToBlogPost(row: CmsRow): BlogPost {
   return {
     slug: row.slug,
     title: row.title,
-    category: row.category,
+    category: normalizeCategory(row.category),
     heroImage: row.hero_image,
     listingImage: row.listing_image ?? undefined,
     seoTitle: row.seo_title ?? undefined,
