@@ -37,7 +37,10 @@ export interface JournalCard {
 export interface BlogPost {
   slug: string
   title: string
+  /** Primary tag. Kept for records written before multi-tagging. */
   category: string
+  /** Full tag list. When present it wins over `category`; see normalizeTags. */
+  tags?: string[]
   heroImage: string
   listingImage?: string
   seoTitle?: string
@@ -309,6 +312,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'ceos-blueprint-ai-marketing',
     title: "The CEO's Blueprint: 5 Strategic Mandates for Integrating AI into Marketing",
     category: 'AI',
+    tags: ['AI', 'Strategy'],
     heroImage: '/images/blog/ceo-blueprint-hero.webp',
     listingImage: '/images/blog/ceo-blueprint-hero.webp',
     seoTitle: "The CEO's Blueprint: 5 Strategic Mandates for Integrating AI into Marketing — Schoolhouse Lane",
@@ -413,6 +417,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'ai-for-the-ambitious-sme',
     title: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants',
     category: 'AI',
+    tags: ['AI', 'Strategy'],
     heroImage: '/images/blog/blog5-hero-v2.webp',
     listingImage: '/images/blog/blog5-listing.webp',
     seoTitle: 'AI for the Ambitious SME: 5 Steps to Compete with the Giants — Schoolhouse Lane',
@@ -626,6 +631,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'ai-paradigm-creative-strategy',
     title: 'The Shift from Execution to Enterprise: The AI Paradigm in Creative Strategy',
     category: 'AI',
+    tags: ['AI', 'Strategy'],
     heroImage: '/images/blog1-0.webp',
     listingImage: '/images/blog1-gallery.webp',
     seoTitle: 'The AI Paradigm in Creative Strategy: From Execution to Enterprise — Schoolhouse Lane',
@@ -1085,6 +1091,7 @@ const publishedPosts: BlogPost[] = [
     slug: 'beyond-the-prompt',
     title: 'Beyond the Prompt: How Modern Marketing Teams Leverage AI for Enterprise Value',
     category: 'AI',
+    tags: ['AI', 'Marketing'],
     heroImage: '/images/blog2-0.webp',
     listingImage: '/images/blog-2-gallery.webp',
     seoTitle: 'Beyond the Prompt: How Marketing Teams Drive Enterprise Value with AI — Schoolhouse Lane',
@@ -1460,6 +1467,7 @@ const PLACEHOLDER_POSTS: BlogPost[] = [
     slug: 'ai-creative-revolution',
     title: '5 Strategic Actions for Marketers Navigating the AI Creative Revolution',
     category: 'AI',
+    tags: ['AI', 'Marketing'],
     heroImage: '/images/blog3-0.webp',
     listingImage: '/images/blog-3-gallery.webp',
     seoTitle: 'AI Creative Revolution: 5 Strategic Actions for Marketing Leaders — Schoolhouse Lane',

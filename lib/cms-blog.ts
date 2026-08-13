@@ -1,6 +1,6 @@
 import sql from './db'
 import { allBlogPosts, type BlogPost, type ContentBlock } from './blog-data'
-import { normalizeCategory } from './blog-categories'
+import { normalizeCategory, normalizeTags } from './blog-categories'
 
 // ─── DB row type ─────────────────────────────────────────────────────────────
 
@@ -9,6 +9,7 @@ export interface CmsRow {
   slug: string
   title: string
   category: string
+  tags: string[] | null
   hero_image: string
   listing_image: string | null
   seo_title: string | null
@@ -32,6 +33,7 @@ export interface PostInput {
   slug: string
   title: string
   category: string
+  tags: string[]
   heroImage: string
   listingImage: string
   seoTitle: string
@@ -50,12 +52,12 @@ export interface PostInput {
 export async function createPost(data: PostInput): Promise<number> {
   const rows = await sql<[{ id: number }]>`
     INSERT INTO cms_posts (
-      slug, title, category, hero_image, listing_image,
+      slug, title, category, tags, hero_image, listing_image,
       seo_title, seo_description, keywords, published_at,
       author_name, author_role, author_bio, author_image,
       body, is_published, scheduled_at
     ) VALUES (
-      ${data.slug}, ${data.title}, ${data.category},
+      ${data.slug}, ${data.title}, ${data.category}, ${data.tags},
       ${data.heroImage}, ${data.listingImage || null},
       ${data.seoTitle || null}, ${data.seoDescription || null},
       ${data.keywords}, ${data.publishedAt},
@@ -74,6 +76,7 @@ export async function updatePost(id: number, data: PostInput): Promise<void> {
       slug = ${data.slug},
       title = ${data.title},
       category = ${data.category},
+      tags = ${data.tags},
       hero_image = ${data.heroImage},
       listing_image = ${data.listingImage || null},
       seo_title = ${data.seoTitle || null},
@@ -183,6 +186,7 @@ export function rowToBlogPost(row: CmsRow): BlogPost {
     slug: row.slug,
     title: row.title,
     category: normalizeCategory(row.category),
+    tags: normalizeTags(row.tags?.length ? row.tags : row.category),
     heroImage: row.hero_image,
     listingImage: row.listing_image ?? undefined,
     seoTitle: row.seo_title ?? undefined,

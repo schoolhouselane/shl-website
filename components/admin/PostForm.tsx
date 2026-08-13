@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import type { ContentBlock } from '@/lib/blog-data'
-import { BLOG_CATEGORIES, normalizeCategory } from '@/lib/blog-categories'
+import { BLOG_CATEGORIES, normalizeCategory, normalizeTags } from '@/lib/blog-categories'
 import LivePreview from './LivePreview'
 
 // ─── Editor block types ───────────────────────────────────────────────────────
@@ -118,6 +118,7 @@ export interface PostFormData {
   title: string
   slug: string
   category: string
+  tags?: string[]
   heroImage: string
   listingImage: string
   seoTitle: string
@@ -190,6 +191,8 @@ export default function PostForm({ postId, initialData }: Props) {
     // Normalized so a legacy value (e.g. 'Branding') maps onto a real <option>
     // instead of leaving the select blank and silently rewriting on save.
     category: normalizeCategory(initialData?.category),
+    // Multi-tag: a post shows under every tag in the listing filter.
+    tags: normalizeTags(initialData?.tags?.length ? initialData.tags : initialData?.category) as string[],
     heroImage: initialData?.heroImage ?? '',
     listingImage: initialData?.listingImage ?? '',
     seoTitle: initialData?.seoTitle ?? '',
@@ -219,7 +222,8 @@ export default function PostForm({ postId, initialData }: Props) {
   const [aiStatus, setAiStatus] = useState<'idle' | 'generating' | 'done' | 'error'>('idle')
   const [aiError, setAiError] = useState('')
 
-  function setMf(key: keyof typeof meta, val: string) {
+  // `tags` is a string[]; every other meta field is a string.
+  function setMf<K extends keyof typeof meta>(key: K, val: (typeof meta)[K]) {
     setMeta(m => ({ ...m, [key]: val }))
   }
 
@@ -280,7 +284,8 @@ export default function PostForm({ postId, initialData }: Props) {
     const payload = {
       slug: meta.slug,
       title: meta.title,
-      category: meta.category,
+      category: meta.tags[0] ?? meta.category,
+      tags: meta.tags,
       heroImage: meta.heroImage,
       listingImage: meta.listingImage,
       seoTitle: meta.seoTitle,
@@ -378,7 +383,7 @@ export default function PostForm({ postId, initialData }: Props) {
 
   const previewData = {
     title: meta.title,
-    category: meta.category,
+    category: meta.tags.join(' \u00b7 ') || meta.category,
     heroImage: meta.heroImage,
     publishedAt: meta.publishedAt,
     authorName: meta.authorName,
@@ -421,16 +426,34 @@ export default function PostForm({ postId, initialData }: Props) {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-xs uppercase tracking-wide text-[#888]">Category</label>
-            <select
-              className="border border-[#d9d9d9] rounded-lg px-4 py-2.5 text-[#1e1e20] bg-white focus:outline-none focus:border-[#1e1e20]"
-              value={meta.category}
-              onChange={e => setMf('category', e.target.value)}
-            >
-              {BLOG_CATEGORIES.map(c => (
-                <option key={c}>{c}</option>
-              ))}
-            </select>
+            <label className="text-xs uppercase tracking-wide text-[#888]">
+              Tags <span className="normal-case tracking-normal">— the post appears under each one</span>
+            </label>
+            <div className="flex flex-wrap gap-2 border border-[#d9d9d9] rounded-lg px-3 py-2.5 bg-white">
+              {BLOG_CATEGORIES.map(c => {
+                const on = meta.tags.includes(c)
+                return (
+                  <button
+                    key={c}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() =>
+                      setMf('tags', on ? meta.tags.filter(t => t !== c) : [...meta.tags, c])
+                    }
+                    className={`rounded-full px-3 py-1 text-sm border transition-colors ${
+                      on
+                        ? 'bg-[#1e1e20] border-[#1e1e20] text-white'
+                        : 'border-[#d9d9d9] text-[#1e1e20] hover:border-[#1e1e20]'
+                    }`}
+                  >
+                    {c}
+                  </button>
+                )
+              })}
+            </div>
+            {meta.tags.length === 0 && (
+              <p className="text-xs text-[#c0392b]">Pick at least one tag.</p>
+            )}
           </div>
           <div className="flex flex-col gap-1">
             <label className="text-xs uppercase tracking-wide text-[#888]">Published Date</label>

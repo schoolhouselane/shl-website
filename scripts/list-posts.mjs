@@ -28,7 +28,7 @@ const ALIASES = {
   'AI & Leadership': 'Leadership',
   'Creative Commerce': 'Creative',
 }
-const normalize = c => ALIASES[c?.trim()] ?? c?.trim() ?? 'Strategy'
+const normalize = c => String(c ?? '').split(',').map(x => x.trim()).filter(Boolean).map(x => ALIASES[x] ?? x).join(' \u00b7 ') || 'Strategy'
 
 // ── Static posts ─────────────────────────────────────────────────────────────
 // blog-data.ts holds several arrays and only some are spread into allBlogPosts,
@@ -55,7 +55,7 @@ for (let i = 0; i < lines.length; i++) {
     source: currentArray === 'blogPosts' ? 'static' : currentArray,
     slug: slug[1],
     title: field('title'),
-    category: field('category'),
+    category: (block.match(/^    tags: \[(.*?)\],$/m)?.[1]?.replace(/'/g, '') ?? field('category')),
     publishedAt: field('publishedAt'),
     isPublished: LIVE_ARRAYS.includes(currentArray),
   })
@@ -63,14 +63,14 @@ for (let i = 0; i < lines.length; i++) {
 
 // ── CMS posts ────────────────────────────────────────────────────────────────
 const sql = postgres(process.env.POSTGRES_URL ?? process.env.DATABASE_URL, { ssl: 'require', prepare: false })
-const rows = await sql`SELECT slug, title, category, published_at, is_published FROM cms_posts`
+const rows = await sql`SELECT slug, title, category, tags, published_at, is_published FROM cms_posts`
 await sql.end()
 
 const cmsPosts = rows.map(r => ({
   source: 'cms',
   slug: r.slug,
   title: r.title,
-  category: r.category,
+  category: r.tags?.length ? r.tags.join(', ') : r.category,
   publishedAt: r.published_at,
   isPublished: r.is_published,
 }))
@@ -90,12 +90,11 @@ if (process.argv.includes('--csv')) {
     const cat = normalize(p.category)
     const drift = cat !== p.category?.trim() ? `  (stored: ${p.category})` : ''
     const flag = p.isPublished ? ' ' : '·'
-    console.log(`${flag} ${String(p.publishedAt).slice(0, 10)}  ${cat.padEnd(14)} ${p.source.padEnd(6)} ${p.slug}${drift}`)
+    console.log(`${flag} ${String(p.publishedAt).slice(0, 10)}  ${cat.padEnd(22)} ${p.source.padEnd(6)} ${p.slug}${drift}`)
   }
   const tally = {}
   for (const p of all.filter(x => x.isPublished)) {
-    const c = normalize(p.category)
-    tally[c] = (tally[c] ?? 0) + 1
+    for (const c of normalize(p.category).split(' \u00b7 ')) tally[c] = (tally[c] ?? 0) + 1
   }
   console.log(`\n${all.length} posts (${all.filter(p => p.isPublished).length} published, ${all.filter(p => !p.isPublished).length} draft)`)
   for (const [k, v] of Object.entries(tally).sort((a, b) => b[1] - a[1])) console.log(`  ${String(v).padStart(3)}  ${k}`)

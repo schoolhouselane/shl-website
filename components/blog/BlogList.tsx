@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { useInView } from '@/hooks/useInView'
 import type { BlogPost } from '@/lib/blog-data'
-import { BLOG_CATEGORIES, normalizeCategory } from '@/lib/blog-categories'
+import { BLOG_CATEGORIES, normalizeTags } from '@/lib/blog-categories'
 import CategoryTag from './CategoryTag'
 
 const PER_PAGE = 9 // 3 × 3 grid, matching the Figma page
@@ -49,7 +49,7 @@ function Card({ post, hidden = false }: { post: BlogPost; hidden?: boolean }) {
       <div className="bg-[#1e1e20] px-[13px] py-[24px] lg:pt-[26px] lg:pb-[30px] flex flex-col gap-[12px] lg:gap-[20px] flex-1">
         <div className="flex items-start justify-between gap-[12px]">
           <div className="flex flex-col gap-[10px] lg:gap-[15px] flex-1">
-            <CategoryTag category={post.category} />
+            <CategoryTag post={post} />
             <p className="font-black text-[16px] md:text-[20px] text-white leading-tight">{post.title}</p>
           </div>
           <div className="bg-white flex items-center justify-center rounded-full w-[39px] h-[39px] lg:w-[55px] lg:h-[55px] shrink-0 group-hover:scale-110 transition-transform text-[#1e1e20]">
@@ -75,7 +75,7 @@ export default function BlogList({ posts }: Props) {
 
   // Categories that actually have posts, in the canonical BLOG_CATEGORIES order.
   const categories = useMemo(() => {
-    const present = new Set(posts.map(p => normalizeCategory(p.category)))
+    const present = new Set(posts.flatMap(p => normalizeTags(p.tags?.length ? p.tags : p.category)))
     return BLOG_CATEGORIES.filter(c => present.has(c))
   }, [posts])
 
@@ -90,7 +90,10 @@ export default function BlogList({ posts }: Props) {
   }, [])
 
   const visible = useMemo(
-    () => (active === ALL ? posts : posts.filter(p => normalizeCategory(p.category) === active)),
+    () =>
+      active === ALL
+        ? posts
+        : posts.filter(p => normalizeTags(p.tags?.length ? p.tags : p.category).includes(active as never)),
     [posts, active],
   )
 

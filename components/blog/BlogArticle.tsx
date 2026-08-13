@@ -222,7 +222,7 @@ export default function BlogArticle({ post }: Props) {
       <div className="pb-[24px] md:pb-[40px] lg:pb-[60px]">
         {/* Mobile: category + byline above title */}
         <div className="md:hidden flex flex-col gap-[4px] mb-[8px]">
-          <CategoryTag category={post.category} variant="article" />
+          <CategoryTag post={post} variant="article" />
           <p className="text-[12px] font-normal uppercase text-[#777] tracking-wide">
             by {post.author.name}
           </p>
@@ -233,7 +233,7 @@ export default function BlogArticle({ post }: Props) {
           </h1>
           {/* Tablet + desktop: category over byline, right-aligned, border-right per Figma */}
           <div className="hidden md:flex flex-col items-end gap-[6px] lg:gap-[8px] border-r border-[#1e1e20] pt-[4px] pr-[16px] lg:pr-[20px] shrink-0">
-            <CategoryTag category={post.category} variant="article" className="text-right" />
+            <CategoryTag post={post} variant="article" className="text-right" />
             <p className="font-normal text-[13px] md:text-[16px] lg:text-[24px] uppercase text-[#1e1e20] whitespace-nowrap">
               by {post.author.name}
             </p>
