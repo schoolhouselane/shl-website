@@ -79,9 +79,10 @@ export default function BlogList({ posts }: Props) {
     return BLOG_CATEGORIES.filter(c => present.has(c))
   }, [posts])
 
-  // Deep links like /blog?category=Marketing. Read on mount rather than through
-  // useSearchParams so the page keeps its current rendering mode and needs no
-  // Suspense boundary — the server HTML is always the unfiltered list.
+  // An explicitly shared /blog?category=Marketing link still lands filtered, but
+  // nothing else ever sets the param — see selectCategory. Read on mount rather
+  // than through useSearchParams so the page keeps its current rendering mode
+  // and needs no Suspense boundary; the server HTML is always the full list.
   useEffect(() => {
     const raw = new URLSearchParams(window.location.search).get('category')
     if (!raw) return
@@ -100,14 +101,11 @@ export default function BlogList({ posts }: Props) {
   const pageCount = Math.max(1, Math.ceil(visible.length / PER_PAGE))
   const current = Math.min(page, pageCount - 1)
 
+  // Deliberately does not write the filter to the URL: /blog must always open
+  // on "All blogs" rather than resuming whatever was picked last visit.
   function selectCategory(next: string) {
     setActive(next)
     setPage(0)
-    // Keep the URL shareable without a navigation/re-render.
-    const url = new URL(window.location.href)
-    if (next === ALL) url.searchParams.delete('category')
-    else url.searchParams.set('category', next)
-    window.history.replaceState(null, '', url)
   }
 
   if (!posts.length) return null
